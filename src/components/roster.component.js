@@ -4,8 +4,11 @@ import axios from 'axios';
 
 const OwnerDisplay = props => (
  <div>
-    <h2>{props.name} </h2>
-    <h3>{props.cap}</h3>
+    <h2>{props.name}'s Roster </h2>
+    <h3>Max Cap: {props.cap}</h3>
+    <h5>Penalty Fee: {props.penaltyFee}</h5>
+
+    <h5>Remaining: {props.remaining}</h5>
  </div>
 )
 
@@ -25,7 +28,8 @@ export default class Roster extends Component {
             name:"",
             cap: [0,0,0],
           },
-          roster: [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
+          roster: [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
+          luxLine: 0
         };
       }
       
@@ -35,8 +39,9 @@ export default class Roster extends Component {
           .then(response => {
             const { name } = this.props.match.params
             const owner = response.data.find(curruser => name === curruser.name);
-            this.setState({owner})
-            this.setState({roster: owner.roster})
+            this.setState({owner});
+            this.setState({roster: owner.roster});
+            this.calcLuxLine();
           })
           .catch((error) => {
             console.log(error);
@@ -69,8 +74,24 @@ export default class Roster extends Component {
         return <Player name={currentPlayer.name} price={currentPlayer.price} keep={keep}/>;
       })
     }
-    ownerInfo() {
-        return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[0]} roster = {this.state.roster}/>;
+
+    calcLuxLine() {
+      let line = Math.trunc(this.state.owner.cap[0]*0.55)
+      this.setState({
+        luxLine: line
+      })
     }
+
+    ownerInfo() {
+      const keepPrice = this.state.roster.filter(keptPlayer => keptPlayer.keep).reduce((acc, player) => acc + player.price, 0);
+        console.log();
+        let penaltyFee = keepPrice - this.state.luxLine;
+        penaltyFee = penaltyFee > 0 ? penaltyFee: 0;
+        let remaining = this.state.owner.cap[0] - keepPrice - penaltyFee;
+        console.log("KeepPrice: ",keepPrice, " penalty fee:", penaltyFee)
+        return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[0]} roster = {this.state.roster} penaltyFee = {penaltyFee} remaining = {remaining}/>;
+    }
+
+    
 }
 
