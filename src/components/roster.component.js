@@ -87,23 +87,17 @@ export default class Roster extends Component {
     }
 
     changeKeeper = (e) => {
-      console.log(this.state.owner._id)
-      console.log(e.target.id);
-      console.log(e.target.checked)
-      const newKeep = {
-        "keep": e.target.checked
-      }
-      axios.post('http://localhost:5000/roster/:name/update/' + this.state.owner._id + "/" + e.target.id, newKeep)
+      const newKeep = {  "keep": e.target.checked  }
+      axios.post('http://localhost:5000/owner/update/' + this.state.owner._id + "/" + e.target.id, newKeep)
       .then(res => console.log(res.data));
+      window.location.reload();
     }
 
     ownerInfo() {
       const keepPrice = this.state.roster.filter(keptPlayer => keptPlayer.keep).reduce((acc, player) => acc + player.price, 0);
-        console.log();
         let penaltyFee = keepPrice - this.state.luxLine;
         penaltyFee = penaltyFee > 0 ? penaltyFee: 0;
         let remaining = this.state.owner.cap[0] - keepPrice - penaltyFee;
-        console.log("KeepPrice: ",keepPrice, " penalty fee:", penaltyFee)
         return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[0]} roster = {this.state.roster} penaltyFee = {penaltyFee} remaining = {remaining}/>;
     }
 
