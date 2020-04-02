@@ -23,4 +23,21 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 }); 
 
+// Updating a keeper
+router.route('/update/:id/:pid').post((req, res) => {
+const keep = req.body.keep;
+Owner.findById(req.params.id).
+  then(owner => {
+    const myIndex = owner.roster.findIndex(currplayer => currplayer._id == req.params.pid);
+    owner.roster[myIndex].keep = keep;
+    owner.save()
+        .then(() => res.json('Player updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+
+
 module.exports = router;

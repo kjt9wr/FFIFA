@@ -12,17 +12,18 @@ const OwnerDisplay = props => (
  </div>
 )
 
-const Player = props =>(
+const PlayerRow = props =>(
   <tr>
     <td> {props.name} </td>
     <td> {props.price} </td>
-    <td> {props.keep }</td>
+    <td> <input type="checkbox" id={props.id} onChange={props.changeKeeper} checked={props.keep}/> </td>
   </tr>
 )
 
 export default class Roster extends Component {
     constructor(props) {
         super(props);
+        this.changeKeeper = this.changeKeeper.bind(this);
         this.state = {
           owner: {
             name:"",
@@ -32,6 +33,8 @@ export default class Roster extends Component {
           luxLine: 0
         };
       }
+      
+
       
     // Get Owner from DB
     componentDidMount() {
@@ -68,10 +71,11 @@ export default class Roster extends Component {
         )
     }
 
+    //Generate table of players
     PlayerInfo() {
       return this.state.roster.map(currentPlayer => {
-        const keep = currentPlayer.keep ? "Yes" : "no"
-        return <Player name={currentPlayer.name} price={currentPlayer.price} keep={keep}/>;
+        const keep = currentPlayer.keep ? "checked" : ""
+        return <PlayerRow name={currentPlayer.name} id={currentPlayer._id} price={currentPlayer.price} keep={keep} changeKeeper={this.changeKeeper}/>;
       })
     }
 
@@ -80,6 +84,17 @@ export default class Roster extends Component {
       this.setState({
         luxLine: line
       })
+    }
+
+    changeKeeper = (e) => {
+      console.log(this.state.owner._id)
+      console.log(e.target.id);
+      console.log(e.target.checked)
+      const newKeep = {
+        "keep": e.target.checked
+      }
+      axios.post('http://localhost:5000/roster/:name/update/' + this.state.owner._id + "/" + e.target.id, newKeep)
+      .then(res => console.log(res.data));
     }
 
     ownerInfo() {

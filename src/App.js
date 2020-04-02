@@ -30,20 +30,20 @@ export class App extends Component {
   }
 
   render(){
-  return (
-    <Router>
-      <Navbar />
-      <br/>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/roster/:name" component={Roster} />
-      <Route path="/trade" component={TradeTracker} />
-      <Route path="/cap" component={CapTracker} />
-      <Route path="/franchise" component={FranchiseTag} />
-      <Route path="/fa" component={FreeAgency} />
-    </Router>
-    
-  );
-}
+    return (
+      <Router>
+        <Navbar />
+        <br/>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/roster/:name" component={Roster} />
+        <Route path="/trade" component={TradeTracker} />
+        <Route path="/cap" component={CapTracker} />
+        <Route path="/franchise" component={FranchiseTag} />
+        <Route path="/fa" component={FreeAgency} />
+      </Router>
+      
+    );
+  }
 }
 
 export default App;
