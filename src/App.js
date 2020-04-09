@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
+// eslint-disable-next-line
 import { Button } from 'reactstrap';
 import './App.css';
 import Navbar from "./components/navbar.component.js";

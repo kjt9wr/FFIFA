@@ -16,14 +16,13 @@ const PlayerRow = props =>(
   <tr>
     <td> {props.name} </td>
     <td> {props.price} </td>
-    <td> <input type="checkbox" id={props.id} onChange={props.changeKeeper} checked={props.keep}/> </td>
+    <td> <input type="checkbox" id={props.id} key={props.id} onChange={props.changeKeeper} checked={props.keep}/> </td>
   </tr>
 )
 
 export default class Roster extends Component {
     constructor(props) {
         super(props);
-        this.changeKeeper = this.changeKeeper.bind(this);
         this.state = {
           owner: {
             name:"",
@@ -37,7 +36,7 @@ export default class Roster extends Component {
 
       
     // Get Owner from DB
-    componentDidMount() {
+    componentDidMount = () => {
         axios.get('http://localhost:5000/owner/')
           .then(response => {
             const { name } = this.props.match.params
@@ -71,15 +70,15 @@ export default class Roster extends Component {
         )
     }
 
-    //Generate table of players
-    PlayerInfo() {
+    //Generate jsx table of players
+    PlayerInfo = () => {
       return this.state.roster.map(currentPlayer => {
         const keep = currentPlayer.keep ? "checked" : ""
-        return <PlayerRow name={currentPlayer.name} id={currentPlayer._id} price={currentPlayer.price} keep={keep} changeKeeper={this.changeKeeper}/>;
+        return <PlayerRow name={currentPlayer.name} key={currentPlayer._id} id={currentPlayer._id} price={currentPlayer.price} keep={keep} changeKeeper={this.changeKeeper}/>;
       })
     }
 
-    calcLuxLine() {
+    calcLuxLine = () => {
       let line = Math.trunc(this.state.owner.cap[0]*0.55)
       this.setState({
         luxLine: line
@@ -93,7 +92,8 @@ export default class Roster extends Component {
       window.location.reload();
     }
 
-    ownerInfo() {
+    // return JSX of Owner and cap info
+    ownerInfo = () => {
       const keepPrice = this.state.roster.filter(keptPlayer => keptPlayer.keep).reduce((acc, player) => acc + player.price, 0);
         let penaltyFee = keepPrice - this.state.luxLine;
         penaltyFee = penaltyFee > 0 ? penaltyFee: 0;
