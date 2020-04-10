@@ -6,13 +6,15 @@ const OwnerDisplay = props => (
  <div>
     <h2>{props.name}'s Roster </h2>
     <h3>Max Cap: {props.cap}</h3>
-    <h5>Penalty Fee: {props.penaltyFee}</h5>
-
+    <h5>{luxaryText(props.offender)} {props.luxaryGainorLoss}</h5>
     <h5>Remaining: {props.remaining}</h5>
  </div>
 )
 
-const PlayerRow = props =>(
+const luxaryText = (offender) => offender ? "Penalty Fee: " : "Cap Gained: ";
+
+
+const PlayerRow = props => (
   <tr>
     <td> {props.name} </td>
     <td> {props.price} </td>
@@ -29,21 +31,40 @@ export default class Roster extends Component {
             cap: [0,0,0],
           },
           roster: [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
-          luxLine: 0
+          luxLine: 0,
+          reward: 0,
+          offender: false
         };
-      }
-      
+    }
 
-      
     // Get Owner from DB
     componentDidMount = () => {
         axios.get('http://localhost:5000/owner/')
           .then(response => {
             const { name } = this.props.match.params
             const owner = response.data.find(curruser => name === curruser.name);
-            this.setState({owner});
-            this.setState({roster: owner.roster});
-            this.calcLuxLine();
+            const others = response.data.filter(curruser => name !== curruser.name).map(currentOwner => ({
+                name: currentOwner.name,
+                penaltyFee: this.calcPenaltyFee(this.calcKeepPrice(currentOwner.roster), this.calcLuxaryLine(currentOwner.cap[0]))
+              })); 
+            const penaltyFeesArr = others.filter(owner => owner.penaltyFee > 0);
+
+            // current owner
+            const penaltyFee = this.calcPenaltyFee(this.calcKeepPrice(owner.roster), this.calcLuxaryLine(owner.cap[0]));
+
+            // calculate reward for non-offenders of luxary tax
+            const numOfOffenders = penaltyFeesArr.length + (penaltyFee > 0 ? 1 : 0);
+            const totalPot = penaltyFeesArr.reduce((acc, owner) => acc + owner.penaltyFee, 0) + penaltyFee;
+            const reward = Math.trunc(totalPot/(12-numOfOffenders));
+
+          // Set State
+          this.setState({
+              owner,
+              roster: owner.roster,
+              luxLine: this.calcLuxaryLine(owner.cap[0]),
+              reward,
+              offender: penaltyFee > 0
+            });
           })
           .catch((error) => {
             console.log(error);
@@ -78,14 +99,19 @@ export default class Roster extends Component {
       })
     }
 
-    calcLuxLine = () => {
-      let line = Math.trunc(this.state.owner.cap[0]*0.55)
-      this.setState({
-        luxLine: line
-      })
+    calcLuxaryLine = (cap) =>  Math.trunc(cap*0.55);
+
+    calcKeepPrice = (roster) =>  roster.filter(keptPlayer => keptPlayer.keep).reduce((acc, player) => acc + player.price, 0);
+
+    calcPenaltyFee = (keepPrice, luxLine) => {
+      let penaltyFee = keepPrice - luxLine;
+      return penaltyFee > 0 ? penaltyFee: 0;
     }
 
+
     changeKeeper = (e) => {
+    // TODO: validation
+
       const newKeep = {  "keep": e.target.checked  }
       axios.post('http://localhost:5000/owner/update/' + this.state.owner._id + "/" + e.target.id, newKeep)
       .then(res => console.log(res.data));
@@ -94,11 +120,12 @@ export default class Roster extends Component {
 
     // return JSX of Owner and cap info
     ownerInfo = () => {
-      const keepPrice = this.state.roster.filter(keptPlayer => keptPlayer.keep).reduce((acc, player) => acc + player.price, 0);
-        let penaltyFee = keepPrice - this.state.luxLine;
-        penaltyFee = penaltyFee > 0 ? penaltyFee: 0;
-        let remaining = this.state.owner.cap[0] - keepPrice - penaltyFee;
-        return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[0]} roster = {this.state.roster} penaltyFee = {penaltyFee} remaining = {remaining}/>;
+      const keepPrice = this.calcKeepPrice(this.state.roster);
+      const penaltyFee = this.calcPenaltyFee(keepPrice, this.state.luxLine);
+      const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : this.state.reward
+      const capRemaining = this.state.owner.cap[0] - keepPrice + luxaryGainorLoss;
+      return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[0]} 
+            offender = {this.state.offender} luxaryGainorLoss = {Math.abs(luxaryGainorLoss)} remaining = {capRemaining}/>;
     }
 
     
