@@ -6,7 +6,7 @@ const OwnerDisplay = props => (
  <div>
     <h2>{props.name}'s Roster </h2>
     <h3>Max Cap: {props.cap}</h3>
-    <h5>{luxaryText(props.offender)} {props.luxaryGainorLoss}</h5>
+    <h5 style={{ color: props.offender ? 'red' : 'green'}}>{luxaryText(props.offender)} {props.luxaryGainorLoss}</h5>
     <h5>Remaining: {props.remaining}</h5>
  </div>
 )
