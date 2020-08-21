@@ -69,6 +69,18 @@ export default class Roster extends Component {
           .catch((error) => {
             console.log(error);
           })
+
+
+          axios.get('http://localhost:5000/player/')
+          .then(response => {
+            const { name } = this.props.match.params
+            const player = response.data
+            console.log("player info");
+            console.log(player)
+          })
+          .catch((error) => {
+            console.log(error);
+          })
       }
 
     render() {
