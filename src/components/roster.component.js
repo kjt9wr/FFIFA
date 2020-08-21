@@ -114,7 +114,7 @@ export default class Roster extends Component {
     // TODO: validation
 
       const newKeep = {  "keep": e.target.checked  }
-      axios.post('http://localhost:5000/owner/update/' + this.state.owner._id + "/" + e.target.id, newKeep)
+      axios.post('http://localhost:5000/player/update/' + e.target.id, newKeep)
       .then(res => console.log(res.data));
       window.location.reload();
     }
