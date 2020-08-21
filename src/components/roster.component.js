@@ -16,6 +16,7 @@ const luxaryText = (offender) => offender ? "Penalty Fee: " : "Cap Gained: ";
 
 const PlayerRow = props => (
   <tr>
+    <td>{props.position}</td>
     <td> {props.name} </td>
     <td> {props.price} </td>
     <td> <input type="checkbox" id={props.id} key={props.id} onChange={props.changeKeeper} checked={props.keep}/> </td>
@@ -43,6 +44,22 @@ export default class Roster extends Component {
           .then(response => {
             const { name } = this.props.match.params
             const owner = response.data.find(curruser => name === curruser.name);
+           
+            axios.get('http://localhost:5000/player/')
+            .then(response => {
+              const player = response.data.filter(player => player.owner === owner._id);
+              console.log(player)
+ 
+               // Set State
+          this.setState({
+            owner,
+            roster: player,
+          });
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+            /*
             const others = response.data.filter(curruser => name !== curruser.name).map(currentOwner => ({
                 name: currentOwner.name,
                 penaltyFee: this.calcPenaltyFee(this.calcKeepPrice(currentOwner.roster), this.calcLuxaryLine(currentOwner.cap[0]))
@@ -56,31 +73,16 @@ export default class Roster extends Component {
             const numOfOffenders = penaltyFeesArr.length + (penaltyFee > 0 ? 1 : 0);
             const totalPot = penaltyFeesArr.reduce((acc, owner) => acc + owner.penaltyFee, 0) + penaltyFee;
             const reward = Math.trunc(totalPot/(12-numOfOffenders));
+*/
+           
 
-          // Set State
-          this.setState({
-              owner,
-              roster: owner.roster,
-              luxLine: this.calcLuxaryLine(owner.cap[0]),
-              reward,
-              offender: penaltyFee > 0
-            });
           })
           .catch((error) => {
             console.log(error);
           })
 
 
-          axios.get('http://localhost:5000/player/')
-          .then(response => {
-            const { name } = this.props.match.params
-            const player = response.data
-            console.log("player info");
-            console.log(player)
-          })
-          .catch((error) => {
-            console.log(error);
-          })
+          
       }
 
     render() {
@@ -90,6 +92,7 @@ export default class Roster extends Component {
               <table className="table">
                 <thead className="thead-light">
                   <tr>
+                    <th>Position</th>
                     <th>Player</th>
                     <th>Price</th>
                     <th>Keep</th>
@@ -107,7 +110,7 @@ export default class Roster extends Component {
     PlayerInfo = () => {
       return this.state.roster.map(currentPlayer => {
         const keep = currentPlayer.keep ? "checked" : ""
-        return <PlayerRow name={currentPlayer.name} key={currentPlayer._id} id={currentPlayer._id} price={currentPlayer.price} keep={keep} changeKeeper={this.changeKeeper}/>;
+        return <PlayerRow name={currentPlayer.name} key={currentPlayer._id} id={currentPlayer._id} price={currentPlayer.price} keep={keep} changeKeeper={this.changeKeeper} position={currentPlayer.position}/>;
       })
     }
 
