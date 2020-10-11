@@ -48,7 +48,7 @@ export default class Roster extends Component {
            
             axios.get('http://localhost:5000/player/')
             .then(response => {
-                const player = response.data.filter(player => player.owner === owner._id);
+                const player = response.data.filter(player => player.owner === owner._id).sort((a, b) => (a.position > b.position || b.position == "TE") ? 1 : -1);
  
                 // Set State
                 this.setState({
@@ -121,15 +121,15 @@ export default class Roster extends Component {
 
     // return JSX of Owner and cap info
     ownerInfo = () => {
-      const taxLine = this.calcLuxaryLine(this.state.owner.cap[0]);
+      const taxLine = this.calcLuxaryLine(this.state.owner.cap[1]);
       const keepPrice = this.calcKeepPrice(this.state.roster);
       const isOffender = keepPrice > taxLine;
       const penaltyFee = this.calcPenaltyFee(keepPrice, taxLine);
 
       const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : this.state.reward;
-      const capRemaining = this.state.owner.cap[0] - keepPrice + luxaryGainorLoss;
+      const capRemaining = this.state.owner.cap[1] - keepPrice + luxaryGainorLoss;
 
-      return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[0]} 
+      return <OwnerDisplay name={this.state.owner.name} cap = {this.state.owner.cap[1]} 
             isOffender = {isOffender} luxaryGainorLoss = {Math.abs(luxaryGainorLoss)} remaining = {capRemaining}
             taxLine = {taxLine}
             />;
