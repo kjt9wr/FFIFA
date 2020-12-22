@@ -1,4 +1,4 @@
-import axios from 'axios';
+import * as DatabaseService from './DatabaseService';
 
 export const calculateLuxaryTaxLine = (cap) =>  Math.trunc(cap*0.55);
 
@@ -15,10 +15,9 @@ export const filterKeepersByPosition = (keptPlayers, position) => {
   return keptPlayers.filter(player => player.position === position && player.keep === true);
 }
 
-export const toggleKeeper = (e) => {
+export const toggleKeeper = async (e) => {
   // TODO: validation
     const newKeep = {  'keep': e.target.checked  }
-    axios.post('http://localhost:5000/player/update/' + e.target.id, newKeep)
-    .then(res => console.log(res.data));
+    await DatabaseService.updateKeeper(e.target.id, newKeep)
     window.location.reload();
   }

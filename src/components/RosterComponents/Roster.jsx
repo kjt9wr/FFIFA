@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import * as RosterService from '../../Services/RosterService';
+import * as DatabaseService from '../../Services/DatabaseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
 import PlayerRow from './PlayerRow.jsx';
 import RosterPreview from './RosterPreview';
@@ -22,7 +22,7 @@ export default class Roster extends Component {
     }
 
     componentDidMount = () => {
-        this.getPlayersFromDB();
+        this.getOwnersRoster();
       }
 
     render() {
@@ -37,6 +37,8 @@ export default class Roster extends Component {
                     <th>Player</th>
                     <th>Price</th>
                     <th>Keep</th>
+                    <th>Franchise</th>
+                    <th>SuperMax</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -45,6 +47,21 @@ export default class Roster extends Component {
               </table>
             </div>
         )
+    }
+
+    getOwnersRoster = async () => {
+      const { name } = this.props.match.params
+      const ownerList = await DatabaseService.getOwnersFromDB();
+      const currentOwner = ownerList.find(currentOwner => name === currentOwner.name);
+
+      const allPlayers = await DatabaseService.getPlayersFromDB();
+      const roster = allPlayers.filter(player => player.owner === currentOwner._id)
+        .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
+
+      this.setState({
+        owner: currentOwner,
+        roster
+      })
     }
 
     getOwnerInfo = () => {
@@ -94,28 +111,4 @@ export default class Roster extends Component {
                 />;
       })
     }
-
-    getPlayersFromDB = () => {
-      axios.get('http://localhost:5000/owner/')
-          .then(response => {
-            const { name } = this.props.match.params
-            const owner = response.data.find(currentOwner => name === currentOwner.name);
-            axios.get('http://localhost:5000/player/')
-            .then(response => {
-                const player = response.data.filter(player => player.owner === owner._id)
-                  .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
-                this.setState({
-                  owner,
-                  roster: player,
-                });
-            })
-            .catch((error) => {
-              console.log(error);
-            })
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-    }
 }
-

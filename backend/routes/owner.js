@@ -24,9 +24,9 @@ router.route('/add').post((req, res) => {
 // Updating a keeper
 router.route('/update/:id/:pid').post((req, res) => {
 const keep = req.body.keep;
-Owner.findById(req.params.id).
-  then(owner => {
-    const myIndex = owner.roster.findIndex(currplayer => currplayer._id == req.params.pid);
+Owner.findById(req.params.id)
+  .then(owner => {
+    const myIndex = owner.roster.findIndex(currplayer => currplayer._id === req.params.pid);
     owner.roster[myIndex].keep = keep;
     owner.save()
         .then(() => res.json('Player updated!'))
