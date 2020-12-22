@@ -10,12 +10,10 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const name = req.body.name;
   const cap = req.body.cap;
-  const roster = req.body.roster;
 
   const newOwner = new Owner({
     name,
-    cap,
-    roster
+    cap
   });
 
   newOwner.save()

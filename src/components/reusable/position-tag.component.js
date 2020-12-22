@@ -9,7 +9,6 @@ export class PositionTag extends Component {
     let table = "";
 
         if(this.props.keptPlayers){
-            console.log("help me")
              table = this.props.keptPlayers.map(player => 
                 <tr key={player._id}>
                     <td> {player.name}</td>
