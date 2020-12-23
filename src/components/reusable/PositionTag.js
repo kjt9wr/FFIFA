@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import * as RosterService from '../../Services/RosterService'
 
 export class PositionTag extends Component {
     render() {
         let tableOfKeptPlayers = "";
         if (this.props.keptPlayers) {
-            tableOfKeptPlayers = this.props.keptPlayers.map(player => 
-                <tr key={player._id}>
-                    <td> {player.name}</td>
-                    <td>{RosterService.pickSuperMaxOrKeeperPrice(player)}</td>
-                </tr>
-            );
+          tableOfKeptPlayers = this.props.keptPlayers.map(player => 
+            <tr key={ player._id }>
+              <td style={player.superMax > 0 ? {'font-weight': 'bold'} : {} }> { player.name }</td>
+              <td style={player.superMax > 0 ? {'font-weight': 'bold'} : {} }> { player.price }</td>
+            </tr>
+          );
         }
 
         return (

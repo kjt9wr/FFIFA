@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as FFIFAService from '../../Services/FFIFAService'
 import * as RosterService from '../../Services/RosterService';
 
-
-const PlayerRow = props => (
+export default class PlayerRow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      price : 0,
+    };
+}
+componentDidMount = () => {
+  this.getFinalPrice(this.props.player);
+}
+  render() {
+    const { player } = this.props
+    return (
     <tr>
-      <td>{props.player.position}</td>
-      <td> {props.player.name} </td>
-      <td> {RosterService.determineFinalPriceOfPlayer(props.player)} </td>
-      <td> <input type='checkbox' id={props.id} key={props.id} onChange={props.toggleKeeper} checked={props.keep}/> </td>
-      <td></td>
-      <td> {RosterService.getSuperMaxText(props.player.superMax)} </td>
+      <td>{player.position}</td>
+      <td> {player.name} </td>
+      <td> {this.state.price} </td>
+      <td> <input type='checkbox' id={this.props.id} key={this.props.id} onChange={this.props.toggleKeeper} checked={this.props.keep}/> </td>
+      <td>{player.franchise ? 'Tagged' : ''}</td>
+      <td> {RosterService.getSuperMaxText(this.props.player.superMax)} </td>
     </tr>
-  )
+   )
+  }
 
-  export default PlayerRow;
+  getFinalPrice = async (player) => {
+    const price = await FFIFAService.determineFinalPriceOfPlayer(player)
+    this.setState({
+      price
+    });
+  }
+}

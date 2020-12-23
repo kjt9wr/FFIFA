@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as FFIFAService from '../../Services/FFIFAService';
 import * as RosterService from '../../Services/RosterService';
 import * as DatabaseService from '../../Services/DatabaseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
@@ -84,11 +85,11 @@ export default class Roster extends Component {
 
     getRosterPreview = () => {
       const { roster } = this.state
-      const keptQBs = RosterService.filterKeepersByPosition(roster, Constants.QB);
-      const keptRBs = RosterService.filterKeepersByPosition(roster, Constants.RB);
-      const keptWRs = RosterService.filterKeepersByPosition(roster, Constants.WR);
-      const keptTEs = RosterService.filterKeepersByPosition(roster, Constants.TE);
-      
+      const keptQBs = FFIFAService.filterKeepersByPosition(roster, Constants.QB);
+      const keptRBs = FFIFAService.filterKeepersByPosition(roster, Constants.RB);
+      const keptWRs = FFIFAService.filterKeepersByPosition(roster, Constants.WR);
+      const keptTEs = FFIFAService.filterKeepersByPosition(roster, Constants.TE);
+
      return <RosterPreview 
               keptQBs={keptQBs} 
               keptRBs={keptRBs} 

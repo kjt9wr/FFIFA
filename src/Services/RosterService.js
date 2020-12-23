@@ -1,35 +1,17 @@
 import React from 'react'
 import * as DatabaseService from './DatabaseService';
-import * as SuperMaxService from './SuperMaxService';
-
-export const determineFinalPriceOfPlayer = (player) => {
-  // TODO : Franchise Tag
-  return pickSuperMaxOrKeeperPrice(player);
-}
-
-export const pickSuperMaxOrKeeperPrice = (player) => {
-  if (player.superMax > 0) {
-    return SuperMaxService.calculateSuperMaxPrice2021(player.superMax);
-  }
-  else {
-    return player.price;
-  }
-}
+import * as FFIFAService from './FFIFAService'
 
 export const calculateLuxaryTaxLine = (cap) =>  Math.trunc(cap*0.55);
 
 export const calculateTotalKeeperPrice = (roster) => {
   return roster.filter(keptPlayer => keptPlayer.keep)
-    .reduce((acc, player) => acc + determineFinalPriceOfPlayer(player), 0);
+    .reduce((acc, player) => acc + FFIFAService.determineFinalPriceOfPlayer(player), 0);
 }
 
 export const calculatePenaltyFee = (totalKeepPrice, luxaryTaxLine) => {
   const penaltyFee = totalKeepPrice - luxaryTaxLine;
   return penaltyFee > 0 ? penaltyFee: 0;
-}
-
-export const filterKeepersByPosition = (keptPlayers, position) => {
-  return keptPlayers.filter(player => player.position === position && player.keep === true);
 }
 
 export const toggleKeeper = async (e) => {
