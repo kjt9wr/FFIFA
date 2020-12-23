@@ -3,7 +3,7 @@ import PositionTag from './reusable/PositionTag'
 import * as FranchiseService from '../Services/FranchiseService';
 import * as Constants from '../Utilities/Constants';
 
-export default class HomePage extends Component {
+export default class FranchiseTag extends Component {
     constructor(props) {
         super(props);
         this.state = {

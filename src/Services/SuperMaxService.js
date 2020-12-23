@@ -14,5 +14,4 @@ export const calculateSuperMaxPrice2021 = (durationInYears) => {
         default:
             return 0;
     }
-    
 }

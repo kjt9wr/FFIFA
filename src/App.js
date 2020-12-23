@@ -11,6 +11,7 @@ import TradeTracker from './components/trade-tracker.component.js';
 import CapTracker from './components/cap-tracker.component.js';
 import FranchiseTag from './components/FranchiseTag.js';
 import FreeAgency from './components/free-agency.component.js';
+import SuperMax from './components/SuperMaxComponents/SuperMax.js';
 
 export class App extends Component {
   state = {
@@ -41,6 +42,7 @@ export class App extends Component {
         <Route path='/cap' component={CapTracker}/>
         <Route path='/franchise'  render={() => <FranchiseTag />} />
         <Route path='/fa' component={FreeAgency} />
+        <Route path='/supermax' component={SuperMax} />
       </Router>
       
     );

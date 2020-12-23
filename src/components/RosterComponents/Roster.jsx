@@ -14,7 +14,7 @@ export default class Roster extends Component {
             name:'',
             cap: [0,0,0],
           },
-          roster: [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
+          roster: [{}],
           luxaryTaxLine: 0,
           nonOffenderReward: 0,
           isOffender: false
@@ -101,13 +101,11 @@ export default class Roster extends Component {
       return this.state.roster.map(currentPlayer => {
         const keep = currentPlayer.keep ? 'checked' : ''
         return <PlayerRow 
-                  name={currentPlayer.name}
+                  player={currentPlayer}
                   key={currentPlayer._id}
                   id={currentPlayer._id}
-                  price={currentPlayer.price}
                   keep={keep}
                   toggleKeeper={RosterService.toggleKeeper}
-                  position={currentPlayer.position}
                 />;
       })
     }

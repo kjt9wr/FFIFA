@@ -1,8 +1,9 @@
 import * as DatabaseService from './DatabaseService';
+import * as RosterService from './RosterService';
 import * as Constants from '../Utilities/Constants';
 
 export const calculateFranchisePriceFromKeptPlayers = (playerList) => {
-    const priceOfMostExpensive = playerList.slice(0,5).reduce((acc, player) => acc + player.price, 0)
+    const priceOfMostExpensive = playerList.slice(0,5).reduce((acc, player) => acc + RosterService.pickSuperMaxOrKeeperPrice(player), 0)
     return Math.trunc(priceOfMostExpensive / 5);
   }
 
@@ -20,14 +21,7 @@ export const getFranchiseTags = async () => {
     const wrFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptWRs);
     const teFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptTEs);
 
-    return {
-        qbFranchisePrice,
-        keptQBs,
-        rbFranchisePrice,
-        keptRBs,
-        wrFranchisePrice,
-        keptWRs,
-        teFranchisePrice,
-        keptTEs,
+    return { qbFranchisePrice, keptQBs, rbFranchisePrice, keptRBs,
+        wrFranchisePrice, keptWRs, teFranchisePrice, keptTEs
     }
   }

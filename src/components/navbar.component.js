@@ -51,6 +51,9 @@ const Example = (props) => {
                     <Link to="/franchise" className="nav-link">Franchise Tag</Link>
             </NavItem>
             <NavItem>
+                    <Link to="/supermax" className="nav-link">Super Max</Link>
+            </NavItem>
+            <NavItem>
                     <Link to="/fa" className="nav-link">Free Agency</Link>
             </NavItem>
           </Nav>
