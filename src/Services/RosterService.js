@@ -26,3 +26,7 @@ export const getLuxaryText = (isOffender) => isOffender ? 'Penalty Fee: ' : 'Cap
 export const getSuperMaxText = (contractInYears) => {
   return contractInYears > 0 ? (<b> {contractInYears} Year Deal </b>) : '';
 }
+
+export const positionSort = (list) => {
+  return list.sort((a, b) => (a.position > b.position) ? 1 : -1);
+}

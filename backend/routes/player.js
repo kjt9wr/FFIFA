@@ -25,7 +25,7 @@ router.route('/add').post((req, res) => {
   });
 
   newPlayer.save()
-  .then(() => res.json('New Player added!'))
+  .then(() => res.json(name + ' added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
 

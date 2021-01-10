@@ -57,11 +57,10 @@ export default class Roster extends Component {
 
       const allPlayers = await DatabaseService.getPlayersFromDB();
       const roster = allPlayers.filter(player => player.owner === currentOwner._id)
-        .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
-
+      .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
       this.setState({
         owner: currentOwner,
-        roster
+        roster: RosterService.positionSort(roster)
       })
     }
 
@@ -76,6 +75,7 @@ export default class Roster extends Component {
       return <OwnerDisplay 
               name={this.state.owner.name}
               cap = {this.state.owner.cap[1]}
+              keepPrice = {keepPrice}
               isOffender = {isOffender}
               luxaryGainorLoss = {Math.abs(luxaryGainorLoss)}
               remaining = {capRemaining}
