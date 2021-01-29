@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class FreeAgency extends Component {
+export default class CapTracker extends Component {
     render() {
         return (
             <div className="container">
-               <p>FA Page</p>
+               <h2 class="text-center">Cap Tracker </h2>
             </div>
         )
     }

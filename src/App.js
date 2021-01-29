@@ -4,13 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // eslint-disable-next-line
 import { Button } from 'reactstrap';
 import './App.css';
-import Navbar from './components/navbar.component.js';
-import HomePage from './components/home-page.component.js';
+import Navbar from './components/Navbar.js';
+import HomePage from './components/HomePage.js';
 import Roster from './components/RosterComponents/Roster.jsx';
 import TradeTracker from './components/TradeComponents/TradeTracker.js';
-import CapTracker from './components/cap-tracker.component.js';
+import CapTracker from './components/CapTracker.js';
 import FranchiseTag from './components/FranchiseTag.js';
-import FreeAgency from './components/free-agency.component.js';
+import FreeAgency from './components/FreeAgencyTracker.js';
 import SuperMax from './components/SuperMaxComponents/SuperMax.js';
 
 export class App extends Component {
@@ -44,10 +44,8 @@ export class App extends Component {
         <Route path='/fa' component={FreeAgency} />
         <Route path='/supermax' component={SuperMax} />
       </Router>
-      
     );
   }
-
 }
 
 export default App;

@@ -4,9 +4,9 @@ import * as Constants from '../../Utilities/Constants';
 export default class TradeDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
-}
+    this.state = {};
+  }
+
   render() {
     const { currentTrade } = this.props
     return (

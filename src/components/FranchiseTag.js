@@ -17,9 +17,9 @@ export default class FranchiseTag extends Component {
     render() {
         const { franchiseInfo } = this.state; 
         return (
-            <div >
-               <h1 class="text-center"> Franchise Tag Prices </h1> 
-               <div class="d-flex">
+            <div>
+               <h2 class="text-center"> Franchise Tag Prices </h2> 
+               <div class="d-flex pl-4">
 
                <PositionTag keptPlayers = {franchiseInfo.keptQBs} position = {Constants.QB} tagPrice = {franchiseInfo.qbFranchisePrice} />
                <PositionTag keptPlayers = {franchiseInfo.keptRBs} position = {Constants.RB} tagPrice = {franchiseInfo.rbFranchisePrice} />

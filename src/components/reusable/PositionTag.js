@@ -14,7 +14,7 @@ export class PositionTag extends Component {
 
         return (
             <div style={{ flex: '1'}}>
-                <h2> {this.props.position} franchise price: {this.props.tagPrice} </h2>
+                <h3> {this.props.position} franchise price: {this.props.tagPrice} </h3>
                <table>
                    <thead>
                         <th>Kept Player</th>
