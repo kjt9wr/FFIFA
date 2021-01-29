@@ -7,37 +7,42 @@ export default class TradeDetails extends Component {
     this.state = {
     };
 }
-componentDidMount = () => {
-}
   render() {
     const { currentTrade } = this.props
     return (
-        <div>
-            <h2>{Constants.ownersByID[currentTrade.owner1_id]} Receives: </h2>
-            {this.displayPlayers(currentTrade.owner1_rec.players)}
-            {currentTrade.owner1_rec.cap[0]}, 
-            {currentTrade.owner1_rec.cap[1]},
-            {currentTrade.owner1_rec.cap[2]}
-            <h2>{Constants.ownersByID[currentTrade.owner2_id]} Receives: </h2>
-            {this.displayPlayers(currentTrade.owner2_rec.players)}
-            {currentTrade.owner2_rec.cap[0]},
-            {currentTrade.owner2_rec.cap[1]},
-            {currentTrade.owner2_rec.cap[2]}
-            <h2>Additional Notes: </h2> <h5>{currentTrade.trade_notes}</h5>
-            ------------------
+        <div class="d-flex flex-row card p-1 my-1">
+            <div class="col-md-4">
+                <h5>{Constants.ownersByID[currentTrade.owner1_id]} Receives: </h5>
+                {this.displayPlayers(currentTrade.owner1_rec.players)}
+                {this.displayCap(currentTrade.owner1_rec.cap)}
+            </div>
+            <div class="col-md-4">
+                <h5>{Constants.ownersByID[currentTrade.owner2_id]} Receives: </h5>
+                {this.displayPlayers(currentTrade.owner2_rec.players)}
+                {this.displayCap(currentTrade.owner2_rec.cap)}
+            </div>
+            <div class="col-md-4">
+                {this.displayAdditionalNotes(currentTrade.trade_notes)}
+            </div>
         </div>
     )
   }
 
   displayPlayers = (players) => {
-      return(
-          players.map(currentPlayerID => {
-            return(
-                <b>{Constants.playersByID[currentPlayerID]}</b>
-            )
-          }
-            )
-      )
+    return(players.map(currentPlayerID => {
+      return( <div>{Constants.playersByID[currentPlayerID]}</div> )
+    }))
   }
 
+  displayCap = (capArray) => {
+      return(capArray.map((capInYear, index) => {
+        if (capInYear > 0) {
+          return( <div> ${capInYear} in {index + 2020} </div> )
+        }
+      }))
+  }
+
+  displayAdditionalNotes = (notes) => {
+    return notes ? <div><h5>Additional Notes: </h5> <p>{notes}</p></div> : <></>;
+  }
 }

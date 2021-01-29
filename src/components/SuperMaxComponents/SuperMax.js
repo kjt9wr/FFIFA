@@ -14,11 +14,12 @@ export default class SuperMax extends Component {
 
     componentDidMount = () => {
         this.getSuperMaxPlayers();
-      }
+    }
+  
     render() {
         return (
             <div className="container">
-               <p>Players on SuperMax</p>
+               <h2 class="text-center"> Players on SuperMax </h2>
                <table className='table'>
                 <thead className='thead-light'>
                   <tr>

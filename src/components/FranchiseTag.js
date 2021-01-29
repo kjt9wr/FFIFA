@@ -18,8 +18,8 @@ export default class FranchiseTag extends Component {
         const { franchiseInfo } = this.state; 
         return (
             <div >
-               <h1 style={{ textAlign: "center"}}>Franchise Tag Prices </h1> 
-               <div style={{ display: 'flex' }}>
+               <h1 class="text-center"> Franchise Tag Prices </h1> 
+               <div class="d-flex">
 
                <PositionTag keptPlayers = {franchiseInfo.keptQBs} position = {Constants.QB} tagPrice = {franchiseInfo.qbFranchisePrice} />
                <PositionTag keptPlayers = {franchiseInfo.keptRBs} position = {Constants.RB} tagPrice = {franchiseInfo.rbFranchisePrice} />
