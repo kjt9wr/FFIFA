@@ -20,9 +20,11 @@ connection.once('open', () => {
 
 const ownerRouter = require('./routes/owner');
 const playerRouter = require('./routes/player');
+const tradeRouter = require('./routes/trade');
 
 app.use('/owner', ownerRouter);
 app.use('/player', playerRouter);
+app.use('/trade/', tradeRouter);
 
 
 app.listen(port, () => {

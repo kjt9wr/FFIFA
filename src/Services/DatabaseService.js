@@ -10,6 +10,11 @@ export const getPlayersFromDB = async () => {
     return list.data;
 }
 
+export const getTradesFromDB = async () => {
+    const list = await axios.get('http://localhost:5000/trade/');
+    return list.data;
+}
+
 export const updateKeeper = async (id, willKeep) => {
     await axios.post('http://localhost:5000/player/update/' + id, willKeep);
 }

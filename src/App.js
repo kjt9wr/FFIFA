@@ -7,7 +7,7 @@ import './App.css';
 import Navbar from './components/navbar.component.js';
 import HomePage from './components/home-page.component.js';
 import Roster from './components/RosterComponents/Roster.jsx';
-import TradeTracker from './components/trade-tracker.component.js';
+import TradeTracker from './components/TradeComponents/TradeTracker.js';
 import CapTracker from './components/cap-tracker.component.js';
 import FranchiseTag from './components/FranchiseTag.js';
 import FreeAgency from './components/free-agency.component.js';

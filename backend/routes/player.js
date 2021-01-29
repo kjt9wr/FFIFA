@@ -29,7 +29,6 @@ router.route('/add').post((req, res) => {
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
 // Updating a keeper
 router.route('/update/:pid').post((req, res) => {
   const keep = req.body.keep;
@@ -42,6 +41,5 @@ router.route('/update/:pid').post((req, res) => {
       })
       .catch(err => res.status(400).json('Error: ' + err));
   });
-  
 
 module.exports = router;
