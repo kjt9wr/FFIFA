@@ -35,6 +35,7 @@ export default class TradeDetails extends Component {
   }
 
   displayCap = (capArray) => {
+      // eslint-disable-next-line array-callback-return
       return(capArray.map((capInYear, index) => {
         if (capInYear > 0) {
           return( <div> ${capInYear} in {index + 2020} </div> )
