@@ -15,7 +15,7 @@ componentDidMount = () => {
   render() {
     const { player } = this.props
     return (
-    <tr>
+    <tr className="customRow">
       <td>{player.position}</td>
       <td> {player.name} </td>
       <td> {this.state.price} </td>

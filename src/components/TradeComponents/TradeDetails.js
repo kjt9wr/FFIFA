@@ -10,7 +10,7 @@ export default class TradeDetails extends Component {
   render() {
     const { currentTrade } = this.props
     return (
-        <div class="d-flex flex-row card p-1 my-1">
+        <div class="d-flex flex-row card p-1 my-2">
             <div class="col-md-4">
                 <h5>{Constants.ownersByID[currentTrade.owner1_id]} Receives: </h5>
                 {this.displayPlayers(currentTrade.owner1_rec.players)}

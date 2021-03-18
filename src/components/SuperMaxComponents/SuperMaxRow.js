@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SuperMaxRow = props => (
-    <tr>
+    <tr className="customRow">
       <td>{props.player}</td>
       <td> {props.owner}</td>
       <td> {props.plan} </td>
