@@ -6,6 +6,7 @@ export default class CapTracker extends Component {
         super(props);
         this.state = {
             owners: [],
+            year: 1
         };
     }
     componentDidMount = () => {
@@ -13,12 +14,13 @@ export default class CapTracker extends Component {
     }
 
     getOwnerInfo = async () => {
+        const { year } = this.props.match.params
         const owners = await DatabaseService.getOwnersFromDB();
-        this.setState({ owners })
+        this.setState({ owners, year })
     }
 
-    displayCapTable = () => { 
-        return <table className='table'>
+    displayCapTable = (yearIndex) => { 
+        return <table className='table' >
             <thead className='thead-light'>
                 <tr>
                     <th></th>
@@ -27,18 +29,26 @@ export default class CapTracker extends Component {
             </thead>
         <tbody>
             <tr> 
-                <td>Cap</td>
-                {this.state.owners.map(owner => <td>{owner.cap[1]}</td>)}
+                <td>{2020 + parseInt(yearIndex)}</td>
+                {this.state.owners.map(owner => <td>{owner.cap[yearIndex]}</td>)}
             </tr>
         </tbody>
       </table>
     }
 
+    changeYear = (year) => {
+        console.log(year);
+    }
     render() {
         return (
             <div className="container">
                <h2 class="text-center">Cap Tracker </h2>
-               {this.displayCapTable()}
+               {this.displayCapTable(this.state.year)}
+               <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-secondary" onClick={this.changeYear(0)}>2020</button>
+                    <button type="button" class="btn btn-secondary" onClick={this.changeYear(1)}>2021</button>
+                    <button type="button" class="btn btn-secondary" onClick={this.changeYear(2)}>2022</button>
+                </div>
             </div>
         )
     }
