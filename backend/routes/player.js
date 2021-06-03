@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const Owner = require('../models/owner.model');
 let Player = require('../models/player.model');
 
 router.route('/').get((req, res) => {
@@ -15,13 +14,15 @@ router.route('/add').post((req, res) => {
   const keep = Boolean(req.body.keep);
   const position = req.body.position;
   const franchise = Boolean(req.body.franchise);
+  const rank = Number(req.body.rank);
 
   const newPlayer = new Player({
     name,
     price,
     keep,
     position,
-    franchise
+    franchise,
+    rank
   });
 
   newPlayer.save()
@@ -37,6 +38,20 @@ router.route('/update/:pid').post((req, res) => {
       player.keep = keep;
       player.save()
           .then(() => res.json('Player updated!'))
+          .catch(err => res.status(400).json('Error: ' + err));
+      })
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+
+// Change a player's power ranking
+router.route('/rank').post((req, res) => {
+  const id = req.body.pid;
+  const rank = req.body.rank;
+  Player.findById(id)
+    .then(player => {
+      player.rank = rank;
+      player.save()
+          .then(() => res.json(player.name + ' rank updated!'))
           .catch(err => res.status(400).json('Error: ' + err));
       })
       .catch(err => res.status(400).json('Error: ' + err));

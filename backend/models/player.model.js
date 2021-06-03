@@ -9,6 +9,7 @@ const playerSchema = new Schema({
   position: { type: String, required: true },
   franchise: {type: Boolean, required: true},
   superMax: { type: Number, required: false },
+  rank: { type: Number, required: false },
   owner:{}    
 });
 

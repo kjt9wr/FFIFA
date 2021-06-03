@@ -195,4 +195,13 @@ export const playersByID = {
     "5ffa7da7642d6c1069a3ae6c" : "Cam Sims",
     "5ffb2c13dc5feb188ff69810" : "Myles Gaskin",
     "5ffb2ceadc5feb188ff69811" : "JK Dobbins",
+    "60b81eece2a2025ba781e0a9" : "Trevor Lawrence",
+    "60b81ff9e2a2025ba781e0aa" : "Ryan Fitzpatrick",
+    "60b8207ce2a2025ba781e0ab" : "Justin Fields",
+    "60b820aee2a2025ba781e0ac" : "Trey Lance",
+    "60b820bce2a2025ba781e0ad" : "Zach Wilson",
+    "60b8214fe2a2025ba781e0ae" : "Tyrod Taylor",
+    "60b82375e2a2025ba781e0af" : "Irv Smith",
+    "60b82375e2a2025ba781e0b0" : "Robert Tonyan",
+    "60b82375e2a2025ba781e0b1" : "Kyle Pitts",
 };
