@@ -57,4 +57,21 @@ router.route('/rank').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
+  // Get all for given position
+router.route('/getAll/:pos').get((req, res) => {
+  Player.find({position: req.params.pos })
+  .then((data) => { 
+    const list = data.map((player) => {
+      return {
+        _id: player.id,
+        name: player.name,
+        rank: player.rank
+     }
+    })
+    .sort((a,b) => a.rank - b.rank);
+    res.send({data: list}); 
+  })
+  .catch(err => res.status(400).json('Error: ' + err));
+})
+
 module.exports = router;
