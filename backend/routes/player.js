@@ -16,14 +16,7 @@ router.route('/add').post((req, res) => {
   const franchise = Boolean(req.body.franchise);
   const rank = Number(req.body.rank);
 
-  const newPlayer = new Player({
-    name,
-    price,
-    keep,
-    position,
-    franchise,
-    rank
-  });
+  const newPlayer = new Player({ name, price, keep, position, franchise, rank });
 
   newPlayer.save()
   .then(() => res.json(name + ' added!'))
@@ -32,10 +25,9 @@ router.route('/add').post((req, res) => {
 
 // Updating a keeper
 router.route('/update/:pid').post((req, res) => {
-  const keep = req.body.keep;
   Player.findById(req.params.pid)
     .then(player => {
-      player.keep = keep;
+      player.keep = req.body.keep;
       player.save()
           .then(() => res.json('Player updated!'))
           .catch(err => res.status(400).json('Error: ' + err));
@@ -43,13 +35,21 @@ router.route('/update/:pid').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
+  // Get all players for given position, ordered by rank
+  router.route('/getAll/:pos').get((req, res) => {
+    Player.find({position: req.params.pos })
+    .then((data) => { 
+      res.send({data: getAllPlayersOrderedByRank(data)}); 
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+  })
+
+
 // Change a player's power ranking
 router.route('/rank').post((req, res) => {
-  const id = req.body.pid;
-  const rank = req.body.rank;
-  Player.findById(id)
+  Player.findById(req.body.pid)
     .then(player => {
-      player.rank = rank;
+      player.rank = req.body.rank;
       player.save()
           .then(() => res.json(player.name + ' rank updated!'))
           .catch(err => res.status(400).json('Error: ' + err));
@@ -57,21 +57,14 @@ router.route('/rank').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
-  // Get all for given position
-router.route('/getAll/:pos').get((req, res) => {
-  Player.find({position: req.params.pos })
-  .then((data) => { 
-    const list = data.map((player) => {
-      return {
-        _id: player.id,
-        name: player.name,
-        rank: player.rank
-     }
-    })
-    .sort((a,b) => a.rank - b.rank);
-    res.send({data: list}); 
-  })
-  .catch(err => res.status(400).json('Error: ' + err));
-})
+const getAllPlayersOrderedByRank = (playerList) => {
+  return playerList.map((player) => {
+    return {
+      _id: player.id,
+      name: player.name,
+      rank: player.rank
+   }
+  }).sort((a,b) => a.rank - b.rank);
+}
 
 module.exports = router;
