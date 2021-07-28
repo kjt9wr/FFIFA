@@ -27,7 +27,7 @@ componentDidMount = () => {
   }
 
   getFinalPrice = async (player) => {
-    const price = await FFIFAService.determineFinalPriceOfPlayer(player)
+    const price = FFIFAService.determineFinalPriceOfPlayer(player, this.props.franchisePrices)
     this.setState({
       price
     });

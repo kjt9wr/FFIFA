@@ -7,7 +7,7 @@ export default class FranchiseTag extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            franchiseInfo: {}
+            franchiseDTO: {}
         };
     }
     componentDidMount = () => {
@@ -15,26 +15,28 @@ export default class FranchiseTag extends Component {
     }
 
     render() {
-        const { franchiseInfo } = this.state; 
+        const { franchiseDTO } = this.state; 
         return (
             <div>
                <h2 class="text-center"> Franchise Tag Prices </h2> 
                <div class="d-flex pl-4">
 
-               <PositionTag keptPlayers = {franchiseInfo.keptQBs} position = {Constants.QB} tagPrice = {franchiseInfo.qbFranchisePrice} />
-               <PositionTag keptPlayers = {franchiseInfo.keptRBs} position = {Constants.RB} tagPrice = {franchiseInfo.rbFranchisePrice} />
-               <PositionTag keptPlayers = {franchiseInfo.keptWRs} position = {Constants.WR} tagPrice = {franchiseInfo.wrFranchisePrice} />
-               <PositionTag keptPlayers = {franchiseInfo.keptTEs} position = {Constants.TE} tagPrice = {franchiseInfo.teFranchisePrice} />
+               <PositionTag keptPlayers = {franchiseDTO.keptQBs} position = {Constants.QB} tagPrice = {franchiseDTO.qbFranchisePrice} />
+               <PositionTag keptPlayers = {franchiseDTO.keptRBs} position = {Constants.RB} tagPrice = {franchiseDTO.rbFranchisePrice} />
+               <PositionTag keptPlayers = {franchiseDTO.keptWRs} position = {Constants.WR} tagPrice = {franchiseDTO.wrFranchisePrice} />
+               <PositionTag keptPlayers = {franchiseDTO.keptTEs} position = {Constants.TE} tagPrice = {franchiseDTO.teFranchisePrice} />
                </div>
             </div>
         )
     }
 
     getFranchiseInformation = async () => {
-        const franchiseInfo = await FranchiseService.getFranchiseTags();
+        const franchiseDTO = await FranchiseService.getFranchiseTagDTO();
         this.setState({
-            franchiseInfo
+            franchiseDTO
         })
+        
+        this.props.updateTagPrices(FranchiseService.getFranchisePrices(franchiseDTO));
     }
 }
 

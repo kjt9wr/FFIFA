@@ -5,6 +5,7 @@ import * as DatabaseService from '../../Services/DatabaseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
 import PlayerRow from './PlayerRow.jsx';
 import RosterPreview from './RosterPreview';
+import * as FranchiseService from '../../Services/FranchiseService';
 import * as Constants from '../../Utilities/Constants';
 
 export default class Roster extends Component {
@@ -18,12 +19,14 @@ export default class Roster extends Component {
           roster: [{}],
           luxaryTaxLine: 0,
           nonOffenderReward: 0,
-          isOffender: false
+          isOffender: false,
+          franchisePrices: {}
         };
     }
 
     componentDidMount = () => {
         this.getOwnersRoster();
+        this.getFranchiseInfo()
       }
 
     render() {
@@ -66,8 +69,7 @@ export default class Roster extends Component {
 
     getOwnerInfo = () => {
       const taxLine = RosterService.calculateLuxaryTaxLine(this.state.owner.cap[1]);
-      const keepPrice = RosterService.calculateTotalKeeperPrice(this.state.roster);
-      const isOffender = keepPrice > taxLine;
+      const keepPrice = RosterService.calculateTotalKeeperPrice(this.state.roster, this.state.franchisePrices);
       const penaltyFee = RosterService.calculatePenaltyFee(keepPrice, taxLine);
       const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : this.state.nonOffenderReward;
       const capRemaining = this.state.owner.cap[1] - keepPrice + luxaryGainorLoss;
@@ -76,7 +78,7 @@ export default class Roster extends Component {
               name={this.state.owner.name}
               cap = {this.state.owner.cap[1]}
               keepPrice = {keepPrice}
-              isOffender = {isOffender}
+              isOffender = {keepPrice > taxLine}
               luxaryGainorLoss = {Math.abs(luxaryGainorLoss)}
               remaining = {capRemaining}
               taxLine = {taxLine}
@@ -107,7 +109,13 @@ export default class Roster extends Component {
                   id={currentPlayer._id}
                   keep={keep}
                   toggleKeeper={RosterService.toggleKeeper}
+                  franchisePrices={this.state.franchisePrices}
                 />;
       })
     }
+
+    getFranchiseInfo = async () => {
+      const franchiseDTO = await FranchiseService.getFranchiseTagDTO();
+      this.setState( { franchisePrices: FranchiseService.getFranchisePrices(franchiseDTO)} );
+  }
 }

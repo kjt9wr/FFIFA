@@ -2,7 +2,7 @@ import React from 'react';
 import * as Constants from '../../Utilities/Constants';
 
 const RosterPreview = props => (
-  <div className="lighterBox" style={{ display: 'flex' }}>
+  <div style={{ display: 'flex' }}>
     {positionList(Constants.QB, props.keptQBs)}
     {positionList(Constants.RB, props.keptRBs)}
     {positionList(Constants.WR, props.keptWRs)}
@@ -12,7 +12,7 @@ const RosterPreview = props => (
 
 const positionList = (position, players) => (
 <table className='table'>
-    <thead className='thead-light'>
+  <thead className='thead-light'>
       <tr>
         <th>{position}</th>
       </tr>

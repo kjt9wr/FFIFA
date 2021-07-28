@@ -2,18 +2,24 @@ import * as SuperMaxService from './SuperMaxService';
 // eslint-disable-next-line
 import * as FranchiseService from './FranchiseService';
 
-export const determineFinalPriceOfPlayer =  (player) => {
-    // TODO : Fix Franchise Tag 
-    return pickSuperMaxOrKeeperPrice(player)
-
-  /*
+export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
   if (!player.franchise) {
-    return pickSuperMaxOrKeeperPrice(player)
+    return pickSuperMaxOrKeeperPrice(player);
+  } else {
+    if(!franchisePrices) {
+      return 0;
+    }
+    switch(player.position) {
+      case 'QB':
+          return franchisePrices.qb;
+      case 'RB':
+          return franchisePrices.rb;
+      case 'WR':
+          return franchisePrices.wr;
+      default:
+          return franchisePrices.te;
+      }
   }
-  else {
-      return await FranchiseService.calculateFranchiseTagForPosition(player.position);
-  }
-  */
 }
 
 export const pickSuperMaxOrKeeperPrice = (player) => {

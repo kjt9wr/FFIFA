@@ -4,9 +4,9 @@ import * as FFIFAService from './FFIFAService'
 
 export const calculateLuxaryTaxLine = (cap) =>  Math.trunc(cap*0.55);
 
-export const calculateTotalKeeperPrice = (roster) => {
+export const calculateTotalKeeperPrice = (roster, franchisePrices) => {
   return roster.filter(keptPlayer => keptPlayer.keep)
-    .reduce((acc, player) => acc + FFIFAService.determineFinalPriceOfPlayer(player), 0);
+    .reduce((acc, player) => acc + FFIFAService.determineFinalPriceOfPlayer(player, franchisePrices), 0);
 }
 
 export const calculatePenaltyFee = (totalKeepPrice, luxaryTaxLine) => {

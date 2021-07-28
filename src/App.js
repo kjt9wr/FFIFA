@@ -29,6 +29,17 @@ export class App extends Component {
       'Patrick': 0,
       'Jeff': 0
     },
+    franchisePrices: {
+      'qb': 0,
+      'rb': 0,
+      'wr': 0,
+      'te': 0
+    },
+  }
+  updateFranchiseTags = (prices) => {
+    this.setState({
+      franchisePrices : prices
+    })
   }
 
   render(){
@@ -40,7 +51,7 @@ export class App extends Component {
         <Route path='/roster/:name' component={Roster} />
         <Route path='/trade' component={TradeTracker} />
         <Route path='/cap/:year' component={CapTracker}/>
-        <Route path='/franchise'  render={() => <FranchiseTag />} />
+        <Route path='/franchise' render={() => <FranchiseTag prices={this.state.franchisePrices} updateTagPrices={this.updateFranchiseTags} />} />
         <Route path='/fa' component={FreeAgency} />
         <Route path='/supermax' component={SuperMax} />
       </Router>
