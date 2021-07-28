@@ -42,15 +42,12 @@ export default class SuperMax extends Component {
         const ownersList = await DatabaseService.getOwnersFromDB();
         const players = await DatabaseService.getPlayersFromDB();
         const superPlayers = players.filter(player => player.superMax > 0);
-        this.setState({
-            ownersList, superPlayers
-        })
+        this.setState({ ownersList, superPlayers })
     }
 
     renderSuperPlayerTable = () => {
         return this.state.superPlayers.map(currentPlayer => {
-            const currentPlayersOwner = this.state.ownersList
-              .find(owner => currentPlayer.owner === owner._id);
+            const currentPlayersOwner = this.state.ownersList.find(owner => currentPlayer.owner === owner._id);
             const price = SuperMaxService.calculateSuperMaxPrice2021(currentPlayer.superMax);
             return <SuperMaxRow 
               player={currentPlayer.name}

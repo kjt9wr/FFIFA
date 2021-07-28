@@ -1,6 +1,4 @@
 import * as SuperMaxService from './SuperMaxService';
-// eslint-disable-next-line
-import * as FranchiseService from './FranchiseService';
 
 export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
   if (!player.franchise) {

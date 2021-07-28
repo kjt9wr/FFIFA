@@ -32,10 +32,7 @@ export default class FranchiseTag extends Component {
 
     getFranchiseInformation = async () => {
         const franchiseDTO = await FranchiseService.getFranchiseTagDTO();
-        this.setState({
-            franchiseDTO
-        })
-        
+        this.setState({ franchiseDTO })
         this.props.updateTagPrices(FranchiseService.getFranchisePrices(franchiseDTO));
     }
 }

@@ -31,9 +31,7 @@ render() {
 
 getFreeAgents = async () => {
     const freeAgents = await FreeAgencyService.getFreeAgents();
-    this.setState({
-        freeAgents
-    })
+    this.setState({ freeAgents })
   }
 }
 

@@ -37,7 +37,7 @@ export default class CapTracker extends Component {
     }
 
     changeYear = (year) => {
-        console.log(year);
+        // console.log(year);
     }
     render() {
         return (

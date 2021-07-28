@@ -3,7 +3,10 @@ import * as FFIFAService from './FFIFAService';
 import * as Constants from '../Utilities/Constants';
 
 export const getPriceFromKeptPlayers = (playerList) => {
-    const priceOfMostExpensive = playerList.slice(0,5).reduce((acc, player) => acc + player.price, 0)
+    const priceOfMostExpensive = playerList
+      .sort((a,b) => b.price - a.price)
+      .slice(0,5)
+      .reduce((acc, player) => acc + player.price, 0)
     return Math.trunc(priceOfMostExpensive / 5);
   }
 

@@ -25,7 +25,7 @@ export default class Roster extends Component {
     }
 
     componentDidMount = () => {
-        this.getOwnersRoster();
+        this.setOwnerAndRoster();
         this.getFranchiseInfo()
       }
 
@@ -34,37 +34,23 @@ export default class Roster extends Component {
             <div className='container'>
               {this.getOwnerInfo()}
               {this.getRosterPreview()}
-              <table className='table'>
-                <thead className='thead-light'>
-                  <tr>
-                    <th>Position</th>
-                    <th>Player</th>
-                    <th>Price</th>
-                    <th>Keep</th>
-                    <th>Franchise</th>
-                    <th>SuperMax</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.getPlayerDataTable()}
-                </tbody>
-              </table>
+              {this.getPlayerDataTable()}
             </div>
         )
     }
 
-    getOwnersRoster = async () => {
-      const { name } = this.props.match.params
+    setOwnerAndRoster = async () => {
+      const { name } = this.props.match.params;
       const ownerList = await DatabaseService.getOwnersFromDB();
       const currentOwner = ownerList.find(currentOwner => name === currentOwner.name);
-
       const allPlayers = await DatabaseService.getPlayersFromDB();
       const roster = allPlayers.filter(player => player.owner === currentOwner._id)
-      .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
+          .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
+      
       this.setState({
         owner: currentOwner,
         roster: RosterService.positionSort(roster)
-      })
+      });
     }
 
     getOwnerInfo = () => {
@@ -101,13 +87,30 @@ export default class Roster extends Component {
     }
 
     getPlayerDataTable = () => {
+      return <table className='table'>
+                <thead className='thead-light'>
+                <tr>
+                  <th>Position</th>
+                  <th>Player</th>
+                  <th>Price</th>
+                  <th>Keep</th>
+                  <th>Franchise</th>
+                  <th>SuperMax</th>
+                </tr>
+                </thead>
+              <tbody>
+                {this.getPlayerRows()}
+              </tbody>
+            </table>
+    }
+
+    getPlayerRows = () => {
       return this.state.roster.map(currentPlayer => {
-        const keep = currentPlayer.keep ? 'checked' : ''
         return <PlayerRow 
                   player={currentPlayer}
                   key={currentPlayer._id}
                   id={currentPlayer._id}
-                  keep={keep}
+                  keep={currentPlayer.keep ? 'checked' : ''}
                   toggleKeeper={RosterService.toggleKeeper}
                   franchisePrices={this.state.franchisePrices}
                 />;
