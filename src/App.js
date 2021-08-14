@@ -50,7 +50,7 @@ export class App extends Component {
         <Route path='/' exact component={HomePage} />
         <Route path='/roster/:name' component={Roster} />
         <Route path='/trade' component={TradeTracker} />
-        <Route path='/cap/:year' component={CapTracker}/>
+        <Route path='/cap/' component={CapTracker}/>
         <Route path='/franchise' render={() => <FranchiseTag prices={this.state.franchisePrices} updateTagPrices={this.updateFranchiseTags} />} />
         <Route path='/fa' component={FreeAgency} />
         <Route path='/supermax' component={SuperMax} />

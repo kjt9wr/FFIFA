@@ -45,7 +45,7 @@ const NavBar = (props) => {
                     <Link to="/trade" className="nav-link">Trade Tracker</Link>
             </NavItem>
             <NavItem>
-                    <Link to="/cap/1" className="nav-link">Cap Tracker</Link>
+                    <Link to="/cap" className="nav-link">Cap Tracker</Link>
             </NavItem>
             <NavItem>
                     <Link to="/franchise" className="nav-link">Franchise Tag</Link>
