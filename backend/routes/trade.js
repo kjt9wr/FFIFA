@@ -4,7 +4,7 @@ let Trade = require('../models/trade.model');
 router.route('/').get((req, res) => {
   Trade.find()
     .then(trade => res.json(trade))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Unable to find trade: ' + err));
 });
 
 router.route('/add').post((req, res) => {
@@ -24,7 +24,7 @@ router.route('/add').post((req, res) => {
 
   newTrade.save()
     .then(() => res.json('Trade added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Unable to add trade: ' + err));
 }); 
 
 module.exports = router;

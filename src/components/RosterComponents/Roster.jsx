@@ -18,7 +18,6 @@ export default class Roster extends Component {
           },
           roster: [{}],
           luxaryTaxLine: 0,
-          nonOffenderReward: 0,
           isOffender: false,
           franchisePrices: {}
         };
@@ -57,7 +56,7 @@ export default class Roster extends Component {
       const taxLine = RosterService.calculateLuxaryTaxLine(this.state.owner.cap[1]);
       const keepPrice = RosterService.calculateTotalKeeperPrice(this.state.roster, this.state.franchisePrices);
       const penaltyFee = RosterService.calculatePenaltyFee(keepPrice, taxLine);
-      const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : this.state.nonOffenderReward;
+      const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : 0;
       const capRemaining = this.state.owner.cap[1] - keepPrice + luxaryGainorLoss;
 
       return <OwnerDisplay 

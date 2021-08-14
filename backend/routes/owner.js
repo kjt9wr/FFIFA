@@ -4,7 +4,7 @@ let Owner = require('../models/owner.model');
 router.route('/').get((req, res) => {
   Owner.find()
     .then(owner => res.json(owner))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Unable to find owner: ' + err));
 });
 
 router.route('/add').post((req, res) => {
@@ -18,7 +18,7 @@ router.route('/add').post((req, res) => {
 
   newOwner.save()
     .then(() => res.json('Owner added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Unable to add owner: ' + err));
 }); 
 
 // Updating a keeper
@@ -30,12 +30,9 @@ Owner.findById(req.params.id)
     owner.roster[myIndex].keep = keep;
     owner.save()
         .then(() => res.json('Player updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json('Unable to update player: ' + err));
     })
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Unable to find owner: ' + err));
 });
-
-
-
 
 module.exports = router;
