@@ -1,38 +1,32 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import * as DatabaseService from '../../Services/DatabaseService';
 import TradeDetails from './TradeDetails';
 
-export default class TradeTracker extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tradeList: []
-        };
+const TradeTracker = () => {
+  const [tradeList, setTradeList] = useState([]);
+
+  useEffect(() => {
+    const getTrades = async () => {
+        const allTradeList = await DatabaseService.getTradesFromDB();
+        setTradeList(allTradeList);
     }
 
-    render() {
-        return (
-            <div className="container">
-               <h2 class="text-center"> Trade Tracker </h2>
-               {this.displayTrades()}
-            </div>
-        )
-    }
+    getTrades();
+    }, []);
 
-    componentDidMount = () => {
-        this.getTrades();
-    }
 
-    getTrades = async () => {
-        const tradeList = await DatabaseService.getTradesFromDB();
-        this.setState({
-            tradeList,
-        })
-    }
+  const displayTrades = () => {
+    return tradeList.map(currentTrade => {
+      return <TradeDetails currentTrade={currentTrade} />;
+    });
+  }
 
-    displayTrades = () => {
-        return this.state.tradeList.map(currentTrade => {
-            return <TradeDetails currentTrade={currentTrade} />;
-        })
-    }
+  return (
+    <div className="container">
+      <h2 class="text-center"> Trade Tracker </h2>
+        {displayTrades()}
+    </div>
+  )
 }
+
+export default TradeTracker;
