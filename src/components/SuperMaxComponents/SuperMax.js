@@ -14,12 +14,12 @@ const SuperMax = () => {
       setSuperPlayers(list);
     }
 
-    getSuperMaxPlayers()
-  }, []) 
+    getSuperMaxPlayers();
+  }, []);
 
   const renderSuperPlayerTable = () => {
     return superPlayers.map(currentPlayer => {
-      const ownerName = Constants.ownersByID[currentPlayer.owner]
+      const ownerName = Constants.ownersByID[currentPlayer.owner];
       const price = SuperMaxService.calculateSuperMaxPrice2021(currentPlayer.superMax);
       return <SuperMaxRow 
         player={currentPlayer.name}
@@ -27,7 +27,7 @@ const SuperMax = () => {
         plan={currentPlayer.superMax}
         price={price}
       />;
-    })
+    });
   }
 
   return (
