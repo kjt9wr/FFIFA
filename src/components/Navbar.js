@@ -11,7 +11,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-const NavBar = (props) => {
+const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -59,6 +59,7 @@ const NavBar = (props) => {
           </Nav>
         </Collapse>
       </Navbar>
+      <br />
     </div>
   );
 }
