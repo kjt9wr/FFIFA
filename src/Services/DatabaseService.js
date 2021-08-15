@@ -5,6 +5,11 @@ export const getOwnersFromDB = async () => {
     return list.data;
 }
 
+export const getSingleOwnerFromDB = async (name) => {
+    const list = await axios.get('http://localhost:5000/owner/' + name);
+    return list.data[0];
+}
+
 export const getPlayersFromDB = async () => {
     const list = await axios.get('http://localhost:5000/player/');
     return list.data;

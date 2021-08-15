@@ -7,6 +7,12 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Unable to find owner: ' + err));
 });
 
+router.route('/:name').get((req, res) => {
+  Owner.find({ name : req.params.name})
+    .then(owner => res.json(owner))
+    .catch(err => res.status(400).json('Unable to find owner: ' + err));
+});
+
 router.route('/add').post((req, res) => {
   const name = req.body.name;
   const cap = req.body.cap;
