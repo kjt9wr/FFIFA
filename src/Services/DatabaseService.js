@@ -23,3 +23,7 @@ export const getTradesFromDB = async () => {
 export const updateKeeper = async (id, willKeep) => {
     await axios.post('http://localhost:5000/player/update/' + id, willKeep);
 }
+
+export const updateLuxaryTax = async (name, luxaryTaxPaid) => {
+    await axios.put('http://localhost:5000/owner/updateTax/' + name, luxaryTaxPaid);
+}

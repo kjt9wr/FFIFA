@@ -17,11 +17,12 @@ const Roster = (props) => {
     const setOwnerAndRoster = async () => {
       const currentOwner = await DatabaseService.getSingleOwnerFromDB(props.match.params.name);
       const allPlayers = await DatabaseService.getPlayersFromDB();
-      const roster = allPlayers.filter(player => player.owner === currentOwner._id)
+      const currentRoster = allPlayers.filter(player => player.owner === currentOwner._id)
         .sort((a, b) => (a.position > b.position || b.position === Constants.TE) ? 1 : -1);
-          
+
       setOwner(currentOwner);
-      setRoster(roster);
+      setRoster(currentRoster);
+      RosterService.updateOwnerLuxaryTax(currentRoster, currentOwner.cap[1], currentOwner.name);
     }
 
     const getFranchiseInfo = async () => {
@@ -36,7 +37,7 @@ const Roster = (props) => {
   const getOwnerInfo = () => {
     const taxLine = RosterService.calculateLuxaryTaxLine(owner.cap[1]);
     const keepPrice = RosterService.calculateTotalKeeperPrice(roster, franchisePrices);
-    const penaltyFee = RosterService.calculatePenaltyFee(keepPrice, taxLine);
+    const penaltyFee = RosterService.calculatePenaltyFee(roster, franchisePrices, owner.cap[1]);
     const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : 0;
     const capRemaining = owner.cap[1] - keepPrice + luxaryGainorLoss;
 
