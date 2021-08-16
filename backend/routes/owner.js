@@ -27,6 +27,18 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Unable to add owner: ' + err));
 }); 
 
+// Updating tax
+router.route('/updateTax/:name').put((req, res) => {
+  Owner.findOne({ name: req.params.name })
+    .then(owner => {
+      owner.luxTax = req.body.tax;
+      owner.save()
+          .then(() => res.json(owner.name + ' luxary tax paid updated!'))
+          .catch(err => res.status(400).json('Unable to update owner: ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find owner: ' + err));
+  });
+
 // Updating a keeper
 router.route('/update/:id/:pid').post((req, res) => {
 const keep = req.body.keep;
