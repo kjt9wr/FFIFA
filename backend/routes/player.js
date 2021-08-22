@@ -7,6 +7,13 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Unable to find player: ' + err));
 });
 
+router.route('/roster/:ownerID').get((req, res) => {
+  console.log(req.params.ownerID)
+  Player.find({owner: req.params.ownerID })
+    .then(player => res.json(player))
+    .catch(err => res.status(400).json('Unable to find player: ' + err));
+});
+
 // add player to db
 router.route('/add').post((req, res) => {
   const name = req.body.name;
@@ -46,13 +53,42 @@ router.route('/update/:pid').post((req, res) => {
 
 
 // Change a player's power ranking
-router.route('/rank').post((req, res) => {
+router.route('/rank').put((req, res) => {
   Player.findById(req.body.pid)
     .then(player => {
       player.rank = req.body.rank;
       player.save()
           .then(() => res.json(player.name + ' rank updated!'))
           .catch(err => res.status(400).json('Unable to save player ranking: ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  });
+
+  // Change a player's franchise status
+router.route('/franchise').put((req, res) => {
+  Player.findById(req.body.pid)
+    .then(player => {
+      player.franchise = req.body.franchise;
+      player.keep = req.body.franchise;
+      player.superMax = 0;
+      player.save()
+          .then(() => res.json(player.name + ' franchise status updated!'))
+          .catch(err => res.status(400).json('Unable to save player franchise status : ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  });
+
+
+    // Change a player's supermax status
+router.route('/superMax').put((req, res) => {
+  Player.findById(req.body.pid)
+    .then(player => {
+      player.superMax = req.body.superMax;
+      player.keep = true;
+      player.franchise = false;
+      player.save()
+          .then(() => res.json(player.name + ' super max status updated!'))
+          .catch(err => res.status(400).json('Unable to save player supermax : ' + err));
       })
       .catch(err => res.status(400).json('Unable to find player: ' + err));
   });

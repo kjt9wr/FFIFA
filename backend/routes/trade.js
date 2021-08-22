@@ -15,8 +15,8 @@ router.route('/add').post((req, res) => {
   const tradeNotes = req.body.tradeNotes;
 
   const newTrade = new Trade({
-    owner1,
-    owner2,
+    owner1_id: owner1,
+    owner2_id: owner2,
     owner1_rec,
     owner2_rec,
     tradeNotes
