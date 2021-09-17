@@ -93,6 +93,22 @@ router.route('/superMax').put((req, res) => {
       .catch(err => res.status(400).json('Unable to find player: ' + err));
   });
 
+  // Updating a draft result
+router.route('/draftResult').put((req, res) => {
+  Player.findById(req.body.player)
+    .then(player => {
+      player.owner = req.body.owner;
+      player.price = req.body.price;
+      player.keep = false;
+      player.franchise = false;
+      player.superMax = false;
+      player.save()
+          .then(() => res.json(player.name + ' will cost $' + player.price))
+          .catch(err => res.status(400).json('Unable to update player: ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  });
+
 const getAllPlayersOrderedByRank = (playerList) => {
   return playerList.map((player) => {
     return {
