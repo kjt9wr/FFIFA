@@ -10,7 +10,7 @@ const SuperMax = () => {
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
       const players = await DatabaseService.getPlayersFromDB();
-      const list =  players.filter(player => player.superMax > 0);
+      const list =  players.filter(player => player.superMaxPlan > 0);
       setSuperPlayers(list);
     }
 
@@ -20,11 +20,12 @@ const SuperMax = () => {
   const renderSuperPlayerTable = () => {
     return superPlayers.map(currentPlayer => {
       const ownerName = Constants.ownersByID[currentPlayer.owner];
-      const price = SuperMaxService.calculateSuperMaxPrice(currentPlayer.superMax, 2);
+      const price = SuperMaxService.calculateSuperMaxPrice(currentPlayer.superMaxPlan, currentPlayer.superMaxYear);
       return <SuperMaxRow 
         player={currentPlayer.name}
         owner={ownerName}
-        plan={currentPlayer.superMax}
+        year={currentPlayer.superMaxYear}
+        plan={currentPlayer.superMaxPlan}
         price={price}
       />;
     });
@@ -38,6 +39,7 @@ const SuperMax = () => {
             <tr>
               <th>Player</th>
               <th>Owner</th>
+              <th>Current Year</th>
               <th>Plan</th>
               <th>Price</th>
             </tr>
