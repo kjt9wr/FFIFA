@@ -82,7 +82,8 @@ router.route('/franchise').put((req, res) => {
 router.route('/superMax').put((req, res) => {
   Player.findById(req.body.pid)
     .then(player => {
-      player.superMax = req.body.superMax;
+      player.superMaxPlan = req.body.superMaxPlan;
+      player.superMaxYear = req.body.superMaxYear;
       player.keep = true;
       player.franchise = false;
       player.save()

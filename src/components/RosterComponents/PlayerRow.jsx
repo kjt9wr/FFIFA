@@ -22,7 +22,7 @@ const PlayerRow = (props) => {
       <td> {price} </td>
       <td> <input type='checkbox' id={props.id} key={props.id} onChange={props.toggleKeeper} checked={props.keep}/> </td>
       <td>{player.franchise ? 'Tagged' : ''}</td>
-      <td> {RosterService.getSuperMaxText(player.superMax)} </td>
+      <td> {RosterService.getSuperMaxText(player.superMaxYear, player.superMaxPlan)} </td>
     </tr>
    )
 }

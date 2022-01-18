@@ -20,7 +20,7 @@ const SuperMax = () => {
   const renderSuperPlayerTable = () => {
     return superPlayers.map(currentPlayer => {
       const ownerName = Constants.ownersByID[currentPlayer.owner];
-      const price = SuperMaxService.calculateSuperMaxPrice2021(currentPlayer.superMax);
+      const price = SuperMaxService.calculateSuperMaxPrice(currentPlayer.superMax, 2);
       return <SuperMaxRow 
         player={currentPlayer.name}
         owner={ownerName}

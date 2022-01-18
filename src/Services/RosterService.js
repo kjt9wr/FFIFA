@@ -24,8 +24,8 @@ export const toggleKeeper = async (e) => {
 
 export const getLuxaryText = (isOffender) => isOffender ? 'Penalty Fee: ' : 'Cap Gained: ';
 
-export const getSuperMaxText = (contractInYears) => {
-  return contractInYears > 0 ? (<b> {contractInYears} Year Deal </b>) : '';
+export const getSuperMaxText = (currentYear, plan) => {
+  return plan > 0 ? (<b> Year {currentYear} in {plan} Year Deal </b>) : '';
 }
 
 export const positionSort = (list) => {

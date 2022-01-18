@@ -21,10 +21,9 @@ export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
 }
 
 export const pickSuperMaxOrKeeperPrice = (player) => {
-  if (player.superMax > 0) {
-    return SuperMaxService.calculateSuperMaxPrice2021(player.superMax);
-  }
-  else {
+  if (player.superMaxPlan > 0) {
+    return SuperMaxService.calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear);
+  } else {
     return player.price;
   }
 }
