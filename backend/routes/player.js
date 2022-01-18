@@ -8,7 +8,6 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/roster/:ownerID').get((req, res) => {
-  console.log(req.params.ownerID)
   Player.find({owner: req.params.ownerID })
     .then(player => res.json(player))
     .catch(err => res.status(400).json('Unable to find player: ' + err));

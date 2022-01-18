@@ -1,4 +1,3 @@
-const BASE_CAP_2021 = 254
 const BASE_CAP_2022 = 281
 const THREE_YEAR_RATES = [.25, .2375, .2256];
 const FOUR_YEAR_RATES = [.2375, .2256, .2143, 2036];

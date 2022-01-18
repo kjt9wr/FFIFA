@@ -1,5 +1,7 @@
 const router = require('express').Router();
 let Trade = require('../models/trade.model');
+let Player = require('../models/player.model');
+
 
 router.route('/').get((req, res) => {
   Trade.find()
@@ -21,10 +23,24 @@ router.route('/add').post((req, res) => {
     owner2_rec,
     tradeNotes
   });
+owner1_rec.players.map(playerid => updatePlayersOwner(res, playerid, owner1));
+owner2_rec.players.map(playerid => updatePlayersOwner(res, playerid, owner2));
+
 
   newTrade.save()
     .then(() => res.json('Trade added!'))
     .catch(err => res.status(400).json('Unable to add trade: ' + err));
 }); 
+
+const updatePlayersOwner = async (res, pid, ownerid) => {
+  Player.findById(pid)
+  .then(player => {
+    player.owner = ownerid;
+    player.save()
+        .then(() => res.json('Player updated!'))
+        .catch(err => res.status(400).json('Unable to update player: ' + err));
+    })
+    .catch(err => res.status(400).json('Unable to find player: ' + err));
+}
 
 module.exports = router;

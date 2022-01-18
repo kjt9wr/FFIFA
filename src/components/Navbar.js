@@ -27,16 +27,16 @@ const NavBar = () => {
                 <DropdownToggle nav caret> Rosters </DropdownToggle>
                 <DropdownMenu right>
                     <DropdownItem href="/roster/Kevin"> Kevin </DropdownItem>
+                    <DropdownItem href="/roster/Christian"> Christian </DropdownItem>
                     <DropdownItem href="/roster/Justin"> Justin </DropdownItem>
                     <DropdownItem href="/roster/Alex"> Alex </DropdownItem>
-                    <DropdownItem href="/roster/Luigi"> Luigi </DropdownItem>
-                    <DropdownItem href="/roster/Christian"> Christian </DropdownItem>
-                    <DropdownItem href="/roster/Matt"> Matt </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem href="/roster/Brent"> Brent </DropdownItem>
-                    <DropdownItem href="/roster/Michael"> Michael </DropdownItem>
                     <DropdownItem href="/roster/Nikos"> Nikos </DropdownItem>
                     <DropdownItem href="/roster/Chinmay"> Chinmay </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem href="/roster/Matt"> Matt </DropdownItem>
+                    <DropdownItem href="/roster/Luigi"> Luigi </DropdownItem>
+                    <DropdownItem href="/roster/Brent"> Brent </DropdownItem>
+                    <DropdownItem href="/roster/Michael"> Michael </DropdownItem>
                     <DropdownItem href="/roster/Patrick"> Patrick </DropdownItem>
                     <DropdownItem href="/roster/Jeff"> Jeff </DropdownItem>
                 </DropdownMenu>

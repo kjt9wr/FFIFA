@@ -223,5 +223,13 @@ export const playersByID = {
     "60f772b7debd185eacbe245d" : "Travie Etienne",
     "6122b8d0e779130ae1c26ace" : "Trey Sermon",
     "6143f81d07a6e11ebd78c7a2" : "JaMarr Chase",
-    "60f771b0debd185eacbe245c" : "Najee Harris"
+    "60f771b0debd185eacbe245c" : "Najee Harris",
+    "61674b15251cc623385636c5" : "Elijah Mitchell",
+    "61d0bf6fc774a7331bcec526" : "DErnest Johnson",
+    "61d0c664c774a7331bcec527" : "Kendrick Bourne",
+    "61d0f2cfc774a7331bcec52a" : "Cordarrelle Patterson",
+    "61d0f3fbc774a7331bcec52b" : "Dalton Shultz",
+    "61d0f4c1c774a7331bcec52c" : "Joshua Palmer",
+    "61d1482a96547938c0df9bc2" : "Amon Ra St Brown",
+    "61d148e096547938c0df9bc3" : "Kadarius Toney"
 };
