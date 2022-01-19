@@ -15,13 +15,15 @@ router.route('/add').post((req, res) => {
   const owner1_rec = req.body.owner1_rec;
   const owner2_rec = req.body.owner2_rec;
   const tradeNotes = req.body.tradeNotes;
+  const years = req.body.years;
 
   const newTrade = new Trade({
     owner1_id: owner1,
     owner2_id: owner2,
     owner1_rec,
     owner2_rec,
-    tradeNotes
+    tradeNotes,
+    years
   });
 owner1_rec.players.map(playerid => updatePlayersOwner(res, playerid, owner1));
 owner2_rec.players.map(playerid => updatePlayersOwner(res, playerid, owner2));
