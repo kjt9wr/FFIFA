@@ -8,12 +8,12 @@ const TradeDetails = (props) => {
     }));
   }
 
-  const displayCap = (capArray) => {
-    return (capArray.map((capInYear, index) => {
-        return capInYear > 0
-        ? ( <div> ${capInYear} in {index + 2020} </div> )
-        : <></>;
-    }));
+  const displayCap = (capObject) => {
+    if (capObject) {
+      return (Object.entries(capObject).map((capInYear) => {
+        return ( <div> ${capInYear[1]} in {capInYear[0]} </div> ) ;
+      }));
+    }
   }
 
   const displayAdditionalNotes = (notes) => {
@@ -25,12 +25,12 @@ const TradeDetails = (props) => {
   return (
     <div class="d-flex flex-row card p-1 my-2">
       <div class="col-md-4">
-        <h5>{Constants.ownersByID[currentTrade.owner1_id]} Receives: </h5>
+        <h5>{currentTrade.owner1} Receives: </h5>
             {displayPlayers(currentTrade.owner1_rec.players)}
             {displayCap(currentTrade.owner1_rec.cap)}
       </div>
       <div class="col-md-4">
-        <h5>{Constants.ownersByID[currentTrade.owner2_id]} Receives: </h5>
+        <h5>{currentTrade.owner2} Receives: </h5>
             {displayPlayers(currentTrade.owner2_rec.players)}
             {displayCap(currentTrade.owner2_rec.cap)}
       </div>

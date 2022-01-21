@@ -4,7 +4,7 @@ import TradeDetails from './TradeDetails';
 
 const TradeTracker = () => {
   const [tradeList, setTradeList] = useState([]);
-  const [year, setYear] = useState('2022');
+  const [year, setYear] = useState('2021');
 
   useEffect(() => {
     const getTrades = async () => {
