@@ -25,7 +25,6 @@ export const playersByID = {
     "5f3f384f4fa190743101a1bd" : "Mark Ingram",
     "5f3f38614fa190743101a1be" : "Derrick Henry",
     "5f3f38844fa190743101a1bf" : "Drew Brees",
-    "5f3f38f64fa190743101a1c0" : "Chris Carson",
     "5f3f390b4fa190743101a1c1" : "Keenan Allen",
     "5f3f391d4fa190743101a1c2" : "Stefon Diggs",
     "5f3f393f4fa190743101a1c3" : "Anthony Miller",
@@ -179,7 +178,6 @@ export const playersByID = {
     "5ffa5c7d642d6c1069a3ae5e" : "Cam Akers",
     "5ffa63d8642d6c1069a3ae5f" : "Logan Thomas",
     "5ffa6b0a642d6c1069a3ae60" : "Corey Davis",
-    "5ffa6baf642d6c1069a3ae61" : "Ben Roethlisberger",
     "5ffa6bf7642d6c1069a3ae62" : "Brandon Aiyuk",
     "5ffa6cf8642d6c1069a3ae63" : "Jalen Hurts",
     "5ffa6f00642d6c1069a3ae64" : "Tony Pollard",
@@ -231,5 +229,15 @@ export const playersByID = {
     "61d0f3fbc774a7331bcec52b" : "Dalton Shultz",
     "61d0f4c1c774a7331bcec52c" : "Joshua Palmer",
     "61d1482a96547938c0df9bc2" : "Amon Ra St Brown",
-    "61d148e096547938c0df9bc3" : "Kadarius Toney"
+    "61d148e096547938c0df9bc3" : "Kadarius Toney",
+    "60f7735edebd185eacbe245f" : "Nyheim Hines",
+    "62e31ececb8aec3c429659ad" : "Breece Hall",
+    "62e31f40cb8aec3c429659ae" : "Kenneth Walker",
+    "62e31f88cb8aec3c429659af" : "Rachaad White",
+    "62e587d46e37b149b3545483" : "Drake London",
+    "62e5888f6e37b149b3545484" : "Garrett Wilson",
+    "62e5892c6e37b149b3545485" : "Chris Olave",
+    "62e5897a6e37b149b3545486" : "Traylon Burks",
+    "6140068935ba63172cf22792" : "Rashod Bateman",
+    "61cb37785db2242a0193d3ff" : "Rashaad Penny"
 };
