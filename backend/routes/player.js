@@ -21,11 +21,11 @@ router.route('/add').post((req, res) => {
   const position = req.body.position;
   const franchise = Boolean(req.body.franchise);
   const rank = Number(req.body.rank);
-
-  const newPlayer = new Player({ name, price, keep, position, franchise, rank });
+  const owner = ownersIDByName[req.body.ownerName];
+  const newPlayer = new Player({ name, price, keep, position, franchise, rank, owner });
 
   newPlayer.save()
-  .then(() => res.json(name + ' added!'))
+  .then(() => res.json(name + ' added! ID: '+ newPlayer._id ))
   .catch(err => res.status(400).json('Unable to add player: ' + err));
 });
 
@@ -93,17 +93,29 @@ router.route('/superMax').put((req, res) => {
       .catch(err => res.status(400).json('Unable to find player: ' + err));
   });
 
+      // Change a player's owner 
+router.route('/update/owner').put((req, res) => {
+  let ownerid = ownersIDByName[req.body.ownerName];
+    Player.findById(req.body.pid)
+    .then(player => {
+      player.owner = ownerid;
+      player.save()
+          .then(() => res.json(player.name + ' owner updated!'))
+          .catch(err => res.status(400).json('Unable to update player: ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  //updatePlayersOwner(res, req.body.pid, req.body.ownerName);
+});
+
   // Updating a draft result
 router.route('/draftResult').put((req, res) => {
-  Player.findById(req.body.player)
+  let ownerid = ownersIDByName[req.body.ownerName];
+    Player.findById(req.body.pid)
     .then(player => {
-      player.owner = req.body.owner;
+      player.owner = ownerid;
       player.price = req.body.price;
-      player.keep = false;
-      player.franchise = false;
-      player.superMax = false;
       player.save()
-          .then(() => res.json(player.name + ' will cost $' + player.price))
+          .then(() => res.json(player.name + ' drafted by ' + req.body.ownerName +  ' with a new price of $' + req.body.price))
           .catch(err => res.status(400).json('Unable to update player: ' + err));
       })
       .catch(err => res.status(400).json('Unable to find player: ' + err));
@@ -118,5 +130,21 @@ const getAllPlayersOrderedByRank = (playerList) => {
    }
   }).sort((a,b) => a.rank - b.rank);
 }
+
+  
+const ownersIDByName = {
+  "Kevin" : "5e80d724b3bdaf3413316177",
+  "Justin" : "5e80d930b3bdaf3413316189",
+  "Alex" : "5e80dd6ab3bdaf34133161bd",
+  "Luigi" : "5e80da66b3bdaf341331619b",
+  "Christian" : "5e80e173b3bdaf3413316213",
+  "Matt" : "5e80df96b3bdaf34133161ef",
+  "Brent" : "5e80db62b3bdaf34133161ab",
+  "Michael" : "5e80de37b3bdaf34133161cf",
+  "Nikos" : "5e80dedcb3bdaf34133161dd",
+  "Chinmay" : "5e80e07eb3bdaf3413316200",
+  "Patrick" : "5e80e1dab3bdaf3413316225",
+  "Jeff" : "5e80e1deb3bdaf3413316226",
+};
 
 module.exports = router;

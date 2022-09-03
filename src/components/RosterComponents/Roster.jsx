@@ -22,7 +22,7 @@ const Roster = (props) => {
 
       setOwner(currentOwner);
       setRoster(currentRoster);
-      RosterService.updateOwnerLuxaryTax(currentRoster, currentOwner.cap[2], currentOwner.name);
+      RosterService.updateOwnerLuxaryTax(currentRoster, currentOwner.cap[3], currentOwner.name);
     }
 
     const getFranchiseInfo = async () => {
@@ -35,15 +35,15 @@ const Roster = (props) => {
   }, [props])
 
   const getOwnerInfo = () => {
-    const taxLine = RosterService.calculateLuxaryTaxLine(owner.cap[2]);
+    const taxLine = RosterService.calculateLuxaryTaxLine(owner.cap[3]);
     const keepPrice = RosterService.calculateTotalKeeperPrice(roster, franchisePrices);
-    const penaltyFee = RosterService.calculatePenaltyFee(roster, franchisePrices, owner.cap[2]);
+    const penaltyFee = RosterService.calculatePenaltyFee(roster, franchisePrices, owner.cap[3]);
     const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee *-1 : 0;
-    const capRemaining = owner.cap[2] - keepPrice + luxaryGainorLoss;
+    const capRemaining = owner.cap[3] - keepPrice + luxaryGainorLoss;
 
     return <OwnerDisplay 
               name={owner.name}
-              cap = {owner.cap[2]}
+              cap = {owner.cap[3]}
               keepPrice = {keepPrice}
               isOffender = {keepPrice > taxLine}
               luxaryGainorLoss = {Math.abs(luxaryGainorLoss)}
