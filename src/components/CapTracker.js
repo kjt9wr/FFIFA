@@ -3,7 +3,7 @@ import * as DatabaseService from '../Services/DatabaseService';
 
 const CapTracker = () =>  {
   const [owners, setOwners] = useState([]);
-  const [year, setYear] = useState(2);
+  const [year, setYear] = useState(3);
 
   useEffect(() => {
     const getOwnerInfo = async () => {
