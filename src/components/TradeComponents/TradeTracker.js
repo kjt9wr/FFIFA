@@ -4,7 +4,7 @@ import TradeDetails from './TradeDetails';
 
 const TradeTracker = () => {
   const [tradeList, setTradeList] = useState([]);
-  const [year, setYear] = useState('2021');
+  const [year, setYear] = useState('2023');
 
   useEffect(() => {
     const getTrades = async () => {
@@ -30,6 +30,7 @@ const TradeTracker = () => {
             <button type="button" class="btn btn-secondary" onClick={() => setYear('2020')}>2020</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear('2021')}>2021</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear('2022')}>2022</button>
+            <button type="button" class="btn btn-secondary" onClick={() => setYear('2023')}>2023</button>
           </div>
         {displayTrades()}
     </div>

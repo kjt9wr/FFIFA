@@ -38,6 +38,7 @@ const CapTracker = () =>  {
             <button type="button" class="btn btn-secondary" onClick={() => setYear(0)}>2020</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear(1)}>2021</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear(2)}>2022</button>
+            <button type="button" class="btn btn-secondary" onClick={() => setYear(3)}>2023</button>
           </div>
     </div>
   )
