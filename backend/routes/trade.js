@@ -38,7 +38,6 @@ const updatePlayersOwner = async (res, pid, ownerName) => {
   .then(player => {
     player.owner = ownerid;
     player.save()
-        .then(() => res.json('Player updated!'))
         .catch(err => res.status(400).json('Unable to update player: ' + err));
     })
     .catch(err => res.status(400).json('Unable to find player: ' + err));
