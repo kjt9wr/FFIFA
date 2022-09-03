@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Player = require('../models/player.model');
+const Player = require('../models/player.model');
 
 router.route('/').get((req, res) => {
   Player.find()
@@ -95,7 +95,7 @@ router.route('/superMax').put((req, res) => {
 
       // Change a player's owner 
 router.route('/update/owner').put((req, res) => {
-  let ownerid = ownersIDByName[req.body.ownerName];
+  const ownerid = ownersIDByName[req.body.ownerName];
     Player.findById(req.body.pid)
     .then(player => {
       player.owner = ownerid;

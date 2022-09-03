@@ -1,7 +1,6 @@
 const router = require('express').Router();
-let Trade = require('../models/trade.model');
-let Player = require('../models/player.model');
-
+const Trade = require('../models/trade.model');
+const Player = require('../models/player.model');
 
 router.route('/').get((req, res) => {
   Trade.find()
@@ -33,7 +32,7 @@ owner2_rec.players.map(playerid => updatePlayersOwner(res, playerid, owner2));
 }); 
 
 const updatePlayersOwner = async (res, pid, ownerName) => {
-  let ownerid = ownersIDByName[ownerName];
+  const ownerid = ownersIDByName[ownerName];
   Player.findById(pid)
   .then(player => {
     player.owner = ownerid;

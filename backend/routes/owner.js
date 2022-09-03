@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Owner = require('../models/owner.model');
+const Owner = require('../models/owner.model');
 
 router.route('/').get((req, res) => {
   Owner.find()
@@ -53,13 +53,13 @@ Owner.findById(req.params.id)
     .catch(err => res.status(400).json('Unable to find owner: ' + err));
 });
 
-//manually edit cap
+// Manually edit cap
 router.route('/update/cap').post((req, res) => {
     Owner.findById(ownersIDByName[req.body.ownerName])
       .then(owner => {
-        owner.cap[req.body.year] = req.body.cap;
+        owner.cap.set(req.body.year, req.body.cap)
         owner.save()
-            .then(() => res.json(owner.name + ' cap updated to ' + req.body.cap))
+            .then(() => res.json(owner.name + ' cap updated to ' + req.body.cap + ' owner ' + owner.cap))
             .catch(err => res.status(400).json('Unable to update owner cap: ' + err));
         })
         .catch(err => res.status(400).json('Unable to find owner: ' + err));
