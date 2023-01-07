@@ -2,13 +2,14 @@ import * as DatabaseService from './DatabaseService';
 import * as FFIFAService from './FFIFAService';
 import * as Constants from '../Utilities/Constants';
 
-export const getPriceFromKeptPlayers = (playerList) => {
-    const priceOfMostExpensive = playerList
-      .sort((a,b) => b.price - a.price)
-      .slice(0,5)
-      .reduce((acc, player) => acc + player.price, 0)
-    return Math.trunc(priceOfMostExpensive / 5);
+export const getFranchisePrices = (franchiseDTO) => {
+  return {
+    qb: franchiseDTO.qbFranchisePrice,
+    rb: franchiseDTO.rbFranchisePrice,
+    wr: franchiseDTO.wrFranchisePrice,
+    te: franchiseDTO.teFranchisePrice,
   }
+}
 
 export const calculateFranchiseTagForPosition = async (position) => {
     const playerList = await DatabaseService.getPlayersFromDB();
@@ -46,11 +47,10 @@ export const getFranchiseTagDTO = async () => {
     return keptRBs.sort((a,b) => b.price - a.price);
   }
 
-  export const getFranchisePrices = (franchiseDTO) => {
-    return {
-      qb: franchiseDTO.qbFranchisePrice,
-      rb: franchiseDTO.rbFranchisePrice,
-      wr: franchiseDTO.wrFranchisePrice,
-      te: franchiseDTO.teFranchisePrice,
-    }
+  const getPriceFromKeptPlayers = (playerList) => {
+    const priceOfMostExpensive = playerList
+      .sort((a,b) => b.price - a.price)
+      .slice(0,5)
+      .reduce((acc, player) => acc + player.price, 0)
+    return Math.trunc(priceOfMostExpensive / 5);
   }

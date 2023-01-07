@@ -78,6 +78,42 @@ router.route('/franchise').put((req, res) => {
   });
 
 
+    // Change a player's keeper class
+router.route('/keeperClass').put((req, res) => {
+  Player.findById(req.body.pid)
+    .then(player => {
+      player.keeperClass = req.body.keeperClass;
+      //player.keep = req.body.franchise;
+      // player.superMax = 0;
+      player.save()
+          .then(() => res.json(player.name + ' Keeper class updated!'))
+          .catch(err => res.status(400).json('Unable to save keeper class : ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  });
+
+  //reset all keeper classes
+router.route('/reset/keeperClass').put((req, res) => {
+Player.find().then(player => {
+  player.keeperClass = 0;
+  player.save()
+  .then(() => res.json(player.name + ' Keeper class updated!'))
+  .catch(err => res.status(400).json('Unable to save keeper class : ' + err));
+})
+/*
+  Player.findById(req.body.pid)
+    .then(player => {
+      player.keeperClass = req.body.keeperClass;
+      //player.keep = req.body.franchise;
+      // player.superMax = 0;
+      player.save()
+          .then(() => res.json(player.name + ' Keeper class updated!'))
+          .catch(err => res.status(400).json('Unable to save keeper class : ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));*/
+  });
+
+
     // Change a player's supermax status
 router.route('/superMax').put((req, res) => {
   Player.findById(req.body.pid)
@@ -93,7 +129,7 @@ router.route('/superMax').put((req, res) => {
       .catch(err => res.status(400).json('Unable to find player: ' + err));
   });
 
-      // Change a player's owner 
+// Change a player's owner 
 router.route('/update/owner').put((req, res) => {
   const ownerid = ownersIDByName[req.body.ownerName];
     Player.findById(req.body.pid)

@@ -11,6 +11,7 @@ const playerSchema = new Schema({
   superMaxPlan: { type: Number, required: false },
   superMaxYear: { type: Number, required: false },
   rank: { type: Number, required: false },
+  keeperClass: {type: Number, required:false},
   owner:{}    
 });
 
