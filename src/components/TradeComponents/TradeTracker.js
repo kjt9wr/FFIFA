@@ -31,6 +31,7 @@ const TradeTracker = () => {
             <button type="button" class="btn btn-secondary" onClick={() => setYear('2021')}>2021</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear('2022')}>2022</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear('2023')}>2023</button>
+            <button type="button" class="btn btn-secondary" onClick={() => setYear('2024')}>2024</button>
           </div>
         {displayTrades()}
     </div>

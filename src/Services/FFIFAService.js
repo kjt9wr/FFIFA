@@ -1,11 +1,11 @@
-import * as SuperMaxService from './SuperMaxService';
+import { calculateSuperMaxPrice } from './SuperMaxService';
 
 export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
   switch(player.keeperClass) {
     case 2:
       return getFranchisePrice(player.position, franchisePrices);
     case 3:
-      return SuperMaxService.calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear);
+      return calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear);
     case 4: 
       return getFranchisePrice(player.position, franchisePrices);
     default:
@@ -27,11 +27,7 @@ const getFranchisePrice = (playerPosition, prices) => {
 }
 
 export const pickSuperMaxOrKeeperPrice = (player) => {
-  if (player.superMaxPlan > 0) {
-    return SuperMaxService.calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear);
-  } else {
-    return player.price;
-  }
+  return player.superMaxPlan > 0 ? calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear) : player.price;
 }
 
 export const filterKeepersByPosition = (keptPlayers, position) => {

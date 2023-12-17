@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 
 const ownerSchema = new Schema({
   name: { type: String, required: true },
-  cap: { type: Array, required: true },
-  luxTax: { type: Number, required: true }
+  cap: { type: Array, required: true }
 });
 
 const Owner = mongoose.model('Owner', ownerSchema);

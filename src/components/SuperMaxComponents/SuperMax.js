@@ -5,20 +5,20 @@ import SuperMaxRow from './SuperMaxRow';
 import * as Constants from '../../Utilities/Constants';
 
 const SuperMax = () => {
-  const [superPlayers, setSuperPlayers] = useState([]);
+  const [supermaxPlayers, setSupermaxPlayers] = useState([]);
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
       const players = await DatabaseService.getPlayersFromDB();
       const list =  players.filter(player => player.superMaxPlan > 0);
-      setSuperPlayers(list);
+      setSupermaxPlayers(list);
     }
 
     getSuperMaxPlayers();
   }, []);
 
   const renderSuperPlayerTable = () => {
-    return superPlayers.map(currentPlayer => {
+    return supermaxPlayers.map(currentPlayer => {
       const ownerName = Constants.ownersByID[currentPlayer.owner];
       const price = SuperMaxService.calculateSuperMaxPrice(currentPlayer.superMaxPlan, currentPlayer.superMaxYear);
       return <SuperMaxRow 

@@ -8,30 +8,16 @@ const RosterPreview = (props) => {
   const keptRBs = FFIFAService.filterKeepersByPosition(roster, Constants.RB);
   const keptWRs = FFIFAService.filterKeepersByPosition(roster, Constants.WR);
   const keptTEs = FFIFAService.filterKeepersByPosition(roster, Constants.TE);
-  
-return (
-  <div style={{ display: 'flex' }}>
-    {positionList(Constants.QB, keptQBs)}
-    {positionList(Constants.RB, keptRBs)}
-    {positionList(Constants.WR, keptWRs)}
-    {positionList(Constants.TE, keptTEs)}
-  </div>
-)
-}
 
-/*
-    const keptQBs = FFIFAService.filterKeepersByPosition(roster, Constants.QB);
-    const keptRBs = FFIFAService.filterKeepersByPosition(roster, Constants.RB);
-    const keptWRs = FFIFAService.filterKeepersByPosition(roster, Constants.WR);
-    const keptTEs = FFIFAService.filterKeepersByPosition(roster, Constants.TE);
-  
-    return <RosterPreview 
-              keptQBs={keptQBs} 
-              keptRBs={keptRBs} 
-              keptWRs={keptWRs} 
-              keptTEs={keptTEs} 
-            />
-*/
+  return (
+    <div style={{ display: 'flex' }}>
+      {positionList(Constants.QB, keptQBs)}
+      {positionList(Constants.RB, keptRBs)}
+      {positionList(Constants.WR, keptWRs)}
+      {positionList(Constants.TE, keptTEs)}
+    </div>
+  )
+}
 
 const positionList = (position, players) => (
 <table className='table'>

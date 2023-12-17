@@ -3,8 +3,6 @@ import * as RosterService from '../../Services/RosterService';
 import PlayerRow from './PlayerRow.jsx';
 
 const RosterDataTable = (props) => {
-
-
   const getPlayerRows = () => {
     return props.roster.map(currentPlayer => {
       return <PlayerRow 

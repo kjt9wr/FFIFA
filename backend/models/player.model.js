@@ -7,7 +7,7 @@ const playerSchema = new Schema({
   price: { type: Number, required: true },
   keep: { type: Boolean, required: true },
   position: { type: String, required: true },
-  franchise: {type: Boolean, required: true},
+  franchise: {type: Boolean, required: false},
   superMaxPlan: { type: Number, required: false },
   superMaxYear: { type: Number, required: false },
   rank: { type: Number, required: false },

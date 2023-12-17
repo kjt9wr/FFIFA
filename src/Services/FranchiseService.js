@@ -11,15 +11,6 @@ export const getFranchisePrices = (franchiseDTO) => {
   }
 }
 
-export const calculateFranchiseTagForPosition = async (position) => {
-    const playerList = await DatabaseService.getPlayersFromDB();
-    const keptPlayers = playerList.filter(player => player.keep === true);
-    const keptByGivenPosition = keptPlayers.filter(player => player.position === position).sort((a,b) => b.price - a.price);
-
-    replaceKeeperPriceWitSuperMax(keptByGivenPosition);
-    return getPriceFromKeptPlayers(keptByGivenPosition);
-}
-
 export const getFranchiseTagDTO = async () => {
     const playerList = await DatabaseService.getPlayersFromDB();
     const keptPlayers = playerList.filter(player => player.keep === true);
@@ -30,10 +21,10 @@ export const getFranchiseTagDTO = async () => {
     const keptTEs = keptPlayers.filter(player => player.position === Constants.TE).sort((a,b) => b.price - a.price);
     replaceKeeperPriceWitSuperMax(keptRBs);
 
-    const qbFranchisePrice = getPriceFromKeptPlayers(keptQBs);
-    const rbFranchisePrice = getPriceFromKeptPlayers(keptRBs);
-    const wrFranchisePrice = getPriceFromKeptPlayers(keptWRs);
-    const teFranchisePrice = getPriceFromKeptPlayers(keptTEs);
+    const qbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptQBs);
+    const rbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptRBs);
+    const wrFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptWRs);
+    const teFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptTEs);
 
     return { qbFranchisePrice, keptQBs, rbFranchisePrice, keptRBs,
         wrFranchisePrice, keptWRs, teFranchisePrice, keptTEs
@@ -47,7 +38,7 @@ export const getFranchiseTagDTO = async () => {
     return keptRBs.sort((a,b) => b.price - a.price);
   }
 
-  const getPriceFromKeptPlayers = (playerList) => {
+  const calculateFranchisePriceFromKeptPlayers = (playerList) => {
     const priceOfMostExpensive = playerList
       .sort((a,b) => b.price - a.price)
       .slice(0,5)

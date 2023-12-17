@@ -17,15 +17,14 @@ const PlayerRow = (props) => {
 
     const { player } = props;
     return (
-    <tr className="customRow">
-      <td>{player.position}</td>
-      <td> {player.name} </td>
-      <td> {price} </td>
-      <td> <input type='checkbox' id={props.id} key={props.id} onChange={props.toggleKeeper} checked={props.keep}/> </td>
-      <td>{player.keeperClass > 0 && KeeperClassEnum[player.keeperClass]}</td>
-      <td> {RosterService.getSuperMaxText(player.superMaxYear, player.superMaxPlan)} </td>
-      
-    </tr>
+      <tr className="customRow">
+        <td>{player.position}</td>
+        <td> {player.name} </td>
+        <td> {price} </td>
+        <td> <input type='checkbox' id={props.id} key={props.id} onChange={props.toggleKeeper} checked={props.keep}/> </td>
+        <td>{player.keeperClass > 0 && KeeperClassEnum[player.keeperClass]}</td>
+        <td> {RosterService.getSuperMaxText(player.superMaxYear, player.superMaxPlan)} </td>
+      </tr>
    )
 }
 

@@ -14,7 +14,7 @@ const FreeAgency = () =>  {
 
     getFreeAgents();
   });
-
+  
   return (
     <div>
       <h2 class="text-center"> Free Agents </h2> 
