@@ -1,30 +1,21 @@
 import React from 'react';
-import * as FFIFAService from '../../Services/FFIFAService';
-import * as Constants from '../../Utilities/Constants';
 
-const RosterPreview = (props) => {
-  const {roster} = props;
-  const keptQBs = FFIFAService.filterKeepersByPosition(roster, Constants.QB);
-  const keptRBs = FFIFAService.filterKeepersByPosition(roster, Constants.RB);
-  const keptWRs = FFIFAService.filterKeepersByPosition(roster, Constants.WR);
-  const keptTEs = FFIFAService.filterKeepersByPosition(roster, Constants.TE);
-
-  return (
-    <div style={{ display: 'flex' }}>
-      {positionList(Constants.QB, keptQBs)}
-      {positionList(Constants.RB, keptRBs)}
-      {positionList(Constants.WR, keptWRs)}
-      {positionList(Constants.TE, keptTEs)}
-    </div>
-  )
+const displayPlayers = (playerList) => {
+  return playerList.map(player => {
+      return <tr> {player.name} </tr>
+  })
 }
 
-const positionList = (position, players) => (
-<table className='table'>
-  <thead className='thead-light'>
-      <tr>
-        <th>{position}</th>
-      </tr>
+const filterKeepersByPosition = (keptPlayers, position) => {
+  return keptPlayers.filter(player => player.position === position && player.keep === true);
+}
+
+const renderPlayersForPosition = (position, players) => (
+  <table className='table'>
+    <thead className='thead-light'>
+        <tr>
+          <th>{position}</th>
+        </tr>
     </thead>
     <tbody>
         { displayPlayers(players) }
@@ -32,10 +23,21 @@ const positionList = (position, players) => (
   </table>
 )
 
-const displayPlayers = (playerList) => {
-    return playerList.map(player => {
-        return <tr> {player.name} </tr>
-    })
+const RosterPreview = (props) => {
+  const {roster} = props;
+  const keptQBs = filterKeepersByPosition(roster, "QB");
+  const keptRBs = filterKeepersByPosition(roster, "RB");
+  const keptWRs = filterKeepersByPosition(roster, "WR");
+  const keptTEs = filterKeepersByPosition(roster, "TE");
+
+  return (
+    <div style={{ display: 'flex' }}>
+      {renderPlayersForPosition("QB", keptQBs)}
+      {renderPlayersForPosition("RB", keptRBs)}
+      {renderPlayersForPosition("WR", keptWRs)}
+      {renderPlayersForPosition("TE", keptTEs)}
+    </div>
+  )
 }
 
 export default RosterPreview;

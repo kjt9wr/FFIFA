@@ -2,14 +2,6 @@ import * as DatabaseService from './DatabaseService';
 import * as FFIFAService from './FFIFAService';
 import * as Constants from '../Utilities/Constants';
 
-export const getFranchisePrices = (franchiseDTO) => {
-  return {
-    qb: franchiseDTO.qbFranchisePrice,
-    rb: franchiseDTO.rbFranchisePrice,
-    wr: franchiseDTO.wrFranchisePrice,
-    te: franchiseDTO.teFranchisePrice,
-  }
-}
 
 export const getFranchiseTagDTO = async () => {
     const playerList = await DatabaseService.getPlayersFromDB();
@@ -19,7 +11,7 @@ export const getFranchiseTagDTO = async () => {
     const keptRBs = keptPlayers.filter(player => player.position === Constants.RB).sort((a,b) => b.price - a.price);
     const keptWRs = keptPlayers.filter(player => player.position === Constants.WR).sort((a,b) => b.price - a.price);
     const keptTEs = keptPlayers.filter(player => player.position === Constants.TE).sort((a,b) => b.price - a.price);
-    replaceKeeperPriceWitSuperMax(keptRBs);
+    replaceKeeperPriceWithSuperMax(keptRBs);
 
     const qbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptQBs);
     const rbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptRBs);
@@ -31,7 +23,7 @@ export const getFranchiseTagDTO = async () => {
     }
   }
 
-  const replaceKeeperPriceWitSuperMax = (keptRBs) => {
+  const replaceKeeperPriceWithSuperMax = (keptRBs) => {
     for(const rb of keptRBs) {
       rb.price = FFIFAService.pickSuperMaxOrKeeperPrice(rb);
     }

@@ -1,34 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import * as DatabaseService from '../../Services/DatabaseService';
-import * as FranchiseService from '../../Services/FranchiseService';
+import { getPlayersFromDB, getSingleOwnerFromDB } from '../../Services/DatabaseService';
+import { getFranchiseTagDTO } from '../../Services/FranchiseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
 import RosterDataTable from './RosterDataTable.jsx';
 import RosterPreview from './RosterPreview';
 
+const formatFranchisePrices = (franchiseDTO) => {
+  return {
+    qb: franchiseDTO.qbFranchisePrice,
+    rb: franchiseDTO.rbFranchisePrice,
+    wr: franchiseDTO.wrFranchisePrice,
+    te: franchiseDTO.teFranchisePrice,
+  }
+}
+
 const Roster = (props) => {
-  const [owner, setOwner] = useState({ name:'', cap: [0,100,0] });
+  const [owner, setOwner] = useState({ name:'', cap: [0, 100, 0, 0] });
   const [roster, setRoster] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
 
   useEffect(() => {
-    const setOwnerAndRoster = async () => {
-      const currentOwner = await DatabaseService.getSingleOwnerFromDB(props.match.params.name);
-      const allPlayers = await DatabaseService.getPlayersFromDB();
-      const currentRoster = allPlayers.filter(player => player.owner === currentOwner._id)
-        .sort((a, b) => (a.position > b.position) ? 1 : -1);
-  
+    const getOwnerData = async () => {
+      const currentOwner = await getSingleOwnerFromDB(props.match.params.name);
       setOwner(currentOwner);
-      setRoster(currentRoster);
+    }
+
+    getOwnerData();
+  }, [props.match.params.name])
+
+
+  useEffect(() => {
+    const fetchRosterInfo = async () => {
+      if(owner.name.length > 0) {
+        const allPlayers = await getPlayersFromDB();
+        const currentRoster = allPlayers.filter(player => player.owner === owner._id)
+          .sort((a, b) => (a.position > b.position) ? 1 : -1);
+        setRoster(currentRoster);
+      }
     }
   
     const getFranchiseInfo = async () => {
-      const franchiseDTO = await FranchiseService.getFranchiseTagDTO();
-      setFranchisePrices(FranchiseService.getFranchisePrices(franchiseDTO));
+      const franchiseDTO = await getFranchiseTagDTO();
+      setFranchisePrices(formatFranchisePrices(franchiseDTO));
     }
 
-    setOwnerAndRoster();
+    fetchRosterInfo();
     getFranchiseInfo()
-  }, [])
+  }, [owner, roster])
 
   return (
     <div className='container'>

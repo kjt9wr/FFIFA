@@ -30,6 +30,3 @@ export const pickSuperMaxOrKeeperPrice = (player) => {
   return player.superMaxPlan > 0 ? calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear) : player.price;
 }
 
-export const filterKeepersByPosition = (keptPlayers, position) => {
-  return keptPlayers.filter(player => player.position === position && player.keep === true);
-}
