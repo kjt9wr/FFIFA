@@ -3,12 +3,9 @@ import React from 'react';
 import { determineFinalPriceOfPlayer } from '../../Services/FFIFAService';
 import { KeeperClassEnum } from '../../Utilities/KeeperClassEnum';
 
-const toggleKeeper = async (e) => {
-  const newKeep = { 'keep': e.target.checked  }
-  await axios.post('http://localhost:5000/player/update/' + e.target.id, newKeep);
-}
 
-const populatePlayerRows = (roster, franchisePrices) => {
+
+const populatePlayerRows = (roster, franchisePrices, toggleKeeper) => {
   return roster.map(currentPlayer => {
     return <PlayerRow 
               player={currentPlayer}
@@ -41,7 +38,7 @@ const RosterDataTable = (props) => {
             <th>SuperMax</th>
           </tr>
         </thead>
-        <tbody> { populatePlayerRows(props.roster, props.franchisePrices) } </tbody>
+        <tbody> { populatePlayerRows(props.roster, props.franchisePrices, props.toggleKeeper) } </tbody>
       </table>
     </div>
   )

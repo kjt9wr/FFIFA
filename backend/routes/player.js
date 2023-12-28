@@ -62,30 +62,16 @@ router.route('/rank').put((req, res) => {
       .catch(err => res.status(400).json('Unable to find player: ' + err));
   });
 
-  // Change a player's franchise status
-router.route('/franchise').put((req, res) => {
-  Player.findById(req.body.pid)
-    .then(player => {
-      player.franchise = req.body.franchise;
-      player.keep = req.body.franchise;
-      player.superMax = 0;
-      player.save()
-          .then(() => res.json(player.name + ' franchise status updated!'))
-          .catch(err => res.status(400).json('Unable to save player franchise status : ' + err));
-      })
-      .catch(err => res.status(400).json('Unable to find player: ' + err));
-  });
-
-    // Change a player's keeper class
-router.route('/keeperClass').put((req, res) => {
-  Player.findById(req.body.pid)
-    .then(player => {
-      player.keeperClass = req.body.keeperClass;
-      player.save()
-          .then(() => res.json(player.name + ' Keeper class updated!'))
-          .catch(err => res.status(400).json('Unable to save keeper class : ' + err));
-      })
-      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  // Change a player's keeper class
+  router.route('/keeperClass').put((req, res) => {
+    Player.findById(req.body.pid)
+      .then(player => {
+        player.keeperClass = req.body.keeperClass;
+        player.save()
+            .then(() => res.json(player.name + ' Keeper class updated!'))
+            .catch(err => res.status(400).json('Unable to save keeper class : ' + err));
+        })
+        .catch(err => res.status(400).json('Unable to find player: ' + err));
   });
 
 //reset all keeper classes
@@ -106,7 +92,6 @@ router.route('/superMax').put((req, res) => {
       player.superMaxPlan = req.body.superMaxPlan;
       player.superMaxYear = req.body.superMaxYear;
       player.keep = true;
-      player.franchise = false;
       player.save()
           .then(() => res.json(player.name + ' super max status updated!'))
           .catch(err => res.status(400).json('Unable to save player supermax : ' + err));

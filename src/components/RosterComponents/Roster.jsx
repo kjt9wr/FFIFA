@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { getPlayersFromDB, getSingleOwnerFromDB } from '../../Services/DatabaseService';
+import { getRoster, getSingleOwnerFromDB } from '../../Services/DatabaseService';
 import { getFranchiseTagDTO } from '../../Services/FranchiseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
 import RosterDataTable from './RosterDataTable.jsx';
@@ -14,10 +15,19 @@ const formatFranchisePrices = (franchiseDTO) => {
   }
 }
 
+
+
 const Roster = (props) => {
   const [owner, setOwner] = useState({ name:'', cap: [0, 100, 0, 0] });
   const [roster, setRoster] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
+  const [changeKeeper, setChangeKeeper] = useState(false);
+
+  const toggleKeeper = async (e) => {
+    const newKeep = { 'keep': e.target.checked  };
+    await axios.post('http://localhost:5000/player/update/' + e.target.id, newKeep);
+    setChangeKeeper(!changeKeeper);
+  }
 
   useEffect(() => {
     const getOwnerData = async () => {
@@ -28,17 +38,14 @@ const Roster = (props) => {
     getOwnerData();
   }, [props.match.params.name])
 
-
   useEffect(() => {
     const fetchRosterInfo = async () => {
       if(owner.name.length > 0) {
-        const allPlayers = await getPlayersFromDB();
-        const currentRoster = allPlayers.filter(player => player.owner === owner._id)
-          .sort((a, b) => (a.position > b.position) ? 1 : -1);
-        setRoster(currentRoster);
+        const allPlayers = await getRoster(owner._id);
+        setRoster(allPlayers.sort((a, b) => (a.position > b.position) ? 1 : -1));
       }
     }
-  
+
     const getFranchiseInfo = async () => {
       const franchiseDTO = await getFranchiseTagDTO();
       setFranchisePrices(formatFranchisePrices(franchiseDTO));
@@ -46,13 +53,13 @@ const Roster = (props) => {
 
     fetchRosterInfo();
     getFranchiseInfo()
-  }, [owner, roster])
+  }, [owner._id, owner.name.length, changeKeeper])
 
   return (
     <div className='container'>
       <OwnerDisplay owner={owner} roster={roster} franchisePrices={franchisePrices} />
       <RosterPreview roster={roster} />
-      <RosterDataTable roster={roster} franchisePrices={franchisePrices} />
+      <RosterDataTable roster={roster} franchisePrices={franchisePrices} toggleKeeper={toggleKeeper}/>
     </div>
   )
 }

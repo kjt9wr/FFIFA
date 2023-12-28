@@ -27,3 +27,8 @@ export const updateKeeper = async (id, willKeep) => {
 export const updateLuxaryTax = async (name, luxaryTaxPaid) => {
     await axios.put('http://localhost:5000/owner/updateTax/' + name, luxaryTaxPaid);
 }
+
+export const getRoster = async (owner_id) => {
+    const list = await axios.get('http://localhost:5000/player/roster/' + owner_id);
+    return list.data;
+}
