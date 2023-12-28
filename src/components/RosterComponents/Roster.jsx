@@ -15,8 +15,6 @@ const formatFranchisePrices = (franchiseDTO) => {
   }
 }
 
-
-
 const Roster = (props) => {
   const [owner, setOwner] = useState({ name:'', cap: [0, 100, 0, 0] });
   const [roster, setRoster] = useState([]);
