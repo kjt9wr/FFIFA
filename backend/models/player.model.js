@@ -7,8 +7,10 @@ const playerSchema = new Schema({
   price: { type: Number, required: true },
   keep: { type: Boolean, required: true },
   position: { type: String, required: true },
-  superMaxPlan: { type: Number, required: false },
-  superMaxYear: { type: Number, required: false },
+  superMax: {
+    plan: {type: Number, required: false},
+    year: {type: Number, required: false}
+  },
   rank: { type: Number, required: false },
   keeperClass: {type: Number, required:false},
   owner:{}    

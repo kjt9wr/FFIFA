@@ -3,7 +3,7 @@ import * as DatabaseService from '../Services/DatabaseService';
 
 const CapTracker = () =>  {
   const [owners, setOwners] = useState([]);
-  const [year, setYear] = useState(3);
+  const [year, setYear] = useState(4);
 
   useEffect(() => {
     const getOwnerInfo = async () => {
@@ -39,6 +39,7 @@ const CapTracker = () =>  {
             <button type="button" class="btn btn-secondary" onClick={() => setYear(1)}>2021</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear(2)}>2022</button>
             <button type="button" class="btn btn-secondary" onClick={() => setYear(3)}>2023</button>
+            <button type="button" class="btn btn-secondary" onClick={() => setYear(4)}>2024</button>
           </div>
     </div>
   )

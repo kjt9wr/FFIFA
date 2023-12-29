@@ -2,8 +2,6 @@ import React from 'react';
 import { determineFinalPriceOfPlayer } from '../../Services/FFIFAService';
 import { KeeperClassEnum } from '../../Utilities/KeeperClassEnum';
 
-
-
 const populatePlayerRows = (roster, franchisePrices, toggleKeeper) => {
   return roster.map(currentPlayer => {
     return <PlayerRow 

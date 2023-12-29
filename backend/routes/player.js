@@ -89,8 +89,8 @@ Player.find().then(player => {
 router.route('/superMax').put((req, res) => {
   Player.findById(req.body.pid)
     .then(player => {
-      player.superMaxPlan = req.body.superMaxPlan;
-      player.superMaxYear = req.body.superMaxYear;
+      player.superMax.plan = req.body.superMaxPlan;
+      player.superMax.year = req.body.superMaxYear;
       player.keep = true;
       player.save()
           .then(() => res.json(player.name + ' super max status updated!'))
