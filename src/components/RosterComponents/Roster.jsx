@@ -4,7 +4,7 @@ import { getRoster, getSingleOwnerFromDB } from '../../Services/DatabaseService'
 import { getFranchiseTagDTO } from '../../Services/FranchiseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
 import RosterDataTable from './RosterDataTable.jsx';
-import RosterPreview from './RosterPreview';
+import PlayerDisplayByPosition from '../reusable/PlayerDisplayByPosition.jsx';
 
 const formatFranchisePrices = (franchiseDTO) => {
   return {
@@ -53,10 +53,12 @@ const Roster = (props) => {
     getFranchiseInfo()
   }, [owner._id, owner.name.length, changeKeeper])
 
+const keptPlayers = roster.filter((p) => p.keep)
+
   return (
     <div className='container'>
       <OwnerDisplay owner={owner} roster={roster} franchisePrices={franchisePrices} />
-      <RosterPreview roster={roster} />
+      <PlayerDisplayByPosition playerList={keptPlayers} />
       <RosterDataTable roster={roster} franchisePrices={franchisePrices} toggleKeeper={toggleKeeper}/>
     </div>
   )

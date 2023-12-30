@@ -7,7 +7,7 @@ const displayPlayers = (playerList) => {
 }
 
 const filterKeepersByPosition = (keptPlayers, position) => {
-  return keptPlayers.filter(player => player.position === position && player.keep === true);
+  return keptPlayers.filter(player => player.position === position);
 }
 
 const renderPlayersForPosition = (position, players) => (
@@ -23,12 +23,12 @@ const renderPlayersForPosition = (position, players) => (
   </table>
 )
 
-const RosterPreview = (props) => {
-  const {roster} = props;
-  const keptQBs = filterKeepersByPosition(roster, "QB");
-  const keptRBs = filterKeepersByPosition(roster, "RB");
-  const keptWRs = filterKeepersByPosition(roster, "WR");
-  const keptTEs = filterKeepersByPosition(roster, "TE");
+const playerDisplayByPosition = (props) => {
+  const {playerList} = props;
+  const keptQBs = filterKeepersByPosition(playerList, "QB");
+  const keptRBs = filterKeepersByPosition(playerList, "RB");
+  const keptWRs = filterKeepersByPosition(playerList, "WR");
+  const keptTEs = filterKeepersByPosition(playerList, "TE");
 
   return (
     <div style={{ display: 'flex' }}>
@@ -40,4 +40,4 @@ const RosterPreview = (props) => {
   )
 }
 
-export default RosterPreview;
+export default playerDisplayByPosition;

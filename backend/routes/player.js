@@ -62,6 +62,18 @@ router.route('/rank').put((req, res) => {
       .catch(err => res.status(400).json('Unable to find player: ' + err));
   });
 
+  // Set a player's arbitration year
+router.route('/arbitration').put((req, res) => {
+  Player.findById(req.body.pid)
+    .then(player => {
+      player.arbYear = req.body.arbYear;
+      player.save()
+          .then(() => res.json(player.name + ' arbitration year updated!'))
+          .catch(err => res.status(400).json('Unable to save player arbitration year: ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+  });
+
   // Change a player's keeper class
   router.route('/keeperClass').put((req, res) => {
     Player.findById(req.body.pid)

@@ -1,15 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar.js';
-import HomePage from './components/HomePage.js';
-import Roster from './components/RosterComponents/Roster.jsx';
-import TradeTracker from './components/TradeComponents/TradeTracker.js';
+import Arbitration from './components/Arbitration.js';
 import CapTracker from './components/CapTracker.js';
 import FranchiseTag from './components/FranchiseTag.js';
 import FreeAgency from './components/FreeAgencyTracker.js';
+import HomePage from './components/HomePage.js';
+import Navbar from './components/Navbar.js';
+import Roster from './components/RosterComponents/Roster.jsx';
 import SuperMax from './components/SuperMaxComponents/SuperMax.js';
+import TradeTracker from './components/TradeComponents/TradeTracker.js';
 
 const App = () => (
   <Router>
@@ -21,6 +22,7 @@ const App = () => (
     <Route path='/franchise' component={FranchiseTag} />
     <Route path='/fa' component={FreeAgency} />
     <Route path='/supermax' component={SuperMax} />
+    <Route path='/arbitration' component={Arbitration} />
   </Router>
 );
 
