@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const ownerSchema = new Schema({
   name: { type: String, required: true },
-  cap: { type: Array, required: true }
+  cap: { type: Array, required: true },
+  sleeperId: { type: String, required: true}
 });
 
 const Owner = mongoose.model('Owner', ownerSchema);

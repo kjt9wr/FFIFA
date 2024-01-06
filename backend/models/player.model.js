@@ -14,7 +14,8 @@ const playerSchema = new Schema({
   rank: { type: Number, required: false },
   keeperClass: {type: Number, required:false},
   owner:{},
-  arbYear: {type: String, required: false}
+  arbYear: {type: String, required: false},
+  sleeperId: {type: String, required: false}
 });
 
 const Player = mongoose.model('Player', playerSchema);

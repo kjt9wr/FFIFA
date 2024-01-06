@@ -21,12 +21,25 @@ router.route('/add').post((req, res) => {
   const position = req.body.position;
   const rank = Number(req.body.rank);
   const owner = ownersIDByName[req.body.ownerName];
-  const newPlayer = new Player({ name, price, keep, position, rank, owner });
+  const sleeperId = req.body.sleeperId;
+  const newPlayer = new Player({ name, price, keep, position, rank, owner, sleeperId });
 
   newPlayer.save()
   .then(() => res.json(name + ' added! ID: '+ newPlayer._id ))
   .catch(err => res.status(400).json('Unable to add player: ' + err));
 });
+
+router.route('/add/sleeperId').post((req, res) => {
+  Player.findOne({ name: req.body.name })
+    .then(player => {
+      player.sleeperId = req.body.sleeperId;
+      player.save()
+          .then(() => res.json(player.name + ' sleeperId updated!'))
+          .catch(err => res.status(400).json('Unable to update player: ' + err));
+      })
+      .catch(err => res.status(400).json('Unable to find player: ' + err));
+}); 
+
 
 // Updating a keeper
 router.route('/update/:pid').post((req, res) => {
@@ -122,6 +135,18 @@ router.route('/update/owner').put((req, res) => {
           .catch(err => res.status(400).json('Unable to update player: ' + err));
       })
       .catch(err => res.status(400).json('Unable to find player: ' + err));
+});
+
+// Update roster
+router.route('/update/roster/:ownerId').post((req, res) => {
+  const playersToUpdate = req.body.players;
+  Player.updateMany({
+      sleeperId: {
+        $in: playersToUpdate
+      }}, {
+        $set: { owner: req.params.ownerId }
+      })
+  .then(() => res.json('Updated!'))
 });
 
 // Updating a draft result

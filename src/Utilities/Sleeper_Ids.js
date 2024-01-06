@@ -1,0 +1,35 @@
+export const OwnerBySleeperRosterID = {
+        1: "Alex",
+        2: "Michael",
+        3: "Kevin",
+        4: "Jeff",
+        5: "Luigi",
+        6: "Christian",
+        7: "Nikos",
+        8: "Matt",
+        9: "Justin",
+        10: "Patrick",
+        11: "Chinmay",
+        12: "Brent"
+};
+
+export const playersBySleeperID = {
+    "1166": "Kirk Cousins",
+    "19": "Joe Flacco",
+    "2749": "Raheem Mostert",
+    "3271": "Tyler Higbee",
+    "4068": "Mike Williams",
+    "5096": "Ray-Ray McCloud",
+    "5995": "Justice Hill",
+    "6794": "Justin Jefferson",
+    "7527": "Mac Jones",
+    "7588": "Javonte Williams",
+    "7596": "Elijah Moore",
+    "8135": "Treylon Burks",
+    "8137": "George Pickens",
+    "8160": "Kenny Pickett",
+    "8228": "Jaylen Warren",
+    "9226": "DeVon Achane",
+    "9482": "Michael Mayer",
+    "9497": "Jalin Hyatt"
+};

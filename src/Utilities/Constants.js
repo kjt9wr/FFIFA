@@ -2,6 +2,8 @@ export const QB = 'QB';
 export const RB = 'RB';
 export const WR = 'WR';
 export const TE = 'TE';
+
+export const SLEEPER_LEAGUE_ID = "1000436768526741504"
 export const ownersByID = {
     "5e80d724b3bdaf3413316177": "Kevin",
     "5e80d930b3bdaf3413316189": "Justin",
@@ -294,5 +296,8 @@ export const playersByID = {
     "657d471abfa20b5170d48e79": "Jonathan Mingo",
     "657d49e0bfa20b5170d48e7a": "Rashee Rice",
     "657d4a72bfa20b5170d48e7b": "Josh Downs",
-    "657d4617bfa20b5170d48e78": "Zach Charbonnet"
+    "657d4617bfa20b5170d48e78": "Zach Charbonnet",
+    "65987a9b3a8c3a449d8c3d83": "Ray-Ray McCloud",
+    "65987985866e814375ed649a": "Joe Flacco",
+    "65987bf23a8c3a449d8c3d84": "Justice Hill",
 };
