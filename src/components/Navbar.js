@@ -60,6 +60,9 @@ const NavBar = () => {
             <NavItem>
                     <Link to="/arbitration" className="nav-link">Arbitration</Link>
             </NavItem>
+            <NavItem>
+                    <Link to="/admin" className="nav-link">Admin</Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

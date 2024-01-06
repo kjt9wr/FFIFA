@@ -11,6 +11,7 @@ import Navbar from './components/Navbar.js';
 import Roster from './components/RosterComponents/Roster.jsx';
 import SuperMax from './components/SuperMaxComponents/SuperMax.js';
 import TradeTracker from './components/TradeComponents/TradeTracker.js';
+import Admin from './components/Admin.js'
 
 const App = () => (
   <Router>
@@ -23,6 +24,7 @@ const App = () => (
     <Route path='/fa' component={FreeAgency} />
     <Route path='/supermax' component={SuperMax} />
     <Route path='/arbitration' component={Arbitration} />
+    <Route path='/admin' component={Admin} />
   </Router>
 );
 
