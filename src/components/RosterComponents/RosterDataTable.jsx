@@ -35,7 +35,7 @@ const RosterDataTable = (props) => {
             <th>SuperMax</th>
           </tr>
         </thead>
-        <tbody> { populatePlayerRows(props.roster, props.franchisePrices, props.toggleKeeper) } </tbody>
+        <tbody>{populatePlayerRows(props.roster, props.franchisePrices, props.toggleKeeper)}</tbody>
       </table>
     </div>
   )

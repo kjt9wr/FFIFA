@@ -16,7 +16,7 @@ const formatFranchisePrices = (franchiseDTO) => {
 }
 
 const Roster = (props) => {
-  const [owner, setOwner] = useState({ _id: '', name:'', cap: [0, 100, 0, 0] });
+  const [owner, setOwner] = useState({ _id: '', name:'', cap: [0, 0, 0, 0, 0, 0] });
   const [roster, setRoster] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
@@ -32,7 +32,7 @@ const Roster = (props) => {
       const ownerName = props.match.params.name
       await axios.get(`http://localhost:5000/owner/${ownerName}`)
         .then((response) => {
-          const currentOwner = response.data
+          const currentOwner = response.data[0]
           setOwner(currentOwner);
         })
         .catch((e) => console.error('Something went wrong'));
@@ -59,7 +59,6 @@ const Roster = (props) => {
   }, [owner._id, owner.name.length, changeKeeper])
 
 const keptPlayers = roster.filter((p) => p.keep)
-
   return (
     <div className='container'>
       <OwnerDisplay owner={owner} roster={roster} franchisePrices={franchisePrices} />

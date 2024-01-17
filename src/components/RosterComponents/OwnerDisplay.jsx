@@ -25,7 +25,7 @@ const OwnerDisplay = (props) => {
 
    return (
       <div>
-         <h1 class="text-center">{owner.name}'s Roster </h1>
+         <h1 className="text-center">{owner.name}'s Roster </h1>
          <h5>Max Cap: {MAX_CAP}</h5>
          <h5>Luxary Tax Line: {TAX_LINE}</h5>
          <h5>Total Price of Kept Players: {keepPrice} </h5>
