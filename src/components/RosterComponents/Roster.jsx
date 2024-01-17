@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { getRoster, getSingleOwnerFromDB } from '../../Services/DatabaseService';
+import { getRoster } from '../../Services/DatabaseService';
 import { getFranchiseTagDTO } from '../../Services/FranchiseService';
 import OwnerDisplay from './OwnerDisplay.jsx';
 import RosterDataTable from './RosterDataTable.jsx';
@@ -16,7 +16,7 @@ const formatFranchisePrices = (franchiseDTO) => {
 }
 
 const Roster = (props) => {
-  const [owner, setOwner] = useState({ name:'', cap: [0, 100, 0, 0] });
+  const [owner, setOwner] = useState({ _id: '', name:'', cap: [0, 100, 0, 0] });
   const [roster, setRoster] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
@@ -29,8 +29,13 @@ const Roster = (props) => {
 
   useEffect(() => {
     const getOwnerData = async () => {
-      const currentOwner = await getSingleOwnerFromDB(props.match.params.name);
-      setOwner(currentOwner);
+      const ownerName = props.match.params.name
+      await axios.get(`http://localhost:5000/owner/${ownerName}`)
+        .then((response) => {
+          const currentOwner = response.data
+          setOwner(currentOwner);
+        })
+        .catch((e) => console.error('Something went wrong'));
     }
 
     getOwnerData();

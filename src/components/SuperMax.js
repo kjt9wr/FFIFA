@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import * as DatabaseService from '../../Services/DatabaseService';
-import * as SuperMaxService from '../../Services/SuperMaxService'
-import SuperMaxRow from './SuperMaxRow';
-import * as Constants from '../../Utilities/Constants';
+import * as DatabaseService from '../Services/DatabaseService';
+import * as SuperMaxService from '../Services/SuperMaxService'
+import * as Constants from '../Utilities/Constants';
 
 const SuperMax = () => {
   const [supermaxPlayers, setSupermaxPlayers] = useState([]);
@@ -27,13 +26,14 @@ const SuperMax = () => {
         year={currentPlayer.superMax.year}
         plan={currentPlayer.superMax.plan}
         price={price}
+        key={currentPlayer.name}
       />;
     });
   }
 
   return (
     <div className="container">
-      <h2 class="text-center"> Players on SuperMax </h2>
+      <h2 className="text-center"> Players on SuperMax </h2>
         <table className='table'>
           <thead className='thead-light'>
             <tr>
@@ -44,10 +44,20 @@ const SuperMax = () => {
               <th>Price</th>
             </tr>
           </thead>
-          <tbody> { renderSuperPlayerTable() } </tbody>
+          <tbody>{ renderSuperPlayerTable() }</tbody>
         </table>
     </div>
   )
 }
+
+const SuperMaxRow = (props) => (
+  <tr className='customRow' >
+    <td>{props.player}</td>
+    <td> {props.owner}</td>
+    <td> {props.year} </td>
+    <td> {props.plan} </td>
+    <td> {props.price} </td>
+  </tr>
+)
 
 export default SuperMax;

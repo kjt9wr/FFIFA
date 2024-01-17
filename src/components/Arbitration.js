@@ -18,7 +18,7 @@ const Arbitration = () => {
 
   return (
     <div className="container">
-      <h1 class="text-center"> Arbitration </h1>
+      <h1 className="text-center"> Arbitration </h1>
       <h4>2024: </h4>
       <PlayerDisplayByPosition playerList={arbitratedPlayers}/>
     </div>

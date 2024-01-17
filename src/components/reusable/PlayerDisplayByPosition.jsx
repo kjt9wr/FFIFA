@@ -2,7 +2,7 @@ import React from 'react';
 
 const displayPlayers = (playerList) => {
   return playerList.map(player => {
-      return <tr> {player.name} </tr>
+      return <tr key={player.name}><td> { player.name }</td></tr>
   })
 }
 
@@ -13,13 +13,9 @@ const filterKeepersByPosition = (keptPlayers, position) => {
 const renderPlayersForPosition = (position, players) => (
   <table className='table'>
     <thead className='thead-light'>
-        <tr>
-          <th>{position}</th>
-        </tr>
+        <tr><th>{position}</th></tr>
     </thead>
-    <tbody>
-        { displayPlayers(players) }
-    </tbody>
+    <tbody>{ displayPlayers(players) }</tbody>
   </table>
 )
 

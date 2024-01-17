@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import * as DatabaseService from '../../Services/DatabaseService';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import TradeDetails from './TradeDetails';
 
 const TradeTracker = () => {
@@ -8,8 +8,11 @@ const TradeTracker = () => {
 
   useEffect(() => {
     const getTrades = async () => {
-        const allTradeList = await DatabaseService.getTradesFromDB();
-        setTradeList(allTradeList);
+        await axios.get('http://localhost:5000/trade/')
+          .then((response) => {
+            setTradeList(response.data)
+          })
+          .catch((error) => console.error('Problem'));
     }
 
     getTrades();
@@ -19,19 +22,19 @@ const TradeTracker = () => {
   const displayTrades = () => {
     return tradeList.filter(trade => trade.years.includes(year))
       .map(currentTrade => {
-        return <TradeDetails currentTrade={currentTrade} />;
+        return <TradeDetails key={currentTrade._id} currentTrade={currentTrade} />;
       });
   }
 
   return (
     <div className="container">
-      <h2 class="text-center"> Trade Tracker </h2>
-      <div class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary" onClick={() => setYear('2020')}>2020</button>
-            <button type="button" class="btn btn-secondary" onClick={() => setYear('2021')}>2021</button>
-            <button type="button" class="btn btn-secondary" onClick={() => setYear('2022')}>2022</button>
-            <button type="button" class="btn btn-secondary" onClick={() => setYear('2023')}>2023</button>
-            <button type="button" class="btn btn-secondary" onClick={() => setYear('2024')}>2024</button>
+      <h2 className="text-center"> Trade Tracker </h2>
+      <div className="btn-group" role="group">
+            <button type="button" className="btn btn-secondary" onClick={() => setYear('2020')}>2020</button>
+            <button type="button" className="btn btn-secondary" onClick={() => setYear('2021')}>2021</button>
+            <button type="button" className="btn btn-secondary" onClick={() => setYear('2022')}>2022</button>
+            <button type="button" className="btn btn-secondary" onClick={() => setYear('2023')}>2023</button>
+            <button type="button" className="btn btn-secondary" onClick={() => setYear('2024')}>2024</button>
           </div>
         {displayTrades()}
     </div>

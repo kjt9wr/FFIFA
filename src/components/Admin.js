@@ -4,7 +4,6 @@ import {
   Button
 } from 'reactstrap';
 import { SLEEPER_LEAGUE_ID } from '../Utilities/Constants';
-import { playersBySleeperID } from '../Utilities/Sleeper_Ids';
 
 const Admin = () => {
   const [roster, setRoster] = useState({players: []});
@@ -20,13 +19,15 @@ useEffect(() => {
   getDraftInfo()
 }, [])
 
+const alexID = "5e80dd6ab3bdaf34133161bd";
+
 const updateAlexRoster = async () => {
-  await axios.post('http://localhost:5000/player/update/roster/' + '5e80dd6ab3bdaf34133161bd', {players : roster.players});
+  await axios.post(`http://localhost:5000/player/update/roster/${alexID}`, {players : roster.players});
 }
 
   return (
     <div className="container">
-      <h1 class="text-center"> Admin Page </h1>
+      <h1 className="text-center"> Admin Page </h1>
 
       <Button title="Update Alex Roster" onClick={updateAlexRoster}> Update Alex Roster</Button>
     </div>

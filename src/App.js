@@ -9,7 +9,7 @@ import FreeAgency from './components/FreeAgencyTracker.js';
 import HomePage from './components/HomePage.js';
 import Navbar from './components/Navbar.js';
 import Roster from './components/RosterComponents/Roster.jsx';
-import SuperMax from './components/SuperMaxComponents/SuperMax.js';
+import SuperMax from './components/SuperMax.js';
 import TradeTracker from './components/TradeComponents/TradeTracker.js';
 import Admin from './components/Admin.js'
 

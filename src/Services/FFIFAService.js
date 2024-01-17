@@ -27,6 +27,6 @@ const getFranchisePrice = (playerPosition, prices) => {
 }
 
 export const pickSuperMaxOrKeeperPrice = (player) => {
-  return player.superMaxPlan > 0 ? calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear) : player.price;
+  return player.keeperClass === 3 ? calculateSuperMaxPrice(player.superMax.plan, player.superMax.year) : player.price;
 }
 
