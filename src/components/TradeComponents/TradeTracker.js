@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import YearSelector from "../reusable/YearSelector";
 import TradeDetails from "./TradeDetails";
 
 const TradeTracker = () => {
@@ -29,46 +30,15 @@ const TradeTracker = () => {
       });
   };
 
+  const handleOnChange = (year) => {
+    setYear(year);
+  };
+
   return (
     <div className="container">
       <h2 className="text-center"> Trade Tracker </h2>
-      <div className="btn-group" role="group">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => setYear("2020")}
-        >
-          2020
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => setYear("2021")}
-        >
-          2021
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => setYear("2022")}
-        >
-          2022
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => setYear("2023")}
-        >
-          2023
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => setYear("2024")}
-        >
-          2024
-        </button>
-      </div>
+      <YearSelector onChange={handleOnChange} selectedYear={year} />
+
       {displayTrades()}
     </div>
   );
