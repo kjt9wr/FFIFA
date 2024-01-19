@@ -37,6 +37,10 @@ const FranchiseTagTable = (props) => {
   );
 };
 
+/*
+ * This page displays the prices of kept players and the corresponding franchise tag prices
+ */
+
 const FranchiseTag = () => {
   const [franchiseInfo, setFranchiseInfo] = useState({});
 

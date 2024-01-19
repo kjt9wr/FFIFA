@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "reactstrap";
 
 const displayPlayers = (playerList) => {
   return playerList.map((player) => {
@@ -15,16 +16,19 @@ const filterKeepersByPosition = (keptPlayers, position) => {
 };
 
 const renderPlayersForPosition = (position, players) => (
-  <table className="table">
+  <Table borderless size="sm" hover responsive>
     <thead className="thead-light">
       <tr>
         <th>{position}</th>
       </tr>
     </thead>
     <tbody>{displayPlayers(players)}</tbody>
-  </table>
+  </Table>
 );
 
+/*
+ * This component displays a table of players grouped by position
+ */
 const playerDisplayByPosition = (props) => {
   const { playerList } = props;
   const keptQBs = filterKeepersByPosition(playerList, "QB");

@@ -3,6 +3,9 @@ import { Button, ButtonGroup } from "reactstrap";
 
 const RECORDED_YEARS = ["2020", "2021", "2022", "2023", "2024"];
 
+/*
+ * This component creates a button group of years that the user can toggle between
+ */
 const YearSelector = (props) => {
   const isCurrentYear = (whichButton) => {
     return props.selectedYear === whichButton ? "primary" : "secondary";

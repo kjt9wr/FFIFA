@@ -3,10 +3,22 @@ import React, { useEffect, useState } from "react";
 import { Container } from "reactstrap";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
+import { CURRENT_SEASON_YEAR } from "../../Utilities/Constants";
 
+const displayTrades = (tradeList, selectedYear) => {
+  return tradeList
+    .filter((trade) => trade.years.includes(selectedYear))
+    .map((currentTrade) => {
+      return <TradeCard key={currentTrade._id} currentTrade={currentTrade} />;
+    });
+};
+
+/*
+ * This page displays a log of all trades
+ */
 const TradeTracker = () => {
   const [tradeList, setTradeList] = useState([]);
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState(CURRENT_SEASON_YEAR);
 
   useEffect(() => {
     const getTrades = async () => {
@@ -23,14 +35,6 @@ const TradeTracker = () => {
     getTrades();
   }, []);
 
-  const displayTrades = () => {
-    return tradeList
-      .filter((trade) => trade.years.includes(selectedYear))
-      .map((currentTrade) => {
-        return <TradeCard key={currentTrade._id} currentTrade={currentTrade} />;
-      });
-  };
-
   const handleOnChange = (year) => {
     setSelectedYear(year);
   };
@@ -39,7 +43,7 @@ const TradeTracker = () => {
     <Container>
       <h2 className="text-center"> Trade Tracker </h2>
       <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
-      {displayTrades()}
+      {displayTrades(tradeList, selectedYear)}
     </Container>
   );
 };

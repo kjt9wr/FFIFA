@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import * as DatabaseService from "../Services/DatabaseService";
-import YearSelector from "./reusable/YearSelector";
+import React, { useEffect, useState } from "react";
 import { Container, Table } from "reactstrap";
+import * as DatabaseService from "../Services/DatabaseService";
+import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
+import YearSelector from "./reusable/YearSelector";
 
 const displayCapTable = (year, owners) => {
   return (
@@ -26,9 +27,12 @@ const displayCapTable = (year, owners) => {
   );
 };
 
+/*
+ * This page displays each owner's cap in a given year
+ */
 const CapTracker = () => {
   const [owners, setOwners] = useState([]);
-  const [selectedYear, setSelectedYearYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState(CURRENT_SEASON_YEAR);
 
   useEffect(() => {
     const getOwnerInfo = async () => {
@@ -40,7 +44,7 @@ const CapTracker = () => {
   }, []);
 
   const handleOnChange = (year) => {
-    setSelectedYearYear(year);
+    setSelectedYear(year);
   };
 
   return (

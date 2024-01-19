@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import { SLEEPER_LEAGUE_ID } from "../Utilities/Constants";
 
 const Admin = () => {
@@ -29,14 +29,12 @@ const Admin = () => {
   };
 
   return (
-    <div className="container">
+    <Container>
       <h1 className="text-center"> Admin Page </h1>
-
       <Button title="Update Alex Roster" onClick={updateAlexRoster}>
-        {" "}
         Update Alex Roster
       </Button>
-    </div>
+    </Container>
   );
 };
 

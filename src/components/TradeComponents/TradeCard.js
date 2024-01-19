@@ -32,6 +32,9 @@ const displayAdditionalNotes = (notes) => {
   );
 };
 
+/*
+ * This component creates a card containing the passed trade information
+ */
 const TradeCard = (props) => {
   const { currentTrade } = props;
 
