@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const HomePage = () => {
   return (
@@ -6,7 +6,7 @@ const HomePage = () => {
       <h1 className="display-4">“Si vis pacem, para bellum”</h1>
       <h1 className="display-4 ml-3">—If you want peace, prepare for war</h1>
     </div>
-  )
-}
+  );
+};
 
 export default HomePage;

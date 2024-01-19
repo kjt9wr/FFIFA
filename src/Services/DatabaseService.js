@@ -1,29 +1,36 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const getOwnersFromDB = async () => {
-    const list = await axios.get('http://localhost:5000/owner/');
-    return list.data;
-}
+  const list = await axios.get("http://localhost:5000/owner/");
+  return list.data;
+};
 
 export const getPlayersFromDB = async () => {
-    const list = await axios.get('http://localhost:5000/player/').catch(() => {console.error('Failed')});
-    return list ? list.data : [];
-}
+  const list = await axios.get("http://localhost:5000/player/").catch(() => {
+    console.error("Failed");
+  });
+  return list ? list.data : [];
+};
 
 export const getTradesFromDB = async () => {
-    const list = await axios.get('http://localhost:5000/trade/');
-    return list.data;
-}
+  const list = await axios.get("http://localhost:5000/trade/");
+  return list.data;
+};
 
 export const updateKeeper = async (id, willKeep) => {
-    await axios.post(`http://localhost:5000/player/update/${id}`, willKeep);
-}
+  await axios.post(`http://localhost:5000/player/update/${id}`, willKeep);
+};
 
 export const updateLuxaryTax = async (name, luxaryTaxPaid) => {
-    await axios.put(`http://localhost:5000/owner/updateTax/${name}`, luxaryTaxPaid);
-}
+  await axios.put(
+    `http://localhost:5000/owner/updateTax/${name}`,
+    luxaryTaxPaid
+  );
+};
 
 export const getRoster = async (owner_id) => {
-    const list = await axios.get('http://localhost:5000/player/roster/' + owner_id);
-    return list.data;
-}
+  const list = await axios.get(
+    "http://localhost:5000/player/roster/" + owner_id
+  );
+  return list.data;
+};

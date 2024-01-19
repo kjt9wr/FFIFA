@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -9,8 +9,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
+} from "reactstrap";
+import { Link } from "react-router-dom";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,50 +18,71 @@ const NavBar = () => {
 
   return (
     <div>
-        <Navbar className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">FFIFA</Link>
+      <Navbar className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/" className="navbar-brand">
+          FFIFA
+        </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret> Rosters </DropdownToggle>
-                <DropdownMenu right>
-                    <DropdownItem href="/roster/Kevin"> Kevin </DropdownItem>
-                    <DropdownItem href="/roster/Nikos"> Nikos </DropdownItem>
-                    <DropdownItem href="/roster/Chinmay"> Chinmay </DropdownItem>
-                    <DropdownItem href="/roster/Patrick"> Patrick </DropdownItem>
-                    <DropdownItem href="/roster/Luigi"> Luigi </DropdownItem>
-                    <DropdownItem href="/roster/Brent"> Brent </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem href="/roster/Justin"> Justin </DropdownItem>
-                    <DropdownItem href="/roster/Christian"> Christian </DropdownItem>
-                    <DropdownItem href="/roster/Jeff"> Jeff </DropdownItem>
-                    <DropdownItem href="/roster/Alex"> Alex </DropdownItem>
-                    <DropdownItem href="/roster/Matt"> Matt </DropdownItem>
-                    <DropdownItem href="/roster/Michael"> Michael </DropdownItem>
-                    
-                </DropdownMenu>
-                </UncontrolledDropdown>
+              <DropdownToggle nav caret>
+                {" "}
+                Rosters{" "}
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem href="/roster/Kevin"> Kevin </DropdownItem>
+                <DropdownItem href="/roster/Nikos"> Nikos </DropdownItem>
+                <DropdownItem href="/roster/Chinmay"> Chinmay </DropdownItem>
+                <DropdownItem href="/roster/Patrick"> Patrick </DropdownItem>
+                <DropdownItem href="/roster/Luigi"> Luigi </DropdownItem>
+                <DropdownItem href="/roster/Brent"> Brent </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem href="/roster/Justin"> Justin </DropdownItem>
+                <DropdownItem href="/roster/Christian">
+                  {" "}
+                  Christian{" "}
+                </DropdownItem>
+                <DropdownItem href="/roster/Jeff"> Jeff </DropdownItem>
+                <DropdownItem href="/roster/Alex"> Alex </DropdownItem>
+                <DropdownItem href="/roster/Matt"> Matt </DropdownItem>
+                <DropdownItem href="/roster/Michael"> Michael </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
             <NavItem>
-                    <Link to="/trade" className="nav-link">Trade Tracker</Link>
+              <Link to="/trade" className="nav-link">
+                Trade Tracker
+              </Link>
             </NavItem>
             <NavItem>
-                    <Link to="/cap" className="nav-link">Cap Tracker</Link>
+              <Link to="/cap" className="nav-link">
+                Cap Tracker
+              </Link>
             </NavItem>
             <NavItem>
-                    <Link to="/franchise" className="nav-link">Franchise Tag</Link>
+              <Link to="/franchise" className="nav-link">
+                Franchise Tag
+              </Link>
             </NavItem>
             <NavItem>
-                    <Link to="/supermax" className="nav-link">Super Max</Link>
+              <Link to="/supermax" className="nav-link">
+                Super Max
+              </Link>
             </NavItem>
             <NavItem>
-                    <Link to="/fa" className="nav-link">Free Agency</Link>
+              <Link to="/fa" className="nav-link">
+                Free Agency
+              </Link>
             </NavItem>
             <NavItem>
-                    <Link to="/arbitration" className="nav-link">Arbitration</Link>
+              <Link to="/arbitration" className="nav-link">
+                Arbitration
+              </Link>
             </NavItem>
             <NavItem>
-                    <Link to="/admin" className="nav-link">Admin</Link>
+              <Link to="/admin" className="nav-link">
+                Admin
+              </Link>
             </NavItem>
           </Nav>
         </Collapse>
@@ -69,6 +90,6 @@ const NavBar = () => {
       <br />
     </div>
   );
-}
+};
 
 export default NavBar;

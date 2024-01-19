@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -8,16 +8,16 @@ const playerSchema = new Schema({
   keep: { type: Boolean, required: true },
   position: { type: String, required: true },
   superMax: {
-    plan: {type: Number, required: false},
-    year: {type: Number, required: false}
+    plan: { type: Number, required: false },
+    year: { type: Number, required: false },
   },
   rank: { type: Number, required: false },
-  keeperClass: {type: Number, required:false},
-  owner:{},
-  arbYear: {type: String, required: false},
-  sleeperId: {type: String, required: false}
+  keeperClass: { type: Number, required: false },
+  owner: {},
+  arbYear: { type: String, required: false },
+  sleeperId: { type: String, required: false },
 });
 
-const Player = mongoose.model('Player', playerSchema);
+const Player = mongoose.model("Player", playerSchema);
 
 module.exports = Player;
