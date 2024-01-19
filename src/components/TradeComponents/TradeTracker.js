@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Container } from "reactstrap";
 import YearSelector from "../reusable/YearSelector";
-import TradeDetails from "./TradeDetails";
+import TradeCard from "./TradeCard";
 
 const TradeTracker = () => {
   const [tradeList, setTradeList] = useState([]);
-  const [year, setYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("2024");
 
   useEffect(() => {
     const getTrades = async () => {
@@ -14,7 +15,9 @@ const TradeTracker = () => {
         .then((response) => {
           setTradeList(response.data);
         })
-        .catch((error) => console.error("Problem"));
+        .catch((error) =>
+          console.error("Error getting trades from the database")
+        );
     };
 
     getTrades();
@@ -22,25 +25,22 @@ const TradeTracker = () => {
 
   const displayTrades = () => {
     return tradeList
-      .filter((trade) => trade.years.includes(year))
+      .filter((trade) => trade.years.includes(selectedYear))
       .map((currentTrade) => {
-        return (
-          <TradeDetails key={currentTrade._id} currentTrade={currentTrade} />
-        );
+        return <TradeCard key={currentTrade._id} currentTrade={currentTrade} />;
       });
   };
 
   const handleOnChange = (year) => {
-    setYear(year);
+    setSelectedYear(year);
   };
 
   return (
-    <div className="container">
+    <Container>
       <h2 className="text-center"> Trade Tracker </h2>
-      <YearSelector onChange={handleOnChange} selectedYear={year} />
-
+      <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
       {displayTrades()}
-    </div>
+    </Container>
   );
 };
 

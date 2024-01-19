@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import * as DatabaseService from "../Services/DatabaseService";
 import YearSelector from "./reusable/YearSelector";
+import { Container, Table } from "reactstrap";
 
 const displayCapTable = (year, owners) => {
   return (
-    <table className="table">
+    <Table responsive>
       <thead className="thead-light">
         <tr>
           <th></th>
@@ -21,7 +22,7 @@ const displayCapTable = (year, owners) => {
           ))}
         </tr>
       </tbody>
-    </table>
+    </Table>
   );
 };
 
@@ -43,13 +44,13 @@ const CapTracker = () => {
   };
 
   return (
-    <div className="container">
+    <Container>
       <h2 className="text-center">Cap Tracker </h2>
       <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
       <br />
       <br />
       {displayCapTable(selectedYear, owners)}
-    </div>
+    </Container>
   );
 };
 
