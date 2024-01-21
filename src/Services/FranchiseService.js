@@ -1,6 +1,6 @@
+import * as Constants from "../Utilities/Constants";
 import * as DatabaseService from "./DatabaseService";
 import * as FFIFAService from "./FFIFAService";
-import * as Constants from "../Utilities/Constants";
 
 export const getFranchiseTagDTO = async () => {
   const keptPlayers = await DatabaseService.getKeptPlayersFromDB();

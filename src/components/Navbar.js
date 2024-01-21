@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Collapse,
-  Navbar,
-  NavbarToggler,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Nav,
   NavItem,
+  Navbar,
+  NavbarToggler,
   UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 

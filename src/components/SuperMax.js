@@ -1,9 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "reactstrap";
-import * as DatabaseService from "../Services/DatabaseService";
 import * as SuperMaxService from "../Services/SuperMaxService";
 import * as Constants from "../Utilities/Constants";
-import axios from "axios";
 
 const renderSuperPlayerTable = (superMaxPlayers) => {
   return superMaxPlayers.map((currentPlayer) => {

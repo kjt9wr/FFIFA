@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container } from "reactstrap";
+import { CURRENT_SEASON_YEAR } from "../../Utilities/Constants";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
-import { CURRENT_SEASON_YEAR } from "../../Utilities/Constants";
 
 const displayTrades = (tradeList, selectedYear) => {
   return tradeList

@@ -29,7 +29,7 @@ const calculateTotalKeeperPrice = (roster, franchisePrices) => {
     );
 };
 
-const OwnerDisplay = (props) => {
+const OwnerCapDisplay = (props) => {
   const { owner, roster, franchisePrices } = props;
   const MAX_CAP = owner.cap[4];
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
@@ -118,4 +118,4 @@ const OwnerDisplay = (props) => {
   );
 };
 
-export default OwnerDisplay;
+export default OwnerCapDisplay;

@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 import { getRoster } from "../../Services/DatabaseService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
-import OwnerDisplay from "./OwnerDisplay.jsx";
+import OwnerCapDisplay from "./OwnerCapDisplay.jsx";
 import RosterDataTable from "./RosterDataTable.jsx";
 
 const formatFranchisePrices = (franchiseDTO) => {
@@ -77,7 +77,7 @@ const Roster = (props) => {
   const keptPlayers = roster.filter((p) => p.keep);
   return (
     <Container>
-      <OwnerDisplay
+      <OwnerCapDisplay
         owner={owner}
         roster={roster}
         franchisePrices={franchisePrices}

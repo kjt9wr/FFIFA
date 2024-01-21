@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Col, Row, Table } from "reactstrap";
 import * as FranchiseService from "../Services/FranchiseService";
 import * as Constants from "../Utilities/Constants";
-import { Col, Row, Table } from "reactstrap";
 
 const populateKeptPlayers = (keptPlayersList) => {
   if (keptPlayersList) {
