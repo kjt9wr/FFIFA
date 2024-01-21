@@ -65,17 +65,14 @@ const Roster = (props) => {
       }
     };
 
-    fetchRosterInfo();
-  }, [owner._id, owner.name.length]);
-
-  useEffect(() => {
     const getFranchiseInfo = async () => {
       const franchiseDTO = await getFranchiseTagDTO();
       setFranchisePrices(formatFranchisePrices(franchiseDTO));
     };
 
+    fetchRosterInfo();
     getFranchiseInfo();
-  }, [changeKeeper]);
+  }, [owner._id, owner.name.length, changeKeeper]);
 
   const keptPlayers = roster.filter((p) => p.keep);
   return (
