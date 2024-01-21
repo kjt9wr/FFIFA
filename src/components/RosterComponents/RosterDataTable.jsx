@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "reactstrap";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
 import { KeeperClassEnum } from "../../Utilities/KeeperClassEnum";
 
@@ -17,14 +18,13 @@ const populatePlayerRows = (roster, franchisePrices, toggleKeeper) => {
   });
 };
 
-const getSuperMaxText = (currentYear, plan) => {
-  return plan > 0 ? (
-    <b>
-      {" "}
-      Year {currentYear} in {plan} Year Deal{" "}
-    </b>
-  ) : (
-    ""
+const getSuperMaxText = (superMax) => {
+  return (
+    superMax && (
+      <b>
+        Year {superMax.year} in {superMax.plan} Year Deal
+      </b>
+    )
   );
 };
 /*
@@ -32,27 +32,25 @@ const getSuperMaxText = (currentYear, plan) => {
  */
 const RosterDataTable = (props) => {
   return (
-    <div className="container">
-      <table className="table">
-        <thead className="thead-light">
-          <tr>
-            <th>Position</th>
-            <th>Player</th>
-            <th>Price</th>
-            <th>Keep</th>
-            <th>Keep Class</th>
-            <th>SuperMax</th>
-          </tr>
-        </thead>
-        <tbody>
-          {populatePlayerRows(
-            props.roster,
-            props.franchisePrices,
-            props.toggleKeeper
-          )}
-        </tbody>
-      </table>
-    </div>
+    <Table responsive size="md">
+      <thead className="thead-light">
+        <tr>
+          <th>Position</th>
+          <th>Player</th>
+          <th>Price</th>
+          <th>Keep</th>
+          <th>Keep Class</th>
+          <th>SuperMax</th>
+        </tr>
+      </thead>
+      <tbody>
+        {populatePlayerRows(
+          props.roster,
+          props.franchisePrices,
+          props.toggleKeeper
+        )}
+      </tbody>
+    </Table>
   );
 };
 
@@ -64,17 +62,17 @@ const PlayerRow = (props) => {
       <td> {player.name} </td>
       <td> {determineFinalPriceOfPlayer(player, props.franchisePrices)} </td>
       <td>
-        {" "}
         <input
           type="checkbox"
+          className="form-check-input"
           id={props.id}
           key={props.id}
           onChange={props.toggleKeeper}
           checked={props.keep}
-        />{" "}
+        />
       </td>
       <td>{player.keeperClass > 1 && KeeperClassEnum[player.keeperClass]}</td>
-      <td> {getSuperMaxText(player.superMaxYear, player.superMaxPlan)} </td>
+      <td> {player.keeperClass === 3 && getSuperMaxText(player?.superMax)} </td>
     </tr>
   );
 };

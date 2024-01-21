@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Container } from "reactstrap";
 import { getRoster } from "../../Services/DatabaseService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
+import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
 import OwnerDisplay from "./OwnerDisplay.jsx";
 import RosterDataTable from "./RosterDataTable.jsx";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
 
 const formatFranchisePrices = (franchiseDTO) => {
   return {
@@ -15,6 +16,11 @@ const formatFranchisePrices = (franchiseDTO) => {
   };
 };
 
+/*
+ * This page displays an owner's available cap information, projected keepers display,
+ * and a roster table edit keepers
+ */
+
 const Roster = (props) => {
   const [owner, setOwner] = useState({
     _id: "",
@@ -24,6 +30,15 @@ const Roster = (props) => {
   const [roster, setRoster] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
+
+  const [open, setOpen] = useState("1");
+  const toggle = (id) => {
+    if (open === id) {
+      setOpen();
+    } else {
+      setOpen(id);
+    }
+  };
 
   const toggleKeeper = async (e) => {
     const newKeep = { keep: e.target.checked };
@@ -70,19 +85,20 @@ const Roster = (props) => {
 
   const keptPlayers = roster.filter((p) => p.keep);
   return (
-    <div className="container">
+    <Container>
       <OwnerDisplay
         owner={owner}
         roster={roster}
         franchisePrices={franchisePrices}
       />
+      <h4>Roster:</h4>
       <PlayerDisplayByPosition playerList={keptPlayers} />
       <RosterDataTable
         roster={roster}
         franchisePrices={franchisePrices}
         toggleKeeper={toggleKeeper}
       />
-    </div>
+    </Container>
   );
 };
 

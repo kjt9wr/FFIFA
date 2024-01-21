@@ -5,7 +5,7 @@ export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
     case 2:
       return getFranchisePrice(player.position, franchisePrices);
     case 3:
-      return calculateSuperMaxPrice(player.superMaxPlan, player.superMaxYear);
+      return calculateSuperMaxPrice(player.superMax.plan, player.superMax.year);
     case 4:
       return getFranchisePrice(player.position, franchisePrices);
     default:
