@@ -7,18 +7,51 @@ export const getOwnersFromDB = async () => {
 
 export const getPlayersFromDB = async () => {
   const list = await axios.get("http://localhost:5000/player/").catch(() => {
-    console.error("Failed");
+    console.error("Unable to get players from the database");
   });
   return list ? list.data : [];
 };
 
+export const getKeptPlayersFromDB = async () => {
+  const list = await axios
+    .get("http://localhost:5000/player/kept")
+    .catch(() => {
+      console.error("Unable to get players from the database");
+    });
+  return list ? list.data : [];
+};
+
+export const getFreeAgentsFromDB = async () => {
+  const list = await axios
+    .get("http://localhost:5000/player/freeAgents")
+    .catch(() => {
+      console.error("Unable to get players from the database");
+    });
+  return list ? list.data : [];
+};
+
+export const getSupermaxPlayersFromDB = async () => {
+  const list = await axios
+    .get("http://localhost:5000/player/superMax")
+    .catch(() => {
+      console.error("Unable to get players from the database");
+    });
+  return list ? list.data : [];
+};
+
 export const getTradesFromDB = async () => {
-  const list = await axios.get("http://localhost:5000/trade/");
+  const list = await axios.get("http://localhost:5000/trade/").catch(() => {
+    console.error("Unable to get trades from the database");
+  });
   return list.data;
 };
 
 export const updateKeeper = async (id, willKeep) => {
-  await axios.post(`http://localhost:5000/player/update/${id}`, willKeep);
+  await axios
+    .post(`http://localhost:5000/player/update/${id}`, willKeep)
+    .catch(() => {
+      console.error("Error updating keeper status");
+    });
 };
 
 export const updateLuxaryTax = async (name, luxaryTaxPaid) => {

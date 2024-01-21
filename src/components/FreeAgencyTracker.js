@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import * as FreeAgencyService from "../Services/FreeAgencyService";
-import * as Constants from "../Utilities/Constants";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Col, Row, Table } from "reactstrap";
+import * as Constants from "../Utilities/Constants";
 
 const populateFreeAgents = (freeAgentsForPosition) => {
   if (freeAgentsForPosition) {
@@ -23,6 +23,30 @@ const FreeAgentList = (props) => {
     </div>
   );
 };
+
+const getFreeAgentsFromDB = async () => {
+  const availablePlayers = await axios
+    .get("http://localhost:5000/player/freeAgents")
+    .catch(() => {
+      console.error("Unable to get players from the database");
+    });
+
+  const availableQBs = availablePlayers.data
+    .filter((player) => player.position === Constants.QB)
+    .sort((a, b) => a.rank - b.rank);
+  const availableRBs = availablePlayers.data
+    .filter((player) => player.position === Constants.RB)
+    .sort((a, b) => a.rank - b.rank);
+  const availableWRs = availablePlayers.data
+    .filter((player) => player.position === Constants.WR)
+    .sort((a, b) => a.rank - b.rank);
+  const availableTEs = availablePlayers.data
+    .filter((player) => player.position === Constants.TE)
+    .sort((a, b) => a.rank - b.rank);
+
+  return { availableQBs, availableRBs, availableWRs, availableTEs };
+};
+
 /*
  * This page displays all free agent players organized by position
  */
@@ -31,12 +55,12 @@ const FreeAgency = () => {
 
   useEffect(() => {
     const getFreeAgents = async () => {
-      const allFreeAgents = await FreeAgencyService.getFreeAgents();
+      const allFreeAgents = await getFreeAgentsFromDB();
       setFreeAgents(allFreeAgents);
     };
 
     getFreeAgents();
-  });
+  }, []);
 
   return (
     <div>

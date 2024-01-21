@@ -3,8 +3,7 @@ import * as FFIFAService from "./FFIFAService";
 import * as Constants from "../Utilities/Constants";
 
 export const getFranchiseTagDTO = async () => {
-  const playerList = await DatabaseService.getPlayersFromDB();
-  const keptPlayers = playerList.filter((player) => player.keep === true);
+  const keptPlayers = await DatabaseService.getKeptPlayersFromDB();
 
   const keptQBs = keptPlayers
     .filter((player) => player.position === Constants.QB)

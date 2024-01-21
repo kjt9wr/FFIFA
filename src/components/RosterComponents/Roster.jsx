@@ -31,15 +31,6 @@ const Roster = (props) => {
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
 
-  const [open, setOpen] = useState("1");
-  const toggle = (id) => {
-    if (open === id) {
-      setOpen();
-    } else {
-      setOpen(id);
-    }
-  };
-
   const toggleKeeper = async (e) => {
     const newKeep = { keep: e.target.checked };
     await axios.post(
@@ -74,14 +65,17 @@ const Roster = (props) => {
       }
     };
 
+    fetchRosterInfo();
+  }, [owner._id, owner.name.length]);
+
+  useEffect(() => {
     const getFranchiseInfo = async () => {
       const franchiseDTO = await getFranchiseTagDTO();
       setFranchisePrices(formatFranchisePrices(franchiseDTO));
     };
 
-    fetchRosterInfo();
     getFranchiseInfo();
-  }, [owner._id, owner.name.length, changeKeeper]);
+  }, [changeKeeper]);
 
   const keptPlayers = roster.filter((p) => p.keep);
   return (

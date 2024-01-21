@@ -76,6 +76,24 @@ router.route("/getAll/:pos").get((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+router.route("/kept").get((req, res) => {
+  Player.find({ keep: true })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+router.route("/freeAgents").get((req, res) => {
+  Player.find({ keep: false })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+router.route("/superMax").get((req, res) => {
+  Player.find({ keeperClass: 3 })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
 // Change a player's power ranking
 router.route("/rank").put((req, res) => {
   Player.findById(req.body.pid)

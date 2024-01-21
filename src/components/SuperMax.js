@@ -41,9 +41,8 @@ const SuperMax = () => {
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
-      const players = await DatabaseService.getPlayersFromDB();
-      const list = players.filter((player) => player.keeperClass === 3);
-      setSupermaxPlayers(list);
+      const players = await DatabaseService.getSupermaxPlayersFromDB();
+      setSupermaxPlayers(players);
     };
 
     getSuperMaxPlayers();
