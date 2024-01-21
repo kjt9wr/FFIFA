@@ -12,7 +12,9 @@ const displayPlayers = (playerList) => {
 };
 
 const filterKeepersByPosition = (keptPlayers, position) => {
-  return keptPlayers.filter((player) => player.position === position);
+  return keptPlayers
+    ? keptPlayers.filter((player) => player.position === position)
+    : [];
 };
 
 const renderPlayersForPosition = (position, players) => (

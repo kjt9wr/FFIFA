@@ -3,6 +3,7 @@ import { Container, Table } from "reactstrap";
 import * as DatabaseService from "../Services/DatabaseService";
 import * as SuperMaxService from "../Services/SuperMaxService";
 import * as Constants from "../Utilities/Constants";
+import axios from "axios";
 
 const renderSuperPlayerTable = (superMaxPlayers) => {
   return superMaxPlayers.map((currentPlayer) => {
@@ -33,6 +34,7 @@ const SuperMaxRow = (props) => (
     <td>${props.price}</td>
   </tr>
 );
+
 /*
  * This page displays the details of all the players under a SuperMax Contract
  */
@@ -41,8 +43,12 @@ const SuperMax = () => {
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
-      const players = await DatabaseService.getSupermaxPlayersFromDB();
-      setSupermaxPlayers(players);
+      const players = await axios
+        .get("http://localhost:5000/player/superMax")
+        .catch(() => {
+          console.error("Unable to get players from the database");
+        });
+      setSupermaxPlayers(players.data);
     };
 
     getSuperMaxPlayers();

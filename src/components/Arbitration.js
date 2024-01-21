@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container } from "reactstrap";
-import { getPlayersFromDB } from "../Services/DatabaseService";
 import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
 import PlayerDisplayByPosition from "./reusable/PlayerDisplayByPosition";
 
@@ -12,11 +12,13 @@ const Arbitration = () => {
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
-      const players = await getPlayersFromDB();
-      const correctPlayers = players.filter(
-        (player) => player.arbYear === CURRENT_SEASON_YEAR
-      );
-      setArbitratedPlayers(correctPlayers);
+      const players = await axios
+        .get(`http://localhost:5000/player/arbitration/${CURRENT_SEASON_YEAR}`)
+        .catch(() => {
+          console.error("Unable to get players from the database");
+        });
+
+      setArbitratedPlayers(players.data);
     };
 
     getSuperMaxPlayers();

@@ -30,15 +30,6 @@ export const getFreeAgentsFromDB = async () => {
   return list ? list.data : [];
 };
 
-export const getSupermaxPlayersFromDB = async () => {
-  const list = await axios
-    .get("http://localhost:5000/player/superMax")
-    .catch(() => {
-      console.error("Unable to get players from the database");
-    });
-  return list ? list.data : [];
-};
-
 export const getTradesFromDB = async () => {
   const list = await axios.get("http://localhost:5000/trade/").catch(() => {
     console.error("Unable to get trades from the database");

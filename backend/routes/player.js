@@ -94,6 +94,12 @@ router.route("/superMax").get((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+router.route("/arbitration/:year").get((req, res) => {
+  Player.find({ arbYear: req.params.year })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
 // Change a player's power ranking
 router.route("/rank").put((req, res) => {
   Player.findById(req.body.pid)
