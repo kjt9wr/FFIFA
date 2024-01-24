@@ -1,38 +1,64 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Container } from "reactstrap";
-import { SLEEPER_LEAGUE_ID } from "../Utilities/Constants";
+import { Alert, Button, Container } from "reactstrap";
+import {
+  OwnerIDBySleeperRosterID,
+  SLEEPER_LEAGUE_ID,
+} from "../Utilities/Constants";
 
 const Admin = () => {
-  const [roster, setRoster] = useState({ players: [] });
+  const [allRosters, setAllRosters] = useState();
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    const getDraftInfo = async () => {
-      const draftInfo = await axios.get(
+    const getAllRosters = async () => {
+      const rostersResponse = await axios.get(
         `https://api.sleeper.app/v1/league/${SLEEPER_LEAGUE_ID}/rosters`
       );
-      const alexRoster = draftInfo.data.filter(
-        (roster) => roster.roster_id === 1
-      );
-      setRoster(alexRoster[0]);
+      const rosters = rostersResponse.data
+        .map((roster) => {
+          return {
+            players: roster.players,
+            ownerSleeperId: roster.roster_id,
+          };
+        })
+        .filter((roster) => [1, 2].includes(roster.ownerSleeperId)); //remove filter when all sleeper ids added to players
+
+      setAllRosters(rosters);
     };
 
-    getDraftInfo();
+    getAllRosters();
   }, []);
 
-  const alexID = "5e80dd6ab3bdaf34133161bd";
-
-  const updateAlexRoster = async () => {
-    await axios.post(`http://localhost:5000/player/update/roster/${alexID}`, {
-      players: roster.players,
+  const updateAllRosters = async () => {
+    allRosters.map(async (roster) => {
+      await axios
+        .post(
+          `http://localhost:5000/player/update/roster/${
+            OwnerIDBySleeperRosterID[roster.ownerSleeperId]
+          }`,
+          {
+            players: roster.players,
+          }
+        )
+        .catch((e) => {
+          setError(true);
+          console.log(e);
+        });
     });
+    setSuccessAlert(true);
   };
 
   return (
     <Container>
       <h1 className="text-center"> Admin Page </h1>
-      <Button title="Update Alex Roster" onClick={updateAlexRoster}>
-        Update Alex Roster
+      {error && <Alert color="danger">Error Occurred</Alert>}
+      {successAlert && !error && (
+        <Alert color="success">Successfully Updated Rosters</Alert>
+      )}
+      <Button title="Update All Rosters" onClick={updateAllRosters}>
+        Update All Rosters
       </Button>
     </Container>
   );

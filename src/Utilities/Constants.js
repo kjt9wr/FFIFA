@@ -21,6 +21,21 @@ export const ownersByID = {
   "5e80e1deb3bdaf3413316226": "Jeff",
 };
 
+export const OwnerIDBySleeperRosterID = {
+  1: "5e80dd6ab3bdaf34133161bd",
+  2: "5e80de37b3bdaf34133161cf",
+  3: "5e80d724b3bdaf3413316177",
+  4: "5e80e1deb3bdaf3413316226",
+  5: "5e80da66b3bdaf341331619b",
+  6: "5e80e173b3bdaf3413316213",
+  7: "5e80dedcb3bdaf34133161dd",
+  8: "5e80df96b3bdaf34133161ef",
+  9: "5e80d930b3bdaf3413316189",
+  10: "5e80e1dab3bdaf3413316225",
+  11: "5e80e07eb3bdaf3413316200",
+  12: "5e80db62b3bdaf34133161ab",
+};
+
 export const playersByID = {
   "5f3f34404fa190743101a1b9": "Kyler Murray",
   "5f3f37484fa190743101a1ba": "Tyreek Hill",
@@ -302,4 +317,10 @@ export const playersByID = {
   "65987a9b3a8c3a449d8c3d83": "Ray-Ray McCloud",
   "65987985866e814375ed649a": "Joe Flacco",
   "65987bf23a8c3a449d8c3d84": "Justice Hill",
+  "65b06db4f9d21d334e25d2ff": "Taylor Heinicke",
+  "65b06e68f9d21d334e25d300": "Josh Reynolds",
+  "65b06faff9d21d334e25d301": "Cole Kmet",
+  "65b07023f9d21d334e25d302": "Kyle Trask",
+  "65b070d3f9d21d334e25d303": "Bailey Zappe",
+  "65b0712cf9d21d334e25d304": "Parker Washington",
 };
