@@ -23,8 +23,8 @@ const Admin = () => {
             ownerSleeperId: roster.roster_id,
           };
         })
-        .filter((roster) => [1, 2].includes(roster.ownerSleeperId)); //remove filter when all sleeper ids added to players
-
+        .filter((roster) => [1, 2, 3, 4, 5, 6].includes(roster.ownerSleeperId)); //remove filter when all sleeper ids added to players
+      console.log({ ...rosters[5].players });
       setAllRosters(rosters);
     };
 
