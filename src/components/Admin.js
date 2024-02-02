@@ -16,15 +16,13 @@ const Admin = () => {
       const rostersResponse = await axios.get(
         `https://api.sleeper.app/v1/league/${SLEEPER_LEAGUE_ID}/rosters`
       );
-      const rosters = rostersResponse.data
-        .map((roster) => {
-          return {
-            players: roster.players,
-            ownerSleeperId: roster.roster_id,
-          };
-        })
-        .filter((roster) => [1, 2, 3, 4, 5, 6].includes(roster.ownerSleeperId)); //remove filter when all sleeper ids added to players
-      console.log({ ...rosters[5].players });
+      const rosters = rostersResponse.data.map((roster) => {
+        return {
+          players: roster.players,
+          ownerSleeperId: roster.roster_id,
+        };
+      });
+
       setAllRosters(rosters);
     };
 

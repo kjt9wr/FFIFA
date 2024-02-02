@@ -34,7 +34,7 @@ router.route("/add").post((req, res) => {
 
   newPlayer
     .save()
-    .then(() => res.json(name + " added! ID: " + newPlayer._id))
+    .then(() => res.json(`${name} added! ID: + '${newPlayer._id}': '${name}'`))
     .catch((err) => res.status(400).json("Unable to add player: " + err));
 });
 
