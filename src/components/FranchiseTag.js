@@ -2,15 +2,28 @@ import React, { useEffect, useState } from "react";
 import { Col, Row, Table } from "reactstrap";
 import * as FranchiseService from "../Services/FranchiseService";
 import * as Constants from "../Utilities/Constants";
+import { KEEPER_CLASS_ENUM } from "../Utilities/KeeperClassEnum";
 
 const populateKeptPlayers = (keptPlayersList) => {
   if (keptPlayersList) {
     return keptPlayersList.map((player) => (
       <tr key={player._id}>
-        <td style={player.keeperClass === 3 ? { fontWeight: "bold" } : {}}>
+        <td
+          style={
+            KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
+              ? { fontWeight: "bold" }
+              : {}
+          }
+        >
           {player.name}
         </td>
-        <td style={player.keeperClass === 3 ? { fontWeight: "bold" } : {}}>
+        <td
+          style={
+            KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
+              ? { fontWeight: "bold" }
+              : {}
+          }
+        >
           {player.price}
         </td>
       </tr>
