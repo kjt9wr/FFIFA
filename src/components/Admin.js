@@ -30,6 +30,12 @@ const Admin = () => {
   }, []);
 
   const updateAllRosters = async () => {
+    await axios
+      .post(`http://localhost:5000/player/removeAllOwners`)
+      .catch((e) => {
+        setError(true);
+        console.log(e);
+      });
     allRosters.map(async (roster) => {
       await axios
         .post(

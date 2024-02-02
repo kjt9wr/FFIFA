@@ -191,6 +191,16 @@ router.route("/update/owner").put((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+// Remove all owners from all players - used when refreshing rosters in admin page
+router.route("/removeAllOwners").post((req, res) => {
+  Player.updateMany(
+    {},
+    {
+      $set: { owner: "" },
+    }
+  ).then(() => res.json("Updated!"));
+});
+
 // Update roster
 router.route("/update/roster/:ownerId").post((req, res) => {
   const playersToUpdate = req.body.players;
