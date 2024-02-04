@@ -253,6 +253,13 @@ const getAllPlayersOrderedByRank = (playerList) => {
     .sort((a, b) => a.rank - b.rank);
 };
 
+// Get all players in the database without a sleeperId
+router.route("/withoutSleeperId").get((req, res) => {
+  Player.find({ sleeperId: null })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
 const ownersIDByName = {
   Kevin: "5e80d724b3bdaf3413316177",
   Justin: "5e80d930b3bdaf3413316189",
