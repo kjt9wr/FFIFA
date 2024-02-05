@@ -6,6 +6,7 @@ export const TE = "TE";
 export const CURRENT_SEASON_YEAR = "2024";
 
 export const SLEEPER_LEAGUE_ID = "1000436768526741504";
+export const DRAFT_ID = "1000436769222967296";
 export const ownersByID = {
   "5e80d724b3bdaf3413316177": "Kevin",
   "5e80d930b3bdaf3413316189": "Justin",

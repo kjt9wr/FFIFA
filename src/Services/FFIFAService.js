@@ -32,3 +32,7 @@ export const pickSuperMaxOrKeeperPrice = (player) => {
     ? calculateSuperMaxPrice(player.superMax.plan, player.superMax.year)
     : player.price;
 };
+
+export const increaseKeeperPrice = (draftedPrice) => {
+  return Math.max(10, Math.trunc(1.2 * draftedPrice));
+};

@@ -175,6 +175,21 @@ router.route("/superMax").put((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+// Update a player's keeper price
+router.route("/setPrice").put((req, res) => {
+  Player.findOne({ sleeperId: req.body.sleeperId })
+    .then((player) => {
+      player.price = req.body.price;
+      player
+        .save()
+        .then(() => res.json(player.name + " price updated!"))
+        .catch((err) =>
+          res.status(400).json("Unable to save player keeper price: " + err)
+        );
+    })
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
 // Change a player's owner
 router.route("/update/owner").put((req, res) => {
   const ownerid = ownersIDByName[req.body.ownerName];
