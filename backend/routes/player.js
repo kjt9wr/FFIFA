@@ -34,7 +34,7 @@ router.route("/add").post((req, res) => {
 
   newPlayer
     .save()
-    .then(() => res.json(name + " added! ID: " + newPlayer._id))
+    .then(() => res.json(`${name} added! ID: + '${newPlayer._id}': '${name}'`))
     .catch((err) => res.status(400).json("Unable to add player: " + err));
 });
 
@@ -175,6 +175,21 @@ router.route("/superMax").put((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+// Update a player's keeper price
+router.route("/setPrice").put((req, res) => {
+  Player.findOne({ sleeperId: req.body.sleeperId })
+    .then((player) => {
+      player.price = req.body.price;
+      player
+        .save()
+        .then(() => res.json(player.name + " price updated!"))
+        .catch((err) =>
+          res.status(400).json("Unable to save player keeper price: " + err)
+        );
+    })
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
 // Change a player's owner
 router.route("/update/owner").put((req, res) => {
   const ownerid = ownersIDByName[req.body.ownerName];
@@ -189,6 +204,16 @@ router.route("/update/owner").put((req, res) => {
         );
     })
     .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+// Remove all owners from all players - used when refreshing rosters in admin page
+router.route("/removeAllOwners").post((req, res) => {
+  Player.updateMany(
+    {},
+    {
+      $set: { owner: "" },
+    }
+  ).then(() => res.json("Updated!"));
 });
 
 // Update roster
@@ -242,6 +267,13 @@ const getAllPlayersOrderedByRank = (playerList) => {
     })
     .sort((a, b) => a.rank - b.rank);
 };
+
+// Get all players in the database without a sleeperId
+router.route("/withoutSleeperId").get((req, res) => {
+  Player.find({ sleeperId: null })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
 
 const ownersIDByName = {
   Kevin: "5e80d724b3bdaf3413316177",

@@ -1,7 +1,10 @@
 import React from "react";
 import { Table } from "reactstrap";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
-import { KeeperClassEnum } from "../../Utilities/KeeperClassEnum";
+import {
+  KEEPER_CLASS_ENUM,
+  getKeeperClass,
+} from "../../Utilities/KeeperClassEnum";
 
 const populatePlayerRows = (roster, franchisePrices, toggleKeeper) => {
   return roster.map((currentPlayer) => {
@@ -71,8 +74,11 @@ const PlayerRow = (props) => {
           checked={props.keep}
         />
       </td>
-      <td>{player.keeperClass > 1 && KeeperClassEnum[player.keeperClass]}</td>
-      <td> {player.keeperClass === 3 && getSuperMaxText(player?.superMax)} </td>
+      <td>{player.keeperClass > 1 && getKeeperClass(player.keeperClass)}</td>
+      <td>
+        {KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass &&
+          getSuperMaxText(player?.superMax)}
+      </td>
     </tr>
   );
 };

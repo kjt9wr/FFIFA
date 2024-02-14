@@ -1,4 +1,5 @@
 import { calculateSuperMaxPrice } from "./SuperMaxService";
+import { KEEPER_CLASS_ENUM } from "../Utilities/KeeperClassEnum";
 
 export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
   switch (player.keeperClass) {
@@ -27,7 +28,11 @@ const getFranchisePrice = (playerPosition, prices) => {
 };
 
 export const pickSuperMaxOrKeeperPrice = (player) => {
-  return player.keeperClass === 3
+  return KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
     ? calculateSuperMaxPrice(player.superMax.plan, player.superMax.year)
     : player.price;
+};
+
+export const increaseKeeperPrice = (draftedPrice) => {
+  return Math.max(10, Math.trunc(1.2 * draftedPrice));
 };
