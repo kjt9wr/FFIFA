@@ -1,22 +1,59 @@
 const router = require("express").Router();
 const Player = require("../models/player.model");
 
+/*
+ * Get Players
+ */
+
+// Get all players
 router.route("/").get((req, res) => {
   Player.find()
     .then((player) => res.json(player))
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+// Get all players with ownerID of query parameter
 router.route("/roster/:ownerID").get((req, res) => {
   Player.find({ owner: req.params.ownerID })
     .then((player) => res.json(player))
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
-router.route("/updatePlayer/:playerId").put((req, res) => {
-  Player.updateOne({ _id: req.params.playerId }, req.body)
-    .then(res.json("Player updated"))
-    .catch((err) => res.status(400).json("Unable to find player: ", err));
+// Get all players for given position, ordered by rank
+router.route("/getAll/:pos").get((req, res) => {
+  Player.find({ position: req.params.pos })
+    .then((data) => {
+      res.send({ data: getAllPlayersOrderedByRank(data) });
+    })
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+// get all kept players
+router.route("/kept").get((req, res) => {
+  Player.find({ keep: true })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+// get all free agent players
+router.route("/freeAgents").get((req, res) => {
+  Player.find({ keep: false })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+// get all supermax players
+router.route("/superMax").get((req, res) => {
+  Player.find({ keeperClass: 3 })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+// get all players for given arbitration year
+router.route("/arbitration/:year").get((req, res) => {
+  Player.find({ arbYear: req.params.year })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
 // add player to db
@@ -58,6 +95,17 @@ router.route("/add/sleeperId").post((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+/*
+ * Update Players
+ */
+
+// update a player based on request payload
+router.route("/updatePlayer/:playerId").put(async (req, res) => {
+  await Player.updateOne({ _id: req.params.playerId }, req.body)
+    .then(res.status(200).json("Player updated"))
+    .catch((err) => res.status(400).json("Unable to find player: ", err));
+});
+
 // Updating a keeper
 router.route("/update/:pid").post((req, res) => {
   Player.findById(req.params.pid)
@@ -71,97 +119,6 @@ router.route("/update/:pid").post((req, res) => {
         );
     })
     .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-// Get all players for given position, ordered by rank
-router.route("/getAll/:pos").get((req, res) => {
-  Player.find({ position: req.params.pos })
-    .then((data) => {
-      res.send({ data: getAllPlayersOrderedByRank(data) });
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-router.route("/kept").get((req, res) => {
-  Player.find({ keep: true })
-    .then((player) => res.json(player))
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-router.route("/freeAgents").get((req, res) => {
-  Player.find({ keep: false })
-    .then((player) => res.json(player))
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-router.route("/superMax").get((req, res) => {
-  Player.find({ keeperClass: 3 })
-    .then((player) => res.json(player))
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-router.route("/arbitration/:year").get((req, res) => {
-  Player.find({ arbYear: req.params.year })
-    .then((player) => res.json(player))
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-// Change a player's power ranking
-router.route("/rank").put((req, res) => {
-  Player.findById(req.body.pid)
-    .then((player) => {
-      player.rank = req.body.rank;
-      player
-        .save()
-        .then(() => res.json(player.name + " rank updated!"))
-        .catch((err) =>
-          res.status(400).json("Unable to save player ranking: " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-// Set a player's arbitration year
-router.route("/arbitration").put((req, res) => {
-  Player.findById(req.body.pid)
-    .then((player) => {
-      player.arbYear = req.body.arbYear;
-      player
-        .save()
-        .then(() => res.json(player.name + " arbitration year updated!"))
-        .catch((err) =>
-          res.status(400).json("Unable to save player arbitration year: " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-// Change a player's keeper class
-router.route("/keeperClass").put((req, res) => {
-  Player.findById(req.body.pid)
-    .then((player) => {
-      player.keeperClass = req.body.keeperClass;
-      player
-        .save()
-        .then(() => res.json(player.name + " Keeper class updated!"))
-        .catch((err) =>
-          res.status(400).json("Unable to save keeper class : " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-//reset all keeper classes
-router.route("/reset/keeperClass").put((req, res) => {
-  Player.find().then((player) => {
-    player.keeperClass = 0;
-    player
-      .save()
-      .then(() => res.json(player.name + " Keeper class updated!"))
-      .catch((err) =>
-        res.status(400).json("Unable to save keeper class : " + err)
-      );
-  });
 });
 
 // Change a player's supermax status
@@ -196,21 +153,9 @@ router.route("/setPrice").put((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
-// Change a player's owner
-router.route("/update/owner").put((req, res) => {
-  const ownerid = ownersIDByName[req.body.ownerName];
-  Player.findById(req.body.pid)
-    .then((player) => {
-      player.owner = ownerid;
-      player
-        .save()
-        .then(() => res.json(player.name + " owner updated!"))
-        .catch((err) =>
-          res.status(400).json("Unable to update player: " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
+/*
+ * Roster Routes
+ */
 
 // Remove all owners from all players - used when refreshing rosters in admin page
 router.route("/removeAllOwners").post((req, res) => {
@@ -237,28 +182,27 @@ router.route("/update/roster/:ownerId").post((req, res) => {
   ).then(() => res.json("Updated!"));
 });
 
-// Updating a draft result
-router.route("/draftResult").put((req, res) => {
-  let ownerid = ownersIDByName[req.body.ownerName];
-  Player.findById(req.body.pid)
-    .then((player) => {
-      player.owner = ownerid;
-      player.price = Math.trunc(req.body.price * 1.2);
-      player
-        .save()
-        .then(() =>
-          res.json(
-            player.name +
-              " drafted by " +
-              req.body.ownerName +
-              " at $" +
-              req.body.price
-          )
-        )
-        .catch((err) =>
-          res.status(400).json("Unable to update player: " + err)
-        );
-    })
+/*
+ * Helper Routes
+ */
+
+//reset all keeper classes
+router.route("/reset/keeperClass").put((req, res) => {
+  Player.find().then((player) => {
+    player.keeperClass = 0;
+    player
+      .save()
+      .then(() => res.json(player.name + " Keeper class updated!"))
+      .catch((err) =>
+        res.status(400).json("Unable to save keeper class : " + err)
+      );
+  });
+});
+
+// Get all players in the database without a sleeperId
+router.route("/withoutSleeperId").get((req, res) => {
+  Player.find({ sleeperId: null })
+    .then((player) => res.json(player))
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
@@ -273,13 +217,6 @@ const getAllPlayersOrderedByRank = (playerList) => {
     })
     .sort((a, b) => a.rank - b.rank);
 };
-
-// Get all players in the database without a sleeperId
-router.route("/withoutSleeperId").get((req, res) => {
-  Player.find({ sleeperId: null })
-    .then((player) => res.json(player))
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
 
 const ownersIDByName = {
   Kevin: "5e80d724b3bdaf3413316177",
