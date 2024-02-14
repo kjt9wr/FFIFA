@@ -13,6 +13,12 @@ router.route("/roster/:ownerID").get((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+router.route("/updatePlayer/:playerId").put((req, res) => {
+  Player.updateOne({ _id: req.params.playerId }, req.body)
+    .then(res.json("Player updated"))
+    .catch((err) => res.status(400).json("Unable to find player: ", err));
+});
+
 // add player to db
 router.route("/add").post((req, res) => {
   const name = req.body.name;
