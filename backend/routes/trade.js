@@ -2,19 +2,17 @@ const router = require("express").Router();
 const Trade = require("../models/trade.model");
 const Player = require("../models/player.model");
 
+// Get all trades
 router.route("/").get((req, res) => {
   Trade.find()
     .then((trade) => res.json(trade))
     .catch((err) => res.status(400).json("Unable to find trade: " + err));
 });
 
-router.route("/add").post((req, res) => {
-  const owner1 = req.body.owner1;
-  const owner2 = req.body.owner2;
-  const owner1_rec = req.body.owner1_rec;
-  const owner2_rec = req.body.owner2_rec;
-  const tradeNotes = req.body.tradeNotes;
-  const years = req.body.years;
+// Add a new trade
+router.route("/add").post(async (req, res) => {
+  const { owner1, owner2, owner1_rec, owner2_rec, tradeNotes, years } =
+    req.body;
 
   const newTrade = new Trade({
     owner1: owner1,
@@ -24,31 +22,22 @@ router.route("/add").post((req, res) => {
     tradeNotes,
     years,
   });
-  owner1_rec.players.map((playerid) =>
-    updatePlayersOwner(res, playerid, owner1)
+
+  await Player.updateMany(
+    { _id: { $in: owner1_rec.players } },
+    { $set: { owner: ownersIDByName[owner1] } }
   );
-  owner2_rec.players.map((playerid) =>
-    updatePlayersOwner(res, playerid, owner2)
+
+  await Player.updateMany(
+    { _id: { $in: owner2_rec.players } },
+    { $set: { owner: ownersIDByName[owner2] } }
   );
+
   newTrade
     .save()
     .then(() => res.json("Trade added!"))
     .catch((err) => res.status(400).json("Unable to add trade: " + err));
 });
-
-const updatePlayersOwner = async (res, pid, ownerName) => {
-  const ownerid = ownersIDByName[ownerName];
-  Player.findById(pid)
-    .then((player) => {
-      player.owner = ownerid;
-      player
-        .save()
-        .catch((err) =>
-          res.status(400).json("Unable to update player: " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-};
 
 const ownersIDByName = {
   Kevin: "5e80d724b3bdaf3413316177",

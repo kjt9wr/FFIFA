@@ -52,27 +52,22 @@ router.route("/superMax").get((req, res) => {
 // get all players for given arbitration year
 router.route("/arbitration/:year").get((req, res) => {
   Player.find({ arbYear: req.params.year })
-    .then((player) => res.json(player))
+    .then((players) => res.json(players))
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
 // add player to db
 router.route("/add").post((req, res) => {
   const name = req.body.name;
-  const price = Number(req.body.price);
-  const keep = Boolean(req.body.keep);
-  const position = req.body.position;
-  const rank = Number(req.body.rank);
-  const owner = ownersIDByName[req.body.ownerName];
-  const sleeperId = req.body.sleeperId;
+
   const newPlayer = new Player({
     name,
-    price,
-    keep,
-    position,
-    rank,
-    owner,
-    sleeperId,
+    price: Number(req.body.price),
+    keep: Boolean(req.body.keep),
+    position: req.body.position,
+    rank: Number(req.body.rank),
+    owner: ownersIDByName[req.body.ownerName],
+    sleeperId: req.body.sleeperId,
   });
 
   newPlayer
@@ -81,7 +76,7 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Unable to add player: " + err));
 });
 
-router.route("/add/sleeperId").post((req, res) => {
+router.route("/add/sleeperId").put((req, res) => {
   Player.findOne({ name: req.body.name })
     .then((player) => {
       player.sleeperId = req.body.sleeperId;
@@ -134,12 +129,9 @@ router.route("/updatePlayer/price/:sleeperId").put(async (req, res) => {
 
 // Remove all owners from all players - used when refreshing rosters in admin page
 router.route("/removeAllOwners").post((req, res) => {
-  Player.updateMany(
-    {},
-    {
-      $set: { owner: "" },
-    }
-  ).then(() => res.json("Updated!"));
+  Player.updateMany({}, { $set: { owner: "" } }).then(() =>
+    res.json("Updated!")
+  );
 });
 
 // Update roster with correct players
@@ -147,9 +139,7 @@ router.route("/update/roster/:ownerId").post((req, res) => {
   const playersToUpdate = req.body.players;
   Player.updateMany(
     {
-      sleeperId: {
-        $in: playersToUpdate,
-      },
+      sleeperId: { $in: playersToUpdate },
     },
     {
       $set: { owner: req.params.ownerId },

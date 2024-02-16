@@ -11,7 +11,7 @@ const Arbitration = () => {
   const [arbitratedPlayers, setArbitratedPlayers] = useState([]);
 
   useEffect(() => {
-    const getSuperMaxPlayers = async () => {
+    const getArbitratedPlayers = async () => {
       const players = await axios
         .get(`http://localhost:5000/player/arbitration/${CURRENT_SEASON_YEAR}`)
         .catch(() => {
@@ -21,7 +21,7 @@ const Arbitration = () => {
       setArbitratedPlayers(players.data);
     };
 
-    getSuperMaxPlayers();
+    getArbitratedPlayers();
   }, []);
 
   return (

@@ -15,7 +15,7 @@ router.route("/:name").get((req, res) => {
     .catch((err) => res.status(400).json("Unable to find owner: " + err));
 });
 
-//add new owner
+// Add new owner
 router.route("/add").post((req, res) => {
   const name = req.body.name;
   const cap = req.body.cap;
