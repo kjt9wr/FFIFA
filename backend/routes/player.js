@@ -20,7 +20,7 @@ router.route("/roster/:ownerID").get((req, res) => {
 });
 
 // Get all players for given position, ordered by rank
-router.route("/getAll/:pos").get((req, res) => {
+router.route("/position/:pos").get((req, res) => {
   Player.find({ position: req.params.pos })
     .then((data) => {
       res.send({ data: getAllPlayersOrderedByRank(data) });
@@ -29,7 +29,7 @@ router.route("/getAll/:pos").get((req, res) => {
 });
 
 // get all kept players
-router.route("/kept").get((req, res) => {
+router.route("/keptPlayers").get((req, res) => {
   Player.find({ keep: true })
     .then((player) => res.json(player))
     .catch((err) => res.status(400).json("Unable to find player: " + err));
@@ -106,39 +106,7 @@ router.route("/updatePlayer/:playerId").put(async (req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: ", err));
 });
 
-// Updating a keeper
-router.route("/update/:pid").post((req, res) => {
-  Player.findById(req.params.pid)
-    .then((player) => {
-      player.keep = req.body.keep;
-      player
-        .save()
-        .then(() => res.json("Player updated!"))
-        .catch((err) =>
-          res.status(400).json("Unable to update player: " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-// Change a player's supermax status
-router.route("/superMax").put((req, res) => {
-  Player.findById(req.body.pid)
-    .then((player) => {
-      player.superMax.plan = req.body.superMaxPlan;
-      player.superMax.year = req.body.superMaxYear;
-      player.keep = true;
-      player
-        .save()
-        .then(() => res.json(player.name + " super max status updated!"))
-        .catch((err) =>
-          res.status(400).json("Unable to save player supermax : " + err)
-        );
-    })
-    .catch((err) => res.status(400).json("Unable to find player: " + err));
-});
-
-// Update a player's keeper price
+// Update a player's keeper price given a sleeper ID
 router.route("/setPrice").put((req, res) => {
   Player.findOne({ sleeperId: req.body.sleeperId })
     .then((player) => {
@@ -151,6 +119,13 @@ router.route("/setPrice").put((req, res) => {
         );
     })
     .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
+// update a player based on request payload
+router.route("/updatePlayer/price/:sleeperId").put(async (req, res) => {
+  await Player.updateOne({ sleeperId: req.params.sleeperId }, req.body)
+    .then(res.status(200).json("Player updated"))
+    .catch((err) => res.status(400).json("Unable to find player: ", err));
 });
 
 /*
@@ -167,7 +142,7 @@ router.route("/removeAllOwners").post((req, res) => {
   ).then(() => res.json("Updated!"));
 });
 
-// Update roster
+// Update roster with correct players
 router.route("/update/roster/:ownerId").post((req, res) => {
   const playersToUpdate = req.body.players;
   Player.updateMany(
@@ -183,7 +158,7 @@ router.route("/update/roster/:ownerId").post((req, res) => {
 });
 
 /*
- * Helper Routes
+ * Helper Routes - not used very often
  */
 
 //reset all keeper classes

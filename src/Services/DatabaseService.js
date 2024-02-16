@@ -14,7 +14,7 @@ export const getPlayersFromDB = async () => {
 
 export const getKeptPlayersFromDB = async () => {
   const list = await axios
-    .get("http://localhost:5000/player/kept")
+    .get("http://localhost:5000/player/keptPlayers")
     .catch(() => {
       console.error("Unable to get players from the database");
     });

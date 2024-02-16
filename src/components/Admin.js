@@ -47,7 +47,6 @@ const Admin = () => {
         .map((player) => ({
           price: player.metadata.amount,
           sleeperId: player.metadata.player_id,
-          name: `${player.metadata.first_name} ${player.metadata.last_name}`,
         }));
 
       setDraftData(playersToUpdate);
@@ -84,10 +83,12 @@ const Admin = () => {
   const addDraftPrices = async () => {
     draftData.forEach(async (player) => {
       await axios
-        .put(`http://localhost:5000/player/setPrice`, {
-          sleeperId: player.sleeperId,
-          price: increaseKeeperPrice(player.price),
-        })
+        .put(
+          `http://localhost:5000/player/updatePlayer/price/${player.sleeperId}`,
+          {
+            price: increaseKeeperPrice(player.price),
+          }
+        )
         .catch((e) => {
           setDraftDataError(true);
           console.error(e);
