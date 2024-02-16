@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "reactstrap";
+import { Input, Table } from "reactstrap";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
 import {
   KEEPER_CLASS_ENUM,
@@ -65,9 +65,8 @@ const PlayerRow = (props) => {
       <td> {player.name} </td>
       <td> {determineFinalPriceOfPlayer(player, props.franchisePrices)} </td>
       <td>
-        <input
+        <Input
           type="checkbox"
-          className="form-check-input"
           id={props.id}
           key={props.id}
           onChange={props.toggleKeeper}
