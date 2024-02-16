@@ -54,7 +54,7 @@ export const updateLuxaryTax = async (name, luxaryTaxPaid) => {
 
 export const getRoster = async (owner_id) => {
   const list = await axios.get(
-    "http://localhost:5000/player/roster/" + owner_id
+    `http://localhost:5000/player/roster/${owner_id}`
   );
   return list.data;
 };

@@ -34,7 +34,7 @@ const Roster = (props) => {
   const toggleKeeper = async (e) => {
     const newKeep = { keep: e.target.checked };
     await axios.put(
-      "http://localhost:5000/player/updatePlayer/" + e.target.id,
+      `http://localhost:5000/player/updatePlayer/${e.target.id}`,
       newKeep
     );
     setChangeKeeper(!changeKeeper);
