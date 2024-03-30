@@ -32,16 +32,16 @@ const getFreeAgentsFromDB = async () => {
     });
 
   const availableQBs = availablePlayers.data
-    .filter((player) => player.position === Constants.QB)
+    .filter((player) => player.position === Constants.QB && player.rank < 80)
     .sort((a, b) => a.rank - b.rank);
   const availableRBs = availablePlayers.data
-    .filter((player) => player.position === Constants.RB)
+    .filter((player) => player.position === Constants.RB && player.rank < 80)
     .sort((a, b) => a.rank - b.rank);
   const availableWRs = availablePlayers.data
-    .filter((player) => player.position === Constants.WR)
+    .filter((player) => player.position === Constants.WR && player.rank < 80)
     .sort((a, b) => a.rank - b.rank);
   const availableTEs = availablePlayers.data
-    .filter((player) => player.position === Constants.TE)
+    .filter((player) => player.position === Constants.TE && player.rank < 80)
     .sort((a, b) => a.rank - b.rank);
 
   return { availableQBs, availableRBs, availableWRs, availableTEs };
