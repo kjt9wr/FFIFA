@@ -358,4 +358,7 @@ export const playersBySleeperID = {
   11637: "Keon Coleman",
   11625: "Adonai Mitchell",
   11604: "Brock Bowers",
+  11624: "Xavier Worthy",
+  11635: "Ladd McConkey",
+  11638: "Ricky Pearsall",
 };

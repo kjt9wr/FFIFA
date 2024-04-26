@@ -374,4 +374,7 @@ export const playersByID = {
   "65ef951e50777f3b56c0d83b": "Keon Coleman",
   "65ef954550777f3b56c0d83c": "Adonai Mitchell",
   "65f49d38c5512055664b4ffd": "Brock Bowers",
+  "662bbfcba086741ac2ad58fd": "Xavier Worthy",
+  "662bc08da086741ac2ad58fe": "Ladd McConkey",
+  "662bc14ca086741ac2ad58ff": "Ricky Pearsall",
 };
