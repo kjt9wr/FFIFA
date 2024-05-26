@@ -76,6 +76,11 @@ const NavBar = () => {
               </Link>
             </NavItem>
             <NavItem>
+              <Link to="/draft" className="nav-link">
+                Draft
+              </Link>
+            </NavItem>
+            <NavItem>
               <Link to="/admin" className="nav-link">
                 Admin
               </Link>

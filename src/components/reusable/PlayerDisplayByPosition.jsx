@@ -32,11 +32,12 @@ const renderPlayersForPosition = (position, players) => (
  * This component displays a table of players grouped by position
  */
 const playerDisplayByPosition = (props) => {
-  const { playerList } = props;
-  const keptQBs = filterKeepersByPosition(playerList, "QB");
-  const keptRBs = filterKeepersByPosition(playerList, "RB");
-  const keptWRs = filterKeepersByPosition(playerList, "WR");
-  const keptTEs = filterKeepersByPosition(playerList, "TE");
+  const keptPlayersList = props.playerList.filter((p) => p.keep);
+  // const { playerList } = props;
+  const keptQBs = filterKeepersByPosition(keptPlayersList, "QB");
+  const keptRBs = filterKeepersByPosition(keptPlayersList, "RB");
+  const keptWRs = filterKeepersByPosition(keptPlayersList, "WR");
+  const keptTEs = filterKeepersByPosition(keptPlayersList, "TE");
 
   return (
     <div style={{ display: "flex" }}>

@@ -50,6 +50,13 @@ router.route("/updateCap/:ownerName").put((req, res) => {
     .catch((err) => res.status(400).json("Unable to find owner: " + err));
 });
 
+// Update penalty fee
+router.route("/updatePenaltyFee/:ownerName").put(async (req, res) => {
+  await Owner.updateOne({ _id: ownersIDByName[req.params.ownerName] }, req.body)
+    .then(res.status(200).json("Owner updated"))
+    .catch((err) => res.status(400).json("Unable to find owner: ", err));
+});
+
 const ownersIDByName = {
   Kevin: "5e80d724b3bdaf3413316177",
   Justin: "5e80d930b3bdaf3413316189",

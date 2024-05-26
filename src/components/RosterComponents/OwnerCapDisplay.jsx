@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -29,15 +30,48 @@ const calculateTotalKeeperPrice = (roster, franchisePrices) => {
     );
 };
 
+const renderCard = (label, value) => {
+  return (
+    <Card>
+      <CardBody>
+        <CardTitle tag="h3">{label}</CardTitle>
+        <CardText tag="h4">${value}</CardText>
+      </CardBody>
+    </Card>
+  );
+};
+
 const OwnerCapDisplay = (props) => {
   const { owner, roster, franchisePrices } = props;
+  const [currentOwnerPenalty, setCurrentOwnerPenalty] = useState();
+
   const MAX_CAP = owner.cap[4];
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
   const keepPrice = calculateTotalKeeperPrice(roster, franchisePrices);
   const penaltyFee = calculatePenaltyFee(roster, franchisePrices, MAX_CAP);
+  // setCurrentOwnerPenalty(penaltyFee);
   const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee * -1 : 0;
   const isOffender = keepPrice > TAX_LINE;
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
+
+  useEffect(() => {
+    setCurrentOwnerPenalty(penaltyFee);
+  }, [penaltyFee]);
+
+  useEffect(() => {
+    const updatePenalty = async () => {
+      if (owner.name) {
+        console.log(currentOwnerPenalty);
+        await axios
+          .put(`http://localhost:5000/owner/updatePenaltyFee/${owner.name}`, {
+            penaltyFee: currentOwnerPenalty,
+          })
+          .catch((e) => console.error(e));
+      }
+    };
+
+    updatePenalty();
+  }, [currentOwnerPenalty, owner.name]);
 
   const getCardColor = () => {
     if (remaining < 0) {
@@ -51,30 +85,9 @@ const OwnerCapDisplay = (props) => {
       <h1 className="text-center">{owner.name}'s Roster </h1>
       <br />
       <Row>
-        <Col>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h3">Max Cap</CardTitle>
-              <CardText tag="h4">${MAX_CAP}</CardText>
-            </CardBody>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h3">Luxary Tax Line</CardTitle>
-              <CardText tag="h4">${TAX_LINE}</CardText>
-            </CardBody>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h3">Keeper Price</CardTitle>
-              <CardText tag="h4">${keepPrice}</CardText>
-            </CardBody>
-          </Card>
-        </Col>
+        <Col>{renderCard("Max Cap", MAX_CAP)}</Col>
+        <Col>{renderCard("Luxary Tax Line", TAX_LINE)}</Col>
+        <Col>{renderCard("Keeper Price", keepPrice)}</Col>
         <Col>
           <Card color={getCardColor()}>
             <CardBody>
