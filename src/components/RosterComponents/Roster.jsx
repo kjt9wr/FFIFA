@@ -103,7 +103,7 @@ const Roster = (props) => {
     // setReward(penaltyReward);
   }, [changeKeeper, penaltyFees]);
 */
-
+  const keptPlayersList = roster.filter((p) => p.keep);
   return (
     <Container>
       <OwnerCapDisplay
@@ -113,7 +113,7 @@ const Roster = (props) => {
         penaltyReward={reward}
       />
       <h4>Roster:</h4>
-      <PlayerDisplayByPosition playerList={roster} />
+      <PlayerDisplayByPosition playerList={keptPlayersList} />
       <RosterDataTable
         roster={roster}
         franchisePrices={franchisePrices}
