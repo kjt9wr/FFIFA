@@ -63,7 +63,15 @@ const PlayerRow = (props) => {
     <tr className="customRow">
       <td>{player.position}</td>
       <td> {player.name} </td>
-      <td> {determineFinalPriceOfPlayer(player, props.franchisePrices)} </td>
+      <td>
+        {[
+          KEEPER_CLASS_ENUM.FRANCHISE_TAG,
+          KEEPER_CLASS_ENUM.ARBITRATION,
+        ].includes(player.keeperClass) && (
+          <span className="previousValue"> {player.price}</span>
+        )}{" "}
+        {determineFinalPriceOfPlayer(player, props.franchisePrices)}
+      </td>
       <td>
         <Input
           type="checkbox"

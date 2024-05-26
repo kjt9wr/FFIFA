@@ -58,6 +58,11 @@ table tr:hover {
   background-color: #272b3f;
 }
 
+.previousValue {
+  text-decoration: line-through;
+  color: #e6543e;
+}
+
 input[type="checkbox"] {
   /* Double-sized Checkboxes */
   -ms-transform: scale(1.5); /* IE */
