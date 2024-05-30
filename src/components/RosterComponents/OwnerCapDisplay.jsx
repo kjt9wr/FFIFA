@@ -42,14 +42,13 @@ const renderCard = (label, value) => {
 };
 
 const OwnerCapDisplay = (props) => {
-  const { owner, roster, franchisePrices } = props;
+  const { owner, roster, franchisePrices, penaltyReward } = props;
   const [currentOwnerPenalty, setCurrentOwnerPenalty] = useState();
 
   const MAX_CAP = owner.cap[4];
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
   const keepPrice = calculateTotalKeeperPrice(roster, franchisePrices);
   const penaltyFee = calculatePenaltyFee(roster, franchisePrices, MAX_CAP);
-  // setCurrentOwnerPenalty(penaltyFee);
   const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee * -1 : 0;
   const isOffender = keepPrice > TAX_LINE;
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
@@ -61,7 +60,6 @@ const OwnerCapDisplay = (props) => {
   useEffect(() => {
     const updatePenalty = async () => {
       if (owner.name) {
-        console.log(currentOwnerPenalty);
         await axios
           .put(`http://localhost:5000/owner/updatePenaltyFee/${owner.name}`, {
             penaltyFee: currentOwnerPenalty,
@@ -92,7 +90,9 @@ const OwnerCapDisplay = (props) => {
           <Card color={getCardColor()}>
             <CardBody>
               <CardTitle tag="h3">Remaining</CardTitle>
-              <CardText tag="h4">${remaining}</CardText>
+              <CardText tag="h4">
+                ${remaining} {!isOffender && <span>+ ${penaltyReward}</span>}
+              </CardText>
             </CardBody>
           </Card>
         </Col>

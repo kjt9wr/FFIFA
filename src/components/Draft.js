@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "reactstrap";
+import { calculateLuxaryPotPayout } from "../Services/FFIFAService";
 
 const displayOwnersUnderTax = (ownerData) => {
   return ownerData
@@ -68,7 +69,7 @@ const Draft = () => {
         </Row>
       </Card>
       <h4>Total Money in the Pot: ${totalInPot}</h4>
-      <h4>Payout Per Owner: ${Math.trunc(totalInPot / nonOffenders)}</h4>
+      <h4>Payout Per Owner: ${calculateLuxaryPotPayout(penaltyFees)}</h4>
     </Container>
   );
 };

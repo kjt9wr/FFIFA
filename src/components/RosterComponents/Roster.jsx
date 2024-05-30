@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "reactstrap";
 import { getRoster } from "../../Services/DatabaseService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
+import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
 import OwnerCapDisplay from "./OwnerCapDisplay.jsx";
 import RosterDataTable from "./RosterDataTable.jsx";
@@ -28,14 +29,12 @@ const Roster = (props) => {
     cap: [0, 0, 0, 0, 0, 0],
   });
   const [roster, setRoster] = useState([]);
-  const [penaltyFees, setPenaltyFees] = useState({});
-  const [reward, setReward] = useState();
+  const [penaltyFees, setPenaltyFees] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
 
   const toggleKeeper = useCallback(
     async (e) => {
-      console.log("flipped the switch: " + e.target.checked);
       const newKeep = { keep: e.target.checked };
       await axios.put(
         `http://localhost:5000/player/updatePlayer/${e.target.id}`,
@@ -47,14 +46,12 @@ const Roster = (props) => {
   );
 
   useEffect(() => {
-    console.log("get owner info");
     const getOwnerData = async () => {
       await axios.get("http://localhost:5000/owner/").then((response) => {
-        setPenaltyFees(
-          response.data.map((owner) => {
-            return { name: owner.name, penaltyFee: owner.penaltyFee };
-          })
-        );
+        const fees = response.data.map((owner) => {
+          return { name: owner.name, penaltyFee: owner.penaltyFee };
+        });
+        setPenaltyFees(fees);
         const mycurrentOwner = response.data.find((owner) => {
           return props.match.params.name === owner.name;
         });
@@ -84,33 +81,16 @@ const Roster = (props) => {
     getFranchiseTagInfo();
   }, [owner._id, owner.name.length, toggleKeeper]);
 
-  /*
-  useEffect(() => {
-    const calculatePenaltyReward = () => {
-      if (penaltyFees.length > 0) {
-        const nonOffenders = penaltyFees.filter(
-          (owner) => owner.penaltyFee === 0
-        ).length;
-
-        const penaltyMoneyInThePot = penaltyFees.reduce(
-          (acc, owner) => acc + owner.penaltyFee,
-          0
-        );
-        return Math.trunc(penaltyMoneyInThePot / nonOffenders);
-      }
-    };
-    // const penaltyReward = calculatePenaltyReward();
-    // setReward(penaltyReward);
-  }, [changeKeeper, penaltyFees]);
-*/
   const keptPlayersList = roster.filter((p) => p.keep);
+  const payout = calculateLuxaryPotPayout(penaltyFees);
+
   return (
     <Container>
       <OwnerCapDisplay
         owner={owner}
         roster={roster}
         franchisePrices={franchisePrices}
-        penaltyReward={reward}
+        penaltyReward={payout}
       />
       <h4>Roster:</h4>
       <PlayerDisplayByPosition playerList={keptPlayersList} />

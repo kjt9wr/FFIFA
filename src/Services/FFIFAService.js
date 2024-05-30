@@ -36,3 +36,16 @@ export const pickSuperMaxOrKeeperPrice = (player) => {
 export const increaseKeeperPrice = (draftedPrice) => {
   return Math.max(10, Math.trunc(1.2 * draftedPrice));
 };
+
+export const calculateLuxaryPotPayout = (penaltyFees) => {
+  const totalInPot = penaltyFees.reduce(
+    (acc, owner) => acc + owner.penaltyFee,
+    0
+  );
+
+  const nonOffenders = penaltyFees.filter(
+    (owner) => owner.penaltyFee === 0
+  ).length;
+
+  return Math.trunc(totalInPot / nonOffenders);
+};
