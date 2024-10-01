@@ -3,10 +3,29 @@ export const RB = "RB";
 export const WR = "WR";
 export const TE = "TE";
 
-export const CURRENT_SEASON_YEAR = "2024";
+export const CURRENT_SEASON_YEAR = "2025";
 
 export const SLEEPER_LEAGUE_ID = "1000436768526741504";
+export const SLEEPER_LEAGUE_ID_2024 = "1124841056500727808";
 export const DRAFT_ID = "1000436769222967296";
+export const DRAFT_ID_2024 = "1124841056500727809";
+
+const ID_ENUM = {
+  KEVIN: "5e80d724b3bdaf3413316177",
+  JUSTIN: "5e80d930b3bdaf3413316189",
+  ALEX: "5e80dd6ab3bdaf34133161bd",
+  LUIGI: "5e80da66b3bdaf341331619b",
+  CHRISTIAN: "5e80e173b3bdaf3413316213",
+  MATT: "5e80df96b3bdaf34133161ef",
+  BRENT: "5e80db62b3bdaf34133161ab",
+  MICHAEL: "5e80de37b3bdaf34133161cf",
+  NIKOS: "5e80dedcb3bdaf34133161dd",
+  CHINMAY: "5e80e07eb3bdaf3413316200",
+  PATRICK: "5e80e1dab3bdaf3413316225",
+  JEFF: "5e80e1deb3bdaf3413316226",
+  CASEY: "66fb53a23cb8429bd448fd61",
+};
+
 export const ownersByID = {
   "5e80d724b3bdaf3413316177": "Kevin",
   "5e80d930b3bdaf3413316189": "Justin",
@@ -20,21 +39,23 @@ export const ownersByID = {
   "5e80e07eb3bdaf3413316200": "Chinmay",
   "5e80e1dab3bdaf3413316225": "Patrick",
   "5e80e1deb3bdaf3413316226": "Jeff",
+  "66fb53a23cb8429bd448fd61": "Casey",
 };
 
 export const OwnerIDBySleeperRosterID = {
-  1: "5e80dd6ab3bdaf34133161bd",
-  2: "5e80de37b3bdaf34133161cf",
-  3: "5e80d724b3bdaf3413316177",
-  4: "5e80e1deb3bdaf3413316226",
-  5: "5e80da66b3bdaf341331619b",
-  6: "5e80e173b3bdaf3413316213",
-  7: "5e80dedcb3bdaf34133161dd",
-  8: "5e80df96b3bdaf34133161ef",
-  9: "5e80d930b3bdaf3413316189",
-  10: "5e80e1dab3bdaf3413316225",
-  11: "5e80e07eb3bdaf3413316200",
-  12: "5e80db62b3bdaf34133161ab",
+  1: ID_ENUM.ALEX,
+  2: ID_ENUM.MICHAEL,
+
+  3: ID_ENUM.KEVIN,
+  4: ID_ENUM.JEFF,
+  5: ID_ENUM.LUIGI,
+  6: ID_ENUM.CHRISTIAN,
+  7: ID_ENUM.NIKOS,
+  8: ID_ENUM.MATT,
+  9: ID_ENUM.JUSTIN,
+  10: ID_ENUM.PATRICK,
+  11: ID_ENUM.CASEY,
+  12: ID_ENUM.BRENT,
 };
 
 export const playersByID = {

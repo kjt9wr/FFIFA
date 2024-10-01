@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ButtonGroup } from "reactstrap";
 
-const RECORDED_YEARS = ["2020", "2021", "2022", "2023", "2024"];
+const RECORDED_YEARS = ["2020", "2021", "2022", "2023", "2024", "2025"];
 
 /*
  * This component creates a button group of years that the user can toggle between

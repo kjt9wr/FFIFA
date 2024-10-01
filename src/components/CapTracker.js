@@ -10,17 +10,23 @@ const displayCapTable = (year, owners) => {
       <thead className="thead-light">
         <tr>
           <th></th>
-          {owners.map((owner) => (
-            <th key={owner.name}>{owner.name}</th>
-          ))}
+          {owners.map(
+            (owner) =>
+              owner.cap[parseInt(year.slice(-1))] !== 0 && (
+                <th key={owner.name}>{owner.name}</th>
+              )
+          )}
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>{year}</td>
-          {owners.map((owner) => (
-            <td key={owner.name}>{owner.cap[parseInt(year.slice(-1))]}</td>
-          ))}
+          {owners.map(
+            (owner) =>
+              owner.cap[parseInt(year.slice(-1))] !== 0 && (
+                <td key={owner.name}>{owner.cap[parseInt(year.slice(-1))]}</td>
+              )
+          )}
         </tr>
       </tbody>
     </Table>

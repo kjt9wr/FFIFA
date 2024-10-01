@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Alert, Button, Container } from "reactstrap";
 import { increaseKeeperPrice } from "../Services/FFIFAService";
 import {
-  DRAFT_ID,
+  DRAFT_ID_2024,
   OwnerIDBySleeperRosterID,
-  SLEEPER_LEAGUE_ID,
+  SLEEPER_LEAGUE_ID_2024,
 } from "../Utilities/Constants";
 import { playersBySleeperID } from "../Utilities/Sleeper_Ids";
 
@@ -21,7 +21,7 @@ const Admin = () => {
   useEffect(() => {
     const getAllRosters = async () => {
       const rostersResponse = await axios.get(
-        `https://api.sleeper.app/v1/league/${SLEEPER_LEAGUE_ID}/rosters`
+        `https://api.sleeper.app/v1/league/${SLEEPER_LEAGUE_ID_2024}/rosters`
       );
       const rosters = rostersResponse.data.map((roster) => {
         return {
@@ -40,7 +40,7 @@ const Admin = () => {
   useEffect(() => {
     const getDraftInfo = async () => {
       const draftResults = await axios.get(
-        `https://api.sleeper.app/v1/draft/${DRAFT_ID}/picks`
+        `https://api.sleeper.app/v1/draft/${DRAFT_ID_2024}/picks`
       );
       const playersToUpdate = draftResults.data
         .filter((player) => player.metadata.player_id in playersBySleeperID)

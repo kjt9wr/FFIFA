@@ -32,7 +32,7 @@ const NavBar = () => {
               <DropdownMenu right>
                 <DropdownItem href="/roster/Kevin"> Kevin </DropdownItem>
                 <DropdownItem href="/roster/Nikos"> Nikos </DropdownItem>
-                <DropdownItem href="/roster/Chinmay"> Chinmay </DropdownItem>
+                <DropdownItem href="/roster/Casey"> Casey </DropdownItem>
                 <DropdownItem href="/roster/Patrick"> Patrick </DropdownItem>
                 <DropdownItem href="/roster/Luigi"> Luigi </DropdownItem>
                 <DropdownItem href="/roster/Brent"> Brent </DropdownItem>

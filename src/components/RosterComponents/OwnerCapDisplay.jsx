@@ -45,7 +45,7 @@ const OwnerCapDisplay = (props) => {
   const { owner, roster, franchisePrices, penaltyReward } = props;
   const [currentOwnerPenalty, setCurrentOwnerPenalty] = useState();
 
-  const MAX_CAP = owner.cap[4];
+  const MAX_CAP = owner.cap[5];
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
   const keepPrice = calculateTotalKeeperPrice(roster, franchisePrices);
   const penaltyFee = calculatePenaltyFee(roster, franchisePrices, MAX_CAP);
