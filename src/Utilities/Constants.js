@@ -45,7 +45,6 @@ export const ownersByID = {
 export const OwnerIDBySleeperRosterID = {
   1: ID_ENUM.ALEX,
   2: ID_ENUM.MICHAEL,
-
   3: ID_ENUM.KEVIN,
   4: ID_ENUM.JEFF,
   5: ID_ENUM.LUIGI,

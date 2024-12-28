@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "reactstrap";
-import { getRoster } from "../../Services/DatabaseService";
-import { getFranchiseTagDTO } from "../../Services/FranchiseService";
+import { getOwnersFromDB, getRoster } from "../../Services/DatabaseService";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
+import { getFranchiseTagDTO } from "../../Services/FranchiseService";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
-import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay.jsx";
 import RosterDataTable from "./RosterDataTable.jsx";
+import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay.jsx";
 
 const formatFranchisePrices = (franchiseDTO) => {
   return {
@@ -32,9 +32,10 @@ const ownersIDByName = {
   Jeff: "5e80e1deb3bdaf3413316226",
   Casey: "66fb53a23cb8429bd448fd61",
 };
+
 /*
  * This page displays an owner's available cap information, projected keepers display,
- * and a roster table edit keepers
+ * and a roster table to edit keepers
  */
 
 const Roster = (props) => {
@@ -46,59 +47,37 @@ const Roster = (props) => {
   const ownerName = props.match.params.name;
   const ownerId = ownersIDByName[ownerName];
 
-  console.log("render cycle");
-
   const toggleKeeper = useCallback(
     async (e) => {
-      console.log("clicked!");
-      const newKeep = { keep: e.target.checked };
+      const newKeepValue = { keep: e.target.checked };
       setChangeKeeper(!changeKeeper);
       await axios.put(
         `http://localhost:5000/player/updatePlayer/${e.target.id}`,
-        newKeep
+        newKeepValue
       );
     },
     [changeKeeper]
   );
 
   useEffect(() => {
-    console.log("fetching penalty data");
-    const getOwnerData = async () => {
-      await axios.get("http://localhost:5000/owner/").then((response) => {
-        const fees = response.data.map((owner) => {
-          return { name: owner.name, penaltyFee: owner.penaltyFee };
-        });
-        setPenaltyFees(fees);
-      });
-    };
-
-    getOwnerData();
-  }, [ownerName, changeKeeper]);
-
-  useEffect(() => {
-    console.log("fetching roster info");
-    const fetchRosterInfo = async () => {
-      const unsortedRoster = await getRoster(ownerId);
+    Promise.all([
+      getRoster(ownerId),
+      getOwnersFromDB(),
+      getFranchiseTagDTO(),
+    ]).then(([unsortedRoster, owners, franchiseTags]) => {
       setRoster(
         unsortedRoster.sort((a, b) => (a.position > b.position ? 1 : -1))
       );
-    };
-
-    fetchRosterInfo();
+      const fees = owners.map((owner) => {
+        return { name: owner.name, penaltyFee: owner.penaltyFee };
+      });
+      setPenaltyFees(fees);
+      setFranchisePrices(formatFranchisePrices(franchiseTags));
+    });
   }, [ownerId, toggleKeeper]);
 
-  useEffect(() => {
-    const getFranchiseTagInfo = async () => {
-      console.log("fetching franchise prices");
-      const franchiseDTO = await getFranchiseTagDTO();
-      setFranchisePrices(formatFranchisePrices(franchiseDTO));
-    };
-
-    getFranchiseTagInfo();
-  }, [toggleKeeper]);
-
   const keptPlayersList = roster.filter((p) => p.keep);
-  const payout = calculateLuxaryPotPayout(penaltyFees);
+  const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
 
   return (
     <Container>
@@ -106,7 +85,7 @@ const Roster = (props) => {
         ownerName={ownerName}
         roster={roster}
         franchisePrices={franchisePrices}
-        penaltyReward={payout}
+        penaltyReward={luxaryPotPayout}
       />
       <h4>Roster:</h4>
       <PlayerDisplayByPosition playerList={keptPlayersList} />
