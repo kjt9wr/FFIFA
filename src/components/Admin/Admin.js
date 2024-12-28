@@ -8,14 +8,19 @@ import {
   SLEEPER_LEAGUE_ID_2024,
 } from "../../Utilities/Constants";
 import { playersBySleeperID } from "../../Utilities/Sleeper_Ids";
+import AddTradeForm from "./AddTradeForm.js";
+
+const ALERT_STATE = {
+  NONE: "none",
+  SUCCESS: "sucess",
+  ERROR: "error",
+};
 
 const Admin = () => {
   const [allRosters, setAllRosters] = useState();
   const [draftData, setDraftData] = useState();
-  const [rosterUpdateSuccess, setRosterUpdateSuccess] = useState(false);
-  const [rosterUpdateError, setRosterUpdateError] = useState(false);
-  const [draftDataSuccess, setDraftDataSuccess] = useState(false);
-  const [draftDataError, setDraftDataError] = useState(false);
+  const [rosterUpdateAlert, setRosterUpdateAlert] = useState(ALERT_STATE.NONE);
+  const [draftDataAlert, setDraftDataAlert] = useState(ALERT_STATE.NONE);
 
   // get all rosters from Sleeper Api
   useEffect(() => {
@@ -58,7 +63,7 @@ const Admin = () => {
     await axios
       .post(`http://localhost:5000/player/removeAllOwners`)
       .catch((e) => {
-        setRosterUpdateError(true);
+        setRosterUpdateAlert(ALERT_STATE.ERROR);
         console.error(e);
       });
 
@@ -73,11 +78,11 @@ const Admin = () => {
           }
         )
         .catch((e) => {
-          setRosterUpdateError(true);
+          setRosterUpdateAlert(ALERT_STATE.ERROR);
           console.error(e);
         });
     });
-    setRosterUpdateSuccess(true);
+    setRosterUpdateAlert(ALERT_STATE.SUCCESS);
   };
 
   const addDraftPrices = async () => {
@@ -90,27 +95,27 @@ const Admin = () => {
           }
         )
         .catch((e) => {
-          setDraftDataError(true);
+          setDraftDataAlert(ALERT_STATE.ERROR);
           console.error(e);
         });
     });
-    setDraftDataSuccess(true);
+    setDraftDataAlert(ALERT_STATE.SUCCESS);
   };
 
   return (
     <Container>
       <h1 className="text-center"> Admin Page </h1>
-      {rosterUpdateError && (
+      {ALERT_STATE.ERROR === rosterUpdateAlert && (
         <Alert color="danger">Error updating rosters</Alert>
       )}
-      {rosterUpdateSuccess && !rosterUpdateError && (
+      {ALERT_STATE.SUCCESS === rosterUpdateAlert && (
         <Alert color="success">Successfully Updated Rosters</Alert>
       )}
-      {draftDataError && (
+      {ALERT_STATE.ERROR === draftDataAlert && (
         <Alert color="danger">Error updating player prices</Alert>
       )}
-      {draftDataSuccess && !draftDataError && (
-        <Alert color="success">Successfully Updated player Prices</Alert>
+      {ALERT_STATE.SUCCESS === draftDataAlert && (
+        <Alert color="success">Successfully updated player draft prices</Alert>
       )}
       <Button title="Update All Rosters" onClick={updateAllRosters}>
         Update All Rosters
@@ -119,6 +124,7 @@ const Admin = () => {
         Add Draft Prices
       </Button>
       <br /> <br />
+      <AddTradeForm />
     </Container>
   );
 };
