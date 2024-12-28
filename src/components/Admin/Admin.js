@@ -8,7 +8,6 @@ import {
   SLEEPER_LEAGUE_ID_2024,
 } from "../../Utilities/Constants";
 import { playersBySleeperID } from "../../Utilities/Sleeper_Ids";
-import AddTradeForm from "./AddTradeForm";
 
 const Admin = () => {
   const [allRosters, setAllRosters] = useState();
@@ -120,7 +119,6 @@ const Admin = () => {
         Add Draft Prices
       </Button>
       <br /> <br />
-      {/* <AddTradeForm /> */}
     </Container>
   );
 };
