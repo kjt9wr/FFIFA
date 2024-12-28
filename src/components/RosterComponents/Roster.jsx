@@ -17,70 +17,85 @@ const formatFranchisePrices = (franchiseDTO) => {
   };
 };
 
+const ownersIDByName = {
+  Kevin: "5e80d724b3bdaf3413316177",
+  Justin: "5e80d930b3bdaf3413316189",
+  Alex: "5e80dd6ab3bdaf34133161bd",
+  Luigi: "5e80da66b3bdaf341331619b",
+  Christian: "5e80e173b3bdaf3413316213",
+  Matt: "5e80df96b3bdaf34133161ef",
+  Brent: "5e80db62b3bdaf34133161ab",
+  Michael: "5e80de37b3bdaf34133161cf",
+  Nikos: "5e80dedcb3bdaf34133161dd",
+  Chinmay: "5e80e07eb3bdaf3413316200",
+  Patrick: "5e80e1dab3bdaf3413316225",
+  Jeff: "5e80e1deb3bdaf3413316226",
+  Casey: "66fb53a23cb8429bd448fd61",
+};
 /*
  * This page displays an owner's available cap information, projected keepers display,
  * and a roster table edit keepers
  */
 
 const Roster = (props) => {
-  const [owner, setOwner] = useState({
-    _id: "",
-    name: "",
-    cap: [0, 0, 0, 0, 0, 0],
-  });
   const [roster, setRoster] = useState([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
 
+  const ownerName = props.match.params.name;
+  const ownerId = ownersIDByName[ownerName];
+
+  console.log("render cycle");
+
   const toggleKeeper = useCallback(
     async (e) => {
       console.log("clicked!");
       const newKeep = { keep: e.target.checked };
+      setChangeKeeper(!changeKeeper);
       await axios.put(
         `http://localhost:5000/player/updatePlayer/${e.target.id}`,
         newKeep
       );
-      setChangeKeeper(!changeKeeper);
     },
     [changeKeeper]
   );
 
   useEffect(() => {
+    console.log("fetching penalty data");
     const getOwnerData = async () => {
       await axios.get("http://localhost:5000/owner/").then((response) => {
         const fees = response.data.map((owner) => {
           return { name: owner.name, penaltyFee: owner.penaltyFee };
         });
         setPenaltyFees(fees);
-        const mycurrentOwner = response.data.find((owner) => {
-          return props.match.params.name === owner.name;
-        });
-        setOwner(mycurrentOwner);
       });
     };
 
     getOwnerData();
-  }, [props.match.params.name, changeKeeper]);
+  }, [ownerName, changeKeeper]);
 
   useEffect(() => {
+    console.log("fetching roster info");
     const fetchRosterInfo = async () => {
-      if (owner.name.length > 0) {
-        const allPlayers = await getRoster(owner._id);
-        setRoster(
-          allPlayers.sort((a, b) => (a.position > b.position ? 1 : -1))
-        );
-      }
+      const unsortedRoster = await getRoster(ownerId);
+      setRoster(
+        unsortedRoster.sort((a, b) => (a.position > b.position ? 1 : -1))
+      );
     };
 
     fetchRosterInfo();
+  }, [ownerId, toggleKeeper]);
+
+  useEffect(() => {
     const getFranchiseTagInfo = async () => {
+      console.log("fetching franchise prices");
       const franchiseDTO = await getFranchiseTagDTO();
       setFranchisePrices(formatFranchisePrices(franchiseDTO));
     };
 
     getFranchiseTagInfo();
-  }, [owner._id, owner.name.length, toggleKeeper]);
+  }, [toggleKeeper]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
   const payout = calculateLuxaryPotPayout(penaltyFees);
@@ -88,7 +103,7 @@ const Roster = (props) => {
   return (
     <Container>
       <RosterOwnerCapDisplay
-        owner={owner}
+        ownerName={ownerName}
         roster={roster}
         franchisePrices={franchisePrices}
         penaltyReward={payout}

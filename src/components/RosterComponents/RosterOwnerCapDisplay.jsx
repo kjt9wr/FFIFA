@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
 import RosterProgressBar from "./RosterProgressBar";
@@ -35,7 +35,13 @@ const renderCard = (label, value) => {
 };
 
 const RosterOwnerCapDisplay = (props) => {
-  const { owner, roster, franchisePrices, penaltyReward } = props;
+  const { ownerName, roster, franchisePrices, penaltyReward } = props;
+
+  const [owner, setOwner] = useState({
+    _id: "",
+    name: "",
+    cap: [0, 0, 0, 0, 0, 0],
+  });
 
   const MAX_CAP = owner.cap[5];
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
@@ -44,6 +50,19 @@ const RosterOwnerCapDisplay = (props) => {
   const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee * -1 : 0;
   const isOffender = keepPrice > TAX_LINE;
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
+
+  useEffect(() => {
+    console.log("fetching owner data");
+    const getOwnerData = async () => {
+      await axios
+        .get(`http://localhost:5000/owner/${ownerName}`)
+        .then((response) => {
+          setOwner(response.data[0]);
+        });
+    };
+
+    getOwnerData();
+  }, [ownerName]);
 
   useEffect(() => {
     const updatePenalty = async () => {
