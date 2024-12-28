@@ -5,7 +5,7 @@ import { getRoster } from "../../Services/DatabaseService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
-import OwnerCapDisplay from "./OwnerCapDisplay.jsx";
+import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay.jsx";
 import RosterDataTable from "./RosterDataTable.jsx";
 
 const formatFranchisePrices = (franchiseDTO) => {
@@ -35,6 +35,7 @@ const Roster = (props) => {
 
   const toggleKeeper = useCallback(
     async (e) => {
+      console.log("clicked!");
       const newKeep = { keep: e.target.checked };
       await axios.put(
         `http://localhost:5000/player/updatePlayer/${e.target.id}`,
@@ -86,7 +87,7 @@ const Roster = (props) => {
 
   return (
     <Container>
-      <OwnerCapDisplay
+      <RosterOwnerCapDisplay
         owner={owner}
         roster={roster}
         franchisePrices={franchisePrices}

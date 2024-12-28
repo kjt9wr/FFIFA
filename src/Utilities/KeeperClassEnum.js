@@ -5,7 +5,7 @@ export const KEEPER_CLASS_ENUM = {
   ARBITRATION: 4,
 };
 
-export const getKeeperClass = (keeperClassEnum) => {
+export const getKeeperClassText = (keeperClassEnum) => {
   switch (keeperClassEnum) {
     case 2:
       return "Franchise Tag";

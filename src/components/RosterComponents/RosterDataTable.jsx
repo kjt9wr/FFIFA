@@ -1,15 +1,11 @@
 import React from "react";
-import { Input, Table } from "reactstrap";
-import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
-import {
-  KEEPER_CLASS_ENUM,
-  getKeeperClass,
-} from "../../Utilities/KeeperClassEnum";
+import { Table } from "reactstrap";
+import RosterPlayerRow from "./RosterPlayerRow";
 
 const populatePlayerRows = (roster, franchisePrices, toggleKeeper) => {
   return roster.map((currentPlayer) => {
     return (
-      <PlayerRow
+      <RosterPlayerRow
         player={currentPlayer}
         key={currentPlayer._id}
         id={currentPlayer._id}
@@ -21,15 +17,6 @@ const populatePlayerRows = (roster, franchisePrices, toggleKeeper) => {
   });
 };
 
-const getSuperMaxText = (superMax) => {
-  return (
-    superMax && (
-      <b>
-        Year {superMax.year} in {superMax.plan} Year Deal
-      </b>
-    )
-  );
-};
 /*
  * This component displays the roster table
  */
@@ -54,39 +41,6 @@ const RosterDataTable = (props) => {
         )}
       </tbody>
     </Table>
-  );
-};
-
-const PlayerRow = (props) => {
-  const { player } = props;
-  return (
-    <tr className="customRow">
-      <td>{player.position}</td>
-      <td> {player.name} </td>
-      <td>
-        {[
-          KEEPER_CLASS_ENUM.FRANCHISE_TAG,
-          KEEPER_CLASS_ENUM.ARBITRATION,
-        ].includes(player.keeperClass) && (
-          <span className="previousValue"> {player.price}</span>
-        )}{" "}
-        {determineFinalPriceOfPlayer(player, props.franchisePrices)}
-      </td>
-      <td>
-        <Input
-          type="checkbox"
-          id={props.id}
-          key={props.id}
-          onChange={props.toggleKeeper}
-          checked={props.keep}
-        />
-      </td>
-      <td>{player.keeperClass > 1 && getKeeperClass(player.keeperClass)}</td>
-      <td>
-        {KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass &&
-          getSuperMaxText(player?.superMax)}
-      </td>
-    </tr>
   );
 };
 

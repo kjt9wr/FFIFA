@@ -12,7 +12,7 @@ import Roster from "./components/RosterComponents/Roster.jsx";
 import SuperMax from "./components/SuperMax.js";
 import TradeTracker from "./components/TradeComponents/TradeTracker.js";
 import Draft from "./components/Draft.js";
-import Admin from "./components/Admin.js";
+import Admin from "./components/Admin/Admin.js";
 
 const App = () => (
   <Router>

@@ -7,6 +7,7 @@ const ownerSchema = new Schema({
   cap: { type: Array, required: true },
   sleeperId: { type: String, required: true },
   penaltyFee: { type: Number },
+  active: { type: Boolean },
 });
 
 const Owner = mongoose.model("Owner", ownerSchema);

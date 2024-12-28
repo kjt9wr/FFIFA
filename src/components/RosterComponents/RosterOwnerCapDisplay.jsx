@@ -1,15 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
-  Col,
-  Progress,
-  Row,
-} from "reactstrap";
+import React, { useEffect } from "react";
+import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
+import RosterProgressBar from "./RosterProgressBar";
 
 const calculateLuxaryTaxLine = (cap) => Math.trunc(cap * 0.55);
 
@@ -41,9 +34,8 @@ const renderCard = (label, value) => {
   );
 };
 
-const OwnerCapDisplay = (props) => {
+const RosterOwnerCapDisplay = (props) => {
   const { owner, roster, franchisePrices, penaltyReward } = props;
-  const [currentOwnerPenalty, setCurrentOwnerPenalty] = useState();
 
   const MAX_CAP = owner.cap[5];
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
@@ -54,22 +46,18 @@ const OwnerCapDisplay = (props) => {
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
 
   useEffect(() => {
-    setCurrentOwnerPenalty(penaltyFee);
-  }, [penaltyFee]);
-
-  useEffect(() => {
     const updatePenalty = async () => {
       if (owner.name) {
         await axios
           .put(`http://localhost:5000/owner/updatePenaltyFee/${owner.name}`, {
-            penaltyFee: currentOwnerPenalty,
+            penaltyFee: penaltyFee,
           })
           .catch((e) => console.error(e));
       }
     };
 
     updatePenalty();
-  }, [currentOwnerPenalty, owner.name]);
+  }, [owner.name, penaltyFee]);
 
   const getCardColor = () => {
     if (remaining < 0) {
@@ -98,37 +86,15 @@ const OwnerCapDisplay = (props) => {
         </Col>
       </Row>
       <br />
-      <Progress
-        multi
-        style={{
-          height: "60px",
-        }}
-      >
-        <Progress
-          bar
-          color="success"
-          value={isOffender ? 55 : (keepPrice / MAX_CAP) * 100}
-        >
-          Under the Tax
-        </Progress>
-        <Progress
-          bar
-          color="warning"
-          value={isOffender ? ((keepPrice - TAX_LINE) / MAX_CAP) * 100 : 0}
-        >
-          $ Over
-        </Progress>
-        <Progress
-          bar
-          color="danger"
-          value={isOffender ? ((keepPrice - TAX_LINE) / MAX_CAP) * 100 : 0}
-        >
-          $ Penalty
-        </Progress>
-      </Progress>
+      <RosterProgressBar
+        keepPrice={keepPrice}
+        isOffender={isOffender}
+        TAX_LINE={TAX_LINE}
+        MAX_CAP={MAX_CAP}
+      />
       <br />
     </div>
   );
 };
 
-export default OwnerCapDisplay;
+export default RosterOwnerCapDisplay;

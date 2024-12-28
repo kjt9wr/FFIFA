@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Alert, Button, Container } from "reactstrap";
-import { increaseKeeperPrice } from "../Services/FFIFAService";
+import { increaseKeeperPrice } from "../../Services/FFIFAService";
 import {
   DRAFT_ID_2024,
   OwnerIDBySleeperRosterID,
   SLEEPER_LEAGUE_ID_2024,
-} from "../Utilities/Constants";
-import { playersBySleeperID } from "../Utilities/Sleeper_Ids";
+} from "../../Utilities/Constants";
+import { playersBySleeperID } from "../../Utilities/Sleeper_Ids";
+import AddTradeForm from "./AddTradeForm";
 
 const Admin = () => {
   const [allRosters, setAllRosters] = useState();
@@ -106,20 +107,20 @@ const Admin = () => {
       {rosterUpdateSuccess && !rosterUpdateError && (
         <Alert color="success">Successfully Updated Rosters</Alert>
       )}
-
       {draftDataError && (
         <Alert color="danger">Error updating player prices</Alert>
       )}
       {draftDataSuccess && !draftDataError && (
         <Alert color="success">Successfully Updated player Prices</Alert>
       )}
-
       <Button title="Update All Rosters" onClick={updateAllRosters}>
         Update All Rosters
       </Button>
       <Button title="Add Draft Prices" onClick={addDraftPrices}>
         Add Draft Prices
       </Button>
+      <br /> <br />
+      {/* <AddTradeForm /> */}
     </Container>
   );
 };

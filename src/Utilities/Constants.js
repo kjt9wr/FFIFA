@@ -406,4 +406,7 @@ export const playersByID = {
   "67006c43978c950db19949ba": "Bucky Irving",
   "67006d66978c950db19949bc": "Jordan Mason",
   "67006dc1978c950db19949bd": "Braelon Allen",
+  "671ff4313643584f75d8635a": "Jalen Coker",
+  "671ff45c3643584f75d8635b": "Cedric Tillman",
+  "676f38ad730c891d56961833": "Tucker Kraft",
 };

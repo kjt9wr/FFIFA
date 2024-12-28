@@ -18,7 +18,10 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <Navbar
+        className="navbar navbar-dark bg-dark navbar-expand-lg"
+        fixed="top"
+      >
         <Link to="/" className="navbar-brand">
           FFIFA
         </Link>
@@ -88,7 +91,7 @@ const NavBar = () => {
           </Nav>
         </Collapse>
       </Navbar>
-      <br />
+      <br /> <br /> <br />
     </div>
   );
 };
