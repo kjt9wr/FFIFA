@@ -53,7 +53,7 @@ router.route("/updateCap/:ownerName").put((req, res) => {
 // Update penalty fee
 router.route("/updatePenaltyFee/:ownerName").put(async (req, res) => {
   await Owner.updateOne({ _id: ownersIDByName[req.params.ownerName] }, req.body)
-    .then(res.status(200).json("Owner updated"))
+    .then(res.status(200).json("Owner penalty fee updated"))
     .catch((err) => res.status(400).json("Unable to find owner: ", err));
 });
 
@@ -70,6 +70,7 @@ const ownersIDByName = {
   Chinmay: "5e80e07eb3bdaf3413316200",
   Patrick: "5e80e1dab3bdaf3413316225",
   Jeff: "5e80e1deb3bdaf3413316226",
+  Casey: "66fb53a23cb8429bd448fd61",
 };
 
 module.exports = router;

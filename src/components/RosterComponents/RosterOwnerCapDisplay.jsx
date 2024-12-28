@@ -79,7 +79,12 @@ const RosterOwnerCapDisplay = (props) => {
             <CardBody>
               <CardTitle tag="h3">Remaining</CardTitle>
               <CardText tag="h4">
-                ${remaining} {!isOffender && <span>+ ${penaltyReward}</span>}
+                ${remaining}{" "}
+                {!isOffender && (
+                  <span>
+                    + ${penaltyReward} = ${remaining + penaltyReward}
+                  </span>
+                )}
               </CardText>
             </CardBody>
           </Card>
