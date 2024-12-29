@@ -18,18 +18,8 @@ export const fetchSupermaxPlayers = () => {
   return apiClient.get("/player/superMax");
 };
 
-export const fetchSingleOwner = (ownerName) => {
-  return apiClient.get(`/owner/${ownerName}`);
-};
-
-export const fetchAllOwners = () => {
-  return apiClient.get("/owner");
-};
-
-export const updatePenaltyFee = (ownerName, updatedFee) => {
-  return apiClient.put(`owner/updatePenaltyFee/${ownerName}`, {
-    penaltyFee: updatedFee,
-  });
+export const fetchKeptPlayers = () => {
+  return apiClient.get("/player/keptPlayers");
 };
 
 export const updatePlayerKeeperStatus = (playerID, keeperStatus) => {
@@ -38,6 +28,10 @@ export const updatePlayerKeeperStatus = (playerID, keeperStatus) => {
 
 export const clearAllPlayersOwner = () => {
   return apiClient.post("/player/removeAllOwners");
+};
+
+export const fetchRoster = (ownerId) => {
+  return apiClient.get(`/player/roster/${ownerId}`);
 };
 
 export const updateRoster = (ownerId, playerList) => {
@@ -49,6 +43,20 @@ export const updateRoster = (ownerId, playerList) => {
 export const updatePlayerPrice = (playerId, newPrice) => {
   return apiClient.put(`/player/updatePlayer/price/${playerId}`, {
     price: newPrice,
+  });
+};
+
+export const fetchSingleOwner = (ownerName) => {
+  return apiClient.get(`/owner/${ownerName}`);
+};
+
+export const fetchAllOwners = () => {
+  return apiClient.get("/owner");
+};
+
+export const updatePenaltyFee = (ownerName, updatedFee) => {
+  return apiClient.put(`owner/updatePenaltyFee/${ownerName}`, {
+    penaltyFee: updatedFee,
   });
 };
 

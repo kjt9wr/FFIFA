@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "reactstrap";
-import * as DatabaseService from "../Services/DatabaseService";
+import { fetchAllOwners } from "../api/apiService";
 import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
 import YearSelector from "./reusable/YearSelector";
 
@@ -42,8 +42,9 @@ const CapTracker = () => {
 
   useEffect(() => {
     const getOwnerInfo = async () => {
-      const ownersList = await DatabaseService.getOwnersFromDB();
-      setOwners(ownersList);
+      await fetchAllOwners().then((response) => {
+        setOwners(response.data);
+      });
     };
 
     getOwnerInfo();

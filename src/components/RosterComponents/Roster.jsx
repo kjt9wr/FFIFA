@@ -1,7 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "reactstrap";
-import { updatePlayerKeeperStatus } from "../../api/apiService.js";
-import { getOwnersFromDB, getRoster } from "../../Services/DatabaseService";
+import {
+  fetchAllOwners,
+  fetchRoster,
+  updatePlayerKeeperStatus,
+} from "../../api/apiService.js";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
 import { ownersIDByName } from "../../Utilities/Constants";
@@ -43,14 +46,14 @@ const Roster = (props) => {
 
   useEffect(() => {
     Promise.all([
-      getRoster(ownerId),
-      getOwnersFromDB(),
+      fetchRoster(ownerId),
+      fetchAllOwners(),
       getFranchiseTagDTO(),
     ]).then(([unsortedRoster, owners, franchiseTags]) => {
       setRoster(
-        unsortedRoster.sort((a, b) => (a.position > b.position ? 1 : -1))
+        unsortedRoster.data.sort((a, b) => (a.position > b.position ? 1 : -1))
       );
-      const fees = owners.map((owner) => {
+      const fees = owners.data.map((owner) => {
         return { name: owner.name, penaltyFee: owner.penaltyFee };
       });
       setPenaltyFees(fees);

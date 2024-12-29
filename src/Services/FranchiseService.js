@@ -1,20 +1,20 @@
+import { fetchKeptPlayers } from "../api/apiService";
 import * as Constants from "../Utilities/Constants";
-import * as DatabaseService from "./DatabaseService";
 import * as FFIFAService from "./FFIFAService";
 
 export const getFranchiseTagDTO = async () => {
-  const keptPlayers = await DatabaseService.getKeptPlayersFromDB();
+  const keptPlayers = await fetchKeptPlayers();
 
-  const keptQBs = keptPlayers
+  const keptQBs = keptPlayers.data
     .filter((player) => player.position === Constants.QB)
     .sort((a, b) => b.price - a.price);
-  const keptRBs = keptPlayers
+  const keptRBs = keptPlayers.data
     .filter((player) => player.position === Constants.RB)
     .sort((a, b) => b.price - a.price);
-  const keptWRs = keptPlayers
+  const keptWRs = keptPlayers.data
     .filter((player) => player.position === Constants.WR)
     .sort((a, b) => b.price - a.price);
-  const keptTEs = keptPlayers
+  const keptTEs = keptPlayers.data
     .filter((player) => player.position === Constants.TE)
     .sort((a, b) => b.price - a.price);
   replaceKeeperPriceWithSuperMax(keptRBs);
