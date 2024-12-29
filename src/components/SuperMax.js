@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "reactstrap";
 import * as SuperMaxService from "../Services/SuperMaxService";
 import * as Constants from "../Utilities/Constants";
+import { fetchSupermaxPlayers } from "../api/apiService";
 
 const renderSuperPlayerTable = (superMaxPlayers) => {
   return superMaxPlayers.map((currentPlayer) => {
@@ -42,11 +42,9 @@ const SuperMax = () => {
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
-      const players = await axios
-        .get("http://localhost:5000/player/superMax")
-        .catch(() => {
-          console.error("Unable to get players from the database");
-        });
+      const players = await fetchSupermaxPlayers().catch(() => {
+        console.error("Unable to get players from the database");
+      });
       setSupermaxPlayers(players.data);
     };
 

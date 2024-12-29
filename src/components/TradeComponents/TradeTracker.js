@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container } from "reactstrap";
+import { fetchAllTrades } from "../../api/apiService";
 import { CURRENT_SEASON_YEAR } from "../../Utilities/Constants";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
@@ -22,8 +22,7 @@ const TradeTracker = () => {
 
   useEffect(() => {
     const getTrades = async () => {
-      await axios
-        .get("http://localhost:5000/trade/")
+      fetchAllTrades()
         .then((response) => {
           setTradeList(response.data);
         })

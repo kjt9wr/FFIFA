@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container } from "reactstrap";
+import { fetchArbitrationData } from "../api/apiService";
 import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
 import PlayerDisplayByPosition from "./reusable/PlayerDisplayByPosition";
 
@@ -12,11 +12,9 @@ const Arbitration = () => {
 
   useEffect(() => {
     const getArbitratedPlayers = async () => {
-      const players = await axios
-        .get(`http://localhost:5000/player/arbitration/${CURRENT_SEASON_YEAR}`)
-        .catch(() => {
-          console.error("Unable to get players from the database");
-        });
+      const players = await fetchArbitrationData().catch(() => {
+        console.error("Unable to get players from the database");
+      });
 
       setArbitratedPlayers(players.data);
     };

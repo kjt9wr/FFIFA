@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "reactstrap";
 import { calculateLuxaryPotPayout } from "../Services/FFIFAService";
+import { fetchAllOwners } from "../api/apiService";
 
 const displayOwnersUnderTax = (ownerData) => {
   return ownerData
@@ -28,7 +28,7 @@ const Draft = () => {
 
   useEffect(() => {
     const getPenaltyData = async () => {
-      await axios.get("http://localhost:5000/owner/").then((response) => {
+      await fetchAllOwners().then((response) => {
         const fees = response.data.map((owner) => {
           return { name: owner.name, penaltyFee: owner.penaltyFee };
         });

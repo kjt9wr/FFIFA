@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Row, Table } from "reactstrap";
 import * as Constants from "../Utilities/Constants";
+import { fetchFreeAgents } from "../api/apiService";
 
 const populateFreeAgents = (freeAgentsForPosition) => {
   if (freeAgentsForPosition) {
@@ -25,11 +25,9 @@ const FreeAgentList = (props) => {
 };
 
 const getFreeAgentsFromDB = async () => {
-  const availablePlayers = await axios
-    .get("http://localhost:5000/player/freeAgents")
-    .catch(() => {
-      console.error("Unable to get players from the database");
-    });
+  const availablePlayers = await fetchFreeAgents().catch(() => {
+    console.error("Unable to get players from the database");
+  });
 
   const availableQBs = availablePlayers.data
     .filter((player) => player.position === Constants.QB && player.rank < 80)

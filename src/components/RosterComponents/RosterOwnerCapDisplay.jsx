@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
+import { fetchSingleOwner, updatePenaltyFee } from "../../api/apiService";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
 import RosterProgressBar from "./RosterProgressBar";
 
@@ -52,13 +52,10 @@ const RosterOwnerCapDisplay = (props) => {
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
 
   useEffect(() => {
-    console.log("fetching owner data");
     const getOwnerData = async () => {
-      await axios
-        .get(`http://localhost:5000/owner/${ownerName}`)
-        .then((response) => {
-          setOwner(response.data[0]);
-        });
+      await fetchSingleOwner(ownerName).then((response) => {
+        setOwner(response.data[0]);
+      });
     };
 
     getOwnerData();
@@ -66,17 +63,13 @@ const RosterOwnerCapDisplay = (props) => {
 
   useEffect(() => {
     const updatePenalty = async () => {
-      if (owner.name) {
-        await axios
-          .put(`http://localhost:5000/owner/updatePenaltyFee/${owner.name}`, {
-            penaltyFee: penaltyFee,
-          })
-          .catch((e) => console.error(e));
-      }
+      await updatePenaltyFee(ownerName, penaltyFee).catch((e) =>
+        console.error(e)
+      );
     };
 
     updatePenalty();
-  }, [owner.name, penaltyFee]);
+  }, [ownerName, penaltyFee]);
 
   const getCardColor = () => {
     if (remaining < 0) {
