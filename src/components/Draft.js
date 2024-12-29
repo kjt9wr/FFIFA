@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "reactstrap";
+import { Alert, Card, Col, Container, Row } from "reactstrap";
 import { calculateLuxaryPotPayout } from "../Services/FFIFAService";
 import { fetchAllOwners } from "../api/apiService";
 
@@ -25,15 +25,20 @@ const displayOwnersInTax = (ownerData) => {
 
 const Draft = () => {
   const [penaltyFees, setPenaltyFees] = useState([]);
+  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
     const getPenaltyData = async () => {
-      await fetchAllOwners().then((response) => {
-        const fees = response.data.map((owner) => {
-          return { name: owner.name, penaltyFee: owner.penaltyFee };
+      await fetchAllOwners()
+        .then((response) => {
+          const fees = response.data.map((owner) => {
+            return { name: owner.name, penaltyFee: owner.penaltyFee };
+          });
+          setPenaltyFees(fees);
+        })
+        .catch(() => {
+          setDisplayErrorAlert(true);
         });
-        setPenaltyFees(fees);
-      });
     };
 
     getPenaltyData();
@@ -55,6 +60,9 @@ const Draft = () => {
   return (
     <Container>
       <h1 className="text-center"> Draft Day Info </h1>
+      {displayErrorAlert && (
+        <Alert color="danger">Error fetching draft data</Alert>
+      )}
       <h4>2025 Base Cap: ${Math.trunc(baseCap2025)}</h4>
       <Card className="p-1 my-2">
         <Row>

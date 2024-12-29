@@ -63,9 +63,7 @@ const RosterOwnerCapDisplay = (props) => {
 
   useEffect(() => {
     const updatePenalty = async () => {
-      await updatePenaltyFee(ownerName, penaltyFee).catch((e) =>
-        console.error(e)
-      );
+      await updatePenaltyFee(ownerName, penaltyFee);
     };
 
     updatePenalty();

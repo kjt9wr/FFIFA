@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "reactstrap";
+import { Alert, Container } from "reactstrap";
 import { fetchAllTrades } from "../../api/apiService";
 import { CURRENT_SEASON_YEAR } from "../../Utilities/Constants";
 import YearSelector from "../reusable/YearSelector";
@@ -19,6 +19,7 @@ const displayTrades = (tradeList, selectedYear) => {
 const TradeTracker = () => {
   const [tradeList, setTradeList] = useState([]);
   const [selectedYear, setSelectedYear] = useState(CURRENT_SEASON_YEAR);
+  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
     const getTrades = async () => {
@@ -26,9 +27,7 @@ const TradeTracker = () => {
         .then((response) => {
           setTradeList(response.data);
         })
-        .catch((error) =>
-          console.error("Error getting trades from the database")
-        );
+        .catch((error) => setDisplayErrorAlert(true));
     };
 
     getTrades();
@@ -41,6 +40,9 @@ const TradeTracker = () => {
   return (
     <Container>
       <h2 className="text-center"> Trade Tracker </h2>
+      {displayErrorAlert && (
+        <Alert color="danger">Error fetching trade data</Alert>
+      )}
       <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
       {displayTrades(tradeList, selectedYear)}
     </Container>

@@ -57,18 +57,16 @@ const Admin = () => {
   }, []);
 
   const updateAllRosters = async () => {
-    await clearAllPlayersOwner().catch((e) => {
+    await clearAllPlayersOwner().catch(() => {
       setRosterUpdateAlert(ALERT_STATE.ERROR);
-      console.error(e);
     });
 
     allRosters.forEach(async (roster) => {
       await updateRoster(
         OwnerIDBySleeperRosterID[roster.ownerSleeperId],
         roster.players
-      ).catch((e) => {
+      ).catch(() => {
         setRosterUpdateAlert(ALERT_STATE.ERROR);
-        console.error(e);
       });
     });
     setRosterUpdateAlert(ALERT_STATE.SUCCESS);
@@ -79,9 +77,8 @@ const Admin = () => {
       await updatePlayerPrice(
         player.sleeperId,
         increaseKeeperPrice(player.price)
-      ).catch((e) => {
+      ).catch(() => {
         setDraftDataAlert(ALERT_STATE.ERROR);
-        console.error(e);
       });
     });
     setDraftDataAlert(ALERT_STATE.SUCCESS);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Table } from "reactstrap";
+import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners } from "../api/apiService";
 import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
 import YearSelector from "./reusable/YearSelector";
@@ -39,12 +39,17 @@ const displayCapTable = (year, owners) => {
 const CapTracker = () => {
   const [owners, setOwners] = useState([]);
   const [selectedYear, setSelectedYear] = useState(CURRENT_SEASON_YEAR);
+  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
     const getOwnerInfo = async () => {
-      await fetchAllOwners().then((response) => {
-        setOwners(response.data);
-      });
+      await fetchAllOwners()
+        .then((response) => {
+          setOwners(response.data);
+        })
+        .catch(() => {
+          setDisplayErrorAlert(true);
+        });
     };
 
     getOwnerInfo();
@@ -57,6 +62,9 @@ const CapTracker = () => {
   return (
     <Container>
       <h2 className="text-center">Cap Tracker </h2>
+      {displayErrorAlert && (
+        <Alert color="danger">Error fetching cap data</Alert>
+      )}
       <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
       <br />
       <br />

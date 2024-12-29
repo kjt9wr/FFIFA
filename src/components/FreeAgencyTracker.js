@@ -25,9 +25,7 @@ const FreeAgentList = (props) => {
 };
 
 const getFreeAgentsFromDB = async () => {
-  const availablePlayers = await fetchFreeAgents().catch(() => {
-    console.error("Unable to get players from the database");
-  });
+  const availablePlayers = await fetchFreeAgents().catch(() => {});
 
   const availableQBs = availablePlayers.data
     .filter((player) => player.position === Constants.QB && player.rank < 80)

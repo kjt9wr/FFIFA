@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Table } from "reactstrap";
+import { Alert, Container, Table } from "reactstrap";
 import * as SuperMaxService from "../Services/SuperMaxService";
 import * as Constants from "../Utilities/Constants";
 import { fetchSupermaxPlayers } from "../api/apiService";
@@ -39,11 +39,12 @@ const SuperMaxRow = (props) => (
  */
 const SuperMax = () => {
   const [supermaxPlayers, setSupermaxPlayers] = useState([]);
+  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
       const players = await fetchSupermaxPlayers().catch(() => {
-        console.error("Unable to get players from the database");
+        setDisplayErrorAlert(true);
       });
       setSupermaxPlayers(players.data);
     };
@@ -53,6 +54,9 @@ const SuperMax = () => {
 
   return (
     <Container>
+      {displayErrorAlert && (
+        <Alert color="danger">Error fetching supermax data</Alert>
+      )}
       <h2 className="text-center"> Players on SuperMax </h2>
       <Table responsive hover>
         <thead className="thead-light">
