@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
 import { updatePenaltyFee } from "../../api/apiService";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
@@ -35,7 +36,14 @@ const renderCard = (label, value) => {
 };
 
 const EditableCapDisplay = (props) => {
-  const { ownerName, maxCap, roster, franchisePrices, penaltyReward } = props;
+  const {
+    ownerName,
+    maxCap,
+    roster,
+    franchisePrices,
+    penaltyReward,
+    updateCapCallback,
+  } = props;
 
   const MAX_CAP = maxCap;
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
@@ -65,7 +73,18 @@ const EditableCapDisplay = (props) => {
       <h1 className="text-center">{ownerName}'s Roster </h1>
       <br />
       <Row>
-        <Col>{renderCard("Max Cap", MAX_CAP)}</Col>
+        <Col>
+          <Card>
+            <CardBody>
+              <CardTitle tag="h3">Max Cap</CardTitle>
+              <CardText tag="h4">
+                <FaMinusCircle onClick={() => updateCapCallback(maxCap - 1)} />{" "}
+                ${maxCap}{" "}
+                <FaPlusCircle onClick={() => updateCapCallback(maxCap + 1)} />
+              </CardText>
+            </CardBody>
+          </Card>
+        </Col>
         <Col>{renderCard("Luxary Tax Line", TAX_LINE)}</Col>
         <Col>{renderCard("Keeper Price", keepPrice)}</Col>
         <Col>

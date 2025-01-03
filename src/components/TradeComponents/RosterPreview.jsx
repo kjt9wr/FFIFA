@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "reactstrap";
 import { fetchAllOwners, fetchRoster } from "../../api/apiService.js";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
@@ -51,6 +51,10 @@ const RosterPreview = (props) => {
     });
   }, [ownerId]);
 
+  const updateCap = useCallback((newValue) => {
+    setMaxCap(newValue);
+  }, []);
+
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
 
   return (
@@ -61,6 +65,7 @@ const RosterPreview = (props) => {
         franchisePrices={franchisePrices}
         penaltyReward={luxaryPotPayout}
         maxCap={maxCap}
+        updateCapCallback={updateCap}
       />
       <h4>Roster:</h4>
       <PlayerDisplayByPosition playerList={roster} />
