@@ -430,4 +430,5 @@ export const playersByID = {
   "671ff4313643584f75d8635a": "Jalen Coker",
   "671ff45c3643584f75d8635b": "Cedric Tillman",
   "676f38ad730c891d56961833": "Tucker Kraft",
+  "67740950af4fd472c9b61997": "Ameer Abdullah",
 };
