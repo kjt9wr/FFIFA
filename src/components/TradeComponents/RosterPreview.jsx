@@ -4,7 +4,7 @@ import { fetchAllOwners, fetchRoster } from "../../api/apiService.js";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
 import { ownersIDByName } from "../../Utilities/Constants";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
+import EditablePlayerDisplay from "./EditablePlayerDisplay.jsx";
 import EditableCapDisplay from "./EditableCapDisplay.jsx";
 
 const formatFranchisePrices = (franchiseDTO) => {
@@ -55,6 +55,13 @@ const RosterPreview = (props) => {
     setMaxCap(newValue);
   }, []);
 
+  const removePlayer = useCallback(
+    (playerId) => {
+      setRoster(roster.filter((player) => player._id !== playerId));
+    },
+    [roster]
+  );
+
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
 
   return (
@@ -68,7 +75,10 @@ const RosterPreview = (props) => {
         updateCapCallback={updateCap}
       />
       <h4>Roster:</h4>
-      <PlayerDisplayByPosition playerList={roster} />
+      <EditablePlayerDisplay
+        playerList={roster}
+        removePlayerCallback={removePlayer}
+      />
     </Container>
   );
 };
