@@ -49,11 +49,16 @@ const NavBar = () => {
                 <DropdownItem href="/roster/Matt"> Matt </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
-              <Link to="/trade" className="nav-link">
-                Trade Tracker
-              </Link>
-            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Trades
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem href="/trade"> Trade Tracker </DropdownItem>
+                <DropdownItem href="/tradepreview">Preview Trade</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+
             <NavItem>
               <Link to="/cap" className="nav-link">
                 Cap Tracker

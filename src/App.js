@@ -2,17 +2,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
+import Admin from "./components/Admin/Admin.js";
 import Arbitration from "./components/Arbitration.js";
 import CapTracker from "./components/CapTracker.js";
+import Draft from "./components/Draft.js";
 import FranchiseTag from "./components/FranchiseTag.js";
 import FreeAgency from "./components/FreeAgencyTracker.js";
 import HomePage from "./components/HomePage.js";
 import Navbar from "./components/Navbar.js";
 import Roster from "./components/RosterComponents/Roster.jsx";
 import SuperMax from "./components/SuperMax.js";
+import RosterPreview from "./components/TradeComponents/RosterPreview.jsx";
 import TradeTracker from "./components/TradeComponents/TradeTracker.js";
-import Draft from "./components/Draft.js";
-import Admin from "./components/Admin/Admin.js";
 
 const App = () => (
   <Router>
@@ -20,6 +21,7 @@ const App = () => (
     <Route path="/" exact component={HomePage} />
     <Route path="/roster/:name" component={Roster} />
     <Route path="/trade" component={TradeTracker} />
+    <Route path="/tradepreview" component={RosterPreview} />
     <Route path="/cap/" component={CapTracker} />
     <Route path="/franchise" component={FranchiseTag} />
     <Route path="/fa" component={FreeAgency} />
