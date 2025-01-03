@@ -5,7 +5,7 @@ import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
 import { getFranchiseTagDTO } from "../../Services/FranchiseService";
 import { ownersIDByName } from "../../Utilities/Constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
-import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay.jsx";
+import EditableCapDisplay from "./EditableCapDisplay.jsx";
 
 const formatFranchisePrices = (franchiseDTO) => {
   return {
@@ -17,48 +17,53 @@ const formatFranchisePrices = (franchiseDTO) => {
 };
 
 /*
- * This page displays an owner's available cap information, projected keepers display,
- * and a roster table to edit keepers
+ * This page allows the user to edit and view a roster without publishing changes
  */
 
 const RosterPreview = (props) => {
   const [roster, setRoster] = useState([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
-
+  const [maxCap, setMaxCap] = useState();
   const ownerName = "Kevin";
   const ownerId = ownersIDByName[ownerName];
 
   useEffect(() => {
     Promise.all([
       fetchRoster(ownerId),
-      fetchAllOwners(),
+      fetchAllOwners(), // used for penalty fees
       getFranchiseTagDTO(),
     ]).then(([unsortedRoster, owners, franchiseTags]) => {
-      setRoster(
-        unsortedRoster.data.sort((a, b) => (a.position > b.position ? 1 : -1))
-      );
+      setRoster(unsortedRoster.data.filter((player) => player.keep));
+      const initialCap = owners.data.filter(
+        (owner) => ownerName === owner.name
+      )[0].cap[5];
+      setMaxCap(initialCap);
       const fees = owners.data.map((owner) => {
-        return { name: owner.name, penaltyFee: owner.penaltyFee };
+        return {
+          name: owner.name,
+          penaltyFee: owner.penaltyFee,
+          initialCap: owner.cap[5],
+        };
       });
       setPenaltyFees(fees);
       setFranchisePrices(formatFranchisePrices(franchiseTags));
     });
   }, [ownerId]);
 
-  const keptPlayersList = roster.filter((p) => p.keep);
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
 
   return (
     <Container>
-      <RosterOwnerCapDisplay
+      <EditableCapDisplay
         ownerName={ownerName}
         roster={roster}
         franchisePrices={franchisePrices}
         penaltyReward={luxaryPotPayout}
+        maxCap={maxCap}
       />
       <h4>Roster:</h4>
-      <PlayerDisplayByPosition playerList={keptPlayersList} />
+      <PlayerDisplayByPosition playerList={roster} />
     </Container>
   );
 };
