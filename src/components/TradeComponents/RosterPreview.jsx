@@ -2,19 +2,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "reactstrap";
 import { fetchAllOwners, fetchRoster } from "../../api/apiService.js";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
-import { getFranchiseTagDTO } from "../../Services/FranchiseService";
+import {
+  formatFranchisePrices,
+  getFranchiseTagDTO,
+} from "../../Services/FranchiseService";
 import { ownersIDByName } from "../../Utilities/Constants";
-import EditablePlayerDisplay from "./EditablePlayerDisplay.jsx";
-import EditableCapDisplay from "./EditableCapDisplay.jsx";
-
-const formatFranchisePrices = (franchiseDTO) => {
-  return {
-    qb: franchiseDTO.qbFranchisePrice,
-    rb: franchiseDTO.rbFranchisePrice,
-    wr: franchiseDTO.wrFranchisePrice,
-    te: franchiseDTO.teFranchisePrice,
-  };
-};
+import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
+import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay.jsx";
 
 /*
  * This page allows the user to edit and view a roster without publishing changes
@@ -66,18 +60,20 @@ const RosterPreview = (props) => {
 
   return (
     <Container>
-      <EditableCapDisplay
+      <RosterOwnerCapDisplay
         ownerName={ownerName}
         roster={roster}
         franchisePrices={franchisePrices}
         penaltyReward={luxaryPotPayout}
-        maxCap={maxCap}
+        cap={maxCap}
         updateCapCallback={updateCap}
+        isEditable={true}
       />
       <h4>Roster:</h4>
-      <EditablePlayerDisplay
+      <PlayerDisplayByPosition
         playerList={roster}
         removePlayerCallback={removePlayer}
+        isEditable={true}
       />
     </Container>
   );

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
-import { fetchSingleOwner, updatePenaltyFee } from "../../api/apiService";
+import { updatePenaltyFee } from "../../api/apiService";
 import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
 import RosterProgressBar from "./RosterProgressBar";
 
@@ -35,31 +36,23 @@ const renderCard = (label, value) => {
 };
 
 const RosterOwnerCapDisplay = (props) => {
-  const { ownerName, roster, franchisePrices, penaltyReward } = props;
+  const {
+    ownerName,
+    roster,
+    franchisePrices,
+    penaltyReward,
+    cap,
+    updateCapCallback,
+    isEditable,
+  } = props;
 
-  const [owner, setOwner] = useState({
-    _id: "",
-    name: "",
-    cap: [0, 0, 0, 0, 0, 0],
-  });
-
-  const MAX_CAP = owner.cap[5];
+  const MAX_CAP = cap;
   const TAX_LINE = calculateLuxaryTaxLine(MAX_CAP);
   const keepPrice = calculateTotalKeeperPrice(roster, franchisePrices);
   const penaltyFee = calculatePenaltyFee(roster, franchisePrices, MAX_CAP);
   const luxaryGainorLoss = penaltyFee > 0 ? penaltyFee * -1 : 0;
   const isOffender = keepPrice > TAX_LINE;
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
-
-  useEffect(() => {
-    const getOwnerData = async () => {
-      await fetchSingleOwner(ownerName).then((response) => {
-        setOwner(response.data[0]);
-      });
-    };
-
-    getOwnerData();
-  }, [ownerName]);
 
   useEffect(() => {
     const updatePenalty = async () => {
@@ -78,10 +71,29 @@ const RosterOwnerCapDisplay = (props) => {
 
   return (
     <div>
-      <h1 className="text-center">{owner.name}'s Roster </h1>
+      <h1 className="text-center">{ownerName}'s Roster </h1>
       <br />
       <Row>
-        <Col>{renderCard("Max Cap", MAX_CAP)}</Col>
+        <Col>
+          {isEditable ? (
+            <Card>
+              <CardBody>
+                <CardTitle tag="h3">Max Cap</CardTitle>
+                <CardText tag="h4">
+                  <FaMinusCircle
+                    onClick={() => updateCapCallback(MAX_CAP - 1)}
+                  />{" "}
+                  ${MAX_CAP}{" "}
+                  <FaPlusCircle
+                    onClick={() => updateCapCallback(MAX_CAP + 1)}
+                  />
+                </CardText>
+              </CardBody>
+            </Card>
+          ) : (
+            renderCard("Max Cap", MAX_CAP)
+          )}
+        </Col>
         <Col>{renderCard("Luxary Tax Line", TAX_LINE)}</Col>
         <Col>{renderCard("Keeper Price", keepPrice)}</Col>
         <Col>

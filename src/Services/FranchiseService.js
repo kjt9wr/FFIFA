@@ -49,3 +49,12 @@ const calculateFranchisePriceFromKeptPlayers = (playerList) => {
     .reduce((acc, player) => acc + player.price, 0);
   return Math.trunc(priceOfMostExpensive / 5);
 };
+
+export const formatFranchisePrices = (franchiseDTO) => {
+  return {
+    qb: franchiseDTO.qbFranchisePrice,
+    rb: franchiseDTO.rbFranchisePrice,
+    wr: franchiseDTO.wrFranchisePrice,
+    te: franchiseDTO.teFranchisePrice,
+  };
+};

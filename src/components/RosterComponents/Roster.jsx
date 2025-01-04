@@ -6,20 +6,14 @@ import {
   updatePlayerKeeperStatus,
 } from "../../api/apiService.js";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
-import { getFranchiseTagDTO } from "../../Services/FranchiseService";
+import {
+  formatFranchisePrices,
+  getFranchiseTagDTO,
+} from "../../Services/FranchiseService";
 import { ownersIDByName } from "../../Utilities/Constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
 import RosterDataTable from "./RosterDataTable.jsx";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay.jsx";
-
-const formatFranchisePrices = (franchiseDTO) => {
-  return {
-    qb: franchiseDTO.qbFranchisePrice,
-    rb: franchiseDTO.rbFranchisePrice,
-    wr: franchiseDTO.wrFranchisePrice,
-    te: franchiseDTO.teFranchisePrice,
-  };
-};
 
 /*
  * This page displays an owner's available cap information, projected keepers display,
@@ -31,6 +25,7 @@ const Roster = (props) => {
   const [penaltyFees, setPenaltyFees] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [changeKeeper, setChangeKeeper] = useState(false);
+  const [cap, setCap] = useState();
 
   const ownerName = props.match.params.name;
   const ownerId = ownersIDByName[ownerName];
@@ -53,13 +48,19 @@ const Roster = (props) => {
       setRoster(
         unsortedRoster.data.sort((a, b) => (a.position > b.position ? 1 : -1))
       );
+
+      const currentYearCap = owners.data.filter(
+        (owner) => ownerId === owner._id
+      )[0].cap[5];
+      setCap(currentYearCap);
+
       const fees = owners.data.map((owner) => {
         return { name: owner.name, penaltyFee: owner.penaltyFee };
       });
       setPenaltyFees(fees);
       setFranchisePrices(formatFranchisePrices(franchiseTags));
     });
-  }, [ownerId, toggleKeeper]);
+  }, [ownerId, changeKeeper]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
@@ -71,6 +72,8 @@ const Roster = (props) => {
         roster={roster}
         franchisePrices={franchisePrices}
         penaltyReward={luxaryPotPayout}
+        cap={cap}
+        isEditable={false}
       />
       <h4>Roster:</h4>
       <PlayerDisplayByPosition playerList={keptPlayersList} />

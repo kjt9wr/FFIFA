@@ -1,41 +1,52 @@
 import React from "react";
 import { Table } from "reactstrap";
-
-const displayPlayers = (playerList) => {
-  return playerList.map((player) => {
-    return (
-      <tr key={player.name}>
-        <td> {player.name}</td>
-      </tr>
-    );
-  });
-};
+import { TiDelete } from "react-icons/ti";
 
 const filterKeepersByPosition = (keptPlayers, position) => {
   return keptPlayers
     ? keptPlayers.filter((player) => player.position === position)
     : [];
 };
-
-const renderPlayersForPosition = (position, players) => (
-  <Table borderless size="sm" hover responsive>
-    <thead className="thead-light">
-      <tr>
-        <th>{position}</th>
-      </tr>
-    </thead>
-    <tbody>{displayPlayers(players)}</tbody>
-  </Table>
-);
-
 /*
  * This component displays a table of players grouped by position
  */
-const playerDisplayByPosition = (props) => {
+const PlayerDisplayByPosition = (props) => {
+  const { removePlayerCallback, isEditable } = props;
+
   const keptQBs = filterKeepersByPosition(props.playerList, "QB");
   const keptRBs = filterKeepersByPosition(props.playerList, "RB");
   const keptWRs = filterKeepersByPosition(props.playerList, "WR");
   const keptTEs = filterKeepersByPosition(props.playerList, "TE");
+
+  const renderPlayersForPosition = (position, players) => (
+    <Table borderless size="sm" hover responsive>
+      <thead className="thead-light">
+        <tr>
+          <th>{position}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {players.map((player) => {
+          return (
+            <tr key={player.name}>
+              {isEditable ? (
+                <td
+                  onClick={() => {
+                    removePlayerCallback(player._id);
+                  }}
+                >
+                  <TiDelete />
+                  {player.name} - ${player.price}
+                </td>
+              ) : (
+                <td>{player.name}</td>
+              )}
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
+  );
 
   return (
     <div style={{ display: "flex" }}>
@@ -47,4 +58,4 @@ const playerDisplayByPosition = (props) => {
   );
 };
 
-export default playerDisplayByPosition;
+export default PlayerDisplayByPosition;
