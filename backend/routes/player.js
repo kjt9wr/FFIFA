@@ -35,6 +35,13 @@ router.route("/keptPlayers").get((req, res) => {
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });
 
+// get all rostered players
+router.route("/rosteredPlayers").get((req, res) => {
+  Player.find({ owner: { $nin: [null, ""] } })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Unable to find player: " + err));
+});
+
 // get all free agent players
 router.route("/freeAgents").get((req, res) => {
   Player.find({ keep: false })

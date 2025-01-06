@@ -22,6 +22,10 @@ export const fetchKeptPlayers = () => {
   return apiClient.get("/player/keptPlayers");
 };
 
+export const fetchRosteredPlayers = () => {
+  return apiClient.get("/player/rosteredPlayers");
+};
+
 export const updatePlayerKeeperStatus = (playerID, keeperStatus) => {
   return apiClient.put(`player/updatePlayer/${playerID}`, keeperStatus);
 };

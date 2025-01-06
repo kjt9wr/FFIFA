@@ -1,6 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "reactstrap";
-import { fetchAllOwners, fetchRoster } from "../../api/apiService.js";
+import {
+  fetchAllOwners,
+  fetchRoster,
+  fetchRosteredPlayers,
+} from "../../api/apiService.js";
 import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
 import {
   formatFranchisePrices,
@@ -19,6 +23,7 @@ const RosterPreview = (props) => {
   const [penaltyFees, setPenaltyFees] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [maxCap, setMaxCap] = useState();
+  const [rosteredPlayerPool, setRosteredPlayerPool] = useState();
   const ownerName = "Kevin";
   const ownerId = ownersIDByName[ownerName];
 
@@ -27,7 +32,8 @@ const RosterPreview = (props) => {
       fetchRoster(ownerId),
       fetchAllOwners(), // used for penalty fees
       getFranchiseTagDTO(),
-    ]).then(([unsortedRoster, owners, franchiseTags]) => {
+      fetchRosteredPlayers(),
+    ]).then(([unsortedRoster, owners, franchiseTags, allRosteredPlayers]) => {
       setRoster(unsortedRoster.data.filter((player) => player.keep));
       const initialCap = owners.data.filter(
         (owner) => ownerName === owner.name
@@ -42,6 +48,7 @@ const RosterPreview = (props) => {
       });
       setPenaltyFees(fees);
       setFranchisePrices(formatFranchisePrices(franchiseTags));
+      setRosteredPlayerPool(allRosteredPlayers.data);
     });
   }, [ownerId]);
 
