@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Container } from "reactstrap";
+import Select from "react-select";
+import { Button, Col, Container, Form, Label, Row } from "reactstrap";
 import {
   fetchAllOwners,
   fetchRoster,
@@ -24,6 +25,7 @@ const RosterPreview = (props) => {
   const [franchisePrices, setFranchisePrices] = useState({});
   const [maxCap, setMaxCap] = useState();
   const [rosteredPlayerPool, setRosteredPlayerPool] = useState();
+  const [selectedPlayer, setSelectedPlayer] = useState();
   const ownerName = "Kevin";
   const ownerId = ownersIDByName[ownerName];
 
@@ -63,6 +65,50 @@ const RosterPreview = (props) => {
     [roster]
   );
 
+  const onChangeSelect = (e) => {
+    const selection = e ? e.value : "";
+    setSelectedPlayer(selection);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const fullPlayerObject = rosteredPlayerPool.find(
+      (player) => selectedPlayer === player._id
+    );
+    fullPlayerObject.keeperClass = 1;
+    fullPlayerObject.keep = true;
+    setRoster([...roster, fullPlayerObject]);
+  };
+
+  const addablePlayers = rosteredPlayerPool
+    ? rosteredPlayerPool
+        .map((player) => {
+          return { label: player.name, value: player._id };
+        })
+        .sort((a, b) => {
+          const nameA = a.label;
+          const nameB = b.label;
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        })
+    : [];
+
+  const selectionStyle = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: "white",
+        color: "black",
+      };
+    },
+  };
+
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
 
   return (
@@ -82,6 +128,29 @@ const RosterPreview = (props) => {
         removePlayerCallback={removePlayer}
         isEditable={true}
       />
+      <br /> <br />
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col>
+            <h5> Add a Player to the roster: </h5>
+          </Col>
+          <Col>
+            <Select
+              className="basic-single"
+              classNamePrefix="select"
+              isClearable={true}
+              isSearchable={true}
+              name="playerToAdd"
+              options={addablePlayers}
+              onChange={onChangeSelect}
+              styles={selectionStyle}
+            />
+          </Col>
+          <Col>
+            <Button type="submit">Add Player</Button>
+          </Col>
+        </Row>
+      </Form>
     </Container>
   );
 };
