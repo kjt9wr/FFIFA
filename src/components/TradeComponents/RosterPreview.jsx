@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
-import { Button, Col, Container, Form, Label, Row } from "reactstrap";
+import { Button, Col, Container, Form, Row } from "reactstrap";
 import {
   fetchAllOwners,
   fetchRoster,
@@ -82,6 +82,7 @@ const RosterPreview = (props) => {
 
   const addablePlayers = rosteredPlayerPool
     ? rosteredPlayerPool
+        .filter((player) => !roster.includes(player))
         .map((player) => {
           return { label: player.name, value: player._id };
         })
@@ -99,14 +100,13 @@ const RosterPreview = (props) => {
     : [];
 
   const selectionStyle = {
-    control: (styles) => ({ ...styles, backgroundColor: "white" }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-        backgroundColor: "white",
-        color: "black",
-      };
-    },
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+    }),
+    option: (baseStyles, state) => ({
+      ...baseStyles,
+      color: "black",
+    }),
   };
 
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
