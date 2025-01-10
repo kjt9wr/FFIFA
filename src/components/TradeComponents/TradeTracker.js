@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Container } from "reactstrap";
-import { fetchAllTrades } from "../../api/apiService";
-import { CURRENT_SEASON_YEAR } from "../../Utilities/Constants";
+import { fetchAllTrades } from "../../api/api.service";
+import { CURRENT_SEASON_YEAR } from "../../utilities/constants";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
 

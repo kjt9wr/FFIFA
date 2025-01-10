@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Col, Row } from "reactstrap";
-import * as Constants from "../../Utilities/Constants";
+import * as Constants from "../../utilities/constants";
 
 const displayPlayers = (players) => {
   return players.map((currentPlayerID) => {

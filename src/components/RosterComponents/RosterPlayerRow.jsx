@@ -1,10 +1,10 @@
 import React from "react";
 import { Input } from "reactstrap";
-import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
+import { determineFinalPriceOfPlayer } from "../../services/ffifa.service";
 import {
   getKeeperClassText,
   KEEPER_CLASS_ENUM,
-} from "../../Utilities/KeeperClassEnum";
+} from "../../utilities/enumerations";
 
 const showUnadjustedPrice = (keeperClass) => {
   return [

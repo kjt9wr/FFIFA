@@ -1,5 +1,5 @@
-import { calculateSuperMaxPrice } from "./SuperMaxService";
-import { KEEPER_CLASS_ENUM } from "../Utilities/KeeperClassEnum";
+import { calculateSuperMaxPrice } from "./supermax.service";
+import { KEEPER_CLASS_ENUM } from "../utilities/enumerations";
 
 export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
   switch (player.keeperClass) {

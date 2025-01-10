@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
-import { updatePenaltyFee } from "../../api/apiService";
-import { determineFinalPriceOfPlayer } from "../../Services/FFIFAService";
+import { updatePenaltyFee } from "../../api/api.service";
+import { determineFinalPriceOfPlayer } from "../../services/ffifa.service";
 import RosterProgressBar from "./RosterProgressBar";
 
 const calculateLuxaryTaxLine = (cap) => Math.trunc(cap * 0.55);

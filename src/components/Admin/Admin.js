@@ -6,15 +6,15 @@ import {
   fetchSleeperRosters,
   updatePlayerPrice,
   updateRoster,
-} from "../../api/apiService.js";
-import { increaseKeeperPrice } from "../../Services/FFIFAService";
+} from "../../api/api.service.js";
+import { increaseKeeperPrice } from "../../services/ffifa.service.js";
 import {
   ALERT_STATE,
   DRAFT_ID_2024,
   OwnerIDBySleeperRosterID,
   SLEEPER_LEAGUE_ID_2024,
-} from "../../Utilities/Constants";
-import { playersBySleeperID } from "../../Utilities/Sleeper_Ids";
+} from "../../utilities/constants";
+import { playersBySleeperID } from "../../utilities/sleeper-ids";
 import AddTradeForm from "./AddTradeForm.js";
 
 const Admin = () => {

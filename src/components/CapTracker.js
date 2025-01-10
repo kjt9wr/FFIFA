@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
-import { fetchAllOwners } from "../api/apiService";
-import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
+import { fetchAllOwners } from "../api/api.service";
+import { CURRENT_SEASON_YEAR } from "../utilities/constants";
 import YearSelector from "./reusable/YearSelector";
 
 const displayCapTable = (year, owners) => {

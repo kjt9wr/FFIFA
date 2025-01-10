@@ -5,13 +5,13 @@ import {
   fetchAllOwners,
   fetchRoster,
   fetchRosteredPlayers,
-} from "../../api/apiService.js";
-import { calculateLuxaryPotPayout } from "../../Services/FFIFAService";
+} from "../../api/api.service.js";
+import { calculateLuxaryPotPayout } from "../../services/ffifa.service.js";
 import {
   formatFranchisePrices,
   getFranchiseTagDTO,
-} from "../../Services/FranchiseService";
-import { ownersIDByName } from "../../Utilities/Constants";
+} from "../../services/franchise.service.js";
+import { ownersIDByName } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
 import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay.jsx";
 

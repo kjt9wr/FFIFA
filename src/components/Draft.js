@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Card, Col, Container, Row } from "reactstrap";
-import { calculateLuxaryPotPayout } from "../Services/FFIFAService";
-import { fetchAllOwners } from "../api/apiService";
+import { calculateLuxaryPotPayout } from "../services/ffifa.service";
+import { fetchAllOwners } from "../api/api.service";
 
 const displayOwnersUnderTax = (ownerData) => {
   return ownerData

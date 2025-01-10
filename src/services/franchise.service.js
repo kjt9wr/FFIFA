@@ -1,6 +1,6 @@
-import { fetchKeptPlayers } from "../api/apiService";
-import * as Constants from "../Utilities/Constants";
-import * as FFIFAService from "./FFIFAService";
+import { fetchKeptPlayers } from "../api/api.service";
+import * as Constants from "../utilities/constants";
+import * as FFIFAService from "./ffifa.service";
 
 export const getFranchiseTagDTO = async () => {
   const keptPlayers = await fetchKeptPlayers();

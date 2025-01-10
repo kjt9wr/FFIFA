@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
-import * as SuperMaxService from "../Services/SuperMaxService";
-import * as Constants from "../Utilities/Constants";
-import { fetchSupermaxPlayers } from "../api/apiService";
+import * as SuperMaxService from "../services/supermax.service";
+import * as Constants from "../utilities/constants";
+import { fetchSupermaxPlayers } from "../api/api.service";
 
 const renderSuperPlayerTable = (superMaxPlayers) => {
   return superMaxPlayers.map((currentPlayer) => {

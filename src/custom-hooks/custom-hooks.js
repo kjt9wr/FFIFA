@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import * as FranchiseService from "../Services/FranchiseService";
+import { useEffect, useState } from "react";
+import * as FranchiseService from "../services/franchise.service";
 
 export const useFranchiseInfo = () => {
   const [franchiseInfo, setFranchiseInfo] = useState({});

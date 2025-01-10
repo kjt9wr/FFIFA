@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Table } from "reactstrap";
-import * as Constants from "../Utilities/Constants";
-import { fetchFreeAgents } from "../api/apiService";
+import * as Constants from "../utilities/constants";
+import { fetchFreeAgents } from "../api/api.service";
 
 const populateFreeAgents = (freeAgentsForPosition) => {
   if (freeAgentsForPosition) {

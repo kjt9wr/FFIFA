@@ -1,5 +1,5 @@
 import apiClient from "./apiClient";
-import { CURRENT_SEASON_YEAR } from "../Utilities/Constants";
+import { CURRENT_SEASON_YEAR } from "../utilities/constants";
 import sleeperApiClient from "./sleeperApiClient";
 
 export const fetchAllTrades = () => {

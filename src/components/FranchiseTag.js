@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Table } from "reactstrap";
-import * as Constants from "../Utilities/Constants";
-import { KEEPER_CLASS_ENUM } from "../Utilities/KeeperClassEnum";
+import * as Constants from "../utilities/constants";
+import { KEEPER_CLASS_ENUM } from "../utilities/enumerations";
 import { useFranchiseInfo } from "../custom-hooks/custom-hooks";
 
 const populateKeptPlayers = (keptPlayersList) => {
