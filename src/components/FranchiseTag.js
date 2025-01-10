@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Row, Table } from "reactstrap";
-import * as FranchiseService from "../Services/FranchiseService";
 import * as Constants from "../Utilities/Constants";
 import { KEEPER_CLASS_ENUM } from "../Utilities/KeeperClassEnum";
+import { useFranchiseInfo } from "../custom-hooks/custom-hooks";
 
 const populateKeptPlayers = (keptPlayersList) => {
   if (keptPlayersList) {
@@ -55,16 +55,7 @@ const FranchiseTagTable = (props) => {
  */
 
 const FranchiseTag = () => {
-  const [franchiseInfo, setFranchiseInfo] = useState({});
-
-  useEffect(() => {
-    const getFranchiseInformation = async () => {
-      const franchiseDTO = await FranchiseService.getFranchiseTagDTO();
-      setFranchiseInfo(franchiseDTO);
-    };
-
-    getFranchiseInformation();
-  }, []);
+  const franchiseInfo = useFranchiseInfo();
 
   return (
     <div>
