@@ -1,24 +1,31 @@
 import React from "react";
 import { Table } from "reactstrap";
 import { TiDelete } from "react-icons/ti";
+import { Player } from "../../interfaces/interfaces";
 
-const filterKeepersByPosition = (keptPlayers, position) => {
+interface PlayerDisplayByPositionProps {
+  isEditable: Boolean;
+  removePlayerCallback: (playerId: string) => void;
+  playerList: Player[];
+}
+
+const filterKeepersByPosition = (keptPlayers: Player[], position: string) => {
   return keptPlayers
-    ? keptPlayers.filter((player) => player.position === position)
+    ? keptPlayers.filter((player: Player) => player.position === position)
     : [];
 };
 /*
  * This component displays a table of players grouped by position
  */
-const PlayerDisplayByPosition = (props) => {
-  const { removePlayerCallback, isEditable } = props;
+const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
+  const { removePlayerCallback, isEditable, playerList } = props;
 
-  const keptQBs = filterKeepersByPosition(props.playerList, "QB");
-  const keptRBs = filterKeepersByPosition(props.playerList, "RB");
-  const keptWRs = filterKeepersByPosition(props.playerList, "WR");
-  const keptTEs = filterKeepersByPosition(props.playerList, "TE");
+  const keptQBs = filterKeepersByPosition(playerList, "QB");
+  const keptRBs = filterKeepersByPosition(playerList, "RB");
+  const keptWRs = filterKeepersByPosition(playerList, "WR");
+  const keptTEs = filterKeepersByPosition(playerList, "TE");
 
-  const renderPlayersForPosition = (position, players) => (
+  const renderPlayersForPosition = (position: string, players: Player[]) => (
     <Table borderless size="sm" hover responsive>
       <thead className="thead-light">
         <tr>
@@ -26,7 +33,7 @@ const PlayerDisplayByPosition = (props) => {
         </tr>
       </thead>
       <tbody>
-        {players.map((player) => {
+        {players.map((player: Player) => {
           return (
             <tr key={player.name}>
               {isEditable ? (

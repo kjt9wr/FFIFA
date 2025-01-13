@@ -11,7 +11,7 @@ import {
   getFranchiseTagDTO,
 } from "../../services/franchise.service.js";
 import { ownersIDByName } from "../../utilities/constants";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.jsx";
+import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.tsx";
 import RosterDataTable from "./RosterDataTable.jsx";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay.jsx";
 
