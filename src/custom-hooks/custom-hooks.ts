@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { fetchFreeAgents } from "../api/api.service";
-import { FreeAgentStorage, Player } from "../interfaces/interfaces";
+import {
+  FranchiseInfo,
+  FreeAgentStorage,
+  Player,
+} from "../interfaces/interfaces";
 import * as FranchiseService from "../services/franchise.service";
 import * as Constants from "../utilities/constants";
 
 export const useFranchiseInfo = () => {
-  const [franchiseInfo, setFranchiseInfo] = useState({});
+  const [franchiseInfo, setFranchiseInfo] = useState<FranchiseInfo>();
 
   useEffect(() => {
     const getFranchiseInformation = async () => {

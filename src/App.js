@@ -6,7 +6,7 @@ import Admin from "./components/Admin/Admin.js";
 import Arbitration from "./components/Arbitration.js";
 import CapTracker from "./components/CapTracker.js";
 import Draft from "./components/Draft.js";
-import FranchiseTag from "./components/FranchiseTag.js";
+import FranchiseTag from "./components/FranchiseComponents/FranchiseTag.tsx";
 import FreeAgency from "./components/FreeAgencyTracker.tsx";
 import HomePage from "./components/HomePage.tsx";
 import Navbar from "./components/Navbar.tsx";
