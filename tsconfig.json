@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
+    "noImplicitAny": true,
     "jsx": "react",
     "outDir": "./built",
     "allowJs": true,
     "target": "es5",
-    "noImplicitAny": true,
+
     "allowSyntheticDefaultImports": true
   },
   "include": ["./src/**/*"]
