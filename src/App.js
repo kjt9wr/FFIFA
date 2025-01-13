@@ -13,7 +13,7 @@ import Navbar from "./components/Navbar.tsx";
 import Roster from "./components/RosterComponents/Roster.jsx";
 import SuperMax from "./components/SuperMax.tsx";
 import RosterPreview from "./components/TradeComponents/RosterPreview.jsx";
-import TradeTracker from "./components/TradeComponents/TradeTracker.js";
+import TradeTracker from "./components/TradeComponents/TradeTracker.tsx";
 
 const App = () => (
   <Router>

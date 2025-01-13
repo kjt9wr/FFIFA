@@ -28,6 +28,7 @@ export interface TradeInfo {
   owner2_rec: TradePackage;
   trade_notes: string;
   years: string[];
+  _id: string;
 }
 
 export interface TradePackage {

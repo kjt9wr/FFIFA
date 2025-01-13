@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchAllTrades } from "../../api/api.service";
+import { TradeInfo } from "../../interfaces/interfaces";
 import { CURRENT_SEASON_YEAR } from "../../utilities/constants";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
 
-const displayTrades = (tradeList, selectedYear) => {
+const displayTrades = (tradeList: TradeInfo[], selectedYear: string) => {
   return tradeList
     .filter((trade) => trade.years.includes(selectedYear))
     .map((currentTrade) => {
@@ -17,7 +18,7 @@ const displayTrades = (tradeList, selectedYear) => {
  * This page displays a log of all trades
  */
 const TradeTracker = () => {
-  const [tradeList, setTradeList] = useState([]);
+  const [tradeList, setTradeList] = useState<TradeInfo[]>([]);
   const [selectedYear, setSelectedYear] = useState(CURRENT_SEASON_YEAR);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
@@ -33,7 +34,7 @@ const TradeTracker = () => {
     getTrades();
   }, []);
 
-  const handleOnChange = (year) => {
+  const handleOnChange = (year: string) => {
     setSelectedYear(year);
   };
 
