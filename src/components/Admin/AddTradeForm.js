@@ -15,7 +15,7 @@ const AddTradeForm = () => {
     };
 
     getOwnerData();
-  }, []);
+  }, [activeOwners]);
 
   const onSubmit = (formData) => {
     console.log(formData);

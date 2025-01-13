@@ -11,3 +11,10 @@ export interface Player {
   sleeperId: string;
   superMax?: number;
 }
+
+export interface FreeAgentStorage {
+  availableQBs: Player[];
+  availableRBs: Player[];
+  availableWRs: Player[];
+  availableTEs: Player[];
+}
