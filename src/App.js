@@ -11,7 +11,7 @@ import FreeAgency from "./components/FreeAgencyTracker.tsx";
 import HomePage from "./components/HomePage.tsx";
 import Navbar from "./components/Navbar.tsx";
 import Roster from "./components/RosterComponents/Roster.jsx";
-import SuperMax from "./components/SuperMax.js";
+import SuperMax from "./components/SuperMax.tsx";
 import RosterPreview from "./components/TradeComponents/RosterPreview.jsx";
 import TradeTracker from "./components/TradeComponents/TradeTracker.js";
 

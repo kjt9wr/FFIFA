@@ -32,7 +32,7 @@ export const ALERT_STATE = {
   ERROR: "error",
 };
 
-export const ownersByID = {
+export const ownersByID: Record<string, string> = {
   "5e80d724b3bdaf3413316177": "Kevin",
   "5e80d930b3bdaf3413316189": "Justin",
   "5e80dd6ab3bdaf34133161bd": "Alex",

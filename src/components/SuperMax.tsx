@@ -3,50 +3,41 @@ import { Alert, Container, Table } from "reactstrap";
 import * as SuperMaxService from "../services/supermax.service";
 import * as Constants from "../utilities/constants";
 import { fetchSupermaxPlayers } from "../api/api.service";
+import { Player } from "../interfaces/interfaces";
 
-const renderSuperPlayerTable = (superMaxPlayers) => {
-  return superMaxPlayers.map((currentPlayer) => {
+const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
+  return superMaxPlayers.map((currentPlayer: Player) => {
     const ownerName = Constants.ownersByID[currentPlayer.owner];
     const price = SuperMaxService.calculateSuperMaxPrice(
       currentPlayer.superMax.plan,
       currentPlayer.superMax.year
     );
     return (
-      <SuperMaxRow
-        player={currentPlayer.name}
-        owner={ownerName}
-        year={currentPlayer.superMax.year}
-        plan={currentPlayer.superMax.plan}
-        price={price}
-        key={currentPlayer.name}
-      />
+      <tr className="customRow">
+        <td>{currentPlayer.name}</td>
+        <td>{ownerName}</td>
+        <td>{currentPlayer.superMax.year}</td>
+        <td>{currentPlayer.superMax.plan}</td>
+        <td>${price}</td>
+      </tr>
     );
   });
 };
-
-const SuperMaxRow = (props) => (
-  <tr className="customRow">
-    <td>{props.player}</td>
-    <td>{props.owner}</td>
-    <td>{props.year}</td>
-    <td>{props.plan}</td>
-    <td>${props.price}</td>
-  </tr>
-);
 
 /*
  * This page displays the details of all the players under a SuperMax Contract
  */
 const SuperMax = () => {
-  const [supermaxPlayers, setSupermaxPlayers] = useState([]);
+  const [supermaxPlayers, setSupermaxPlayers] = useState<Player[]>([]);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
-      const players = await fetchSupermaxPlayers().catch(() => {
-        setDisplayErrorAlert(true);
-      });
-      setSupermaxPlayers(players.data);
+      await fetchSupermaxPlayers()
+        .then((response) => setSupermaxPlayers(response.data))
+        .catch(() => {
+          setDisplayErrorAlert(true);
+        });
     };
 
     getSuperMaxPlayers();

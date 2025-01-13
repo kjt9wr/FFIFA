@@ -4,12 +4,17 @@ export interface Player {
   keep: boolean;
   keeperClass: number;
   name: string;
-  owner?: string;
+  owner: string;
   position: string;
   price: number;
   rank?: number;
   sleeperId: string;
-  superMax?: number;
+  superMax?: SuperMaxData;
+}
+
+export interface SuperMaxData {
+  plan: number;
+  year: number;
 }
 
 export interface FreeAgentStorage {
