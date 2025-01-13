@@ -1,4 +1,5 @@
 import { fetchKeptPlayers } from "../api/api.service";
+import { FranchiseTagDTO, Player } from "../interfaces/interfaces";
 import * as Constants from "../utilities/constants";
 import * as FFIFAService from "./ffifa.service";
 
@@ -6,17 +7,17 @@ export const getFranchiseTagDTO = async () => {
   const keptPlayers = await fetchKeptPlayers();
 
   const keptQBs = keptPlayers.data
-    .filter((player) => player.position === Constants.QB)
-    .sort((a, b) => b.price - a.price);
+    .filter((player: Player) => player.position === Constants.QB)
+    .sort((a: Player, b: Player) => b.price - a.price);
   const keptRBs = keptPlayers.data
-    .filter((player) => player.position === Constants.RB)
-    .sort((a, b) => b.price - a.price);
+    .filter((player: Player) => player.position === Constants.RB)
+    .sort((a: Player, b: Player) => b.price - a.price);
   const keptWRs = keptPlayers.data
-    .filter((player) => player.position === Constants.WR)
-    .sort((a, b) => b.price - a.price);
+    .filter((player: Player) => player.position === Constants.WR)
+    .sort((a: Player, b: Player) => b.price - a.price);
   const keptTEs = keptPlayers.data
-    .filter((player) => player.position === Constants.TE)
-    .sort((a, b) => b.price - a.price);
+    .filter((player: Player) => player.position === Constants.TE)
+    .sort((a: Player, b: Player) => b.price - a.price);
   replaceKeeperPriceWithSuperMax(keptRBs);
   const qbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptQBs);
   const rbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptRBs);
@@ -35,14 +36,14 @@ export const getFranchiseTagDTO = async () => {
   };
 };
 
-const replaceKeeperPriceWithSuperMax = (keptRBs) => {
+const replaceKeeperPriceWithSuperMax = (keptRBs: Player[]) => {
   for (const rb of keptRBs) {
     rb.price = FFIFAService.pickSuperMaxOrKeeperPrice(rb);
   }
   return keptRBs.sort((a, b) => b.price - a.price);
 };
 
-const calculateFranchisePriceFromKeptPlayers = (playerList) => {
+const calculateFranchisePriceFromKeptPlayers = (playerList: Player[]) => {
   const priceOfMostExpensive = playerList
     .sort((a, b) => b.price - a.price)
     .slice(0, 5)
@@ -50,7 +51,7 @@ const calculateFranchisePriceFromKeptPlayers = (playerList) => {
   return Math.trunc(priceOfMostExpensive / 5);
 };
 
-export const formatFranchisePrices = (franchiseDTO) => {
+export const formatFranchisePrices = (franchiseDTO: FranchiseTagDTO) => {
   return {
     qb: franchiseDTO.qbFranchisePrice,
     rb: franchiseDTO.rbFranchisePrice,

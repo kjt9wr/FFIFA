@@ -1,7 +1,15 @@
-import { calculateSuperMaxPrice } from "./supermax.service";
+import {
+  FranchisePrices,
+  PenaltyFeeInfo,
+  Player,
+} from "../interfaces/interfaces";
 import { KEEPER_CLASS_ENUM } from "../utilities/enumerations";
+import { calculateSuperMaxPrice } from "./supermax.service";
 
-export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
+export const determineFinalPriceOfPlayer = (
+  player: Player,
+  franchisePrices: FranchisePrices
+) => {
   switch (player.keeperClass) {
     case 2:
       return getFranchisePrice(player.position, franchisePrices);
@@ -14,7 +22,7 @@ export const determineFinalPriceOfPlayer = (player, franchisePrices) => {
   }
 };
 
-const getFranchisePrice = (playerPosition, prices) => {
+const getFranchisePrice = (playerPosition: string, prices: FranchisePrices) => {
   switch (playerPosition) {
     case "QB":
       return prices.qb;
@@ -27,17 +35,17 @@ const getFranchisePrice = (playerPosition, prices) => {
   }
 };
 
-export const pickSuperMaxOrKeeperPrice = (player) => {
+export const pickSuperMaxOrKeeperPrice = (player: Player) => {
   return KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
     ? calculateSuperMaxPrice(player.superMax.plan, player.superMax.year)
     : player.price;
 };
 
-export const increaseKeeperPrice = (draftedPrice) => {
+export const increaseKeeperPrice = (draftedPrice: number) => {
   return Math.max(10, Math.trunc(1.2 * draftedPrice));
 };
 
-export const calculateLuxaryPotPayout = (penaltyFees) => {
+export const calculateLuxaryPotPayout = (penaltyFees: PenaltyFeeInfo[]) => {
   const totalInPot = penaltyFees.reduce(
     (acc, owner) => acc + owner.penaltyFee,
     0

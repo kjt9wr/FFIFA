@@ -47,3 +47,21 @@ export interface PenaltyFeeInfo {
   name: string;
   penaltyFee: number;
 }
+
+export interface FranchiseTagDTO {
+  qbFranchisePrice: number;
+  keptQBs: Player[];
+  rbFranchisePrice: number;
+  keptRBs: Player[];
+  wrFranchisePrice: number;
+  keptWRs: Player[];
+  teFranchisePrice: number;
+  keptTEs: Player[];
+}
+
+export interface FranchisePrices {
+  qb: number;
+  rb: number;
+  wr: number;
+  te: number;
+}

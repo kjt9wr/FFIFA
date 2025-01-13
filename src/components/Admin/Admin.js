@@ -7,7 +7,7 @@ import {
   updatePlayerPrice,
   updateRoster,
 } from "../../api/api.service.ts";
-import { increaseKeeperPrice } from "../../services/ffifa.service.js";
+import { increaseKeeperPrice } from "../../services/ffifa.service.ts";
 import {
   ALERT_STATE,
   DRAFT_ID_2024,

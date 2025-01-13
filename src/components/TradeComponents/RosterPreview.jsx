@@ -6,11 +6,11 @@ import {
   fetchRoster,
   fetchRosteredPlayers,
 } from "../../api/api.service.ts";
-import { calculateLuxaryPotPayout } from "../../services/ffifa.service.js";
+import { calculateLuxaryPotPayout } from "../../services/ffifa.service.ts";
 import {
   formatFranchisePrices,
   getFranchiseTagDTO,
-} from "../../services/franchise.service.js";
+} from "../../services/franchise.service.ts";
 import { ownersIDByName } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.tsx";
 import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay.jsx";
