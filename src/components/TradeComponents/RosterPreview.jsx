@@ -5,7 +5,7 @@ import {
   fetchAllOwners,
   fetchRoster,
   fetchRosteredPlayers,
-} from "../../api/api.service.js";
+} from "../../api/api.service.ts";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service.js";
 import {
   formatFranchisePrices,

@@ -6,7 +6,7 @@ import {
   fetchSleeperRosters,
   updatePlayerPrice,
   updateRoster,
-} from "../../api/api.service.js";
+} from "../../api/api.service.ts";
 import { increaseKeeperPrice } from "../../services/ffifa.service.js";
 import {
   ALERT_STATE,
