@@ -58,20 +58,19 @@ const NavBar = () => {
                 <DropdownItem href="/tradepreview">Preview Trade</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Prices
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem href="/franchise"> Franchise Tag </DropdownItem>
+                <DropdownItem href="/supermax">Supermax</DropdownItem>
+                <DropdownItem href="/arbitration">Arbitration</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
             <NavItem>
               <Link to="/cap" className="nav-link">
                 Cap Tracker
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/franchise" className="nav-link">
-                Franchise Tag
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/supermax" className="nav-link">
-                Super Max
               </Link>
             </NavItem>
             <NavItem>
@@ -80,13 +79,8 @@ const NavBar = () => {
               </Link>
             </NavItem>
             <NavItem>
-              <Link to="/arbitration" className="nav-link">
-                Arbitration
-              </Link>
-            </NavItem>
-            <NavItem>
               <Link to="/draft" className="nav-link">
-                Draft
+                Draft Day
               </Link>
             </NavItem>
             <NavItem>

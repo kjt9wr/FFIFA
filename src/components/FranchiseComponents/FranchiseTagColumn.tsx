@@ -27,7 +27,6 @@ const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
           </tr>
         </thead>
         <tbody>
-          if (keptPlayersList){" "}
           {keptPlayers.map((player: Player) => (
             <tr key={player._id}>
               <td
