@@ -5,8 +5,8 @@ import { Player } from "../../interfaces/interfaces";
 
 interface PlayerDisplayByPositionProps {
   isEditable: Boolean;
-  removePlayerCallback: (playerId: string) => void;
   playerList: Player[];
+  removePlayerCallback?: (playerId: string) => void;
 }
 
 const filterKeepersByPosition = (keptPlayers: Player[], position: string) => {

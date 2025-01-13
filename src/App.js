@@ -3,7 +3,7 @@ import React from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Admin from "./components/Admin/Admin.js";
-import Arbitration from "./components/Arbitration.js";
+import Arbitration from "./components/Arbitration.tsx";
 import CapTracker from "./components/CapTracker.js";
 import Draft from "./components/Draft.js";
 import FranchiseTag from "./components/FranchiseComponents/FranchiseTag.tsx";
