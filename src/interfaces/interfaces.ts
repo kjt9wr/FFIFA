@@ -42,3 +42,8 @@ export interface FranchiseInfo {
   teFranchisePrice: number;
   keptTEs: any;
 }
+
+export interface PenaltyFeeInfo {
+  name: string;
+  penaltyFee: number;
+}

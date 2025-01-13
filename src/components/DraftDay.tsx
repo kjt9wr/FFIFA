@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Alert, Card, Col, Container, Row } from "reactstrap";
 import { calculateLuxaryPotPayout } from "../services/ffifa.service";
 import { fetchAllOwners } from "../api/api.service";
+import { Owner, PenaltyFeeInfo } from "../interfaces/interfaces";
 
-const displayOwnersUnderTax = (ownerData) => {
-  return ownerData
-    .filter((owner) => owner.penaltyFee === 0)
-    .map((currentOwner) => {
+const displayOwnersUnderTax = (penaltyFeeData: PenaltyFeeInfo[]) => {
+  return penaltyFeeData
+    .filter((owner: PenaltyFeeInfo) => owner.penaltyFee === 0)
+    .map((currentOwner: PenaltyFeeInfo) => {
       return <div key={currentOwner.name}>{currentOwner.name}</div>;
     });
 };
 
-const displayOwnersInTax = (ownerData) => {
+const displayOwnersInTax = (ownerData: PenaltyFeeInfo[]) => {
   return ownerData
-    .filter((owner) => owner.penaltyFee > 0)
-    .map((currentOwner) => {
+    .filter((owner: PenaltyFeeInfo) => owner.penaltyFee > 0)
+    .map((currentOwner: PenaltyFeeInfo) => {
       return (
         <div key={currentOwner.name}>
           {currentOwner.name} ${currentOwner.penaltyFee}
@@ -22,18 +23,22 @@ const displayOwnersInTax = (ownerData) => {
       );
     });
 };
-
-const Draft = () => {
-  const [penaltyFees, setPenaltyFees] = useState([]);
+/*
+ * This component displays draft day information
+ */
+const DraftDay = () => {
+  const [penaltyFees, setPenaltyFees] = useState<PenaltyFeeInfo[]>([]);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
     const getPenaltyData = async () => {
       await fetchAllOwners()
         .then((response) => {
-          const fees = response.data.map((owner) => {
-            return { name: owner.name, penaltyFee: owner.penaltyFee };
-          });
+          const fees = response.data
+            .filter((owner: Owner) => owner.active)
+            .map((owner: Owner) => {
+              return { name: owner.name, penaltyFee: owner.penaltyFee };
+            });
           setPenaltyFees(fees);
         })
         .catch(() => {
@@ -45,25 +50,28 @@ const Draft = () => {
   }, []);
 
   const totalInPot = penaltyFees.reduce(
-    (acc, owner) => acc + owner.penaltyFee,
+    (acc: number, owner: PenaltyFeeInfo) => acc + owner.penaltyFee,
     0
   );
 
-  const nonOffenders = penaltyFees.filter(
+  const nonoffendersCount = penaltyFees.filter(
     (owner) => owner.penaltyFee === 0
   ).length;
 
-  const offenders = 12 - nonOffenders;
+  const offendersCount = 12 - nonoffendersCount;
 
-  const baseCap2025 =
-    338 + (0.05 + 0.01 * nonOffenders - 0.01 * offenders) * 338;
+  const nextYearBaseCap = Math.trunc(
+    375 + (0.05 + 0.01 * nonoffendersCount - 0.01 * offendersCount) * 375
+  );
   return (
     <Container>
       <h1 className="text-center"> Draft Day Info </h1>
       {displayErrorAlert && (
         <Alert color="danger">Error fetching draft data</Alert>
       )}
-      <h4>2025 Base Cap: ${Math.trunc(baseCap2025)}</h4>
+      <h4>Total Money in the Pot: ${totalInPot}</h4>
+      <h4>Payout Per Owner: ${calculateLuxaryPotPayout(penaltyFees)}</h4>
+      <h4>2026 Base Cap: ${nextYearBaseCap}</h4>
       <Card className="p-1 my-2">
         <Row>
           <Col>
@@ -76,10 +84,8 @@ const Draft = () => {
           </Col>
         </Row>
       </Card>
-      <h4>Total Money in the Pot: ${totalInPot}</h4>
-      <h4>Payout Per Owner: ${calculateLuxaryPotPayout(penaltyFees)}</h4>
     </Container>
   );
 };
 
-export default Draft;
+export default DraftDay;

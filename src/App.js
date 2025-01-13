@@ -5,7 +5,7 @@ import "./App.css";
 import Admin from "./components/Admin/Admin.js";
 import Arbitration from "./components/Arbitration.tsx";
 import CapTracker from "./components/CapTracker.tsx";
-import Draft from "./components/Draft.js";
+import DraftDay from "./components/DraftDay.tsx";
 import FranchiseTag from "./components/FranchiseComponents/FranchiseTag.tsx";
 import FreeAgency from "./components/FreeAgencyTracker.tsx";
 import HomePage from "./components/HomePage.tsx";
@@ -27,7 +27,7 @@ const App = () => (
     <Route path="/fa" component={FreeAgency} />
     <Route path="/supermax" component={SuperMax} />
     <Route path="/arbitration" component={Arbitration} />
-    <Route path="/draft" component={Draft} />
+    <Route path="/draft" component={DraftDay} />
     <Route path="/admin" component={Admin} />
   </Router>
 );
