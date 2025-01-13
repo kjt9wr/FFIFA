@@ -12,7 +12,7 @@ import HomePage from "./components/HomePage.tsx";
 import Navbar from "./components/Navbar.tsx";
 import Roster from "./components/RosterComponents/Roster.jsx";
 import SuperMax from "./components/SuperMax.tsx";
-import RosterPreview from "./components/TradeComponents/RosterPreview.jsx";
+import RosterPreview from "./components/TradeComponents/RosterPreview.tsx";
 import TradeTracker from "./components/TradeComponents/TradeTracker.tsx";
 
 const App = () => (

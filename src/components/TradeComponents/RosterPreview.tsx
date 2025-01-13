@@ -5,26 +5,27 @@ import {
   fetchAllOwners,
   fetchRoster,
   fetchRosteredPlayers,
-} from "../../api/api.service.ts";
-import { calculateLuxaryPotPayout } from "../../services/ffifa.service.ts";
+} from "../../api/api.service";
+import { Owner, Player } from "../../interfaces/interfaces";
+import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import {
   formatFranchisePrices,
   getFranchiseTagDTO,
-} from "../../services/franchise.service.ts";
+} from "../../services/franchise.service";
 import { ownersIDByName } from "../../utilities/constants";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.tsx";
+import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay.jsx";
 
 /*
  * This page allows the user to edit and view a roster without publishing changes
  */
 
-const RosterPreview = (props) => {
+const RosterPreview = () => {
   const [roster, setRoster] = useState([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
   const [franchisePrices, setFranchisePrices] = useState({});
   const [maxCap, setMaxCap] = useState();
-  const [rosteredPlayerPool, setRosteredPlayerPool] = useState();
+  const [rosteredPlayerPool, setRosteredPlayerPool] = useState<Player[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState();
   const ownerName = "Kevin";
   const ownerId = ownersIDByName[ownerName];
@@ -36,12 +37,12 @@ const RosterPreview = (props) => {
       getFranchiseTagDTO(),
       fetchRosteredPlayers(),
     ]).then(([unsortedRoster, owners, franchiseTags, allRosteredPlayers]) => {
-      setRoster(unsortedRoster.data.filter((player) => player.keep));
+      setRoster(unsortedRoster.data.filter((player: Player) => player.keep));
       const initialCap = owners.data.filter(
-        (owner) => ownerName === owner.name
+        (owner: Owner) => ownerName === owner.name
       )[0].cap[5];
       setMaxCap(initialCap);
-      const fees = owners.data.map((owner) => {
+      const fees = owners.data.map((owner: Owner) => {
         return {
           name: owner.name,
           penaltyFee: owner.penaltyFee,
@@ -65,12 +66,12 @@ const RosterPreview = (props) => {
     [roster]
   );
 
-  const onChangeSelect = (e) => {
+  const onChangeSelect = (e: any) => {
     const selection = e ? e.value : "";
     setSelectedPlayer(selection);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const fullPlayerObject = rosteredPlayerPool.find(
       (player) => selectedPlayer === player._id
@@ -82,8 +83,8 @@ const RosterPreview = (props) => {
 
   const addablePlayers = rosteredPlayerPool
     ? rosteredPlayerPool
-        .filter((player) => !roster.includes(player))
-        .map((player) => {
+        .filter((player: Player) => !roster.includes(player))
+        .map((player: Player) => {
           return { label: player.name, value: player._id };
         })
         .sort((a, b) => {
@@ -100,10 +101,10 @@ const RosterPreview = (props) => {
     : [];
 
   const selectionStyle = {
-    control: (baseStyles, state) => ({
+    control: (baseStyles: any) => ({
       ...baseStyles,
     }),
-    option: (baseStyles, state) => ({
+    option: (baseStyles: any) => ({
       ...baseStyles,
       color: "black",
     }),
