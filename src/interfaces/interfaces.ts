@@ -21,6 +21,20 @@ export interface Owner {
   active: boolean;
 }
 
+export interface TradeInfo {
+  owner1: Owner;
+  owner2: Owner;
+  owner1_rec: TradePackage;
+  owner2_rec: TradePackage;
+  trade_notes: string;
+  years: string[];
+}
+
+export interface TradePackage {
+  players: string[];
+  cap: Record<string, number>;
+}
+
 export interface SuperMaxData {
   plan: number;
   year: number;

@@ -1,16 +1,17 @@
 import React from "react";
 import { Card, Col, Row } from "reactstrap";
+import { TradeInfo } from "../../interfaces/interfaces";
 import * as Constants from "../../utilities/constants";
 
-const displayPlayers = (players) => {
-  return players.map((currentPlayerID) => {
+const displayPlayers = (playerIds: string[]) => {
+  return playerIds.map((currentPlayerID) => {
     return (
       <div key={currentPlayerID}>{Constants.playersByID[currentPlayerID]}</div>
     );
   });
 };
 
-const displayCap = (capObject) => {
+const displayCap = (capObject: Record<string, number>) => {
   if (capObject) {
     return Object.entries(capObject).map((capInYear) => {
       return (
@@ -22,7 +23,7 @@ const displayCap = (capObject) => {
   }
 };
 
-const displayAdditionalNotes = (notes) => {
+const displayAdditionalNotes = (notes: string) => {
   return (
     notes && (
       <div>
@@ -32,10 +33,14 @@ const displayAdditionalNotes = (notes) => {
   );
 };
 
+interface TradeCardProps {
+  currentTrade: TradeInfo;
+}
+
 /*
  * This component creates a card containing the passed trade information
  */
-const TradeCard = (props) => {
+const TradeCard = (props: TradeCardProps) => {
   const { currentTrade } = props;
 
   return (

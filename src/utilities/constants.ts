@@ -79,7 +79,7 @@ export const OwnerIDBySleeperRosterID = {
   12: ID_ENUM.BRENT,
 };
 
-export const playersByID = {
+export const playersByID: Record<string, string> = {
   "5f3f34404fa190743101a1b9": "Kyler Murray",
   "5f3f37484fa190743101a1ba": "Tyreek Hill",
   "5f3f37d54fa190743101a1bb": "Aaron Jones",
