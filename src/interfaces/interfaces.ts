@@ -12,6 +12,15 @@ export interface Player {
   superMax?: SuperMaxData;
 }
 
+export interface Owner {
+  cap: number[];
+  _id: string;
+  name: string;
+  sleeperId: string;
+  penaltyFee: number;
+  active: boolean;
+}
+
 export interface SuperMaxData {
   plan: number;
   year: number;

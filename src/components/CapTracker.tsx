@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners } from "../api/api.service";
+import { Owner } from "../interfaces/interfaces";
 import { CURRENT_SEASON_YEAR } from "../utilities/constants";
 import YearSelector from "./reusable/YearSelector";
 
-const displayCapTable = (year, owners) => {
+const displayCapTable = (year: string, owners: Owner[]) => {
   return (
     <Table responsive>
       <thead className="thead-light">
         <tr>
           <th></th>
           {owners.map(
-            (owner) =>
+            (owner: Owner) =>
               owner.cap[parseInt(year.slice(-1))] !== 0 && (
                 <th key={owner.name}>{owner.name}</th>
               )
@@ -22,7 +23,7 @@ const displayCapTable = (year, owners) => {
         <tr>
           <td>{year}</td>
           {owners.map(
-            (owner) =>
+            (owner: Owner) =>
               owner.cap[parseInt(year.slice(-1))] !== 0 && (
                 <td key={owner.name}>{owner.cap[parseInt(year.slice(-1))]}</td>
               )
@@ -55,7 +56,7 @@ const CapTracker = () => {
     getOwnerInfo();
   }, []);
 
-  const handleOnChange = (year) => {
+  const handleOnChange = (year: string) => {
     setSelectedYear(year);
   };
 
