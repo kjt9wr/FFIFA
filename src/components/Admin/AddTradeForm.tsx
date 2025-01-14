@@ -3,13 +3,15 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { Owner } from "../../interfaces/interfaces";
+import React from "react";
 
 const AddTradeForm = () => {
   const [activeOwners, setActiveOwners] = useState([]);
   useEffect(() => {
     const getOwnerData = async () => {
       await axios.get("http://localhost:5000/owner/").then((response) => {
-        setActiveOwners(response.data.filter((owner) => owner.active));
+        setActiveOwners(response.data.filter((owner: Owner) => owner.active));
         console.log(activeOwners);
       });
     };
@@ -17,7 +19,7 @@ const AddTradeForm = () => {
     getOwnerData();
   }, [activeOwners]);
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: any) => {
     console.log(formData);
   };
 
