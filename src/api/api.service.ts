@@ -1,4 +1,3 @@
-import { Player } from "../interfaces/interfaces";
 import { CURRENT_SEASON_YEAR } from "../utilities/constants";
 import apiClient from "./apiClient";
 import sleeperApiClient from "./sleeperApiClient";
@@ -42,7 +41,7 @@ export const fetchRoster = (ownerId: string) => {
   return apiClient.get(`/player/roster/${ownerId}`);
 };
 
-export const updateRoster = (ownerId: string, playerList: Player[]) => {
+export const updateRoster = (ownerId: string, playerList: string[]) => {
   return apiClient.post(`/player/update/roster/${ownerId}`, {
     players: playerList,
   });

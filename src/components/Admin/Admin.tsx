@@ -6,8 +6,13 @@ import {
   fetchSleeperRosters,
   updatePlayerPrice,
   updateRoster,
-} from "../../api/api.service.ts";
-import { increaseKeeperPrice } from "../../services/ffifa.service.ts";
+} from "../../api/api.service";
+import { DraftDTO, RosterDTO } from "../../interfaces/interfaces";
+import {
+  SleeperDraftPick,
+  SleeperRoster,
+} from "../../interfaces/sleeper-interfaces";
+import { increaseKeeperPrice } from "../../services/ffifa.service";
 import {
   ALERT_STATE,
   DRAFT_ID_2024,
@@ -18,8 +23,8 @@ import { playersBySleeperID } from "../../utilities/sleeper-ids";
 import AddTradeForm from "./AddTradeForm.js";
 
 const Admin = () => {
-  const [allRosters, setAllRosters] = useState();
-  const [draftData, setDraftData] = useState();
+  const [allRosters, setAllRosters] = useState<RosterDTO[]>([]);
+  const [draftData, setDraftData] = useState<DraftDTO[]>([]);
   const [rosterUpdateAlert, setRosterUpdateAlert] = useState(ALERT_STATE.NONE);
   const [draftDataAlert, setDraftDataAlert] = useState(ALERT_STATE.NONE);
 
@@ -27,7 +32,7 @@ const Admin = () => {
   useEffect(() => {
     const getAllRosters = async () => {
       const rostersResponse = await fetchSleeperRosters(SLEEPER_LEAGUE_ID_2024);
-      const rosters = rostersResponse.data.map((roster) => {
+      const rosters = rostersResponse.data.map((roster: SleeperRoster) => {
         return {
           players: roster.players,
           ownerSleeperId: roster.roster_id,
@@ -45,8 +50,11 @@ const Admin = () => {
     const getDraftInfo = async () => {
       const draftResults = await fetchSleeperDraftResults(DRAFT_ID_2024);
       const playersToUpdate = draftResults.data
-        .filter((player) => player.metadata.player_id in playersBySleeperID)
-        .map((player) => ({
+        .filter(
+          (player: SleeperDraftPick) =>
+            player.metadata.player_id in playersBySleeperID
+        )
+        .map((player: SleeperDraftPick) => ({
           price: player.metadata.amount,
           sleeperId: player.metadata.player_id,
         }));
@@ -61,7 +69,7 @@ const Admin = () => {
       setRosterUpdateAlert(ALERT_STATE.ERROR);
     });
 
-    allRosters.forEach(async (roster) => {
+    allRosters.forEach(async (roster: RosterDTO) => {
       await updateRoster(
         OwnerIDBySleeperRosterID[roster.ownerSleeperId],
         roster.players

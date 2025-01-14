@@ -80,3 +80,12 @@ export interface FranchisePrices {
   wr: number;
   te: number;
 }
+export interface RosterDTO {
+  players: string[];
+  ownerSleeperId: string;
+}
+
+export interface DraftDTO {
+  price: number;
+  sleeperId: string;
+}

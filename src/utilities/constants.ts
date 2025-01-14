@@ -64,7 +64,7 @@ export const ownersIDByName = {
   Casey: "66fb53a23cb8429bd448fd61",
 };
 
-export const OwnerIDBySleeperRosterID = {
+export const OwnerIDBySleeperRosterID: Record<string, string> = {
   1: ID_ENUM.ALEX,
   2: ID_ENUM.MICHAEL,
   3: ID_ENUM.KEVIN,

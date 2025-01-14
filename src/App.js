@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import Admin from "./components/Admin/Admin.js";
+import Admin from "./components/Admin/Admin.tsx";
 import Arbitration from "./components/Arbitration.tsx";
 import CapTracker from "./components/CapTracker.tsx";
 import DraftDay from "./components/DraftDay.tsx";
