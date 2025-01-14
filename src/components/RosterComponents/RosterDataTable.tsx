@@ -6,7 +6,7 @@ import RosterPlayerRow from "./RosterPlayerRow";
 interface RosterDataTableProps {
   roster: Player[];
   franchisePrices: FranchisePrices;
-  toggleKeeper: () => void;
+  toggleKeeper: (e: Event) => void;
 }
 
 /*

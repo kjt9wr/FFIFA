@@ -48,7 +48,7 @@ export const ownersByID: Record<string, string> = {
   "66fb53a23cb8429bd448fd61": "Casey",
 };
 
-export const ownersIDByName = {
+export const ownersIDByName: Record<string, string> = {
   Kevin: "5e80d724b3bdaf3413316177",
   Justin: "5e80d930b3bdaf3413316189",
   Alex: "5e80dd6ab3bdaf34133161bd",

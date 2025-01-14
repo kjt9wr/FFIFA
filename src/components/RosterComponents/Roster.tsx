@@ -4,14 +4,15 @@ import {
   fetchAllOwners,
   fetchRoster,
   updatePlayerKeeperStatus,
-} from "../../api/api.service.ts";
-import { calculateLuxaryPotPayout } from "../../services/ffifa.service.ts";
+} from "../../api/api.service";
+import { FranchisePrices, Owner, Player } from "../../interfaces/interfaces";
+import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import {
   formatFranchisePrices,
   getFranchiseTagDTO,
-} from "../../services/franchise.service.ts";
+} from "../../services/franchise.service";
 import { ownersIDByName } from "../../utilities/constants";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.tsx";
+import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
 
@@ -20,10 +21,23 @@ import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
  * and a roster table to edit keepers
  */
 
-const Roster = (props) => {
-  const [roster, setRoster] = useState([]);
+interface RosterProps {
+  match: {
+    params: {
+      name: string;
+    };
+  };
+}
+
+const Roster = (props: RosterProps) => {
+  const [roster, setRoster] = useState<Player[]>([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState({});
+  const [franchisePrices, setFranchisePrices] = useState<FranchisePrices>({
+    qb: 0,
+    rb: 0,
+    wr: 0,
+    te: 0,
+  });
   const [changeKeeper, setChangeKeeper] = useState(false);
   const [cap, setCap] = useState();
 
@@ -46,15 +60,17 @@ const Roster = (props) => {
       getFranchiseTagDTO(),
     ]).then(([unsortedRoster, owners, franchiseTags]) => {
       setRoster(
-        unsortedRoster.data.sort((a, b) => (a.position > b.position ? 1 : -1))
+        unsortedRoster.data.sort((a: Player, b: Player) =>
+          a.position > b.position ? 1 : -1
+        )
       );
 
       const currentYearCap = owners.data.filter(
-        (owner) => ownerId === owner._id
+        (owner: Owner) => ownerId === owner._id
       )[0].cap[5];
       setCap(currentYearCap);
 
-      const fees = owners.data.map((owner) => {
+      const fees = owners.data.map((owner: Owner) => {
         return { name: owner.name, penaltyFee: owner.penaltyFee };
       });
       setPenaltyFees(fees);
@@ -76,7 +92,10 @@ const Roster = (props) => {
         isEditable={false}
       />
       <h4>Roster:</h4>
-      <PlayerDisplayByPosition playerList={keptPlayersList} />
+      <PlayerDisplayByPosition
+        playerList={keptPlayersList}
+        isEditable={false}
+      />
       <RosterDataTable
         roster={roster}
         franchisePrices={franchisePrices}

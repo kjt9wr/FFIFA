@@ -33,7 +33,7 @@ interface RosterPlayerRowProps {
   franchisePrices: FranchisePrices;
   id: string;
   keep: boolean;
-  toggleKeeper: () => void;
+  toggleKeeper: (e: any) => void;
 }
 
 /*

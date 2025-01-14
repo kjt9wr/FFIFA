@@ -10,7 +10,7 @@ import FranchiseTag from "./components/FranchiseComponents/FranchiseTag.tsx";
 import FreeAgency from "./components/FreeAgencyTracker.tsx";
 import HomePage from "./components/HomePage.tsx";
 import Navbar from "./components/Navbar.tsx";
-import Roster from "./components/RosterComponents/Roster.jsx";
+import Roster from "./components/RosterComponents/Roster.tsx";
 import SuperMax from "./components/SuperMax.tsx";
 import RosterPreview from "./components/TradeComponents/RosterPreview.tsx";
 import TradeTracker from "./components/TradeComponents/TradeTracker.tsx";
