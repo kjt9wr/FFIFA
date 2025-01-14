@@ -1,95 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Alert, Button, Container } from "reactstrap";
-import {
-  clearAllPlayersOwner,
-  fetchSleeperDraftResults,
-  fetchSleeperRosters,
-  updatePlayerPrice,
-  updateRoster,
-} from "../../api/api.service";
-import { DraftDTO, RosterDTO } from "../../interfaces/interfaces";
-import {
-  SleeperDraftPick,
-  SleeperRoster,
-} from "../../interfaces/sleeper-interfaces";
-import { increaseKeeperPrice } from "../../services/ffifa.service";
-import {
-  ALERT_STATE,
-  DRAFT_ID_2024,
-  OwnerIDBySleeperRosterID,
-  SLEEPER_LEAGUE_ID_2024,
-} from "../../utilities/constants";
-import { playersBySleeperID } from "../../utilities/sleeper-ids";
+import React, { useState } from "react";
+import { Alert, Container } from "reactstrap";
+import { ALERT_STATE } from "../../utilities/constants";
 import AddTradeForm from "./AddTradeForm.js";
+import UpdateDraftPrices from "./UpdateDraftPrices";
+import UpdateRosters from "./UpdateRosters";
 
 const Admin = () => {
-  const [allRosters, setAllRosters] = useState<RosterDTO[]>([]);
-  const [draftData, setDraftData] = useState<DraftDTO[]>([]);
   const [rosterUpdateAlert, setRosterUpdateAlert] = useState(ALERT_STATE.NONE);
   const [draftDataAlert, setDraftDataAlert] = useState(ALERT_STATE.NONE);
 
-  // get all rosters from Sleeper Api
-  useEffect(() => {
-    const getAllRosters = async () => {
-      const rostersResponse = await fetchSleeperRosters(SLEEPER_LEAGUE_ID_2024);
-      const rosters = rostersResponse.data.map((roster: SleeperRoster) => {
-        return {
-          players: roster.players,
-          ownerSleeperId: roster.roster_id,
-        };
-      });
-
-      setAllRosters(rosters);
-    };
-
-    getAllRosters();
-  }, []);
-
-  // get draft prices for all players
-  useEffect(() => {
-    const getDraftInfo = async () => {
-      const draftResults = await fetchSleeperDraftResults(DRAFT_ID_2024);
-      const playersToUpdate = draftResults.data
-        .filter(
-          (player: SleeperDraftPick) =>
-            player.metadata.player_id in playersBySleeperID
-        )
-        .map((player: SleeperDraftPick) => ({
-          price: player.metadata.amount,
-          sleeperId: player.metadata.player_id,
-        }));
-
-      setDraftData(playersToUpdate);
-    };
-    getDraftInfo();
-  }, []);
-
-  const updateAllRosters = async () => {
-    await clearAllPlayersOwner().catch(() => {
-      setRosterUpdateAlert(ALERT_STATE.ERROR);
-    });
-
-    allRosters.forEach(async (roster: RosterDTO) => {
-      await updateRoster(
-        OwnerIDBySleeperRosterID[roster.ownerSleeperId],
-        roster.players
-      ).catch(() => {
-        setRosterUpdateAlert(ALERT_STATE.ERROR);
-      });
-    });
-    setRosterUpdateAlert(ALERT_STATE.SUCCESS);
+  const rosterUpdateAlertCallback = (alertType: string) => {
+    setRosterUpdateAlert(alertType);
   };
 
-  const addDraftPrices = async () => {
-    draftData.forEach(async (player) => {
-      await updatePlayerPrice(
-        player.sleeperId,
-        increaseKeeperPrice(player.price)
-      ).catch(() => {
-        setDraftDataAlert(ALERT_STATE.ERROR);
-      });
-    });
-    setDraftDataAlert(ALERT_STATE.SUCCESS);
+  const draftUpdateAlertCallback = (alertType: string) => {
+    setDraftDataAlert(alertType);
   };
 
   return (
@@ -107,12 +32,8 @@ const Admin = () => {
       {ALERT_STATE.SUCCESS === draftDataAlert && (
         <Alert color="success">Successfully updated player draft prices</Alert>
       )}
-      <Button title="Update All Rosters" onClick={updateAllRosters}>
-        Update All Rosters
-      </Button>
-      <Button title="Add Draft Prices" onClick={addDraftPrices}>
-        Add Draft Prices
-      </Button>
+      <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
+      <UpdateDraftPrices priceAlertCallback={draftUpdateAlertCallback} />
       <br /> <br />
       <AddTradeForm />
     </Container>
