@@ -2,18 +2,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import Admin from "./components/Admin/Admin.tsx";
-import Arbitration from "./components/Arbitration.tsx";
-import CapTracker from "./components/CapTracker.tsx";
-import DraftDay from "./components/DraftDay.tsx";
-import FranchiseTag from "./components/FranchiseComponents/FranchiseTag.tsx";
-import FreeAgency from "./components/FreeAgencyTracker.tsx";
-import HomePage from "./components/HomePage.tsx";
-import Navbar from "./components/Navbar.tsx";
-import Roster from "./components/RosterComponents/Roster.tsx";
-import SuperMax from "./components/SuperMax.tsx";
-import RosterPreview from "./components/TradeComponents/RosterPreview.tsx";
-import TradeTracker from "./components/TradeComponents/TradeTracker.tsx";
+import Admin from "./components/Admin/Admin";
+import Arbitration from "./components/Arbitration";
+import CapTracker from "./components/CapTracker";
+import DraftDay from "./components/DraftDay";
+import FranchiseTag from "./components/FranchiseComponents/FranchiseTag";
+import FreeAgency from "./components/FreeAgencyTracker";
+import HomePage from "./components/HomePage";
+import Navbar from "./components/Navbar";
+import Roster from "./components/RosterComponents/Roster";
+import SuperMax from "./components/SuperMax";
+import RosterPreview from "./components/TradeComponents/RosterPreview";
+import TradeTracker from "./components/TradeComponents/TradeTracker";
 
 const App = () => (
   <Router>
