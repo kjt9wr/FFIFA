@@ -35,7 +35,6 @@ const Admin = () => {
       <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
       <UpdateDraftPrices priceAlertCallback={draftUpdateAlertCallback} />
       <br /> <br />
-      <AddTradeForm />
     </Container>
   );
 };
