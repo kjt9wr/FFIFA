@@ -1,19 +1,24 @@
 import React from "react";
 import { Input } from "reactstrap";
+import {
+  FranchisePrices,
+  Player,
+  SuperMaxData,
+} from "../../interfaces/interfaces";
 import { determineFinalPriceOfPlayer } from "../../services/ffifa.service";
 import {
   getKeeperClassText,
   KEEPER_CLASS_ENUM,
 } from "../../utilities/enumerations";
 
-const showUnadjustedPrice = (keeperClass) => {
+const showUnadjustedPrice = (keeperClass: number) => {
   return [
     KEEPER_CLASS_ENUM.FRANCHISE_TAG,
     KEEPER_CLASS_ENUM.ARBITRATION,
   ].includes(keeperClass);
 };
 
-const getSuperMaxText = (superMax) => {
+const getSuperMaxText = (superMax: SuperMaxData) => {
   return (
     superMax && (
       <b>
@@ -22,11 +27,20 @@ const getSuperMaxText = (superMax) => {
     )
   );
 };
+
+interface RosterPlayerRowProps {
+  player: Player;
+  franchisePrices: FranchisePrices;
+  id: string;
+  keep: boolean;
+  toggleKeeper: () => void;
+}
+
 /*
  * This component displays the an individual Player Row in the Roster Data Table
  */
 
-const RosterPlayerRow = (props) => {
+const RosterPlayerRow = (props: RosterPlayerRowProps) => {
   const { player } = props;
   return (
     <tr className="customRow">

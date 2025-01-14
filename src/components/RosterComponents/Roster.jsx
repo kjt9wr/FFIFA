@@ -12,7 +12,7 @@ import {
 } from "../../services/franchise.service.ts";
 import { ownersIDByName } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.tsx";
-import RosterDataTable from "./RosterDataTable.jsx";
+import RosterDataTable from "./RosterDataTable";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
 
 /*
