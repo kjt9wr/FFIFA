@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
-import * as SuperMaxService from "../services/supermax.service";
-import * as Constants from "../utilities/constants";
 import { fetchSupermaxPlayers } from "../api/api.service";
 import { Player } from "../interfaces/interfaces";
+import * as SuperMaxService from "../services/supermax.service";
+import { ownersByID } from "../utilities/id-maps";
 
 const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
   return superMaxPlayers.map((currentPlayer: Player) => {
-    const ownerName = Constants.ownersByID[currentPlayer.owner];
+    const ownerName = ownersByID[currentPlayer.owner];
     const price = SuperMaxService.calculateSuperMaxPrice(
       currentPlayer.superMax.plan,
       currentPlayer.superMax.year

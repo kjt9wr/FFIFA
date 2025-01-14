@@ -7,7 +7,8 @@ import {
 import { DraftDTO } from "../../interfaces/interfaces";
 import { SleeperDraftPick } from "../../interfaces/sleeper-interfaces";
 import { increaseKeeperPrice } from "../../services/ffifa.service";
-import { ALERT_STATE, DRAFT_ID_2024 } from "../../utilities/constants";
+import { DRAFT_ID_2024 } from "../../utilities/constants";
+import { ALERT_STATE } from "../../utilities/enumerations";
 import { playersBySleeperID } from "../../utilities/sleeper-ids";
 
 interface UpdateDraftPricesProps {

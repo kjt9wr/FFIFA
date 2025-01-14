@@ -7,11 +7,9 @@ import {
 } from "../../api/api.service";
 import { RosterDTO } from "../../interfaces/interfaces";
 import { SleeperRoster } from "../../interfaces/sleeper-interfaces";
-import {
-  ALERT_STATE,
-  OwnerIDBySleeperRosterID,
-  SLEEPER_LEAGUE_ID_2024,
-} from "../../utilities/constants";
+import { SLEEPER_LEAGUE_ID_2024 } from "../../utilities/constants";
+import { ALERT_STATE } from "../../utilities/enumerations";
+import { OwnerIDBySleeperRosterID } from "../../utilities/sleeper-ids";
 
 interface UpdateRosterProps {
   rosterAlertCallback: (alertType: string) => void;

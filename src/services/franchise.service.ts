@@ -1,22 +1,22 @@
 import { fetchKeptPlayers } from "../api/api.service";
 import { FranchiseTagDTO, Player } from "../interfaces/interfaces";
-import * as Constants from "../utilities/constants";
+import { POSITION } from "../utilities/enumerations";
 import * as FFIFAService from "./ffifa.service";
 
 export const getFranchiseTagDTO = async () => {
   const keptPlayers = await fetchKeptPlayers();
 
   const keptQBs = keptPlayers.data
-    .filter((player: Player) => player.position === Constants.QB)
+    .filter((player: Player) => player.position === POSITION.QB)
     .sort((a: Player, b: Player) => b.price - a.price);
   const keptRBs = keptPlayers.data
-    .filter((player: Player) => player.position === Constants.RB)
+    .filter((player: Player) => player.position === POSITION.RB)
     .sort((a: Player, b: Player) => b.price - a.price);
   const keptWRs = keptPlayers.data
-    .filter((player: Player) => player.position === Constants.WR)
+    .filter((player: Player) => player.position === POSITION.WR)
     .sort((a: Player, b: Player) => b.price - a.price);
   const keptTEs = keptPlayers.data
-    .filter((player: Player) => player.position === Constants.TE)
+    .filter((player: Player) => player.position === POSITION.TE)
     .sort((a: Player, b: Player) => b.price - a.price);
   replaceKeeperPriceWithSuperMax(keptRBs);
   const qbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptQBs);

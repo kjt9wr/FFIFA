@@ -3,7 +3,7 @@ import {
   PenaltyFeeInfo,
   Player,
 } from "../interfaces/interfaces";
-import { KEEPER_CLASS_ENUM } from "../utilities/enumerations";
+import { KEEPER_CLASS_ENUM, POSITION } from "../utilities/enumerations";
 import { calculateSuperMaxPrice } from "./supermax.service";
 
 export const determineFinalPriceOfPlayer = (
@@ -24,11 +24,11 @@ export const determineFinalPriceOfPlayer = (
 
 const getFranchisePrice = (playerPosition: string, prices: FranchisePrices) => {
   switch (playerPosition) {
-    case "QB":
+    case POSITION.QB:
       return prices.qb;
-    case "RB":
+    case POSITION.RB:
       return prices.rb;
-    case "WR":
+    case POSITION.WR:
       return prices.wr;
     default:
       return prices.te;

@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row, Table } from "reactstrap";
 import { useFreeAgents } from "../custom-hooks/custom-hooks";
 import { Player } from "../interfaces/interfaces";
-import * as Constants from "../utilities/constants";
+import { POSITION } from "../utilities/enumerations";
 
 interface FreeAgentColumnProps {
   availablePlayers: Player[];
@@ -41,25 +41,25 @@ const FreeAgency = () => {
             <Col>
               <FreeAgentColumn
                 availablePlayers={freeAgents.availableQBs}
-                position={Constants.QB}
+                position={POSITION.QB}
               />
             </Col>
             <Col>
               <FreeAgentColumn
                 availablePlayers={freeAgents.availableRBs}
-                position={Constants.RB}
+                position={POSITION.RB}
               />
             </Col>
             <Col>
               <FreeAgentColumn
                 availablePlayers={freeAgents.availableWRs}
-                position={Constants.WR}
+                position={POSITION.WR}
               />
             </Col>
             <Col>
               <FreeAgentColumn
                 availablePlayers={freeAgents.availableTEs}
-                position={Constants.TE}
+                position={POSITION.TE}
               />
             </Col>
           </>

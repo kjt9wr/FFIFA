@@ -6,7 +6,7 @@ import {
   Player,
 } from "../interfaces/interfaces";
 import * as FranchiseService from "../services/franchise.service";
-import * as Constants from "../utilities/constants";
+import { POSITION } from "../utilities/enumerations";
 
 export const useFranchiseInfo = () => {
   const [franchiseInfo, setFranchiseInfo] = useState<FranchiseInfo>();
@@ -42,20 +42,20 @@ export const useFreeAgents = () => {
       const availablePlayers = await fetchFreeAgents();
 
       const availableQBs = getAvailablePlayersPosition(
-        Constants.QB,
+        POSITION.QB,
         availablePlayers.data
       );
 
       const availableRBs = getAvailablePlayersPosition(
-        Constants.RB,
+        POSITION.RB,
         availablePlayers.data
       );
       const availableWRs = getAvailablePlayersPosition(
-        Constants.WR,
+        POSITION.WR,
         availablePlayers.data
       );
       const availableTEs = getAvailablePlayersPosition(
-        Constants.TE,
+        POSITION.TE,
         availablePlayers.data
       );
 

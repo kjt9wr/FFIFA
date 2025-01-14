@@ -11,7 +11,7 @@ import {
   formatFranchisePrices,
   getFranchiseTagDTO,
 } from "../../services/franchise.service";
-import { ownersIDByName } from "../../utilities/constants";
+import { ownersIDByName } from "../../utilities/id-maps";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";

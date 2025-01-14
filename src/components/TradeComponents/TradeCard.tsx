@@ -1,13 +1,11 @@
 import React from "react";
 import { Card, Col, Row } from "reactstrap";
 import { TradeInfo } from "../../interfaces/interfaces";
-import * as Constants from "../../utilities/constants";
+import { playersByID } from "../../utilities/id-maps";
 
 const displayPlayers = (playerIds: string[]) => {
   return playerIds.map((currentPlayerID) => {
-    return (
-      <div key={currentPlayerID}>{Constants.playersByID[currentPlayerID]}</div>
-    );
+    return <div key={currentPlayerID}>{playersByID[currentPlayerID]}</div>;
   });
 };
 

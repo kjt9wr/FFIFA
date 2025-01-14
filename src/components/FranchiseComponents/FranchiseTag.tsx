@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
 import { useFranchiseInfo } from "../../custom-hooks/custom-hooks";
-import * as Constants from "../../utilities/constants";
+import { POSITION } from "../../utilities/enumerations";
 import FranchiseTagColumn from "./FranchiseTagColumn";
 
 /*
@@ -19,26 +19,26 @@ const FranchiseTag = () => {
           <Col>
             <FranchiseTagColumn
               keptPlayers={franchiseInfo.keptQBs}
-              position={Constants.QB}
+              position={POSITION.QB}
               tagPrice={franchiseInfo.qbFranchisePrice}
             />
           </Col>
           <Col>
             <FranchiseTagColumn
               keptPlayers={franchiseInfo.keptRBs}
-              position={Constants.RB}
+              position={POSITION.RB}
               tagPrice={franchiseInfo.rbFranchisePrice}
             />
           </Col>
           <FranchiseTagColumn
             keptPlayers={franchiseInfo.keptWRs}
-            position={Constants.WR}
+            position={POSITION.WR}
             tagPrice={franchiseInfo.wrFranchisePrice}
           />
           <Col>
             <FranchiseTagColumn
               keptPlayers={franchiseInfo.keptTEs}
-              position={Constants.TE}
+              position={POSITION.TE}
               tagPrice={franchiseInfo.teFranchisePrice}
             />
           </Col>

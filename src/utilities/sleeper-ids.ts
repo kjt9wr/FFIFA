@@ -1,3 +1,5 @@
+import { ID_ENUM } from "./enumerations";
+
 export const OwnerBySleeperRosterID = {
   1: "Alex",
   2: "Michael",
@@ -11,6 +13,21 @@ export const OwnerBySleeperRosterID = {
   10: "Patrick",
   11: "Chinmay",
   12: "Brent",
+};
+
+export const OwnerIDBySleeperRosterID: Record<string, string> = {
+  1: ID_ENUM.ALEX,
+  2: ID_ENUM.MICHAEL,
+  3: ID_ENUM.KEVIN,
+  4: ID_ENUM.JEFF,
+  5: ID_ENUM.LUIGI,
+  6: ID_ENUM.CHRISTIAN,
+  7: ID_ENUM.NIKOS,
+  8: ID_ENUM.MATT,
+  9: ID_ENUM.JUSTIN,
+  10: ID_ENUM.PATRICK,
+  11: ID_ENUM.CASEY,
+  12: ID_ENUM.BRENT,
 };
 
 export const playersBySleeperID = {
@@ -361,4 +378,16 @@ export const playersBySleeperID = {
   11624: "Xavier Worthy",
   11635: "Ladd McConkey",
   11638: "Ricky Pearsall",
+  11640: "Jermaine Burton",
+  9486: "Dontayvion Wicks",
+  11645: "Javon Baker",
+  11643: "Jaylen Wright",
+  11617: "Malachi Corley",
+  11584: "Bucky Irving",
+  8408: "Jordan Mason",
+  11576: "Braelon Allen",
+  11646: "Jalen Coker",
+  10444: "Cedric Tillman",
+  9484: "Tucker Kraft",
+  2359: "Ameer Abdullah",
 };

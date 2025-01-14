@@ -1,7 +1,8 @@
 import React from "react";
-import { Table } from "reactstrap";
 import { TiDelete } from "react-icons/ti";
+import { Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
+import { POSITION } from "../../utilities/enumerations";
 
 interface PlayerDisplayByPositionProps {
   isEditable: Boolean;
@@ -20,10 +21,10 @@ const filterKeepersByPosition = (keptPlayers: Player[], position: string) => {
 const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
   const { removePlayerCallback, isEditable, playerList } = props;
 
-  const keptQBs = filterKeepersByPosition(playerList, "QB");
-  const keptRBs = filterKeepersByPosition(playerList, "RB");
-  const keptWRs = filterKeepersByPosition(playerList, "WR");
-  const keptTEs = filterKeepersByPosition(playerList, "TE");
+  const keptQBs = filterKeepersByPosition(playerList, POSITION.QB);
+  const keptRBs = filterKeepersByPosition(playerList, POSITION.RB);
+  const keptWRs = filterKeepersByPosition(playerList, POSITION.WR);
+  const keptTEs = filterKeepersByPosition(playerList, POSITION.TE);
 
   const renderPlayersForPosition = (position: string, players: Player[]) => (
     <Table borderless size="sm" hover responsive>
@@ -57,10 +58,10 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
 
   return (
     <div style={{ display: "flex" }}>
-      {renderPlayersForPosition("QB", keptQBs)}
-      {renderPlayersForPosition("RB", keptRBs)}
-      {renderPlayersForPosition("WR", keptWRs)}
-      {renderPlayersForPosition("TE", keptTEs)}
+      {renderPlayersForPosition(POSITION.QB, keptQBs)}
+      {renderPlayersForPosition(POSITION.RB, keptRBs)}
+      {renderPlayersForPosition(POSITION.WR, keptWRs)}
+      {renderPlayersForPosition(POSITION.TE, keptTEs)}
     </div>
   );
 };
