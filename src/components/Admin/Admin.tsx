@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { ALERT_STATE } from "../../utilities/constants";
-import AddTradeForm from "./AddTradeForm.js";
+import AddTradeForm from "./AddTradeForm";
 import UpdateDraftPrices from "./UpdateDraftPrices";
 import UpdateRosters from "./UpdateRosters";
 

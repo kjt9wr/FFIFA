@@ -13,7 +13,7 @@ import {
 import { ownersIDByName } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition.tsx";
 import RosterDataTable from "./RosterDataTable.jsx";
-import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay.jsx";
+import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
 
 /*
  * This page displays an owner's available cap information, projected keepers display,

@@ -6,7 +6,7 @@ import {
   fetchRoster,
   fetchRosteredPlayers,
 } from "../../api/api.service";
-import { Owner, Player } from "../../interfaces/interfaces";
+import { FranchisePrices, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import {
   formatFranchisePrices,
@@ -14,16 +14,16 @@ import {
 } from "../../services/franchise.service";
 import { ownersIDByName } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
-import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay.jsx";
+import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay";
 
 /*
  * This page allows the user to edit and view a roster without publishing changes
  */
 
 const RosterPreview = () => {
-  const [roster, setRoster] = useState([]);
+  const [roster, setRoster] = useState<Player[]>([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState({});
+  const [franchisePrices, setFranchisePrices] = useState<FranchisePrices>();
   const [maxCap, setMaxCap] = useState();
   const [rosteredPlayerPool, setRosteredPlayerPool] = useState<Player[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState();

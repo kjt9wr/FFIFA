@@ -2,29 +2,15 @@ import React, { useEffect } from "react";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
 import { updatePenaltyFee } from "../../api/api.service";
-import { determineFinalPriceOfPlayer } from "../../services/ffifa.service";
+import { FranchisePrices, Player } from "../../interfaces/interfaces";
+import {
+  calculateLuxaryTaxLine,
+  calculatePenaltyFee,
+  calculateTotalKeeperPrice,
+} from "../../services/roster.service";
 import RosterProgressBar from "./RosterProgressBar";
 
-const calculateLuxaryTaxLine = (cap) => Math.trunc(cap * 0.55);
-
-const calculatePenaltyFee = (roster, franchisePrices, maxCap) => {
-  const penaltyFee =
-    calculateTotalKeeperPrice(roster, franchisePrices) -
-    calculateLuxaryTaxLine(maxCap);
-  return penaltyFee > 0 ? penaltyFee : 0;
-};
-
-const calculateTotalKeeperPrice = (roster, franchisePrices) => {
-  return roster
-    .filter((keptPlayer) => keptPlayer.keep)
-    .reduce(
-      (acc, player) =>
-        acc + determineFinalPriceOfPlayer(player, franchisePrices),
-      0
-    );
-};
-
-const renderCard = (label, value) => {
+const renderCard = (label: string, value: number) => {
   return (
     <Card>
       <CardBody>
@@ -35,7 +21,22 @@ const renderCard = (label, value) => {
   );
 };
 
-const RosterOwnerCapDisplay = (props) => {
+interface RosterOwnerCapDisplayProps {
+  ownerName: string;
+  roster: Player[];
+  franchisePrices: FranchisePrices;
+  penaltyReward: number;
+  cap: number;
+  isEditable: boolean;
+  updateCapCallback?: (cap: number) => void;
+}
+
+/*
+ * This component includes an editable display of an owner's total cap, luxary tax line,
+ * keeper price, and final cap values
+ */
+
+const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
   const {
     ownerName,
     roster,
@@ -116,8 +117,8 @@ const RosterOwnerCapDisplay = (props) => {
       <RosterProgressBar
         keepPrice={keepPrice}
         isOffender={isOffender}
-        TAX_LINE={TAX_LINE}
-        MAX_CAP={MAX_CAP}
+        taxLine={TAX_LINE}
+        maxCap={MAX_CAP}
       />
       <br />
     </div>
