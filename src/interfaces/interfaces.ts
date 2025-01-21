@@ -47,16 +47,6 @@ export interface FreeAgentStorage {
   availableWRs: Player[];
   availableTEs: Player[];
 }
-export interface FranchiseInfo {
-  qbFranchisePrice: number;
-  keptQBs: any;
-  rbFranchisePrice: number;
-  keptRBs: any;
-  wrFranchisePrice: number;
-  keptWRs: any;
-  teFranchisePrice: number;
-  keptTEs: any;
-}
 
 export interface PenaltyFeeInfo {
   name: string;

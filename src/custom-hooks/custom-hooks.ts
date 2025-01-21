@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchFreeAgents } from "../api/api.service";
 import {
-  FranchiseInfo,
+  FranchiseTagDTO,
   FreeAgentStorage,
   Player,
 } from "../interfaces/interfaces";
@@ -9,7 +9,7 @@ import * as FranchiseService from "../services/franchise.service";
 import { POSITION } from "../utilities/enumerations";
 
 export const useFranchiseInfo = () => {
-  const [franchiseInfo, setFranchiseInfo] = useState<FranchiseInfo>();
+  const [franchiseInfo, setFranchiseInfo] = useState<FranchiseTagDTO>();
 
   useEffect(() => {
     const getFranchiseInformation = async () => {
