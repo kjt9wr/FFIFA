@@ -6,12 +6,9 @@ import {
   fetchRoster,
   fetchRosteredPlayers,
 } from "../../api/api.service";
-import { FranchisePrices, Owner, Player } from "../../interfaces/interfaces";
+import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
-import {
-  formatFranchisePrices,
-  getFranchiseTagDTO,
-} from "../../services/franchise.service";
+import { getFranchiseTagDTO } from "../../services/franchise.service";
 import { ownersIDByName } from "../../utilities/id-maps";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay";
@@ -23,7 +20,7 @@ import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay";
 const RosterPreview = () => {
   const [roster, setRoster] = useState<Player[]>([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState<FranchisePrices>();
+  const [franchisePrices, setFranchisePrices] = useState<FranchiseTagDTO>();
   const [maxCap, setMaxCap] = useState();
   const [rosteredPlayerPool, setRosteredPlayerPool] = useState<Player[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState();
@@ -50,7 +47,7 @@ const RosterPreview = () => {
         };
       });
       setPenaltyFees(fees);
-      setFranchisePrices(formatFranchisePrices(franchiseTags));
+      setFranchisePrices(franchiseTags);
       setRosteredPlayerPool(allRosteredPlayers.data);
     });
   }, [ownerId]);

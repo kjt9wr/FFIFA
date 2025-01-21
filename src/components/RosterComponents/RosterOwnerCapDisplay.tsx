@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
 import { updatePenaltyFee } from "../../api/api.service";
-import { FranchisePrices, Player } from "../../interfaces/interfaces";
+import { FranchiseTagDTO, Player } from "../../interfaces/interfaces";
 import {
   calculateLuxaryTaxLine,
   calculatePenaltyFee,
@@ -24,7 +24,7 @@ const renderCard = (label: string, value: number) => {
 interface RosterOwnerCapDisplayProps {
   ownerName: string;
   roster: Player[];
-  franchisePrices: FranchisePrices;
+  franchisePrices: FranchiseTagDTO;
   penaltyReward: number;
   cap: number;
   isEditable: boolean;

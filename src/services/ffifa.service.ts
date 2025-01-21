@@ -1,5 +1,5 @@
 import {
-  FranchisePrices,
+  FranchiseTagDTO,
   PenaltyFeeInfo,
   Player,
 } from "../interfaces/interfaces";
@@ -8,7 +8,7 @@ import { calculateSuperMaxPrice } from "./supermax.service";
 
 export const determineFinalPriceOfPlayer = (
   player: Player,
-  franchisePrices: FranchisePrices
+  franchisePrices: FranchiseTagDTO
 ) => {
   switch (player.keeperClass) {
     case 2:
@@ -22,16 +22,16 @@ export const determineFinalPriceOfPlayer = (
   }
 };
 
-const getFranchisePrice = (playerPosition: string, prices: FranchisePrices) => {
+const getFranchisePrice = (playerPosition: string, prices: FranchiseTagDTO) => {
   switch (playerPosition) {
     case POSITION.QB:
-      return prices.qb;
+      return prices.qbFranchisePrice;
     case POSITION.RB:
-      return prices.rb;
+      return prices.rbFranchisePrice;
     case POSITION.WR:
-      return prices.wr;
+      return prices.wrFranchisePrice;
     default:
-      return prices.te;
+      return prices.teFranchisePrice;
   }
 };
 

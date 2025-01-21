@@ -65,21 +65,15 @@ export interface PenaltyFeeInfo {
 
 export interface FranchiseTagDTO {
   qbFranchisePrice: number;
-  keptQBs: Player[];
+  keptQBs?: Player[];
   rbFranchisePrice: number;
-  keptRBs: Player[];
+  keptRBs?: Player[];
   wrFranchisePrice: number;
-  keptWRs: Player[];
+  keptWRs?: Player[];
   teFranchisePrice: number;
-  keptTEs: Player[];
+  keptTEs?: Player[];
 }
 
-export interface FranchisePrices {
-  qb: number;
-  rb: number;
-  wr: number;
-  te: number;
-}
 export interface RosterDTO {
   players: string[];
   ownerSleeperId: string;

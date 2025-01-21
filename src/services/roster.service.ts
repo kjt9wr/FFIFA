@@ -1,11 +1,11 @@
-import { Player, FranchisePrices } from "../interfaces/interfaces";
+import { Player, FranchiseTagDTO } from "../interfaces/interfaces";
 import { determineFinalPriceOfPlayer } from "./ffifa.service";
 
 export const calculateLuxaryTaxLine = (cap: number) => Math.trunc(cap * 0.55);
 
 export const calculatePenaltyFee = (
   roster: Player[],
-  franchisePrices: FranchisePrices,
+  franchisePrices: FranchiseTagDTO,
   maxCap: number
 ) => {
   const penaltyFee =
@@ -16,7 +16,7 @@ export const calculatePenaltyFee = (
 
 export const calculateTotalKeeperPrice = (
   roster: Player[],
-  franchisePrices: FranchisePrices
+  franchisePrices: FranchiseTagDTO
 ) => {
   return roster
     .filter((keptPlayer) => keptPlayer.keep)

@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "reactstrap";
 import {
-  FranchisePrices,
+  FranchiseTagDTO,
   Player,
   SuperMaxData,
 } from "../../interfaces/interfaces";
@@ -30,7 +30,7 @@ const getSuperMaxText = (superMax: SuperMaxData) => {
 
 interface RosterPlayerRowProps {
   player: Player;
-  franchisePrices: FranchisePrices;
+  franchisePrices: FranchiseTagDTO;
   id: string;
   keep: boolean;
   toggleKeeper: (e: any) => void;

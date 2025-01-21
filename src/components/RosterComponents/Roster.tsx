@@ -5,12 +5,9 @@ import {
   fetchRoster,
   updatePlayerKeeperStatus,
 } from "../../api/api.service";
-import { FranchisePrices, Owner, Player } from "../../interfaces/interfaces";
+import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
-import {
-  formatFranchisePrices,
-  getFranchiseTagDTO,
-} from "../../services/franchise.service";
+import { getFranchiseTagDTO } from "../../services/franchise.service";
 import { ownersIDByName } from "../../utilities/id-maps";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
@@ -32,11 +29,11 @@ interface RosterProps {
 const Roster = (props: RosterProps) => {
   const [roster, setRoster] = useState<Player[]>([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState<FranchisePrices>({
-    qb: 0,
-    rb: 0,
-    wr: 0,
-    te: 0,
+  const [franchisePrices, setFranchisePrices] = useState<FranchiseTagDTO>({
+    qbFranchisePrice: 0,
+    rbFranchisePrice: 0,
+    wrFranchisePrice: 0,
+    teFranchisePrice: 0,
   });
   const [changeKeeper, setChangeKeeper] = useState(false);
   const [cap, setCap] = useState();
@@ -74,7 +71,7 @@ const Roster = (props: RosterProps) => {
         return { name: owner.name, penaltyFee: owner.penaltyFee };
       });
       setPenaltyFees(fees);
-      setFranchisePrices(formatFranchisePrices(franchiseTags));
+      setFranchisePrices(franchiseTags);
     });
   }, [ownerId, changeKeeper]);
 

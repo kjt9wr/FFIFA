@@ -1,11 +1,11 @@
 import React from "react";
 import { Table } from "reactstrap";
-import { FranchisePrices, Player } from "../../interfaces/interfaces";
+import { FranchiseTagDTO, Player } from "../../interfaces/interfaces";
 import RosterPlayerRow from "./RosterPlayerRow";
 
 interface RosterDataTableProps {
   roster: Player[];
-  franchisePrices: FranchisePrices;
+  franchisePrices: FranchiseTagDTO;
   toggleKeeper: (e: Event) => void;
 }
 
