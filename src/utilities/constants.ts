@@ -12,3 +12,7 @@ export const BASE_CAP: Record<string, number> = {
   "2024": 338,
   "2025": 375,
 };
+
+export const getUpcomingYearIndex = () => {
+  return Number(UPCOMING_SEASON_YEAR) - 2020;
+};

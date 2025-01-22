@@ -9,9 +9,13 @@ import {
 import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import { getFranchiseTagDTO } from "../../services/franchise.service";
+import { getUpcomingYearIndex } from "../../utilities/constants";
 import { ownersIDByName } from "../../utilities/id-maps";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterOwnerCapDisplay from "../RosterComponents/RosterOwnerCapDisplay";
+
+const ownerName = "Kevin";
+const ownerId = ownersIDByName[ownerName];
 
 /*
  * This page allows the user to edit and view a roster without publishing changes
@@ -24,8 +28,6 @@ const RosterPreview = () => {
   const [maxCap, setMaxCap] = useState();
   const [rosteredPlayerPool, setRosteredPlayerPool] = useState<Player[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState();
-  const ownerName = "Kevin";
-  const ownerId = ownersIDByName[ownerName];
 
   useEffect(() => {
     Promise.all([
@@ -37,20 +39,20 @@ const RosterPreview = () => {
       setRoster(unsortedRoster.data.filter((player: Player) => player.keep));
       const initialCap = owners.data.filter(
         (owner: Owner) => ownerName === owner.name
-      )[0].cap[5];
+      )[0].cap[getUpcomingYearIndex()];
       setMaxCap(initialCap);
       const fees = owners.data.map((owner: Owner) => {
         return {
           name: owner.name,
           penaltyFee: owner.penaltyFee,
-          initialCap: owner.cap[5],
+          initialCap: owner.cap[getUpcomingYearIndex()],
         };
       });
       setPenaltyFees(fees);
       setFranchisePrices(franchiseTags);
       setRosteredPlayerPool(allRosteredPlayers.data);
     });
-  }, [ownerId]);
+  }, []);
 
   const updateCap = useCallback((newValue) => {
     setMaxCap(newValue);

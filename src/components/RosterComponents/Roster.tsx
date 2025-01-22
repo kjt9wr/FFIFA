@@ -8,6 +8,7 @@ import {
 import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import { getFranchiseTagDTO } from "../../services/franchise.service";
+import { getUpcomingYearIndex } from "../../utilities/constants";
 import { ownersIDByName } from "../../utilities/id-maps";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
@@ -64,7 +65,7 @@ const Roster = (props: RosterProps) => {
 
       const currentYearCap = owners.data.filter(
         (owner: Owner) => ownerId === owner._id
-      )[0].cap[5];
+      )[0].cap[getUpcomingYearIndex()];
       setCap(currentYearCap);
 
       const fees = owners.data.map((owner: Owner) => {
