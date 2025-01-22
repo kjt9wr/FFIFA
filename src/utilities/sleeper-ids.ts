@@ -1,4 +1,4 @@
-import { ID_ENUM } from "./enumerations";
+import { OWNER_ID_ENUM } from "./enumerations";
 
 export const OwnerBySleeperRosterID = {
   1: "Alex",
@@ -16,18 +16,18 @@ export const OwnerBySleeperRosterID = {
 };
 
 export const OwnerIDBySleeperRosterID: Record<string, string> = {
-  1: ID_ENUM.ALEX,
-  2: ID_ENUM.MICHAEL,
-  3: ID_ENUM.KEVIN,
-  4: ID_ENUM.JEFF,
-  5: ID_ENUM.LUIGI,
-  6: ID_ENUM.CHRISTIAN,
-  7: ID_ENUM.NIKOS,
-  8: ID_ENUM.MATT,
-  9: ID_ENUM.JUSTIN,
-  10: ID_ENUM.PATRICK,
-  11: ID_ENUM.CASEY,
-  12: ID_ENUM.BRENT,
+  1: OWNER_ID_ENUM.ALEX,
+  2: OWNER_ID_ENUM.MICHAEL,
+  3: OWNER_ID_ENUM.KEVIN,
+  4: OWNER_ID_ENUM.JEFF,
+  5: OWNER_ID_ENUM.LUIGI,
+  6: OWNER_ID_ENUM.CHRISTIAN,
+  7: OWNER_ID_ENUM.NIKOS,
+  8: OWNER_ID_ENUM.MATT,
+  9: OWNER_ID_ENUM.JUSTIN,
+  10: OWNER_ID_ENUM.PATRICK,
+  11: OWNER_ID_ENUM.CASEY,
+  12: OWNER_ID_ENUM.BRENT,
 };
 
 export const playersBySleeperID = {

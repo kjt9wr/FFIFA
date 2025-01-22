@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchAllTrades } from "../../api/api.service";
 import { TradeInfo } from "../../interfaces/interfaces";
-import { CURRENT_SEASON_YEAR } from "../../utilities/constants";
+import { UPCOMING_SEASON_YEAR } from "../../utilities/constants";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
 
@@ -19,7 +19,7 @@ const displayTrades = (tradeList: TradeInfo[], selectedYear: string) => {
  */
 const TradeTracker = () => {
   const [tradeList, setTradeList] = useState<TradeInfo[]>([]);
-  const [selectedYear, setSelectedYear] = useState(CURRENT_SEASON_YEAR);
+  const [selectedYear, setSelectedYear] = useState(UPCOMING_SEASON_YEAR);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   useEffect(() => {
