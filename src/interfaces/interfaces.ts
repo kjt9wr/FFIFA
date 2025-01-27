@@ -38,7 +38,7 @@ export interface TradePackage {
 
 export interface SuperMaxData {
   plan: number;
-  year: number;
+  signingYear: number;
 }
 
 export interface FreeAgentStorage {

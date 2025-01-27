@@ -6,6 +6,7 @@ import {
   SuperMaxData,
 } from "../../interfaces/interfaces";
 import { determineFinalPriceOfPlayer } from "../../services/ffifa.service";
+import { getCurrentSuperMaxYear } from "../../services/supermax.service";
 import {
   getKeeperClassText,
   KEEPER_CLASS_ENUM,
@@ -22,7 +23,8 @@ const getSuperMaxText = (superMax: SuperMaxData) => {
   return (
     superMax && (
       <b>
-        Year {superMax.year} in {superMax.plan} Year Deal
+        Year {getCurrentSuperMaxYear(superMax.signingYear)} in {superMax.plan}{" "}
+        Year Deal
       </b>
     )
   );
@@ -59,6 +61,7 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
           key={props.id}
           onChange={props.toggleKeeper}
           checked={props.keep}
+          disabled={KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass}
         />
       </td>
       <td>

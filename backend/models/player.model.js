@@ -10,6 +10,7 @@ const playerSchema = new Schema({
   superMax: {
     plan: { type: Number, required: false },
     year: { type: Number, required: false },
+    signingYear: { type: Number, required: false },
   },
   rank: { type: Number, required: false },
   keeperClass: { type: Number, required: false },

@@ -3,6 +3,7 @@ import { Alert, Container, Table } from "reactstrap";
 import { fetchSupermaxPlayers } from "../api/api.service";
 import { Player } from "../interfaces/interfaces";
 import * as SuperMaxService from "../services/supermax.service";
+import { getCurrentSuperMaxYear } from "../services/supermax.service";
 import { ownersByID } from "../utilities/id-maps";
 
 const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
@@ -10,13 +11,16 @@ const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
     const ownerName = ownersByID[currentPlayer.owner];
     const price = SuperMaxService.calculateSuperMaxPrice(
       currentPlayer.superMax.plan,
-      currentPlayer.superMax.year
+      currentPlayer.superMax.signingYear
+    );
+    const currentYear = getCurrentSuperMaxYear(
+      currentPlayer.superMax.signingYear
     );
     return (
       <tr key={currentPlayer._id} className="customRow">
         <td>{currentPlayer.name}</td>
         <td>{ownerName}</td>
-        <td>{currentPlayer.superMax.year}</td>
+        <td>{currentYear}</td>
         <td>{currentPlayer.superMax.plan}</td>
         <td>${price}</td>
       </tr>
@@ -30,7 +34,6 @@ const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
 const SuperMax = () => {
   const [supermaxPlayers, setSupermaxPlayers] = useState<Player[]>([]);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
-
   useEffect(() => {
     const getSuperMaxPlayers = async () => {
       await fetchSupermaxPlayers()
