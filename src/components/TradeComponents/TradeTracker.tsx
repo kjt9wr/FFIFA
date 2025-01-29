@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchAllTrades } from "../../api/api.service";
 import { TradeInfo } from "../../interfaces/interfaces";
-import { UPCOMING_SEASON_YEAR } from "../../utilities/constants";
+import {
+  RECORDED_YEARS,
+  UPCOMING_SEASON_YEAR,
+} from "../../utilities/constants";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
 
@@ -44,7 +47,11 @@ const TradeTracker = () => {
       {displayErrorAlert && (
         <Alert color="danger">Error fetching trade data</Alert>
       )}
-      <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
+      <YearSelector
+        onChange={handleOnChange}
+        selectedYear={selectedYear}
+        yearOptions={RECORDED_YEARS}
+      />
       {displayTrades(tradeList, selectedYear)}
     </Container>
   );

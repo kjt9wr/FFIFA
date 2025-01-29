@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchArbitrationData } from "../api/api.service";
 import { Player } from "../interfaces/interfaces";
-import { UPCOMING_SEASON_YEAR } from "../utilities/constants";
+import { RECORDED_YEARS, UPCOMING_SEASON_YEAR } from "../utilities/constants";
 import PlayerDisplayByPosition from "./reusable/PlayerDisplayByPosition";
+import YearSelector from "./reusable/YearSelector";
 
 /*
  * This page displays the players entering Arbitration in the current year
@@ -11,6 +12,7 @@ import PlayerDisplayByPosition from "./reusable/PlayerDisplayByPosition";
 const Arbitration = () => {
   const [arbitratedPlayers, setArbitratedPlayers] = useState<Player[]>([]);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
+  const [selectedYear, setSelectedYear] = useState(UPCOMING_SEASON_YEAR);
 
   useEffect(() => {
     const getArbitratedPlayers = async () => {
@@ -24,33 +26,30 @@ const Arbitration = () => {
     getArbitratedPlayers();
   }, []);
 
+  const handleOnChange = (year: string) => {
+    setSelectedYear(year);
+  };
+
   return (
     <Container>
       <h1 className="text-center"> Arbitration </h1>
       {displayErrorAlert && (
         <Alert color="danger">Error fetching arbitration data</Alert>
       )}
-      <h4>{UPCOMING_SEASON_YEAR}</h4>
-      <PlayerDisplayByPosition
-        playerList={arbitratedPlayers.filter(
-          (player: Player) =>
-            Number(UPCOMING_SEASON_YEAR) - player.firstKeepYear === 3
-        )}
-        isEditable={false}
+      <YearSelector
+        onChange={handleOnChange}
+        selectedYear={selectedYear}
+        yearOptions={[
+          UPCOMING_SEASON_YEAR,
+          String(Number(UPCOMING_SEASON_YEAR) + 1),
+          String(Number(UPCOMING_SEASON_YEAR) + 2),
+        ]}
       />
-      <h4>{Number(UPCOMING_SEASON_YEAR) + 1}</h4>
+      <br /> <br />
+      <h4>{selectedYear}</h4>
       <PlayerDisplayByPosition
         playerList={arbitratedPlayers.filter(
-          (player: Player) =>
-            Number(UPCOMING_SEASON_YEAR) - player.firstKeepYear === 2
-        )}
-        isEditable={false}
-      />
-      <h4>{Number(UPCOMING_SEASON_YEAR) + 2}</h4>
-      <PlayerDisplayByPosition
-        playerList={arbitratedPlayers.filter(
-          (player: Player) =>
-            Number(UPCOMING_SEASON_YEAR) - player.firstKeepYear === 1
+          (player: Player) => Number(selectedYear) - player.firstKeepYear === 3
         )}
         isEditable={false}
       />

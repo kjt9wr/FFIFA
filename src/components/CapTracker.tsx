@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners } from "../api/api.service";
 import { Owner } from "../interfaces/interfaces";
-import { UPCOMING_SEASON_YEAR } from "../utilities/constants";
+import { RECORDED_YEARS, UPCOMING_SEASON_YEAR } from "../utilities/constants";
 import YearSelector from "./reusable/YearSelector";
 
 const displayCapTable = (year: string, owners: Owner[]) => {
@@ -66,7 +66,11 @@ const CapTracker = () => {
       {displayErrorAlert && (
         <Alert color="danger">Error fetching cap data</Alert>
       )}
-      <YearSelector onChange={handleOnChange} selectedYear={selectedYear} />
+      <YearSelector
+        onChange={handleOnChange}
+        selectedYear={selectedYear}
+        yearOptions={RECORDED_YEARS}
+      />
       <br />
       <br />
       {displayCapTable(selectedYear, owners)}
