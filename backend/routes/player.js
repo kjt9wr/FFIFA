@@ -59,7 +59,7 @@ router.route("/superMax").get((req, res) => {
 
 // get all players for given arbitration year
 router.route("/arbitration/:year").get((req, res) => {
-  Player.find({ arbYear: req.params.year })
+  Player.find({ firstKeepYear: { $nin: [null, ""] } })
     .then((players) => res.json(players))
     .catch((err) => res.status(400).json("Unable to find player: " + err));
 });

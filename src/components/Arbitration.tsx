@@ -32,7 +32,26 @@ const Arbitration = () => {
       )}
       <h4>{UPCOMING_SEASON_YEAR}</h4>
       <PlayerDisplayByPosition
-        playerList={arbitratedPlayers}
+        playerList={arbitratedPlayers.filter(
+          (player: Player) =>
+            Number(UPCOMING_SEASON_YEAR) - player.firstKeepYear === 3
+        )}
+        isEditable={false}
+      />
+      <h4>{Number(UPCOMING_SEASON_YEAR) + 1}</h4>
+      <PlayerDisplayByPosition
+        playerList={arbitratedPlayers.filter(
+          (player: Player) =>
+            Number(UPCOMING_SEASON_YEAR) - player.firstKeepYear === 2
+        )}
+        isEditable={false}
+      />
+      <h4>{Number(UPCOMING_SEASON_YEAR) + 2}</h4>
+      <PlayerDisplayByPosition
+        playerList={arbitratedPlayers.filter(
+          (player: Player) =>
+            Number(UPCOMING_SEASON_YEAR) - player.firstKeepYear === 1
+        )}
         isEditable={false}
       />
     </Container>

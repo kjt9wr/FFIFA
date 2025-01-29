@@ -15,7 +15,7 @@ const playerSchema = new Schema({
   rank: { type: Number, required: false },
   keeperClass: { type: Number, required: false },
   owner: {},
-  arbYear: { type: String, required: false },
+  firstKeepYear: { type: Number, required: false },
   sleeperId: { type: String, required: false },
 });
 

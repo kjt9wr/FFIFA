@@ -1,6 +1,5 @@
 export interface Player {
   _id: string;
-  arbYear?: string;
   keep: boolean;
   keeperClass: number;
   name: string;
@@ -10,6 +9,7 @@ export interface Player {
   rank?: number;
   sleeperId: string;
   superMax?: SuperMaxData;
+  firstKeepYear?: number;
 }
 
 export interface Owner {

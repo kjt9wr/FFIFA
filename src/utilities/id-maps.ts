@@ -382,4 +382,6 @@ export const playersByID: Record<string, string> = {
   "671ff45c3643584f75d8635b": "Cedric Tillman",
   "676f38ad730c891d56961833": "Tucker Kraft",
   "67740950af4fd472c9b61997": "Ameer Abdullah",
+  "657ca6c85ddb6c4a73dac590": "Zay Flowers",
+  "657d385bbfa20b5170d48e77": "DeVon Achane",
 };
