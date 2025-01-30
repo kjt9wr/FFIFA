@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchArbitrationData } from "../api/api.service";
 import { Player } from "../interfaces/interfaces";
-import { RECORDED_YEARS, UPCOMING_SEASON_YEAR } from "../utilities/constants";
+import { UPCOMING_SEASON_YEAR } from "../utilities/constants";
 import PlayerDisplayByPosition from "./reusable/PlayerDisplayByPosition";
 import YearSelector from "./reusable/YearSelector";
 
