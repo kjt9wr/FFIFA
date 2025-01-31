@@ -22,8 +22,8 @@ export interface Owner {
 }
 
 export interface TradeInfo {
-  owner1: Owner;
-  owner2: Owner;
+  owner1: string;
+  owner2: string;
   owner1_rec: TradePackage;
   owner2_rec: TradePackage;
   trade_notes: string;
