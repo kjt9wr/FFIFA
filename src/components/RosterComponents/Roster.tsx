@@ -36,20 +36,21 @@ const Roster = (props: RosterProps) => {
     wrFranchisePrice: 0,
     teFranchisePrice: 0,
   });
-  const [changeKeeper, setChangeKeeper] = useState(false);
   const [cap, setCap] = useState();
 
   const ownerName = props.match.params.name;
   const ownerId = ownersIDByName[ownerName];
 
-  const toggleKeeper = useCallback(
-    async (e) => {
-      const newKeepValue = { keep: e.target.checked };
-      setChangeKeeper(!changeKeeper);
-      await updatePlayerKeeperStatus(e.target.id, newKeepValue);
-    },
-    [changeKeeper]
-  );
+  const toggleKeeper = async (e: any) => {
+    const playertoChange = roster.find((player) => player._id === e.target.id);
+    playertoChange.keep = e.target.checked;
+    const restOfRoster = roster.filter(
+      (player) => player._id !== playertoChange._id
+    );
+    setRoster([...restOfRoster, playertoChange]);
+
+    await updatePlayerKeeperStatus(e.target.id, { keep: e.target.checked });
+  };
 
   useEffect(() => {
     Promise.all([
@@ -57,11 +58,7 @@ const Roster = (props: RosterProps) => {
       fetchAllOwners(),
       getFranchiseTagDTO(),
     ]).then(([unsortedRoster, owners, franchiseTags]) => {
-      setRoster(
-        unsortedRoster.data.sort((a: Player, b: Player) =>
-          a.position > b.position ? 1 : -1
-        )
-      );
+      setRoster(unsortedRoster.data);
 
       const currentYearCap = owners.data.filter(
         (owner: Owner) => ownerId === owner._id
@@ -74,7 +71,7 @@ const Roster = (props: RosterProps) => {
       setPenaltyFees(fees);
       setFranchisePrices(franchiseTags);
     });
-  }, [ownerId, changeKeeper]);
+  }, [ownerId]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
@@ -95,7 +92,12 @@ const Roster = (props: RosterProps) => {
         isEditable={false}
       />
       <RosterDataTable
-        roster={roster}
+        roster={roster.sort(
+          (a: Player, b: Player) =>
+            a.position.localeCompare(b.position) ||
+            b.price - a.price ||
+            a.name.localeCompare(b.name)
+        )}
         franchisePrices={franchisePrices}
         toggleKeeper={toggleKeeper}
       />
