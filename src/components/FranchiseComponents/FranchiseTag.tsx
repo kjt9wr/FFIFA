@@ -18,26 +18,26 @@ const FranchiseTag = () => {
         <Row>
           <Col>
             <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptQBs}
+              keptPlayers={franchiseInfo.keptQBs.slice(0, 10)}
               position={POSITION.QB}
               tagPrice={franchiseInfo.qbFranchisePrice}
             />
           </Col>
           <Col>
             <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptRBs}
+              keptPlayers={franchiseInfo.keptRBs.slice(0, 10)}
               position={POSITION.RB}
               tagPrice={franchiseInfo.rbFranchisePrice}
             />
           </Col>
           <FranchiseTagColumn
-            keptPlayers={franchiseInfo.keptWRs}
+            keptPlayers={franchiseInfo.keptWRs.slice(0, 10)}
             position={POSITION.WR}
             tagPrice={franchiseInfo.wrFranchisePrice}
           />
           <Col>
             <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptTEs}
+              keptPlayers={franchiseInfo.keptTEs.slice(0, 10)}
               position={POSITION.TE}
               tagPrice={franchiseInfo.teFranchisePrice}
             />
