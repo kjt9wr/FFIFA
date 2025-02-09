@@ -1,3 +1,4 @@
+import { UpdateKeeperDTO } from "../interfaces/interfaces";
 import { UPCOMING_SEASON_YEAR } from "../utilities/constants";
 import apiClient from "./apiClient";
 import sleeperApiClient from "./sleeperApiClient";
@@ -28,9 +29,9 @@ export const fetchRosteredPlayers = () => {
 
 export const updatePlayerKeeperStatus = (
   playerID: string,
-  keeperStatus: any
+  updateDTO: UpdateKeeperDTO
 ) => {
-  return apiClient.put(`player/updatePlayer/${playerID}`, keeperStatus);
+  return apiClient.put(`player/updatePlayer/${playerID}`, updateDTO);
 };
 
 export const clearAllPlayersOwner = () => {

@@ -73,3 +73,7 @@ export interface DraftDTO {
   price: number;
   sleeperId: string;
 }
+
+export interface UpdateKeeperDTO {
+  keep: boolean;
+}

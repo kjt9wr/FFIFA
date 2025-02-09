@@ -41,7 +41,7 @@ const Roster = (props: RosterProps) => {
   const ownerName = props.match.params.name;
   const ownerId = ownersIDByName[ownerName];
 
-  const toggleKeeper = async (e: any) => {
+  const toggleKeeper = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const playertoChange = roster.find((player) => player._id === e.target.id);
     playertoChange.keep = e.target.checked;
     const restOfRoster = roster.filter(

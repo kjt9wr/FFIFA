@@ -35,7 +35,7 @@ interface RosterPlayerRowProps {
   franchisePrices: FranchiseTagDTO;
   id: string;
   keep: boolean;
-  toggleKeeper: (e: any) => void;
+  toggleKeeper: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /*

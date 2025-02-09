@@ -6,7 +6,7 @@ import RosterPlayerRow from "./RosterPlayerRow";
 interface RosterDataTableProps {
   roster: Player[];
   franchisePrices: FranchiseTagDTO;
-  toggleKeeper: (e: Event) => void;
+  toggleKeeper: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /*
