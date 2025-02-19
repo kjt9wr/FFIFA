@@ -6,6 +6,7 @@ import Select from "react-select";
 import { Owner } from "../../interfaces/interfaces";
 import React from "react";
 
+// TODO
 const AddTradeForm = () => {
   const [activeOwners, setActiveOwners] = useState([]);
   useEffect(() => {
