@@ -14,6 +14,10 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+  console.log(`[${req.method}] `, req.path);
+  next();
+});
 
 // Handle DB Connection
 const uri = process.env.ATLAS_URI;
