@@ -18,17 +18,25 @@ router.route("/:name").get((req, res) => {
 
 // Add new owner
 router.route("/add").post((req, res) => {
-  const name = req.body.name;
-  const cap = req.body.cap;
+  const { name, cap, sleeperId, active } = req.body;
 
-  const newOwner = new Owner({
+  Owner.create({
     name,
     cap,
-  });
-
-  newOwner
-    .save()
-    .then(() => res.json("Owner added!"))
+    sleeperId,
+    active,
+  })
+    .then(() =>
+      res.status(201).json({
+        message: "Owner created successfully!",
+        owner: {
+          name,
+          cap,
+          sleeperId,
+          active,
+        },
+      })
+    )
     .catch((err) => res.status(400).json("Unable to add owner: " + err));
 });
 

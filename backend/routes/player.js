@@ -66,21 +66,33 @@ router.route("/arbitration/:year").get((req, res) => {
 
 // add player to db
 router.route("/add").post((req, res) => {
-  const name = req.body.name;
+  const { name, price, keep, position, rank, ownerName, sleeperId } = req.body;
 
-  const newPlayer = new Player({
+  const newPlayer = new Player({});
+
+  Player.create({
     name,
-    price: Number(req.body.price),
-    keep: Boolean(req.body.keep),
-    position: req.body.position,
-    rank: Number(req.body.rank),
-    owner: idMap.ownersIDByName[req.body.ownerName],
-    sleeperId: req.body.sleeperId,
-  });
-
-  newPlayer
-    .save()
-    .then(() => res.json(`${name} added! ID: + '${newPlayer._id}': '${name}'`))
+    price: Number(price),
+    keep: Boolean(keep),
+    position: position,
+    rank: Number(rank),
+    owner: idMap.ownersIDByName[ownerName],
+    sleeperId: sleeperId,
+  })
+    .then(() =>
+      res.status(201).json({
+        message: `${name} added! ID: + '${newPlayer._id}': '${name}'`,
+        player: {
+          name,
+          price: Number(price),
+          keep: Boolean(keep),
+          position: position,
+          rank: Number(rank),
+          owner: idMap.ownersIDByName[ownerName],
+          sleeperId: sleeperId,
+        },
+      })
+    )
     .catch((err) => res.status(400).json("Unable to add player: " + err));
 });
 
