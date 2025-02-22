@@ -14,7 +14,7 @@ interface RosterDataTableProps {
  */
 const RosterDataTable = (props: RosterDataTableProps) => {
   return (
-    <Table responsive size="md">
+    <Table responsive size="md" hover striped>
       <thead className="thead-light">
         <tr>
           <th>Position</th>

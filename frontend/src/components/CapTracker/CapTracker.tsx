@@ -5,6 +5,7 @@ import { fetchAllOwners, fetchAllTrades } from "../../api/api.service";
 import { Owner, TradeInfo } from "../../interfaces/interfaces";
 import {
   RECORDED_YEARS,
+  TRANSPARENT_TABLE_STYLE,
   UPCOMING_SEASON_YEAR,
 } from "../../utilities/constants";
 import YearSelector from "../reusable/YearSelector";
@@ -15,7 +16,7 @@ const displayCapTable = (
   filteredTrades: TradeInfo[]
 ) => {
   return (
-    <Table responsive>
+    <Table responsive hover striped>
       <thead className="thead-light">
         <tr>
           <th></th>
@@ -29,23 +30,27 @@ const displayCapTable = (
       </thead>
       <tbody>
         <tr>
-          <td>{year}</td>
+          <td style={TRANSPARENT_TABLE_STYLE}>{year}</td>
           {owners.map(
             (owner: Owner) =>
               owner.cap[parseInt(year.slice(-1))] !== 0 && (
-                <td key={owner.name}>{owner.cap[parseInt(year.slice(-1))]}</td>
+                <td style={TRANSPARENT_TABLE_STYLE} key={owner.name}>
+                  {owner.cap[parseInt(year.slice(-1))]}
+                </td>
               )
           )}
         </tr>
         {filteredTrades.map((trade) => {
           return (
             <tr>
-              <td>Trade</td>
+              <td style={TRANSPARENT_TABLE_STYLE}>Trade</td>
               {owners.map((owner: Owner) =>
                 [trade.owner1, trade.owner2].includes(owner.name) ? (
-                  <>{displayCapAmount(owner.name, trade, year)}</>
+                  <td style={TRANSPARENT_TABLE_STYLE}>
+                    {displayCapAmount(owner.name, trade, year)}
+                  </td>
                 ) : (
-                  <td />
+                  <td style={TRANSPARENT_TABLE_STYLE} />
                 )
               )}
             </tr>

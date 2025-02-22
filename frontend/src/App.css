@@ -42,10 +42,12 @@ body {
 }
 
 .card {
-  background-color: #6d728b;
+  background-color: #abb1c3;
 }
+
 .card:hover {
   background-color: #272b3f;
+  color: #ffffff;
 }
 .customRow {
   background-color: #6d728b;
@@ -54,6 +56,7 @@ body {
 table tr {
   color: #f8f8f2;
 }
+
 table tr:hover {
   background-color: #272b3f;
 }

@@ -3,6 +3,7 @@ import { Col, Row, Table } from "reactstrap";
 import { useFreeAgents } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { POSITION } from "../../utilities/enumerations";
+import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 
 interface FreeAgentColumnProps {
   availablePlayers: Player[];
@@ -18,7 +19,7 @@ const FreeAgentColumn = (props: FreeAgentColumnProps) => {
         <tbody>
           {availablePlayers.map((player: Player) => (
             <tr key={player._id}>
-              <td> {player.name}</td>
+              <td style={TRANSPARENT_TABLE_STYLE}> {player.name}</td>
             </tr>
           ))}
         </tbody>

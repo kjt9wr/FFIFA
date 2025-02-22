@@ -5,6 +5,7 @@ import { Player } from "../../interfaces/interfaces";
 import * as SuperMaxService from "../../services/supermax.service";
 import { getCurrentSuperMaxYear } from "../../services/supermax.service";
 import { ownersByID } from "../../utilities/id-maps";
+import { TABLE_STYLE } from "../../utilities/constants";
 const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
   return superMaxPlayers.map((currentPlayer: Player) => {
     const ownerName = ownersByID[currentPlayer.owner];
@@ -17,11 +18,11 @@ const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
     );
     return (
       <tr key={currentPlayer._id} className="customRow">
-        <td>{currentPlayer.name}</td>
-        <td>{ownerName}</td>
-        <td>{currentYear}</td>
-        <td>{currentPlayer.superMax.plan}</td>
-        <td>${price}</td>
+        <td style={TABLE_STYLE}>{currentPlayer.name}</td>
+        <td style={TABLE_STYLE}>{ownerName}</td>
+        <td style={TABLE_STYLE}>{currentYear}</td>
+        <td style={TABLE_STYLE}>{currentPlayer.superMax.plan}</td>
+        <td style={TABLE_STYLE}>${price}</td>
       </tr>
     );
   });

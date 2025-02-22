@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
 import { KEEPER_CLASS_ENUM } from "../../utilities/enumerations";
+import { TABLE_STYLE } from "../../utilities/constants";
 
 interface FranchiseTagColumnProps {
   position: string;
@@ -32,8 +33,8 @@ const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
               <td
                 style={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
-                    ? { fontWeight: "bold" }
-                    : {}
+                    ? { ...TABLE_STYLE, fontWeight: "bold" }
+                    : TABLE_STYLE
                 }
               >
                 {player.name}
@@ -41,8 +42,8 @@ const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
               <td
                 style={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
-                    ? { fontWeight: "bold" }
-                    : {}
+                    ? { ...TABLE_STYLE, fontWeight: "bold" }
+                    : TABLE_STYLE
                 }
               >
                 {player.price}

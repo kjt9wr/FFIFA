@@ -11,6 +11,7 @@ import {
   getKeeperClassText,
   KEEPER_CLASS_ENUM,
 } from "../../utilities/enumerations";
+import { TABLE_STYLE } from "../../utilities/constants";
 
 const showUnadjustedPrice = (keeperClass: number) => {
   return [
@@ -46,15 +47,15 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
   const { player } = props;
   return (
     <tr className="customRow">
-      <td>{player.position}</td>
-      <td> {player.name} </td>
-      <td>
+      <td style={TABLE_STYLE}>{player.position}</td>
+      <td style={TABLE_STYLE}> {player.name} </td>
+      <td style={TABLE_STYLE}>
         {showUnadjustedPrice(player.keeperClass) && (
           <span className="previousValue"> {player.price}</span>
         )}{" "}
         {determineFinalPriceOfPlayer(player, props.franchisePrices)}
       </td>
-      <td>
+      <td style={TABLE_STYLE}>
         <Input
           type="checkbox"
           id={props.id}
@@ -64,10 +65,10 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
           disabled={KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass}
         />
       </td>
-      <td>
+      <td style={TABLE_STYLE}>
         {player.keeperClass > 1 && getKeeperClassText(player.keeperClass)}
       </td>
-      <td>
+      <td style={TABLE_STYLE}>
         {KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass &&
           getSuperMaxText(player?.superMax)}
       </td>

@@ -1,7 +1,7 @@
-import React from "react";
 import { TiDelete } from "react-icons/ti";
-import { Table } from "reactstrap";
+import { Col, Row, Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
+import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
 
 interface PlayerDisplayByPositionProps {
@@ -39,6 +39,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
             <tr key={player.name}>
               {isEditable ? (
                 <td
+                  style={TRANSPARENT_TABLE_STYLE}
                   onClick={() => {
                     removePlayerCallback(player._id);
                   }}
@@ -47,7 +48,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
                   {player.name} - ${player.price}
                 </td>
               ) : (
-                <td>{player.name}</td>
+                <td style={TRANSPARENT_TABLE_STYLE}>{player.name}</td>
               )}
             </tr>
           );
@@ -57,12 +58,12 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
   );
 
   return (
-    <div style={{ display: "flex" }}>
-      {renderPlayersForPosition(POSITION.QB, keptQBs)}
-      {renderPlayersForPosition(POSITION.RB, keptRBs)}
-      {renderPlayersForPosition(POSITION.WR, keptWRs)}
-      {renderPlayersForPosition(POSITION.TE, keptTEs)}
-    </div>
+    <Row>
+      <Col>{renderPlayersForPosition(POSITION.QB, keptQBs)} </Col>
+      <Col>{renderPlayersForPosition(POSITION.RB, keptRBs)}</Col>
+      <Col>{renderPlayersForPosition(POSITION.WR, keptWRs)}</Col>
+      <Col>{renderPlayersForPosition(POSITION.TE, keptTEs)}</Col>
+    </Row>
   );
 };
 
