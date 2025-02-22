@@ -23,6 +23,7 @@ const YearSelector = (props: yearSelectorProps) => {
           <Button
             color={isCurrentYear(year)}
             key={year}
+            id={`${year}-btn`}
             onClick={() => {
               props.onChange(year);
             }}

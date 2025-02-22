@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^29.5.14",
     "@types/reactstrap": "^8.7.2",
+    "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -20,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

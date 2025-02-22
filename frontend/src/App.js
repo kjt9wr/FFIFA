@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import YearSelector from "./YearSelector";
+import YearSelector from "./components/reusable/YearSelector";
 
 function App() {
   return (
