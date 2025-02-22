@@ -5,20 +5,20 @@ import { Button, ButtonGroup } from "reactstrap";
  * This component creates a button group of years that the user can toggle between
  */
 
-// interface yearSelectorProps {
-//   selectedYear: string;
-//   onChange: (year: string) => void;
-//   yearOptions: string[];
-// }
+interface yearSelectorProps {
+  selectedYear: string;
+  onChange: (year: string) => void;
+  yearOptions: string[];
+}
 
-const YearSelector = (props) => {
-  const isCurrentYear = (yearButton) => {
+const YearSelector = (props: yearSelectorProps) => {
+  const isCurrentYear = (yearButton: string) => {
     return props.selectedYear === yearButton ? "primary" : "secondary";
   };
 
   return (
     <ButtonGroup>
-      {props.yearOptions.map((year) => {
+      {props.yearOptions.map((year: string) => {
         return (
           <Button
             color={isCurrentYear(year)}

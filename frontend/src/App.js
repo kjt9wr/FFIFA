@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <YearSelector yearOptions={["2024", "2025"]} />
+        <YearSelector yearOptions={["2014", "2025"]} />
         <p>
           Edit <code>src/App.js</code> and save to reload. hehe
         </p>
