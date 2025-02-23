@@ -34,20 +34,4 @@ const App = () => {
   );
 };
 
-// return (
-
-//     <BrowserRouter>
-//       <Navbar />
-//       <div className="pages">
-//         <Routes>
-//           <Route
-//             path="/"
-//             element={<Home />}
-//           />
-//         </Routes>
-//       </div>
-//     </BrowserRouter>
-
-// );
-
 export default App;

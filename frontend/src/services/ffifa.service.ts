@@ -19,7 +19,7 @@ export const determineFinalPriceOfPlayer = (
             player.superMax.plan,
             player.superMax.signingYear
           )
-        : -1;
+        : -99;
     case 4:
       return getFranchisePrice(player.position, franchisePrices);
     default:

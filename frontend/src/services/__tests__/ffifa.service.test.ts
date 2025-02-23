@@ -84,6 +84,14 @@ describe("FFifa service", () => {
     expect(price).toEqual(expectedPrice);
   });
 
+  it("returns negative for final price for Supermax player without supermax field", () => {
+    const price = determineFinalPriceOfPlayer(
+      { ...MAXED_PLAYER, superMax: undefined },
+      FRANCHISE_TAG_SAMPLE_DATA
+    );
+    expect(price).toEqual(-99);
+  });
+
   it("determine final price for keeper", () => {
     const price = determineFinalPriceOfPlayer(
       REGULAR_RB,
