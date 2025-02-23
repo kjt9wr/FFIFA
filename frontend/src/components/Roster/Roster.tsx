@@ -37,21 +37,23 @@ const Roster = (props: RosterProps) => {
     wrFranchisePrice: 0,
     teFranchisePrice: 0,
   });
-  const [cap, setCap] = useState();
+  const [cap, setCap] = useState<number>(0);
 
   const { name } = useParams();
 
-  const ownerId = ownersIDByName[name];
+  const ownerId = ownersIDByName[name || ""];
 
   const toggleKeeper = async (e: any) => {
     const playertoChange = roster.find((player) => player._id === e.target.id);
-    playertoChange.keep = e.target.checked;
-    const restOfRoster = roster.filter(
-      (player) => player._id !== playertoChange._id
-    );
-    setRoster([...restOfRoster, playertoChange]);
+    if (playertoChange) {
+      playertoChange.keep = e.target.checked;
+      const restOfRoster = roster.filter(
+        (player) => player._id !== playertoChange._id
+      );
+      setRoster([...restOfRoster, playertoChange]);
 
-    await updatePlayerKeeperStatus(e.target.id, { keep: e.target.checked });
+      await updatePlayerKeeperStatus(e.target.id, { keep: e.target.checked });
+    }
   };
 
   useEffect(() => {
@@ -81,7 +83,7 @@ const Roster = (props: RosterProps) => {
   return (
     <Container>
       <RosterOwnerCapDisplay
-        ownerName={name}
+        ownerName={name || ""}
         roster={roster}
         franchisePrices={franchisePrices}
         penaltyReward={luxaryPotPayout}

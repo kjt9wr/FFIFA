@@ -17,30 +17,38 @@ const FranchiseTag = () => {
       {franchiseInfo && (
         <Row>
           <Col>
-            <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptQBs.slice(0, 10)}
-              position={POSITION.QB}
-              tagPrice={franchiseInfo.qbFranchisePrice}
-            />
+            {franchiseInfo.keptQBs && (
+              <FranchiseTagColumn
+                keptPlayers={franchiseInfo.keptQBs.slice(0, 10)}
+                position={POSITION.QB}
+                tagPrice={franchiseInfo.qbFranchisePrice}
+              />
+            )}
           </Col>
           <Col>
-            <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptRBs.slice(0, 10)}
-              position={POSITION.RB}
-              tagPrice={franchiseInfo.rbFranchisePrice}
-            />
+            {franchiseInfo.keptRBs && (
+              <FranchiseTagColumn
+                keptPlayers={franchiseInfo.keptRBs.slice(0, 10)}
+                position={POSITION.RB}
+                tagPrice={franchiseInfo.rbFranchisePrice}
+              />
+            )}
           </Col>
-          <FranchiseTagColumn
-            keptPlayers={franchiseInfo.keptWRs.slice(0, 10)}
-            position={POSITION.WR}
-            tagPrice={franchiseInfo.wrFranchisePrice}
-          />
-          <Col>
+          {franchiseInfo.keptWRs && (
             <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptTEs.slice(0, 10)}
-              position={POSITION.TE}
-              tagPrice={franchiseInfo.teFranchisePrice}
+              keptPlayers={franchiseInfo.keptWRs.slice(0, 10)}
+              position={POSITION.WR}
+              tagPrice={franchiseInfo.wrFranchisePrice}
             />
+          )}
+          <Col>
+            {franchiseInfo.keptTEs && (
+              <FranchiseTagColumn
+                keptPlayers={franchiseInfo.keptTEs.slice(0, 10)}
+                position={POSITION.TE}
+                tagPrice={franchiseInfo.teFranchisePrice}
+              />
+            )}
           </Col>
         </Row>
       )}

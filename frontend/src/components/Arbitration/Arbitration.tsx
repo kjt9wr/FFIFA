@@ -49,7 +49,9 @@ const Arbitration = () => {
       <h4>{selectedYear}</h4>
       <PlayerDisplayByPosition
         playerList={arbitratedPlayers.filter(
-          (player: Player) => Number(selectedYear) - player.firstKeepYear === 3
+          (player: Player) =>
+            player.firstKeepYear &&
+            Number(selectedYear) - player.firstKeepYear === 3
         )}
         isEditable={false}
       />

@@ -29,9 +29,12 @@ const getAvailablePlayersPosition = (
 ) => {
   return playerList
     .filter(
-      (player: Player) => player.position === position && player.rank < 80
+      (player: Player) =>
+        player.position === position && player.rank && player.rank < 80
     )
-    .sort((a: Player, b: Player) => a.rank - b.rank);
+    .sort((a: Player, b: Player) => {
+      return a.rank && b.rank ? a.rank - b.rank : -1;
+    });
 };
 
 export const useFreeAgents = () => {

@@ -84,13 +84,13 @@ const displayCapAmount = (
  * This page displays each owner's cap in a given year
  */
 const CapTracker = () => {
-  const [owners, setOwners] = useState([]);
+  const [owners, setOwners] = useState<Owner[]>([]);
   const [trades, setTrades] = useState<TradeInfo[]>([]);
   const [selectedYear, setSelectedYear] = useState(UPCOMING_SEASON_YEAR);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   const ownersinSelectedYear = owners.filter(
-    (owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
+    (owner: Owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
   );
   useEffect(() => {
     const getOwnerInfo = async () => {

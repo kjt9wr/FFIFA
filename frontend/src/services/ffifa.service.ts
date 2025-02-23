@@ -14,10 +14,12 @@ export const determineFinalPriceOfPlayer = (
     case 2:
       return getFranchisePrice(player.position, franchisePrices);
     case 3:
-      return calculateSuperMaxPrice(
-        player.superMax.plan,
-        player.superMax.signingYear
-      );
+      return player.superMax
+        ? calculateSuperMaxPrice(
+            player.superMax.plan,
+            player.superMax.signingYear
+          )
+        : -1;
     case 4:
       return getFranchisePrice(player.position, franchisePrices);
     default:
@@ -39,7 +41,7 @@ const getFranchisePrice = (playerPosition: string, prices: FranchiseTagDTO) => {
 };
 
 export const pickSuperMaxOrKeeperPrice = (player: Player) => {
-  return KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
+  return KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass && player.superMax
     ? calculateSuperMaxPrice(player.superMax.plan, player.superMax.signingYear)
     : player.price;
 };

@@ -9,19 +9,23 @@ import { TABLE_STYLE } from "../../utilities/constants";
 const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
   return superMaxPlayers.map((currentPlayer: Player) => {
     const ownerName = ownersByID[currentPlayer.owner];
-    const price = SuperMaxService.calculateSuperMaxPrice(
-      currentPlayer.superMax.plan,
-      currentPlayer.superMax.signingYear
-    );
-    const currentYear = getCurrentSuperMaxYear(
-      currentPlayer.superMax.signingYear
-    );
+    const price =
+      currentPlayer.superMax &&
+      SuperMaxService.calculateSuperMaxPrice(
+        currentPlayer.superMax.plan,
+        currentPlayer.superMax.signingYear
+      );
+    const currentYear =
+      currentPlayer.superMax &&
+      getCurrentSuperMaxYear(currentPlayer.superMax.signingYear);
     return (
       <tr key={currentPlayer._id} className="customRow">
         <td style={TABLE_STYLE}>{currentPlayer.name}</td>
         <td style={TABLE_STYLE}>{ownerName}</td>
         <td style={TABLE_STYLE}>{currentYear}</td>
-        <td style={TABLE_STYLE}>{currentPlayer.superMax.plan}</td>
+        <td style={TABLE_STYLE}>
+          {currentPlayer.superMax && currentPlayer.superMax.plan}
+        </td>
         <td style={TABLE_STYLE}>${price}</td>
       </tr>
     );

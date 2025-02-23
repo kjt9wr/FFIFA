@@ -37,7 +37,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
         {players.map((player: Player) => {
           return (
             <tr key={player.name}>
-              {isEditable ? (
+              {isEditable && removePlayerCallback ? (
                 <td
                   style={TRANSPARENT_TABLE_STYLE}
                   onClick={() => {

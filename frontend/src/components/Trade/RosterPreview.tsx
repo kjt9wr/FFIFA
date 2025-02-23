@@ -24,8 +24,13 @@ const ownerId = ownersIDByName[ownerName];
 const RosterPreview = () => {
   const [roster, setRoster] = useState<Player[]>([]);
   const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState<FranchiseTagDTO>();
-  const [maxCap, setMaxCap] = useState();
+  const [franchisePrices, setFranchisePrices] = useState<FranchiseTagDTO>({
+    qbFranchisePrice: 0,
+    rbFranchisePrice: 0,
+    wrFranchisePrice: 0,
+    teFranchisePrice: 0,
+  });
+  const [maxCap, setMaxCap] = useState<number>(0);
   const [rosteredPlayerPool, setRosteredPlayerPool] = useState<Player[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState();
 
@@ -54,12 +59,12 @@ const RosterPreview = () => {
     });
   }, []);
 
-  const updateCap = useCallback((newValue) => {
+  const updateCap = useCallback((newValue: number) => {
     setMaxCap(newValue);
   }, []);
 
   const removePlayer = useCallback(
-    (playerId) => {
+    (playerId: string) => {
       setRoster(roster.filter((player) => player._id !== playerId));
     },
     [roster]
@@ -75,9 +80,11 @@ const RosterPreview = () => {
     const fullPlayerObject = rosteredPlayerPool.find(
       (player) => selectedPlayer === player._id
     );
-    fullPlayerObject.keeperClass = 1;
-    fullPlayerObject.keep = true;
-    setRoster([...roster, fullPlayerObject]);
+    if (fullPlayerObject) {
+      fullPlayerObject.keeperClass = 1;
+      fullPlayerObject.keep = true;
+      setRoster([...roster, fullPlayerObject]);
+    }
   };
 
   const addablePlayers = rosteredPlayerPool

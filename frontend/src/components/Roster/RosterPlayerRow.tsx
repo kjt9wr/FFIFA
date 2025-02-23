@@ -70,7 +70,8 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
       </td>
       <td style={TABLE_STYLE}>
         {KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass &&
-          getSuperMaxText(player?.superMax)}
+          player.superMax &&
+          getSuperMaxText(player.superMax)}
       </td>
     </tr>
   );

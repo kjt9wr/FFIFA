@@ -76,7 +76,7 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
       <br />
       <Row>
         <Col>
-          {isEditable ? (
+          {isEditable && updateCapCallback ? (
             <Card>
               <CardBody>
                 <CardTitle tag="h3">Max Cap</CardTitle>
