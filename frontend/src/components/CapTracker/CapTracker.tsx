@@ -20,37 +20,37 @@ const displayCapTable = (
       <thead className="thead-light">
         <tr>
           <th></th>
-          {owners.map(
-            (owner: Owner) =>
-              owner.cap[parseInt(year.slice(-1))] !== 0 && (
-                <th key={owner.name}>{owner.name}</th>
-              )
-          )}
+          {owners.map((owner: Owner) => (
+            <th key={owner.name}>{owner.name}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
         <tr>
           <td style={TRANSPARENT_TABLE_STYLE}>{year}</td>
-          {owners.map(
-            (owner: Owner) =>
-              owner.cap[parseInt(year.slice(-1))] !== 0 && (
-                <td style={TRANSPARENT_TABLE_STYLE} key={owner.name}>
-                  {owner.cap[parseInt(year.slice(-1))]}
-                </td>
-              )
-          )}
+          {owners.map((owner: Owner) => (
+            <td style={TRANSPARENT_TABLE_STYLE} key={owner.name}>
+              {owner.cap[parseInt(year.slice(-1))]}
+            </td>
+          ))}
         </tr>
         {filteredTrades.map((trade) => {
           return (
-            <tr>
+            <tr key={trade._id}>
               <td style={TRANSPARENT_TABLE_STYLE}>Trade</td>
               {owners.map((owner: Owner) =>
                 [trade.owner1, trade.owner2].includes(owner.name) ? (
-                  <td style={TRANSPARENT_TABLE_STYLE}>
+                  <td
+                    style={TRANSPARENT_TABLE_STYLE}
+                    key={`${trade._id}-${owner._id}`}
+                  >
                     {displayCapAmount(owner.name, trade, year)}
                   </td>
                 ) : (
-                  <td style={TRANSPARENT_TABLE_STYLE} />
+                  <td
+                    style={TRANSPARENT_TABLE_STYLE}
+                    key={`${trade._id}-${owner._id}`}
+                  />
                 )
               )}
             </tr>
@@ -66,8 +66,9 @@ const displayCapAmount = (
   trade: TradeInfo,
   year: string
 ) => {
-  let capExchanged;
-  let recipient;
+  let capExchanged: number;
+  let recipient: string;
+
   if (trade.owner1_rec.cap && trade.owner1_rec.cap[year]) {
     capExchanged = trade.owner1_rec.cap[year];
     recipient = trade.owner1;
@@ -76,7 +77,7 @@ const displayCapAmount = (
     recipient = trade.owner2;
   }
 
-  return <td>{ownerName === recipient ? capExchanged : -capExchanged}</td>;
+  return <>{ownerName === recipient ? capExchanged : -capExchanged}</>;
 };
 
 /*
@@ -88,6 +89,9 @@ const CapTracker = () => {
   const [selectedYear, setSelectedYear] = useState(UPCOMING_SEASON_YEAR);
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
+  const ownersinSelectedYear = owners.filter(
+    (owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
+  );
   useEffect(() => {
     const getOwnerInfo = async () => {
       await fetchAllOwners()
@@ -118,7 +122,8 @@ const CapTracker = () => {
   const filteredTrades = trades.filter(
     (trade: TradeInfo) =>
       trade.years.includes(selectedYear) &&
-      (trade.owner1_rec.cap || trade.owner2_rec.cap)
+      ((trade.owner1_rec.cap && selectedYear in trade.owner1_rec.cap) ||
+        (trade.owner2_rec.cap && selectedYear in trade.owner2_rec.cap))
   );
 
   return (
@@ -134,7 +139,7 @@ const CapTracker = () => {
       />
       <br />
       <br />
-      {displayCapTable(selectedYear, owners, filteredTrades)}
+      {displayCapTable(selectedYear, ownersinSelectedYear, filteredTrades)}
     </Container>
   );
 };

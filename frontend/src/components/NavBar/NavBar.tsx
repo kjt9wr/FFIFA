@@ -23,7 +23,7 @@ const NavBar = () => {
         fixed="top"
       >
         <NavItem>
-          <NavLink href="/"> FFIFA</NavLink>
+          <NavLink href="/"> FFIFA </NavLink>
         </NavItem>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -32,7 +32,7 @@ const NavBar = () => {
               <DropdownToggle nav caret>
                 Rosters
               </DropdownToggle>
-              <DropdownMenu left>
+              <DropdownMenu left={"true"}>
                 <DropdownItem href="/roster/Kevin"> Kevin </DropdownItem>
                 <DropdownItem href="/roster/Luigi"> Luigi </DropdownItem>
                 <DropdownItem href="/roster/Casey"> Casey </DropdownItem>
