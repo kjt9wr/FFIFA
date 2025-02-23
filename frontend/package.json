@@ -7,7 +7,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.5.14",
     "@types/reactstrap": "^8.7.2",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
@@ -18,12 +17,13 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.10.0",
     "reactstrap": "^9.2.3",
+    "ts-node": "^10.9.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
     "eject": "react-scripts eject"
   },
@@ -46,9 +46,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "babel-jest": "^29.7.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3"
   }

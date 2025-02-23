@@ -51,6 +51,28 @@ export const ARBITRATED_TE: Player = {
   sleeperId: "",
 };
 
+export const KEPT_TE: Player = {
+  _id: "LAP",
+  keep: true,
+  keeperClass: 1,
+  name: "Sam Laporta",
+  owner: "",
+  position: "TE",
+  price: 12,
+  sleeperId: "",
+};
+
+export const KEPT_WR: Player = {
+  _id: "BTJ",
+  keep: true,
+  keeperClass: 1,
+  name: "Brian Thomas",
+  owner: "",
+  position: "WR",
+  price: 40,
+  sleeperId: "",
+};
+
 export const FRANCHISE_TAG_SAMPLE_DATA = {
   qbFranchisePrice: 25,
   keptQBs: [],
@@ -68,4 +90,13 @@ export const MOCKED_PENALTY_FEES = [
   { name: "Matt", penaltyFee: 0 },
   { name: "Luigi", penaltyFee: 0 },
   { name: "Alex", penaltyFee: 30 },
+];
+
+export const KEPT_PLAYERS = [
+  MAXED_PLAYER,
+  FRANCHISED_QB,
+  ARBITRATED_TE,
+  KEPT_TE,
+  KEPT_WR,
+  REGULAR_RB,
 ];

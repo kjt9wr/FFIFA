@@ -5,7 +5,6 @@ import * as FFIFAService from "./ffifa.service";
 
 export const getFranchiseTagDTO = async () => {
   const keptPlayers = await fetchKeptPlayers();
-
   const keptQBs = keptPlayers.data
     .filter((player: Player) => player.position === POSITION.QB)
     .sort((a: Player, b: Player) => b.price - a.price);
