@@ -1,4 +1,3 @@
-import { FranchiseTagDTO, Player } from "../../interfaces/interfaces";
 import {
   MOCK_AJ_BROWN,
   MOCK_CEEDEE_LAMB,

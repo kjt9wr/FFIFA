@@ -1,9 +1,9 @@
 import { BASE_CAP, UPCOMING_SEASON_YEAR } from "../../utilities/constants";
+import { START_YEAR } from "../mock-data/services.mock-data";
 import {
   calculateSuperMaxPrice,
   getCurrentSuperMaxYear,
 } from "../supermax.service";
-import { START_YEAR } from "../mock-data/services.mock-data";
 
 const THREE_YEAR_PERCENT = 0.2375;
 const FOUR_YEAR_PERCENT = 0.2256;

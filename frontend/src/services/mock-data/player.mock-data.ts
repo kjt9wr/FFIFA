@@ -208,7 +208,7 @@ export const MOCK_JALEN_COKER: Player = {
 export const MOCK_CHRIS_OLAVE: Player = {
   _id: "chris_olave",
   keep: false,
-  keeperClass: 0,
+  keeperClass: 1,
   name: "Chris Olave",
   owner: "",
   position: "WR",

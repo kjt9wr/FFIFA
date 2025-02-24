@@ -1,3 +1,6 @@
+import apiClient from "../../api/apiClient";
+import { Player } from "../../interfaces/interfaces";
+import * as FFIFAService from "../ffifa.service";
 import {
   formatFranchisePrices,
   getFranchiseTagDTO,
@@ -6,9 +9,6 @@ import {
   FRANCHISE_TAG_SAMPLE_DATA,
   KEPT_PLAYERS,
 } from "../mock-data/services.mock-data";
-import apiClient from "../../api/apiClient";
-import * as FFIFAService from "../ffifa.service";
-import { Player } from "../../interfaces/interfaces";
 
 const EXPECTED_QB_FRANCHISE_PRICE = 43;
 const EXPECTED_RB_FRANCHISE_PRICE = 95;
