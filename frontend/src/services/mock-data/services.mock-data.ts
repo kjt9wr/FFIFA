@@ -22,7 +22,6 @@ import {
   MOCK_SAM_LAPORTA,
   MOCK_SAQUON_BARKLEY,
   MOCK_TYREEK_HILL,
-  REGULAR_RB,
 } from "./player.mock-data";
 
 export const START_YEAR = Number(UPCOMING_SEASON_YEAR) - 2;
@@ -31,7 +30,7 @@ export const FRANCHISE_TAG_SAMPLE_DATA = {
   qbFranchisePrice: 25,
   keptQBs: [],
   rbFranchisePrice: 75,
-  keptRBs: [REGULAR_RB, MAXED_PLAYER],
+  keptRBs: [MOCK_DERRICK_HENRY, MAXED_PLAYER],
   wrFranchisePrice: 50,
   keptWRs: [],
   teFranchisePrice: 30,

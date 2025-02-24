@@ -16,17 +16,6 @@ export const MAXED_PLAYER: Player = {
   sleeperId: "",
 };
 
-export const REGULAR_RB: Player = {
-  _id: "kyr",
-  keep: true,
-  keeperClass: 1,
-  name: "Kyren Williams",
-  owner: "",
-  position: "RB",
-  price: 16,
-  sleeperId: "",
-};
-
 export const ARBITRATED_TE: Player = {
   _id: "kittle",
   keep: true,
@@ -35,28 +24,6 @@ export const ARBITRATED_TE: Player = {
   owner: "",
   position: "TE",
   price: 50,
-  sleeperId: "",
-};
-
-export const KEPT_TE: Player = {
-  _id: "LAP",
-  keep: true,
-  keeperClass: 1,
-  name: "Sam Laporta",
-  owner: "",
-  position: "TE",
-  price: 12,
-  sleeperId: "",
-};
-
-export const KEPT_WR: Player = {
-  _id: "BTJ",
-  keep: true,
-  keeperClass: 1,
-  name: "Brian Thomas",
-  owner: "",
-  position: "WR",
-  price: 40,
   sleeperId: "",
 };
 

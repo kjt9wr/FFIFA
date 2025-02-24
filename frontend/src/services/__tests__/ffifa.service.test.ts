@@ -7,9 +7,10 @@ import {
   pickSuperMaxOrKeeperPrice,
 } from "../ffifa.service";
 import {
-  MAXED_PLAYER,
-  REGULAR_RB,
   ARBITRATED_TE,
+  MAXED_PLAYER,
+  MOCK_DERRICK_HENRY,
+  MOCK_JAHMYR_GIBBS,
   MOCK_JAYDEN_DANIELS,
 } from "../mock-data/player.mock-data";
 import {
@@ -35,8 +36,8 @@ describe("FFifa service", () => {
   });
 
   it("does not pick supermax price for regualar RB", () => {
-    const price = pickSuperMaxOrKeeperPrice(REGULAR_RB);
-    expect(price).toEqual(REGULAR_RB.price);
+    const price = pickSuperMaxOrKeeperPrice(MOCK_DERRICK_HENRY);
+    expect(price).toEqual(MOCK_DERRICK_HENRY.price);
   });
 
   it("determines final price for franchised QB", () => {
@@ -50,7 +51,7 @@ describe("FFifa service", () => {
 
   it("determines final price for franchised RB", () => {
     const price = determineFinalPriceOfPlayer(
-      { ...REGULAR_RB, keeperClass: 2 },
+      MOCK_JAHMYR_GIBBS,
       FRANCHISE_TAG_SAMPLE_DATA
     );
 
@@ -96,11 +97,11 @@ describe("FFifa service", () => {
 
   it("determine final price for keeper", () => {
     const price = determineFinalPriceOfPlayer(
-      REGULAR_RB,
+      MOCK_DERRICK_HENRY,
       FRANCHISE_TAG_SAMPLE_DATA
     );
 
-    expect(price).toEqual(REGULAR_RB.price);
+    expect(price).toEqual(MOCK_DERRICK_HENRY.price);
   });
 
   it("calculates luxary pot payout", () => {
