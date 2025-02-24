@@ -204,3 +204,14 @@ export const MOCK_JALEN_COKER: Player = {
   position: "WR",
   price: 10,
 };
+
+export const MOCK_CHRIS_OLAVE: Player = {
+  _id: "chris_olave",
+  keep: false,
+  keeperClass: 0,
+  name: "Chris Olave",
+  owner: "",
+  position: "WR",
+  price: 62,
+  sleeperId: "",
+};
