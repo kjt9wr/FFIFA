@@ -215,3 +215,10 @@ export const MOCK_CHRIS_OLAVE: Player = {
   price: 62,
   sleeperId: "",
 };
+
+export const MOCKED_ROSTER = [
+  MOCK_AJ_BROWN,
+  MOCK_CEEDEE_LAMB,
+  MOCK_JALEN_HURTS,
+  MOCK_CHRIS_OLAVE,
+];

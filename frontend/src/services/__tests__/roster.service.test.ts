@@ -1,9 +1,4 @@
-import {
-  MOCK_AJ_BROWN,
-  MOCK_CEEDEE_LAMB,
-  MOCK_CHRIS_OLAVE,
-  MOCK_JALEN_HURTS,
-} from "../mock-data/player.mock-data";
+import { MOCKED_ROSTER } from "../mock-data/player.mock-data";
 import { FRANCHISE_TAG_SAMPLE_DATA } from "../mock-data/services.mock-data";
 import {
   calculateLuxaryTaxLine,
@@ -11,12 +6,6 @@ import {
   calculateTotalKeeperPrice,
 } from "../roster.service";
 
-const roster = [
-  MOCK_AJ_BROWN,
-  MOCK_CEEDEE_LAMB,
-  MOCK_JALEN_HURTS,
-  MOCK_CHRIS_OLAVE,
-];
 describe("roster service", () => {
   it("calculates luxary tax line", () => {
     const line = calculateLuxaryTaxLine(200);
@@ -24,14 +13,17 @@ describe("roster service", () => {
   });
 
   it("calculates total keeper price from roster", () => {
-    const price = calculateTotalKeeperPrice(roster, FRANCHISE_TAG_SAMPLE_DATA);
+    const price = calculateTotalKeeperPrice(
+      MOCKED_ROSTER,
+      FRANCHISE_TAG_SAMPLE_DATA
+    );
 
     expect(price).toEqual(143);
   });
 
   it("calculates nonoffender penalty fee", () => {
     const penaltyFee = calculatePenaltyFee(
-      roster,
+      MOCKED_ROSTER,
       FRANCHISE_TAG_SAMPLE_DATA,
       400
     );
@@ -41,7 +33,7 @@ describe("roster service", () => {
 
   it("calculates offender penalty fee", () => {
     const penaltyFee = calculatePenaltyFee(
-      roster,
+      MOCKED_ROSTER,
       FRANCHISE_TAG_SAMPLE_DATA,
       200
     );

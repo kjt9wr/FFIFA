@@ -18,7 +18,7 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="/" exact element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/roster/:name" element={<Roster />} />
         <Route path="/trade" element={<TradeTracker />} />
         <Route path="/tradepreview" element={<RosterPreview />} />
