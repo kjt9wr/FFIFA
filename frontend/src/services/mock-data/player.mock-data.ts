@@ -1,4 +1,5 @@
 import { Player } from "../../interfaces/interfaces";
+import { UPCOMING_SEASON_YEAR } from "../../utilities/constants";
 import { START_YEAR } from "./services.mock-data";
 
 export const MAXED_PLAYER: Player = {
@@ -127,6 +128,11 @@ export const MOCK_NAJEE_HARRIS: Player = {
   keeperClass: 3,
   name: "Najee Harris",
   position: "RB",
+  owner: "Patrick",
+  superMax: {
+    plan: 5,
+    signingYear: Number(UPCOMING_SEASON_YEAR) - 3,
+  },
   price: 130,
 };
 
