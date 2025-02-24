@@ -7,12 +7,14 @@ import {
   pickSuperMaxOrKeeperPrice,
 } from "../ffifa.service";
 import {
-  ARBITRATED_TE,
-  FRANCHISE_TAG_SAMPLE_DATA,
-  FRANCHISED_QB,
   MAXED_PLAYER,
-  MOCKED_PENALTY_FEES,
   REGULAR_RB,
+  ARBITRATED_TE,
+  MOCK_JAYDEN_DANIELS,
+} from "../mock-data/player.mock-data";
+import {
+  FRANCHISE_TAG_SAMPLE_DATA,
+  MOCKED_PENALTY_FEES,
 } from "../mock-data/services.mock-data";
 
 const FIVE_YEAR_PERCENT = 0.2138;
@@ -39,7 +41,7 @@ describe("FFifa service", () => {
 
   it("determines final price for franchised QB", () => {
     const price = determineFinalPriceOfPlayer(
-      FRANCHISED_QB,
+      MOCK_JAYDEN_DANIELS,
       FRANCHISE_TAG_SAMPLE_DATA
     );
 
@@ -57,7 +59,7 @@ describe("FFifa service", () => {
 
   it("determines final price for franchised WR", () => {
     const price = determineFinalPriceOfPlayer(
-      { ...FRANCHISED_QB, position: POSITION.WR },
+      { ...MOCK_JAYDEN_DANIELS, position: POSITION.WR },
       FRANCHISE_TAG_SAMPLE_DATA
     );
 
