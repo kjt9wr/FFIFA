@@ -1,4 +1,4 @@
-import { Player } from "../../interfaces/interfaces";
+import { FreeAgentStorage, Player } from "../../interfaces/interfaces";
 import {
   MAXED_PLAYER,
   MOCK_AJ_BROWN,
@@ -64,3 +64,10 @@ export const KEPT_PLAYERS: Player[] = [
   MOCK_MALIK_NABERS,
   MOCK_JALEN_COKER,
 ];
+
+export const MOCK_FREE_AGENTS: FreeAgentStorage = {
+  availableQBs: [MOCK_PATRICK_MAHOMES],
+  availableRBs: [MOCK_JOSH_JACOBS, MOCK_DERRICK_HENRY],
+  availableWRs: [MOCK_JALEN_COKER, MOCK_TYREEK_HILL],
+  availableTEs: [MOCK_SAM_LAPORTA],
+};
