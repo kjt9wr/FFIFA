@@ -1,5 +1,4 @@
 import { Player } from "../../interfaces/interfaces";
-import { getUpcomingSeasonYear } from "../../utilities/constants";
 import {
   MAXED_PLAYER,
   MOCK_AJ_BROWN,
