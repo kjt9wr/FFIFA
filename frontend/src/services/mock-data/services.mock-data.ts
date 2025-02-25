@@ -67,7 +67,7 @@ export const KEPT_PLAYERS: Player[] = [
 
 export const MOCK_FREE_AGENTS: FreeAgentStorage = {
   availableQBs: [MOCK_PATRICK_MAHOMES],
-  availableRBs: [MOCK_JOSH_JACOBS, MOCK_DERRICK_HENRY],
-  availableWRs: [MOCK_JALEN_COKER, MOCK_TYREEK_HILL],
+  availableRBs: [MOCK_DERRICK_HENRY, MOCK_JOSH_JACOBS],
+  availableWRs: [MOCK_TYREEK_HILL, MOCK_JALEN_COKER],
   availableTEs: [MOCK_SAM_LAPORTA],
 };

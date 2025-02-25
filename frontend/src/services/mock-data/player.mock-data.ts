@@ -66,6 +66,7 @@ export const MOCK_PATRICK_MAHOMES: Player = {
   name: "Patrick Mahomes",
   position: "QB",
   price: 37,
+  rank: 10,
 };
 
 export const MOCK_JALEN_HURTS: Player = {
@@ -110,6 +111,7 @@ export const MOCK_JOSH_JACOBS: Player = {
   name: "Josh Jacobs",
   position: "RB",
   price: 81,
+  rank: 12,
 };
 
 export const MOCK_DERRICK_HENRY: Player = {
@@ -119,6 +121,7 @@ export const MOCK_DERRICK_HENRY: Player = {
   position: "RB",
   price: 79,
   firstKeepYear: 2023,
+  rank: 6,
 };
 
 export const MOCK_NAJEE_HARRIS: Player = {
@@ -150,6 +153,7 @@ export const MOCK_SAM_LAPORTA: Player = {
   name: "Sam Laporta",
   position: "TE",
   price: 12,
+  rank: 4,
 };
 
 export const MOCK_DRAKE_LONDON: Player = {
@@ -184,6 +188,7 @@ export const MOCK_TYREEK_HILL: Player = {
   name: "Tyreek Hill",
   position: "WR",
   price: 56,
+  rank: 10,
 };
 
 export const MOCK_JAMARR_CHASE: Player = {
@@ -209,6 +214,7 @@ export const MOCK_JALEN_COKER: Player = {
   name: "Jalen Coker",
   position: "WR",
   price: 10,
+  rank: 30,
 };
 
 export const MOCK_CHRIS_OLAVE: Player = {
