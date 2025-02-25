@@ -1,5 +1,5 @@
 import { UpdateKeeperDTO } from "../interfaces/interfaces";
-import { UPCOMING_SEASON_YEAR } from "../utilities/constants";
+import { getUpcomingSeasonYear } from "../utilities/constants";
 import apiClient from "./apiClient";
 import sleeperApiClient from "./sleeperApiClient";
 
@@ -8,7 +8,7 @@ export const fetchAllTrades = () => {
 };
 
 export const fetchArbitrationData = () => {
-  return apiClient.get(`/player/arbitration/${UPCOMING_SEASON_YEAR}`);
+  return apiClient.get(`/player/arbitration/${getUpcomingSeasonYear()}`);
 };
 
 export const fetchFreeAgents = () => {

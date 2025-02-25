@@ -1,6 +1,4 @@
 import { Player } from "../../interfaces/interfaces";
-import { UPCOMING_SEASON_YEAR } from "../../utilities/constants";
-import { START_YEAR } from "./services.mock-data";
 
 export const MAXED_PLAYER: Player = {
   _id: "abc",
@@ -11,7 +9,7 @@ export const MAXED_PLAYER: Player = {
   position: "RB",
   superMax: {
     plan: 5,
-    signingYear: START_YEAR,
+    signingYear: 2023,
   },
   price: 10,
   sleeperId: "",
@@ -131,7 +129,7 @@ export const MOCK_NAJEE_HARRIS: Player = {
   owner: "Patrick",
   superMax: {
     plan: 5,
-    signingYear: Number(UPCOMING_SEASON_YEAR) - 3,
+    signingYear: 2022,
   },
   price: 130,
 };
@@ -193,6 +191,7 @@ export const MOCK_JAMARR_CHASE: Player = {
   name: "Jamarr Chase",
   position: "WR",
   price: 52,
+  firstKeepYear: 2022,
 };
 
 export const MOCK_MALIK_NABERS: Player = {

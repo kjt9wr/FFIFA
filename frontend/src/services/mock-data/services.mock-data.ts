@@ -1,5 +1,5 @@
 import { Player } from "../../interfaces/interfaces";
-import { UPCOMING_SEASON_YEAR } from "../../utilities/constants";
+import { getUpcomingSeasonYear } from "../../utilities/constants";
 import {
   MAXED_PLAYER,
   MOCK_AJ_BROWN,
@@ -23,8 +23,6 @@ import {
   MOCK_SAQUON_BARKLEY,
   MOCK_TYREEK_HILL,
 } from "./player.mock-data";
-
-export const START_YEAR = Number(UPCOMING_SEASON_YEAR) - 2;
 
 export const FRANCHISE_TAG_SAMPLE_DATA = {
   qbFranchisePrice: 25,

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import "../../App.css";
+import { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners, fetchAllTrades } from "../../api/api.service";
+import "../../App.css";
 import { Owner, TradeInfo } from "../../interfaces/interfaces";
 import {
+  getUpcomingSeasonYear,
   RECORDED_YEARS,
   TRANSPARENT_TABLE_STYLE,
-  UPCOMING_SEASON_YEAR,
 } from "../../utilities/constants";
 import YearSelector from "../reusable/YearSelector";
 
@@ -86,7 +86,7 @@ const displayCapAmount = (
 const CapTracker = () => {
   const [owners, setOwners] = useState<Owner[]>([]);
   const [trades, setTrades] = useState<TradeInfo[]>([]);
-  const [selectedYear, setSelectedYear] = useState(UPCOMING_SEASON_YEAR);
+  const [selectedYear, setSelectedYear] = useState(getUpcomingSeasonYear());
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
   const ownersinSelectedYear = owners.filter(

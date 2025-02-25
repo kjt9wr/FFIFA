@@ -21,7 +21,7 @@ describe("roster service", () => {
     expect(price).toEqual(143);
   });
 
-  it("calculates nonoffender penalty fee", () => {
+  it("calculates 0 for penalty fee of a nonoffender", () => {
     const penaltyFee = calculatePenaltyFee(
       MOCKED_ROSTER,
       FRANCHISE_TAG_SAMPLE_DATA,
@@ -31,7 +31,7 @@ describe("roster service", () => {
     expect(penaltyFee).toEqual(0);
   });
 
-  it("calculates offender penalty fee", () => {
+  it("calculates penalty fee for offender", () => {
     const penaltyFee = calculatePenaltyFee(
       MOCKED_ROSTER,
       FRANCHISE_TAG_SAMPLE_DATA,

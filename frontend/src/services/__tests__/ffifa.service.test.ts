@@ -1,4 +1,3 @@
-import { BASE_CAP, UPCOMING_SEASON_YEAR } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
 import {
   calculateLuxaryPotPayout,
@@ -17,8 +16,8 @@ import {
   FRANCHISE_TAG_SAMPLE_DATA,
   MOCKED_PENALTY_FEES,
 } from "../mock-data/services.mock-data";
+import * as supermaxService from "../supermax.service";
 
-const FIVE_YEAR_PERCENT = 0.2138;
 describe("FFifa service", () => {
   it("increases keeper price with min of 10", () => {
     const price = increaseKeeperPrice(5);
@@ -77,14 +76,14 @@ describe("FFifa service", () => {
   });
 
   it("determine final price for Supermax player", () => {
+    jest.spyOn(supermaxService, "calculateSuperMaxPrice").mockReturnValue(85);
+
     const price = determineFinalPriceOfPlayer(
       MAXED_PLAYER,
       FRANCHISE_TAG_SAMPLE_DATA
     );
-    const expectedPrice = Math.trunc(
-      BASE_CAP[UPCOMING_SEASON_YEAR] * FIVE_YEAR_PERCENT
-    );
-    expect(price).toEqual(expectedPrice);
+
+    expect(price).toEqual(85);
   });
 
   it("returns negative for final price for Supermax player without supermax field", () => {
