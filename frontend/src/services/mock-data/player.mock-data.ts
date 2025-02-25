@@ -118,6 +118,7 @@ export const MOCK_DERRICK_HENRY: Player = {
   name: "Derrick Henry",
   position: "RB",
   price: 79,
+  firstKeepYear: 2023,
 };
 
 export const MOCK_NAJEE_HARRIS: Player = {
