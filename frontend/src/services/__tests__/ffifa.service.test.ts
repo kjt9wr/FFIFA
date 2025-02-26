@@ -1,6 +1,8 @@
 import { POSITION } from "../../utilities/enumerations";
 import {
+  calculateFollowingYearBaseCap,
   calculateLuxaryPotPayout,
+  calculateTotalInPot,
   determineFinalPriceOfPlayer,
   increaseKeeperPrice,
   pickSuperMaxOrKeeperPrice,
@@ -17,6 +19,7 @@ import {
   MOCKED_PENALTY_FEES,
 } from "../mock-data/services.mock-data";
 import * as supermaxService from "../supermax.service";
+import * as constants from "../../utilities/constants";
 
 describe("FFifa service", () => {
   it("increases keeper price with min of 10", () => {
@@ -106,6 +109,20 @@ describe("FFifa service", () => {
   it("calculates luxary pot payout", () => {
     const payout = calculateLuxaryPotPayout(MOCKED_PENALTY_FEES);
 
-    expect(payout).toEqual(50);
+    expect(payout).toEqual(11);
+  });
+
+  it("calculates total in the pot", () => {
+    const pot = calculateTotalInPot(MOCKED_PENALTY_FEES);
+
+    expect(pot).toEqual(100);
+  });
+
+  it("calculates following year base cap", () => {
+    jest.spyOn(constants, "getUpcomingSeasonYear").mockReturnValue("2025");
+
+    const futureCap = calculateFollowingYearBaseCap(MOCKED_PENALTY_FEES);
+
+    expect(futureCap).toEqual(416);
   });
 });

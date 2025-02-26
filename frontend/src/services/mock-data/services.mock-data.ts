@@ -39,7 +39,14 @@ export const MOCKED_PENALTY_FEES = [
   { name: "Justin", penaltyFee: 50 },
   { name: "Matt", penaltyFee: 0 },
   { name: "Luigi", penaltyFee: 0 },
+  { name: "Michael", penaltyFee: 0 },
   { name: "Alex", penaltyFee: 30 },
+  { name: "Casey", penaltyFee: 0 },
+  { name: "Patrick", penaltyFee: 0 },
+  { name: "Brent", penaltyFee: 0 },
+  { name: "Jeff", penaltyFee: 0 },
+  { name: "Christian", penaltyFee: 0 },
+  { name: "Nikos", penaltyFee: 0 },
 ];
 
 export const KEPT_PLAYERS: Player[] = [

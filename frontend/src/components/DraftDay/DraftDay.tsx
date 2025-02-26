@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Card, Col, Container, Row } from "reactstrap";
-import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
+import {
+  calculateFollowingYearBaseCap,
+  calculateLuxaryPotPayout,
+  calculateTotalInPot,
+} from "../../services/ffifa.service";
 import { fetchAllOwners } from "../../api/api.service";
 import { Owner, PenaltyFeeInfo } from "../../interfaces/interfaces";
+import { getUpcomingSeasonYear } from "../../utilities/constants";
 
 const displayOwnersUnderTax = (penaltyFeeData: PenaltyFeeInfo[]) => {
   return penaltyFeeData
@@ -49,20 +54,11 @@ const DraftDay = () => {
     getPenaltyData();
   }, []);
 
-  const totalInPot = penaltyFees.reduce(
-    (acc: number, owner: PenaltyFeeInfo) => acc + owner.penaltyFee,
-    0
-  );
+  const followingYear = Number(getUpcomingSeasonYear()) + 1;
+  const totalInPot = calculateTotalInPot(penaltyFees);
+  const payoutPerOwner = calculateLuxaryPotPayout(penaltyFees);
+  const followingYearCap = calculateFollowingYearBaseCap(penaltyFees);
 
-  const nonoffendersCount = penaltyFees.filter(
-    (owner) => owner.penaltyFee === 0
-  ).length;
-
-  const offendersCount = 12 - nonoffendersCount;
-
-  const nextYearBaseCap = Math.trunc(
-    375 + (0.05 + 0.01 * nonoffendersCount - 0.01 * offendersCount) * 375
-  );
   return (
     <Container>
       <h1 className="text-center"> Draft Day Info </h1>
@@ -70,8 +66,10 @@ const DraftDay = () => {
         <Alert color="danger">Error fetching draft data</Alert>
       )}
       <h4>Total Money in the Pot: ${totalInPot}</h4>
-      <h4>Payout Per Owner: ${calculateLuxaryPotPayout(penaltyFees)}</h4>
-      <h4>2026 Base Cap: ${nextYearBaseCap}</h4>
+      <h4>Payout Per Owner: ${payoutPerOwner}</h4>
+      <h4>
+        {followingYear} Base Cap: ${followingYearCap}
+      </h4>
       <Card className="p-1 my-2">
         <Row>
           <Col>

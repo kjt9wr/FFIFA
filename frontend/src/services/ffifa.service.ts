@@ -1,8 +1,10 @@
 import {
   FranchiseTagDTO,
+  Owner,
   PenaltyFeeInfo,
   Player,
 } from "../interfaces/interfaces";
+import { BASE_CAP, getUpcomingSeasonYear } from "../utilities/constants";
 import { KEEPER_CLASS_ENUM, POSITION } from "../utilities/enumerations";
 import { calculateSuperMaxPrice } from "./supermax.service";
 
@@ -61,4 +63,26 @@ export const calculateLuxaryPotPayout = (penaltyFees: PenaltyFeeInfo[]) => {
   ).length;
 
   return Math.trunc(totalInPot / nonOffenders);
+};
+
+export const calculateTotalInPot = (penaltyFees: PenaltyFeeInfo[]) => {
+  return penaltyFees.reduce(
+    (acc: number, owner: PenaltyFeeInfo) => acc + owner.penaltyFee,
+    0
+  );
+};
+
+export const calculateFollowingYearBaseCap = (
+  penaltyFees: PenaltyFeeInfo[]
+) => {
+  const nonoffendersCount = penaltyFees.filter(
+    (owner: Owner) => owner.penaltyFee === 0
+  ).length;
+
+  const offendersCount = penaltyFees.length - nonoffendersCount;
+
+  return Math.trunc(
+    BASE_CAP[getUpcomingSeasonYear()] *
+      (1.05 + 0.01 * (nonoffendersCount - offendersCount))
+  );
 };
