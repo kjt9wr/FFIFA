@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`draft day page renders successfully 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container"
+      >
+        <h1
+          class="text-center"
+        >
+           Draft Day Info 
+        </h1>
+        <h4>
+          Total Money in the Pot: $
+          100
+        </h4>
+        <h4>
+          Payout Per Owner: $
+          11
+        </h4>
+        <h4>
+          2026
+           Base Cap: $
+          416
+        </h4>
+        <div
+          class="p-1 my-2 card"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col"
+            >
+              <h3>
+                Under Tax: 
+              </h3>
+              <h5>
+                <div>
+                  Christian
+                </div>
+                <div>
+                  Brent
+                </div>
+                <div>
+                  Matt
+                </div>
+                <div>
+                  Casey
+                </div>
+              </h5>
+            </div>
+            <div
+              class="col"
+            >
+              <h3>
+                Over Tax: 
+              </h3>
+              <h5>
+                <div>
+                  Jeff
+                   $
+                  5
+                </div>
+                <div>
+                  Kevin
+                   $
+                  34
+                </div>
+                <div>
+                  Nikos
+                   $
+                  22
+                </div>
+                <div>
+                  Justin
+                   $
+                  21
+                </div>
+                <div>
+                  Luigi
+                   $
+                  64
+                </div>
+                <div>
+                  Alex
+                   $
+                  47
+                </div>
+                <div>
+                  Patrick
+                   $
+                  67
+                </div>
+                <div>
+                  Michael
+                   $
+                  25
+                </div>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container"
+    >
+      <h1
+        class="text-center"
+      >
+         Draft Day Info 
+      </h1>
+      <h4>
+        Total Money in the Pot: $
+        100
+      </h4>
+      <h4>
+        Payout Per Owner: $
+        11
+      </h4>
+      <h4>
+        2026
+         Base Cap: $
+        416
+      </h4>
+      <div
+        class="p-1 my-2 card"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <h3>
+              Under Tax: 
+            </h3>
+            <h5>
+              <div>
+                Christian
+              </div>
+              <div>
+                Brent
+              </div>
+              <div>
+                Matt
+              </div>
+              <div>
+                Casey
+              </div>
+            </h5>
+          </div>
+          <div
+            class="col"
+          >
+            <h3>
+              Over Tax: 
+            </h3>
+            <h5>
+              <div>
+                Jeff
+                 $
+                5
+              </div>
+              <div>
+                Kevin
+                 $
+                34
+              </div>
+              <div>
+                Nikos
+                 $
+                22
+              </div>
+              <div>
+                Justin
+                 $
+                21
+              </div>
+              <div>
+                Luigi
+                 $
+                64
+              </div>
+              <div>
+                Alex
+                 $
+                47
+              </div>
+              <div>
+                Patrick
+                 $
+                67
+              </div>
+              <div>
+                Michael
+                 $
+                25
+              </div>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners, fetchAllTrades } from "../../api/api.service";
-// import "../../App.css";
 import { Owner, TradeInfo } from "../../interfaces/interfaces";
 import {
   getUpcomingSeasonYear,

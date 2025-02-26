@@ -53,7 +53,6 @@ const DraftDay = () => {
 
     getPenaltyData();
   }, []);
-
   const followingYear = Number(getUpcomingSeasonYear()) + 1;
   const totalInPot = calculateTotalInPot(penaltyFees);
   const payoutPerOwner = calculateLuxaryPotPayout(penaltyFees);
