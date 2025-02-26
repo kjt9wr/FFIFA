@@ -21,7 +21,7 @@ const displayCap = (capObject: Record<string, number>) => {
   }
 };
 
-const displayAdditionalNotes = (notes: string) => {
+const displayAdditionalNotes = (notes?: string) => {
   return (
     notes && (
       <div>
@@ -54,7 +54,7 @@ const TradeCard = (props: TradeCardProps) => {
           {displayPlayers(currentTrade.owner2_rec.players)}
           {displayCap(currentTrade.owner2_rec.cap)}
         </Col>
-        <Col>{displayAdditionalNotes(currentTrade.trade_notes)}</Col>
+        <Col>{displayAdditionalNotes(currentTrade?.trade_notes)}</Col>
       </Row>
     </Card>
   );

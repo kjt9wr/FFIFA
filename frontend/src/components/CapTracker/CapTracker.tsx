@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners, fetchAllTrades } from "../../api/api.service";
-import "../../App.css";
+// import "../../App.css";
 import { Owner, TradeInfo } from "../../interfaces/interfaces";
 import {
   getUpcomingSeasonYear,
@@ -89,9 +89,11 @@ const CapTracker = () => {
   const [selectedYear, setSelectedYear] = useState(getUpcomingSeasonYear());
   const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
 
-  const ownersinSelectedYear = owners.filter(
-    (owner: Owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
-  );
+  const ownersinSelectedYear = owners
+    ? owners.filter(
+        (owner: Owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
+      )
+    : [];
   useEffect(() => {
     const getOwnerInfo = async () => {
       await fetchAllOwners()
@@ -119,12 +121,14 @@ const CapTracker = () => {
   const handleOnChange = (year: string) => {
     setSelectedYear(year);
   };
-  const filteredTrades = trades.filter(
-    (trade: TradeInfo) =>
-      trade.years.includes(selectedYear) &&
-      ((trade.owner1_rec.cap && selectedYear in trade.owner1_rec.cap) ||
-        (trade.owner2_rec.cap && selectedYear in trade.owner2_rec.cap))
-  );
+  const filteredTrades = trades
+    ? trades.filter(
+        (trade: TradeInfo) =>
+          trade.years.includes(selectedYear) &&
+          ((trade.owner1_rec.cap && selectedYear in trade.owner1_rec.cap) ||
+            (trade.owner2_rec.cap && selectedYear in trade.owner2_rec.cap))
+      )
+    : [];
 
   return (
     <Container>
