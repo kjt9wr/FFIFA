@@ -1,0 +1,630 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Bar renders successfully 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div>
+        <nav
+          class="navbar navbar-dark bg-dark navbar-expand-lg navbar fixed-top"
+        >
+          <div
+            class="container-fluid"
+          >
+            <li
+              class="nav-item"
+            >
+              <a
+                class="nav-link"
+                href="/"
+              >
+                 FFIFA 
+              </a>
+            </li>
+            <button
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              type="button"
+            >
+              <span
+                class="navbar-toggler-icon"
+              />
+            </button>
+            <div
+              class="collapse navbar-collapse"
+            >
+              <ul
+                class="mr-auto navbar-nav"
+              >
+                <li
+                  class="dropdown nav-item"
+                >
+                  <a
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="dropdown-toggle nav-link"
+                    href="#"
+                  >
+                    Rosters
+                  </a>
+                  <div
+                    aria-hidden="true"
+                    class="dropdown-menu"
+                    data-bs-popper="static"
+                    left="true"
+                    role="menu"
+                    tabindex="-1"
+                  >
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Kevin"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Kevin 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Luigi"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Luigi 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Casey"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Casey 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Patrick"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Patrick 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Jeff"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Jeff 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Alex"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Alex 
+                    </a>
+                    <div
+                      class="dropdown-divider"
+                      tabindex="-1"
+                    />
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Michael"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Michael 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Nikos"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Nikos 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Brent"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Brent 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Christian"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                      Christian
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Justin"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Justin 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/roster/Matt"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Matt 
+                    </a>
+                  </div>
+                </li>
+                <li
+                  class="dropdown nav-item"
+                >
+                  <a
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="dropdown-toggle nav-link"
+                    href="#"
+                  >
+                    Trades
+                  </a>
+                  <div
+                    aria-hidden="true"
+                    class="dropdown-menu dropdown-menu-end"
+                    data-bs-popper="static"
+                    role="menu"
+                    tabindex="-1"
+                  >
+                    <a
+                      class="dropdown-item"
+                      href="/trade"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Trade Tracker 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/tradepreview"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                      Preview Trade
+                    </a>
+                  </div>
+                </li>
+                <li
+                  class="dropdown nav-item"
+                >
+                  <a
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="dropdown-toggle nav-link"
+                    href="#"
+                  >
+                    Prices
+                  </a>
+                  <div
+                    aria-hidden="true"
+                    class="dropdown-menu dropdown-menu-end"
+                    data-bs-popper="static"
+                    role="menu"
+                    tabindex="-1"
+                  >
+                    <a
+                      class="dropdown-item"
+                      href="/franchise"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                       Franchise Tag 
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/supermax"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                      Supermax
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="/arbitration"
+                      role="menuitem"
+                      tabindex="0"
+                    >
+                      Arbitration
+                    </a>
+                  </div>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                    href="/cap"
+                  >
+                    Cap Tracker
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                    href="/fa"
+                  >
+                    Free Agency
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                    href="/draft"
+                  >
+                    Draft Day
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                    href="/admin"
+                  >
+                    Admin
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <br />
+         
+        <br />
+         
+        <br />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div>
+      <nav
+        class="navbar navbar-dark bg-dark navbar-expand-lg navbar fixed-top"
+      >
+        <div
+          class="container-fluid"
+        >
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="/"
+            >
+               FFIFA 
+            </a>
+          </li>
+          <button
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            type="button"
+          >
+            <span
+              class="navbar-toggler-icon"
+            />
+          </button>
+          <div
+            class="collapse navbar-collapse"
+          >
+            <ul
+              class="mr-auto navbar-nav"
+            >
+              <li
+                class="dropdown nav-item"
+              >
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle nav-link"
+                  href="#"
+                >
+                  Rosters
+                </a>
+                <div
+                  aria-hidden="true"
+                  class="dropdown-menu"
+                  data-bs-popper="static"
+                  left="true"
+                  role="menu"
+                  tabindex="-1"
+                >
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Kevin"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Kevin 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Luigi"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Luigi 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Casey"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Casey 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Patrick"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Patrick 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Jeff"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Jeff 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Alex"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Alex 
+                  </a>
+                  <div
+                    class="dropdown-divider"
+                    tabindex="-1"
+                  />
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Michael"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Michael 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Nikos"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Nikos 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Brent"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Brent 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Christian"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                    Christian
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Justin"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Justin 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/roster/Matt"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Matt 
+                  </a>
+                </div>
+              </li>
+              <li
+                class="dropdown nav-item"
+              >
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle nav-link"
+                  href="#"
+                >
+                  Trades
+                </a>
+                <div
+                  aria-hidden="true"
+                  class="dropdown-menu dropdown-menu-end"
+                  data-bs-popper="static"
+                  role="menu"
+                  tabindex="-1"
+                >
+                  <a
+                    class="dropdown-item"
+                    href="/trade"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Trade Tracker 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/tradepreview"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                    Preview Trade
+                  </a>
+                </div>
+              </li>
+              <li
+                class="dropdown nav-item"
+              >
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle nav-link"
+                  href="#"
+                >
+                  Prices
+                </a>
+                <div
+                  aria-hidden="true"
+                  class="dropdown-menu dropdown-menu-end"
+                  data-bs-popper="static"
+                  role="menu"
+                  tabindex="-1"
+                >
+                  <a
+                    class="dropdown-item"
+                    href="/franchise"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                     Franchise Tag 
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/supermax"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                    Supermax
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/arbitration"
+                    role="menuitem"
+                    tabindex="0"
+                  >
+                    Arbitration
+                  </a>
+                </div>
+              </li>
+              <li
+                class="nav-item"
+              >
+                <a
+                  class="nav-link"
+                  href="/cap"
+                >
+                  Cap Tracker
+                </a>
+              </li>
+              <li
+                class="nav-item"
+              >
+                <a
+                  class="nav-link"
+                  href="/fa"
+                >
+                  Free Agency
+                </a>
+              </li>
+              <li
+                class="nav-item"
+              >
+                <a
+                  class="nav-link"
+                  href="/draft"
+                >
+                  Draft Day
+                </a>
+              </li>
+              <li
+                class="nav-item"
+              >
+                <a
+                  class="nav-link"
+                  href="/admin"
+                >
+                  Admin
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <br />
+       
+      <br />
+       
+      <br />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
