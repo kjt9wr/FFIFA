@@ -156,5 +156,6 @@ export const TRADES_FROM_DB: TradeInfo[] = [
         "2024": 3,
       },
     },
+    trade_notes: "Additional Condition",
   },
 ];
