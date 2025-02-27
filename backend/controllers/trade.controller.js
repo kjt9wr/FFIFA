@@ -17,12 +17,12 @@ const createTrade = async (req, res) => {
   try {
     await Player.updateMany(
       { _id: { $in: owner1_rec.players } },
-      { $set: { owner: idMap.ownersIDByName[owner1] } }
+      { $set: { owner: idMap.OwnerSleeperIdByName[owner1] } }
     );
 
     await Player.updateMany(
       { _id: { $in: owner2_rec.players } },
-      { $set: { owner: idMap.ownersIDByName[owner2] } }
+      { $set: { owner: idMap.OwnerSleeperIdByName[owner2] } }
     );
 
     const trade = await Trade.create({

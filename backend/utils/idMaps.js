@@ -1,17 +1,16 @@
-const ownersIDByName = {
-  Kevin: "5e80d724b3bdaf3413316177",
-  Justin: "5e80d930b3bdaf3413316189",
-  Alex: "5e80dd6ab3bdaf34133161bd",
-  Luigi: "5e80da66b3bdaf341331619b",
-  Christian: "5e80e173b3bdaf3413316213",
-  Matt: "5e80df96b3bdaf34133161ef",
-  Brent: "5e80db62b3bdaf34133161ab",
-  Michael: "5e80de37b3bdaf34133161cf",
-  Nikos: "5e80dedcb3bdaf34133161dd",
-  Chinmay: "5e80e07eb3bdaf3413316200",
-  Patrick: "5e80e1dab3bdaf3413316225",
-  Jeff: "5e80e1deb3bdaf3413316226",
-  Casey: "66fb53a23cb8429bd448fd61",
+const OwnerSleeperIdByName = {
+  Alex: "655541144519790592",
+  Michael: "566462736300331008",
+  Kevin: "341465026613243904",
+  Jeff: "732301436922216448",
+  Luigi: "999953718374129664",
+  Christian: "999852537555603456",
+  Nikos: "327984304330113024",
+  Matt: "1000562043537215488",
+  Justin: "470136790582292480",
+  Patrick: "569018415665741824",
+  Casey: "1002432436678094848",
+  Brent: "868176176311611392",
 };
 
-module.exports.ownersIDByName = ownersIDByName;
+module.exports.OwnerSleeperIdByName = OwnerSleeperIdByName;

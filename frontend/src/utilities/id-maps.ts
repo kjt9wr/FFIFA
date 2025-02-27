@@ -1,35 +1,3 @@
-export const ownersByID: Record<string, string> = {
-  "5e80d724b3bdaf3413316177": "Kevin",
-  "5e80d930b3bdaf3413316189": "Justin",
-  "5e80dd6ab3bdaf34133161bd": "Alex",
-  "5e80da66b3bdaf341331619b": "Luigi",
-  "5e80e173b3bdaf3413316213": "Christian",
-  "5e80df96b3bdaf34133161ef": "Matt",
-  "5e80db62b3bdaf34133161ab": "Brent",
-  "5e80de37b3bdaf34133161cf": "Michael",
-  "5e80dedcb3bdaf34133161dd": "Nikos",
-  "5e80e07eb3bdaf3413316200": "Chinmay",
-  "5e80e1dab3bdaf3413316225": "Patrick",
-  "5e80e1deb3bdaf3413316226": "Jeff",
-  "66fb53a23cb8429bd448fd61": "Casey",
-};
-
-export const ownersIDByName: Record<string, string> = {
-  Kevin: "5e80d724b3bdaf3413316177",
-  Justin: "5e80d930b3bdaf3413316189",
-  Alex: "5e80dd6ab3bdaf34133161bd",
-  Luigi: "5e80da66b3bdaf341331619b",
-  Christian: "5e80e173b3bdaf3413316213",
-  Matt: "5e80df96b3bdaf34133161ef",
-  Brent: "5e80db62b3bdaf34133161ab",
-  Michael: "5e80de37b3bdaf34133161cf",
-  Nikos: "5e80dedcb3bdaf34133161dd",
-  Chinmay: "5e80e07eb3bdaf3413316200",
-  Patrick: "5e80e1dab3bdaf3413316225",
-  Jeff: "5e80e1deb3bdaf3413316226",
-  Casey: "66fb53a23cb8429bd448fd61",
-};
-
 export const playersByID: Record<string, string> = {
   "5f3f34404fa190743101a1b9": "Kyler Murray",
   "5f3f37484fa190743101a1ba": "Tyreek Hill",

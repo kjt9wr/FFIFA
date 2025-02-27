@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchSupermaxPlayers } from "../../api/api.service";
 import { Player } from "../../interfaces/interfaces";
 import * as SuperMaxService from "../../services/supermax.service";
 import { getCurrentSuperMaxYear } from "../../services/supermax.service";
-import { ownersByID } from "../../utilities/id-maps";
 import { TABLE_STYLE } from "../../utilities/constants";
+import { OwnerNameBySleeperId } from "../../utilities/sleeper-ids";
+
 const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
   return superMaxPlayers.map((currentPlayer: Player) => {
-    const ownerName = ownersByID[currentPlayer.owner];
+    const ownerName = OwnerNameBySleeperId[currentPlayer.owner];
     const price =
       currentPlayer.superMax &&
       SuperMaxService.calculateSuperMaxPrice(

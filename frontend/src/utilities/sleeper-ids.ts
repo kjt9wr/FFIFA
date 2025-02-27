@@ -1,33 +1,31 @@
-import { OWNER_ID_ENUM } from "./enumerations";
-
-export const OwnerBySleeperRosterID = {
-  1: "Alex",
-  2: "Michael",
-  3: "Kevin",
-  4: "Jeff",
-  5: "Luigi",
-  6: "Christian",
-  7: "Nikos",
-  8: "Matt",
-  9: "Justin",
-  10: "Patrick",
-  11: "Casey",
-  12: "Brent",
+export const OwnerSleeperIdByName: Record<string, string> = {
+  Alex: "655541144519790592",
+  Michael: "566462736300331008",
+  Kevin: "341465026613243904",
+  Jeff: "732301436922216448",
+  Luigi: "999953718374129664",
+  Christian: "999852537555603456",
+  Nikos: "327984304330113024",
+  Matt: "1000562043537215488",
+  Justin: "470136790582292480",
+  Patrick: "569018415665741824",
+  Casey: "1002432436678094848",
+  Brent: "868176176311611392",
 };
 
-export const OwnerIDBySleeperRosterID: Record<string, string> = {
-  1: OWNER_ID_ENUM.ALEX,
-  2: OWNER_ID_ENUM.MICHAEL,
-  3: OWNER_ID_ENUM.KEVIN,
-  4: OWNER_ID_ENUM.JEFF,
-  5: OWNER_ID_ENUM.LUIGI,
-  6: OWNER_ID_ENUM.CHRISTIAN,
-  7: OWNER_ID_ENUM.NIKOS,
-  8: OWNER_ID_ENUM.MATT,
-  9: OWNER_ID_ENUM.JUSTIN,
-  10: OWNER_ID_ENUM.PATRICK,
-  11: OWNER_ID_ENUM.CASEY,
-  12: OWNER_ID_ENUM.BRENT,
+export const OwnerNameBySleeperId: Record<string, string> = {
+  "655541144519790592": "Alex",
+  "566462736300331008": "Michael",
+  "341465026613243904": "Kevin",
+  "732301436922216448": "Jeff",
+  "999953718374129664": "Luigi",
+  "999852537555603456": "Christian",
+  "327984304330113024": "Nikos",
+  "1000562043537215488": "Matt",
+  "470136790582292480": "Justin",
+  "569018415665741824": "Patrick",
+  "1002432436678094848": "Casey",
+  "868176176311611392": "Brent",
 };
 
 export const playersBySleeperID = {

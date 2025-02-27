@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Container } from "reactstrap";
 import {
   fetchAllOwners,
@@ -9,11 +10,10 @@ import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import { getFranchiseTagDTO } from "../../services/franchise.service";
 import { getUpcomingYearIndex } from "../../utilities/constants";
-import { ownersIDByName } from "../../utilities/id-maps";
+import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
-import { useParams } from "react-router-dom";
 
 /*
  * This page displays an owner's available cap information, projected keepers display,
@@ -41,7 +41,7 @@ const Roster = (props: RosterProps) => {
 
   const { name } = useParams();
 
-  const ownerId = ownersIDByName[name || ""];
+  const ownerSleeperId = OwnerSleeperIdByName[name || ""];
 
   const toggleKeeper = async (e: any) => {
     const playertoChange = roster.find((player) => player._id === e.target.id);
@@ -58,14 +58,14 @@ const Roster = (props: RosterProps) => {
 
   useEffect(() => {
     Promise.all([
-      fetchRoster(ownerId),
+      fetchRoster(ownerSleeperId),
       fetchAllOwners(),
       getFranchiseTagDTO(),
     ]).then(([unsortedRoster, owners, franchiseTags]) => {
       setRoster(unsortedRoster.data);
 
       const currentYearCap = owners.data.filter(
-        (owner: Owner) => ownerId === owner._id
+        (owner: Owner) => ownerSleeperId === owner.sleeperId
       )[0].cap[getUpcomingYearIndex()];
       setCap(currentYearCap);
 
@@ -75,7 +75,7 @@ const Roster = (props: RosterProps) => {
       setPenaltyFees(fees);
       setFranchisePrices(franchiseTags);
     });
-  }, [ownerId]);
+  }, [ownerSleeperId]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
   const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);

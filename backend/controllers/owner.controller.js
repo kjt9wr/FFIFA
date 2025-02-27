@@ -41,7 +41,7 @@ const getOwnerByName = async (req, res) => {
 
 // PUT - update a single owner's cap
 const updateCap = async (req, res) => {
-  Owner.findById(idMap.ownersIDByName[req.params.ownerName])
+  Owner.find({ sleeperId: idMap.OwnerSleeperIdByName[req.params.ownerName] })
     .then((owner) => {
       owner.cap.set(req.body.year, req.body.cap);
       owner
@@ -62,10 +62,10 @@ const updateCap = async (req, res) => {
 const updatePenaltyFee = async (req, res) => {
   const { ownerName } = req.params;
   await Owner.updateOne(
-    { _id: idMap.ownersIDByName[req.params.ownerName] },
+    { sleeperId: idMap.OwnerSleeperIdByName[ownerName] },
     req.body
   )
-    .then(res.status(200).json(`${ownerName}'s penalty fee updated`))
+    .then(res.json(`${ownerName}'s penalty fee updated`))
     .catch((err) => res.status(400).json("Unable to find owner: ", err));
 };
 

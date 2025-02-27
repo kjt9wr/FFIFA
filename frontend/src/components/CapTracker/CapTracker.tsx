@@ -41,14 +41,14 @@ const displayCapTable = (
                 [trade.owner1, trade.owner2].includes(owner.name) ? (
                   <td
                     style={TRANSPARENT_TABLE_STYLE}
-                    key={`${trade._id}-${owner._id}`}
+                    key={`${trade._id}-${owner.sleeperId}`}
                   >
                     {displayCapAmount(owner.name, trade, year)}
                   </td>
                 ) : (
                   <td
                     style={TRANSPARENT_TABLE_STYLE}
-                    key={`${trade._id}-${owner._id}`}
+                    key={`${trade._id}-${owner.sleeperId}`}
                   />
                 )
               )}

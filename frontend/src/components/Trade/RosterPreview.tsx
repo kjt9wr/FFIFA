@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Button, Col, Container, Form, Row } from "reactstrap";
 import {
@@ -10,12 +10,12 @@ import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
 import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
 import { getFranchiseTagDTO } from "../../services/franchise.service";
 import { getUpcomingYearIndex } from "../../utilities/constants";
-import { ownersIDByName } from "../../utilities/id-maps";
+import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterOwnerCapDisplay from "../Roster/RosterOwnerCapDisplay";
 
 const ownerName = "Kevin";
-const ownerId = ownersIDByName[ownerName];
+const ownerId = OwnerSleeperIdByName[ownerName];
 
 /*
  * This page allows the user to edit and view a roster without publishing changes

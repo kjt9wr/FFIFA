@@ -75,7 +75,7 @@ const createNewPlayer = async (req, res) => {
     keep: Boolean(keep),
     position: position,
     rank: Number(rank),
-    owner: idMap.ownersIDByName[ownerName],
+    owner: idMap.OwnerSleeperIdByName[ownerName],
     sleeperId: sleeperId,
   })
     .then(() =>
@@ -87,7 +87,7 @@ const createNewPlayer = async (req, res) => {
           keep: Boolean(keep),
           position: position,
           rank: Number(rank),
-          owner: idMap.ownersIDByName[ownerName],
+          owner: idMap.OwnerSleeperIdByName[ownerName],
           sleeperId: sleeperId,
         },
       })

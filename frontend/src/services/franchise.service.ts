@@ -18,7 +18,6 @@ export const getFranchiseTagDTO = async () => {
     .filter((player: Player) => player.position === POSITION.TE)
     .sort((a: Player, b: Player) => b.price - a.price);
   replaceKeeperPriceWithSuperMax(keptRBs);
-  // console.log(keptRBs);
   const qbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptQBs);
   const rbFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptRBs);
   const wrFranchisePrice = calculateFranchisePriceFromKeptPlayers(keptWRs);
