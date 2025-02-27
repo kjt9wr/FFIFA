@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as apiService from "../../api/api.service";
-import apiClient from "../../api/apiClient";
-import sleeperApiClient from "../../api/sleeperApiClient";
-import { ALERT_STATE } from "../../utilities/enumerations";
-import { MOCKED_SLEEPER_ROSTERS } from "./admin.test-data";
-import UpdateRosters from "./UpdateRosters";
+import * as apiService from "../../../api/api.service";
+import apiClient from "../../../api/apiClient";
+import sleeperApiClient from "../../../api/sleeperApiClient";
+import { ALERT_STATE } from "../../../utilities/enumerations";
+import { MOCKED_SLEEPER_ROSTERS } from "../admin.test-data";
+import UpdateRosters from "../UpdateRosters";
 
 const displayAlert = jest.fn();
 describe("update rosters", () => {

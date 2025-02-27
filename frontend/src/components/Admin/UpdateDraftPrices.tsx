@@ -31,22 +31,24 @@ const UpdateDraftPrices = (props: UpdateDraftPricesProps) => {
           price: player.metadata.amount,
           sleeperId: player.metadata.player_id,
         }));
-
       setDraftData(playersToUpdate);
     };
     getDraftInfo();
   }, []);
 
   const addDraftPrices = async () => {
-    draftData.forEach(async (player) => {
+    for (const player of draftData) {
       await updatePlayerPrice(
         player.sleeperId,
         increaseKeeperPrice(player.price)
-      ).catch(() => {
-        props.priceAlertCallback(ALERT_STATE.ERROR);
-      });
-    });
-    props.priceAlertCallback(ALERT_STATE.SUCCESS);
+      )
+        .then(() => {
+          props.priceAlertCallback(ALERT_STATE.SUCCESS);
+        })
+        .catch(() => {
+          props.priceAlertCallback(ALERT_STATE.ERROR);
+        });
+    }
   };
 
   return (

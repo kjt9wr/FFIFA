@@ -339,3 +339,36 @@ export const MOCKED_SLEEPER_ROSTERS = [
     roster_id: 12,
   },
 ];
+
+export const MOCKED_DRAFT_RESULTS = [
+  {
+    metadata: {
+      amount: "12",
+      player_id: "6804",
+    },
+  },
+  {
+    metadata: {
+      amount: "66",
+      player_id: "3198",
+    },
+  },
+  {
+    metadata: {
+      amount: "68",
+      player_id: "5850",
+    },
+  },
+  {
+    metadata: {
+      amount: "25",
+      player_id: "8136",
+    },
+  },
+  {
+    metadata: {
+      amount: "15",
+      player_id: "3163",
+    },
+  },
+];
