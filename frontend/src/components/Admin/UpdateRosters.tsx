@@ -28,7 +28,7 @@ const UpdateRosters = (props: UpdateRosterProps) => {
           ownerSleeperId: roster.roster_id,
         };
       });
-
+      // console.log(rosters);
       setAllRosters(rosters);
     };
 
@@ -36,19 +36,22 @@ const UpdateRosters = (props: UpdateRosterProps) => {
   }, []);
 
   const updateAllRosters = async () => {
-    await clearAllPlayersOwner().catch(() => {
-      props.rosterAlertCallback(ALERT_STATE.ERROR);
-    });
-
-    allRosters.forEach(async (roster: RosterDTO) => {
-      await updateRoster(
-        OwnerIDBySleeperRosterID[roster.ownerSleeperId],
-        roster.players
-      ).catch(() => {
+    await clearAllPlayersOwner()
+      .then(() => {
+        // console.log(allRosters);
+        allRosters.forEach(async (roster: RosterDTO) => {
+          await updateRoster(
+            OwnerIDBySleeperRosterID[roster.ownerSleeperId],
+            roster.players
+          ).catch(() => {
+            props.rosterAlertCallback(ALERT_STATE.ERROR);
+          });
+        });
+        props.rosterAlertCallback(ALERT_STATE.SUCCESS);
+      })
+      .catch(() => {
         props.rosterAlertCallback(ALERT_STATE.ERROR);
       });
-    });
-    props.rosterAlertCallback(ALERT_STATE.SUCCESS);
   };
 
   return (
