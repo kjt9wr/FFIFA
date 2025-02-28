@@ -83,10 +83,12 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
                 <CardText tag="h4">
                   <FaMinusCircle
                     onClick={() => updateCapCallback(MAX_CAP - 1)}
+                    title={"Subtract Cap"}
                   />{" "}
                   ${MAX_CAP}{" "}
                   <FaPlusCircle
                     onClick={() => updateCapCallback(MAX_CAP + 1)}
+                    title={"Add Cap"}
                   />
                 </CardText>
               </CardBody>
@@ -116,7 +118,6 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
       <br />
       <RosterProgressBar
         keepPrice={keepPrice}
-        isOffender={isOffender}
         taxLine={TAX_LINE}
         maxCap={MAX_CAP}
       />

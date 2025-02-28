@@ -60,6 +60,7 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
           type="checkbox"
           id={props.id}
           key={props.id}
+          title={props.player.name}
           onChange={props.toggleKeeper}
           checked={props.keep}
           disabled={KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass}

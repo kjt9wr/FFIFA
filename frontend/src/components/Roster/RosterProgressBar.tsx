@@ -1,15 +1,14 @@
-import React from "react";
 import { Progress } from "reactstrap";
 
 interface RosterProgressBarProps {
-  isOffender: boolean;
   keepPrice: number;
   taxLine: number;
   maxCap: number;
 }
 
 const RosterProgressBar = (props: RosterProgressBarProps) => {
-  const { isOffender, keepPrice, taxLine, maxCap } = props;
+  const { keepPrice, taxLine, maxCap } = props;
+  const isOffender = keepPrice > taxLine;
   return (
     <Progress
       multi

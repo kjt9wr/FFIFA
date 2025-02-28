@@ -1,0 +1,560 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`roster data table renders successfully 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="table-responsive"
+      >
+        <table
+          class="table table-md table-striped table-hover"
+        >
+          <thead
+            class="thead-light"
+          >
+            <tr>
+              <th>
+                Position
+              </th>
+              <th>
+                Player
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+                Keep
+              </th>
+              <th>
+                Keep Class
+              </th>
+              <th>
+                SuperMax
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="customRow"
+            >
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                WR
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                AJ Brown
+                 
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <span
+                  class="previousValue"
+                >
+                   
+                  61
+                </span>
+                 
+                50
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <input
+                  checked=""
+                  class="form-check-input"
+                  id="aj_brown"
+                  title="AJ Brown"
+                  type="checkbox"
+                />
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                Franchise Tag
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+            </tr>
+            <tr
+              class="customRow"
+            >
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                WR
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                CeeDee Lamb
+                 
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                56
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <input
+                  checked=""
+                  class="form-check-input"
+                  id="ceedee_lamb"
+                  title="CeeDee Lamb"
+                  type="checkbox"
+                />
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+            </tr>
+            <tr
+              class="customRow"
+            >
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                QB
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                Jalen Hurts
+                 
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                37
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <input
+                  checked=""
+                  class="form-check-input"
+                  id="jalen_hurts"
+                  title="Jalen Hurts"
+                  type="checkbox"
+                />
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+            </tr>
+            <tr
+              class="customRow"
+            >
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                WR
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                Chris Olave
+                 
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                62
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <input
+                  class="form-check-input"
+                  id="chris_olave"
+                  title="Chris Olave"
+                  type="checkbox"
+                />
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              />
+            </tr>
+            <tr
+              class="customRow"
+            >
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                RB
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                Najee Harris
+                 
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                 
+                76
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <input
+                  checked=""
+                  class="form-check-input"
+                  disabled=""
+                  id="najee_harris"
+                  title="Najee Harris"
+                  type="checkbox"
+                />
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                Supermax
+              </td>
+              <td
+                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+              >
+                <b>
+                  Year 
+                  3
+                   in 
+                  5
+                   
+                  Year Deal
+                </b>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-md table-striped table-hover"
+      >
+        <thead
+          class="thead-light"
+        >
+          <tr>
+            <th>
+              Position
+            </th>
+            <th>
+              Player
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Keep
+            </th>
+            <th>
+              Keep Class
+            </th>
+            <th>
+              SuperMax
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="customRow"
+          >
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              WR
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              AJ Brown
+               
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <span
+                class="previousValue"
+              >
+                 
+                61
+              </span>
+               
+              50
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <input
+                checked=""
+                class="form-check-input"
+                id="aj_brown"
+                title="AJ Brown"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              Franchise Tag
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+          </tr>
+          <tr
+            class="customRow"
+          >
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              WR
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              CeeDee Lamb
+               
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              56
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <input
+                checked=""
+                class="form-check-input"
+                id="ceedee_lamb"
+                title="CeeDee Lamb"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+          </tr>
+          <tr
+            class="customRow"
+          >
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              QB
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              Jalen Hurts
+               
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              37
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <input
+                checked=""
+                class="form-check-input"
+                id="jalen_hurts"
+                title="Jalen Hurts"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+          </tr>
+          <tr
+            class="customRow"
+          >
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              WR
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              Chris Olave
+               
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              62
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <input
+                class="form-check-input"
+                id="chris_olave"
+                title="Chris Olave"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            />
+          </tr>
+          <tr
+            class="customRow"
+          >
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              RB
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              Najee Harris
+               
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+               
+              76
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <input
+                checked=""
+                class="form-check-input"
+                disabled=""
+                id="najee_harris"
+                title="Najee Harris"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              Supermax
+            </td>
+            <td
+              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+            >
+              <b>
+                Year 
+                3
+                 in 
+                5
+                 
+                Year Deal
+              </b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
