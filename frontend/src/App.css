@@ -32,6 +32,10 @@ body {
   color: #61dafb;
 }
 
+.cursiveFont {
+  font-family: cursive;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
