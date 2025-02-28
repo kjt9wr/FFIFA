@@ -16,7 +16,7 @@ const playerSchema = new Schema({
   keeperClass: { type: Number, required: false },
   owner: {},
   firstKeepYear: { type: Number, required: false },
-  sleeperId: { type: String, required: false },
+  sleeperId: { type: String, required: true },
 });
 
 const Player = mongoose.model("Player", playerSchema);

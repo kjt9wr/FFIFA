@@ -29,7 +29,7 @@ const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
         </thead>
         <tbody>
           {keptPlayers.map((player: Player) => (
-            <tr key={player._id}>
+            <tr key={player.sleeperId}>
               <td
                 style={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass

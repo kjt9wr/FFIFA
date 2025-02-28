@@ -44,11 +44,13 @@ const Roster = (props: RosterProps) => {
   const ownerSleeperId = OwnerSleeperIdByName[name || ""];
 
   const toggleKeeper = async (e: any) => {
-    const playertoChange = roster.find((player) => player._id === e.target.id);
+    const playertoChange = roster.find(
+      (player) => player.sleeperId === e.target.id
+    );
     if (playertoChange) {
       playertoChange.keep = e.target.checked;
       const restOfRoster = roster.filter(
-        (player) => player._id !== playertoChange._id
+        (player) => player.sleeperId !== playertoChange.sleeperId
       );
       setRoster([...restOfRoster, playertoChange]);
 

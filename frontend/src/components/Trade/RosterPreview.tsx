@@ -65,7 +65,7 @@ const RosterPreview = () => {
 
   const removePlayer = useCallback(
     (playerId: string) => {
-      setRoster(roster.filter((player) => player._id !== playerId));
+      setRoster(roster.filter((player) => player.sleeperId !== playerId));
     },
     [roster]
   );
@@ -78,7 +78,7 @@ const RosterPreview = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const fullPlayerObject = rosteredPlayerPool.find(
-      (player) => selectedPlayer === player._id
+      (player) => selectedPlayer === player.sleeperId
     );
     if (fullPlayerObject) {
       fullPlayerObject.keeperClass = 1;
@@ -91,7 +91,7 @@ const RosterPreview = () => {
     ? rosteredPlayerPool
         .filter((player: Player) => !roster.includes(player))
         .map((player: Player) => {
-          return { label: player.name, value: player._id };
+          return { label: player.name, value: player.sleeperId };
         })
         .sort((a, b) => {
           const nameA = a.label;

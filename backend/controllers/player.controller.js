@@ -115,7 +115,7 @@ const addSleeperId = async (req, res) => {
 
 // update a player based on request payload
 const updatePlayer = async (req, res) => {
-  await Player.updateOne({ _id: req.params.playerId }, req.body)
+  await Player.updateOne({ sleeperId: req.params.playerId }, req.body)
     .then(res.status(200).json("Player updated"))
     .catch((err) => res.status(400).json("Unable to find player: ", err));
 };
@@ -156,6 +156,7 @@ const getAllPlayersOrderedByRank = (playerList) => {
     .map((player) => {
       return {
         _id: player.id,
+        sleeperId: player.sleeperId,
         name: player.name,
         rank: player.rank,
       };

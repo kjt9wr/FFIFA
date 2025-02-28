@@ -41,7 +41,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
                 <td
                   style={TRANSPARENT_TABLE_STYLE}
                   onClick={() => {
-                    removePlayerCallback(player._id);
+                    removePlayerCallback(player.sleeperId);
                   }}
                 >
                   <TiDelete />

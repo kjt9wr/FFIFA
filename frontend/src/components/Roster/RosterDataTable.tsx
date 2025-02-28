@@ -30,8 +30,8 @@ const RosterDataTable = (props: RosterDataTableProps) => {
           return (
             <RosterPlayerRow
               player={currentPlayer}
-              key={currentPlayer._id}
-              id={currentPlayer._id}
+              key={currentPlayer.sleeperId}
+              id={currentPlayer.sleeperId}
               keep={currentPlayer.keep}
               toggleKeeper={props.toggleKeeper}
               franchisePrices={props.franchisePrices}

@@ -18,7 +18,7 @@ const FreeAgentColumn = (props: FreeAgentColumnProps) => {
       <Table borderless size="sm">
         <tbody>
           {availablePlayers.map((player: Player) => (
-            <tr key={player._id}>
+            <tr key={player.sleeperId}>
               <td style={TRANSPARENT_TABLE_STYLE}> {player.name}</td>
             </tr>
           ))}

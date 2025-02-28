@@ -12,7 +12,7 @@ export const MAXED_PLAYER: Player = {
     signingYear: 2023,
   },
   price: 10,
-  sleeperId: "",
+  sleeperId: "abc",
 };
 
 export const ARBITRATED_TE: Player = {
@@ -23,7 +23,7 @@ export const ARBITRATED_TE: Player = {
   owner: "",
   position: "TE",
   price: 50,
-  sleeperId: "",
+  sleeperId: "kittle",
 };
 
 // Kept Players
@@ -32,7 +32,6 @@ const KEPT_PLAYER = {
   keep: true,
   keeperClass: 1,
   owner: "",
-  sleeperId: "",
 };
 
 export const MOCK_JAYDEN_DANIELS: Player = {
@@ -42,6 +41,7 @@ export const MOCK_JAYDEN_DANIELS: Player = {
   name: "Jayden Daniels",
   position: "QB",
   price: 67,
+  sleeperId: "jayden_daniels",
 };
 
 export const MOCK_LAMAR_JACKSON: Player = {
@@ -50,6 +50,7 @@ export const MOCK_LAMAR_JACKSON: Player = {
   name: "Lamar Jackson",
   position: "QB",
   price: 37,
+  sleeperId: "lamar_jackson",
 };
 
 export const MOCK_KYLER_MURRAY: Player = {
@@ -58,6 +59,7 @@ export const MOCK_KYLER_MURRAY: Player = {
   name: "Kyler Murray",
   position: "QB",
   price: 37,
+  sleeperId: "kyler_murray",
 };
 
 export const MOCK_PATRICK_MAHOMES: Player = {
@@ -67,6 +69,7 @@ export const MOCK_PATRICK_MAHOMES: Player = {
   position: "QB",
   price: 37,
   rank: 10,
+  sleeperId: "patrick_mahomes",
 };
 
 export const MOCK_JALEN_HURTS: Player = {
@@ -75,6 +78,7 @@ export const MOCK_JALEN_HURTS: Player = {
   name: "Jalen Hurts",
   position: "QB",
   price: 37,
+  sleeperId: "jalen_hurts",
 };
 
 export const MOCK_BIJAN_ROBINSON: Player = {
@@ -84,6 +88,7 @@ export const MOCK_BIJAN_ROBINSON: Player = {
   name: "Bijan Robinson",
   position: "RB",
   price: 121,
+  sleeperId: "bijan_robison",
 };
 
 export const MOCK_SAQUON_BARKLEY: Player = {
@@ -93,6 +98,7 @@ export const MOCK_SAQUON_BARKLEY: Player = {
   name: "Saquon Barkley",
   position: "RB",
   price: 100,
+  sleeperId: "saquon_barkley",
 };
 
 export const MOCK_JAHMYR_GIBBS: Player = {
@@ -102,6 +108,7 @@ export const MOCK_JAHMYR_GIBBS: Player = {
   name: "Jahmyr Gibbs",
   position: "RB",
   price: 98,
+  sleeperId: "jahmyr_gibbs",
 };
 
 export const MOCK_JOSH_JACOBS: Player = {
@@ -112,6 +119,7 @@ export const MOCK_JOSH_JACOBS: Player = {
   position: "RB",
   price: 81,
   rank: 12,
+  sleeperId: "josh_jacobs",
 };
 
 export const MOCK_DERRICK_HENRY: Player = {
@@ -122,6 +130,7 @@ export const MOCK_DERRICK_HENRY: Player = {
   price: 79,
   firstKeepYear: 2023,
   rank: 6,
+  sleeperId: "derrick_henry",
 };
 
 export const MOCK_NAJEE_HARRIS: Player = {
@@ -129,6 +138,7 @@ export const MOCK_NAJEE_HARRIS: Player = {
   _id: "najee_harris",
   keeperClass: 3,
   name: "Najee Harris",
+  sleeperId: "najee_harris",
   position: "RB",
   owner: "Patrick",
   superMax: {
@@ -145,6 +155,7 @@ export const MOCK_BROCK_BOWERS: Player = {
   name: "Brock Bowers",
   position: "TE",
   price: 37,
+  sleeperId: "brock_bowers",
 };
 
 export const MOCK_SAM_LAPORTA: Player = {
@@ -154,6 +165,7 @@ export const MOCK_SAM_LAPORTA: Player = {
   position: "TE",
   price: 12,
   rank: 4,
+  sleeperId: "sam_laporta",
 };
 
 export const MOCK_DRAKE_LONDON: Player = {
@@ -163,6 +175,7 @@ export const MOCK_DRAKE_LONDON: Player = {
   position: "WR",
   price: 64,
   keeperClass: 2,
+  sleeperId: "drake_london",
 };
 
 export const MOCK_AJ_BROWN: Player = {
@@ -172,6 +185,7 @@ export const MOCK_AJ_BROWN: Player = {
   position: "WR",
   price: 61,
   keeperClass: 2,
+  sleeperId: "aj_brown",
 };
 
 export const MOCK_CEEDEE_LAMB: Player = {
@@ -180,6 +194,7 @@ export const MOCK_CEEDEE_LAMB: Player = {
   name: "CeeDee Lamb",
   position: "WR",
   price: 56,
+  sleeperId: "ceedee_lamb",
 };
 
 export const MOCK_TYREEK_HILL: Player = {
@@ -189,6 +204,7 @@ export const MOCK_TYREEK_HILL: Player = {
   position: "WR",
   price: 56,
   rank: 10,
+  sleeperId: "tyreek_hill",
 };
 
 export const MOCK_JAMARR_CHASE: Player = {
@@ -198,6 +214,7 @@ export const MOCK_JAMARR_CHASE: Player = {
   position: "WR",
   price: 52,
   firstKeepYear: 2022,
+  sleeperId: "jamarr_chase",
 };
 
 export const MOCK_MALIK_NABERS: Player = {
@@ -206,6 +223,7 @@ export const MOCK_MALIK_NABERS: Player = {
   name: "Malik Nabers",
   position: "WR",
   price: 51,
+  sleeperId: "malik_nabers",
 };
 
 export const MOCK_JALEN_COKER: Player = {
@@ -215,6 +233,7 @@ export const MOCK_JALEN_COKER: Player = {
   position: "WR",
   price: 10,
   rank: 30,
+  sleeperId: "jalen_coker",
 };
 
 export const MOCK_CHRIS_OLAVE: Player = {
@@ -225,7 +244,7 @@ export const MOCK_CHRIS_OLAVE: Player = {
   owner: "",
   position: "WR",
   price: 62,
-  sleeperId: "",
+  sleeperId: "chris_olave",
 };
 
 export const MOCKED_ROSTER = [
