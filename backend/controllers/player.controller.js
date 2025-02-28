@@ -80,7 +80,7 @@ const createNewPlayer = async (req, res) => {
   })
     .then(() =>
       res.status(201).json({
-        message: `${name} added! ID: + '${newPlayer._id}': '${name}'`,
+        message: `${name} added!`,
         player: {
           name,
           price: Number(price),
