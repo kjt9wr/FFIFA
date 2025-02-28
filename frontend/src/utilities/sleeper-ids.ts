@@ -28,7 +28,7 @@ export const OwnerNameBySleeperId: Record<string, string> = {
   "868176176311611392": "Brent",
 };
 
-export const playersBySleeperID = {
+export const playersBySleeperID: Record<string, string> = {
   1166: "Kirk Cousins",
   19: "Joe Flacco",
   2749: "Raheem Mostert",
@@ -388,4 +388,5 @@ export const playersBySleeperID = {
   10444: "Cedric Tillman",
   9484: "Tucker Kraft",
   2359: "Ameer Abdullah",
+  5026: "Tre'Quan Smith",
 };

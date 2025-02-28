@@ -1,11 +1,12 @@
-import React from "react";
 import { Card, Col, Row } from "reactstrap";
 import { TradeInfo } from "../../interfaces/interfaces";
-import { playersByID } from "../../utilities/id-maps";
+import { playersBySleeperID } from "../../utilities/sleeper-ids";
 
 const displayPlayers = (playerIds: string[]) => {
   return playerIds.map((currentPlayerID) => {
-    return <div key={currentPlayerID}>{playersByID[currentPlayerID]}</div>;
+    return (
+      <div key={currentPlayerID}>{playersBySleeperID[currentPlayerID]}</div>
+    );
   });
 };
 
