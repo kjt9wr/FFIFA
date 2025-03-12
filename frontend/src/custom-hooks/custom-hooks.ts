@@ -1,12 +1,16 @@
 import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { fetchKeptPlayers } from "../api/api.service";
-import { Player } from "../interfaces/interfaces";
+import { fetchAllOwners, fetchKeptPlayers } from "../api/api.service";
+import { Owner, Player } from "../interfaces/interfaces";
 import {
   calculateFranchisePrice,
   get10MostExpensivePerPosition,
 } from "../services/franchise.service";
 import { POSITION } from "../utilities/enumerations";
+import {
+  calculateLuxaryPotPayout,
+  calculateTotalInPot,
+} from "../services/ffifa.service";
 
 export const useFetch = (
   fetchFunction: () => Promise<AxiosResponse<any, any>>,
@@ -96,6 +100,51 @@ export const useFranchisePrices = (autoFetch = true) => {
     rbPrice,
     wrPrice,
     tePrice,
+    recalculatePrices: fetchData,
+  };
+};
+
+export const usePentalyFees = (autoFetch = true) => {
+  const [data, setData] = useState<Owner[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const result = await fetchAllOwners();
+      setData(result.data);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err : new Error("An unknown error occurred")
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (autoFetch) {
+      fetchData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const penaltyFees = data
+    .filter((owner: Owner) => owner.active)
+    .map((owner: Owner) => {
+      return { name: owner.name, penaltyFee: owner.penaltyFee };
+    });
+  const totalInPot = calculateTotalInPot(penaltyFees);
+  const payoutPerOwner = calculateLuxaryPotPayout(penaltyFees);
+
+  return {
+    loading,
+    error,
+    penaltyFees,
+    totalInPot,
+    payoutPerOwner,
     recalculatePrices: fetchData,
   };
 };
