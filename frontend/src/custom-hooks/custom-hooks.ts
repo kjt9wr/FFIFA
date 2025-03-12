@@ -31,6 +31,7 @@ export const useFetch = (
       setError(
         err instanceof Error ? err : new Error("An unknown error occurred")
       );
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -145,6 +146,6 @@ export const usePentalyFees = (autoFetch = true) => {
     penaltyFees,
     totalInPot,
     payoutPerOwner,
-    recalculatePrices: fetchData,
+    recalculatePenaltyFees: fetchData,
   };
 };

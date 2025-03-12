@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchAllTrades } from "../../api/api.service";
+import { useFetch } from "../../custom-hooks/custom-hooks";
 import { TradeInfo } from "../../interfaces/interfaces";
 import {
   getUpcomingSeasonYear,
@@ -21,21 +22,8 @@ const displayTrades = (tradeList: TradeInfo[], selectedYear: string) => {
  * This page displays a log of all trades
  */
 const TradeTracker = () => {
-  const [tradeList, setTradeList] = useState<TradeInfo[]>([]);
   const [selectedYear, setSelectedYear] = useState(getUpcomingSeasonYear());
-  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
-
-  useEffect(() => {
-    const getTrades = async () => {
-      fetchAllTrades()
-        .then((response) => {
-          setTradeList(response.data);
-        })
-        .catch((error) => setDisplayErrorAlert(true));
-    };
-
-    getTrades();
-  }, []);
+  const { data: tradeList, error, loading } = useFetch(fetchAllTrades);
 
   const handleOnChange = (year: string) => {
     setSelectedYear(year);
@@ -44,15 +32,13 @@ const TradeTracker = () => {
   return (
     <Container>
       <h2 className="text-center"> Trade Tracker </h2>
-      {displayErrorAlert && (
-        <Alert color="danger">Error fetching trade data</Alert>
-      )}
+      {error && <Alert color="danger">Error fetching trade data</Alert>}
       <YearSelector
         onChange={handleOnChange}
         selectedYear={selectedYear}
         yearOptions={RECORDED_YEARS}
       />
-      {displayTrades(tradeList, selectedYear)}
+      {!error && !loading && displayTrades(tradeList, selectedYear)}
     </Container>
   );
 };
