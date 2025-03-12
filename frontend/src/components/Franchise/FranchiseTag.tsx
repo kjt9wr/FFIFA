@@ -1,10 +1,5 @@
 import { Alert, Col, Row } from "reactstrap";
-import { fetchKeptPlayers } from "../../api/api.service";
-import { useGetPlayers } from "../../custom-hooks/custom-hooks";
-import {
-  calculateFranchisePrice,
-  get10MostExpensivePerPosition,
-} from "../../services/franchise.service";
+import { useFranchisePrices } from "../../custom-hooks/custom-hooks";
 import { POSITION } from "../../utilities/enumerations";
 import FranchiseTagColumn from "./FranchiseTagColumn";
 
@@ -14,15 +9,17 @@ import FranchiseTagColumn from "./FranchiseTagColumn";
 
 const FranchiseTag = () => {
   const {
-    data: allKeptPlayers,
+    qbList,
+    rbList,
+    wrList,
+    teList,
+    qbPrice,
+    rbPrice,
+    wrPrice,
+    tePrice,
     loading,
     error,
-  } = useGetPlayers(fetchKeptPlayers);
-
-  const qbList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.QB);
-  const rbList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.RB);
-  const wrList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.WR);
-  const teList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.TE);
+  } = useFranchisePrices();
 
   return (
     <div>
@@ -34,26 +31,26 @@ const FranchiseTag = () => {
             <FranchiseTagColumn
               keptPlayers={qbList}
               position={POSITION.QB}
-              tagPrice={calculateFranchisePrice(qbList)}
+              tagPrice={qbPrice}
             />
           </Col>
           <Col>
             <FranchiseTagColumn
               keptPlayers={rbList}
               position={POSITION.RB}
-              tagPrice={calculateFranchisePrice(rbList)}
+              tagPrice={rbPrice}
             />
           </Col>
           <FranchiseTagColumn
             keptPlayers={wrList}
             position={POSITION.WR}
-            tagPrice={calculateFranchisePrice(wrList)}
+            tagPrice={wrPrice}
           />
           <Col>
             <FranchiseTagColumn
               keptPlayers={teList}
               position={POSITION.TE}
-              tagPrice={calculateFranchisePrice(teList)}
+              tagPrice={tePrice}
             />
           </Col>
         </Row>
