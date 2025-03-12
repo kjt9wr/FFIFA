@@ -66,7 +66,7 @@ export interface FranchiseTagDTO {
 
 export interface RosterDTO {
   players: string[];
-  ownerSleeperId: string;
+  owner_id: string;
 }
 
 export interface DraftDTO {

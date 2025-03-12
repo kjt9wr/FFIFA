@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import {
   clearAllPlayersOwner,
   fetchSleeperRosters,
   updateRoster,
 } from "../../api/api.service";
+import { useFetch } from "../../custom-hooks/custom-hooks";
 import { RosterDTO } from "../../interfaces/interfaces";
-import { SleeperRoster } from "../../interfaces/sleeper-interfaces";
 import { SLEEPER_LEAGUE_ID_2024 } from "../../utilities/constants";
 import { ALERT_STATE } from "../../utilities/enumerations";
 
@@ -15,32 +14,19 @@ interface UpdateRosterProps {
 }
 
 const UpdateRosters = (props: UpdateRosterProps) => {
-  const [allRosters, setAllRosters] = useState<RosterDTO[]>([]);
+  const {
+    data: allRosters,
+    loading,
+    error,
+  } = useFetch(() => fetchSleeperRosters(SLEEPER_LEAGUE_ID_2024));
 
-  // get all rosters from Sleeper Api
-  useEffect(() => {
-    const getAllRosters = async () => {
-      const rostersResponse = await fetchSleeperRosters(SLEEPER_LEAGUE_ID_2024);
-      const rosters = rostersResponse.data.map((roster: SleeperRoster) => {
-        return {
-          players: roster.players,
-          ownerSleeperId: roster.owner_id,
-        };
-      });
-      setAllRosters(rosters);
-    };
-
-    getAllRosters();
-  }, []);
   const updateAllRosters = async () => {
     await clearAllPlayersOwner()
       .then(() => {
         allRosters.forEach(async (roster: RosterDTO) => {
-          await updateRoster(roster.ownerSleeperId, roster.players).catch(
-            () => {
-              props.rosterAlertCallback(ALERT_STATE.ERROR);
-            }
-          );
+          await updateRoster(roster.owner_id, roster.players).catch(() => {
+            props.rosterAlertCallback(ALERT_STATE.ERROR);
+          });
         });
         props.rosterAlertCallback(ALERT_STATE.SUCCESS);
       })
@@ -50,9 +36,13 @@ const UpdateRosters = (props: UpdateRosterProps) => {
   };
 
   return (
-    <Button title="Update All Rosters" onClick={updateAllRosters}>
-      Update All Rosters
-    </Button>
+    <>
+      {!loading && !error && (
+        <Button title="Update All Rosters" onClick={updateAllRosters}>
+          Update All Rosters
+        </Button>
+      )}
+    </>
   );
 };
 

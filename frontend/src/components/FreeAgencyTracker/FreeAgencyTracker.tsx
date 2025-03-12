@@ -1,6 +1,6 @@
 import { Alert, Col, Row, Table } from "reactstrap";
 import { fetchFreeAgents } from "../../api/api.service";
-import { useGetPlayers } from "../../custom-hooks/custom-hooks";
+import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
@@ -45,11 +45,7 @@ const getAvailablePlayersPosition = (
  * This page displays all free agent players organized by position
  */
 const FreeAgency = () => {
-  const {
-    data: allFreeAgents,
-    loading,
-    error,
-  } = useGetPlayers(fetchFreeAgents);
+  const { data: allFreeAgents, loading, error } = useFetch(fetchFreeAgents);
 
   return (
     <div>

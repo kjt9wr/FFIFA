@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchAllOwners, fetchAllTrades } from "../../api/api.service";
+import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Owner, TradeInfo } from "../../interfaces/interfaces";
 import {
   getUpcomingSeasonYear,
@@ -83,39 +84,19 @@ const displayCapAmount = (
  * This page displays each owner's cap in a given year
  */
 const CapTracker = () => {
-  const [owners, setOwners] = useState<Owner[]>([]);
-  const [trades, setTrades] = useState<TradeInfo[]>([]);
   const [selectedYear, setSelectedYear] = useState(getUpcomingSeasonYear());
-  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
+  const { data: owners, loading, error } = useFetch(fetchAllOwners);
+  const {
+    data: trades,
+    loading: tradeLoading,
+    error: tradeError,
+  } = useFetch(fetchAllTrades);
 
   const ownersinSelectedYear = owners
     ? owners.filter(
         (owner: Owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
       )
     : [];
-  useEffect(() => {
-    const getOwnerInfo = async () => {
-      await fetchAllOwners()
-        .then((response) => {
-          setOwners(response.data);
-        })
-        .catch(() => {
-          setDisplayErrorAlert(true);
-        });
-    };
-
-    getOwnerInfo();
-  }, []);
-
-  useEffect(() => {
-    fetchAllTrades()
-      .then((response) => {
-        setTrades(response.data);
-      })
-      .catch(() => {
-        setDisplayErrorAlert(true);
-      });
-  }, []);
 
   const handleOnChange = (year: string) => {
     setSelectedYear(year);
@@ -132,7 +113,7 @@ const CapTracker = () => {
   return (
     <Container>
       <h2 className="text-center">Cap Tracker </h2>
-      {displayErrorAlert && (
+      {(error || tradeError) && (
         <Alert color="danger">Error fetching cap data</Alert>
       )}
       <YearSelector
@@ -142,7 +123,11 @@ const CapTracker = () => {
       />
       <br />
       <br />
-      {displayCapTable(selectedYear, ownersinSelectedYear, filteredTrades)}
+      {!error &&
+        !loading &&
+        !tradeError &&
+        !tradeLoading &&
+        displayCapTable(selectedYear, ownersinSelectedYear, filteredTrades)}
     </Container>
   );
 };

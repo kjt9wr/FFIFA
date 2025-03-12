@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchArbitrationData } from "../../api/api.service";
-import { useGetPlayers } from "../../custom-hooks/custom-hooks";
+import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { getUpcomingSeasonYear } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
@@ -14,8 +14,7 @@ const upcomingYear = getUpcomingSeasonYear();
 const Arbitration = () => {
   const [selectedYear, setSelectedYear] = useState(upcomingYear);
 
-  const { data: arbitratedPlayers, error } =
-    useGetPlayers(fetchArbitrationData);
+  const { data: arbitratedPlayers, error } = useFetch(fetchArbitrationData);
 
   const handleOnChange = (year: string) => {
     setSelectedYear(year);

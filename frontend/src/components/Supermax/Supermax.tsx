@@ -1,6 +1,6 @@
 import { Alert, Container, Table } from "reactstrap";
 import { fetchSupermaxPlayers } from "../../api/api.service";
-import { useGetPlayers } from "../../custom-hooks/custom-hooks";
+import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import * as SuperMaxService from "../../services/supermax.service";
 import { getCurrentSuperMaxYear } from "../../services/supermax.service";
@@ -37,7 +37,7 @@ const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
  * This page displays the details of all the players under a SuperMax Contract
  */
 const Supermax = () => {
-  const { data, loading, error } = useGetPlayers(() => fetchSupermaxPlayers());
+  const { data, loading, error } = useFetch(() => fetchSupermaxPlayers());
 
   return (
     <Container>

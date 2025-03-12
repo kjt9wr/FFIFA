@@ -1,18 +1,18 @@
 import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Player } from "../interfaces/interfaces";
 import { fetchKeptPlayers } from "../api/api.service";
+import { Player } from "../interfaces/interfaces";
 import {
   calculateFranchisePrice,
   get10MostExpensivePerPosition,
 } from "../services/franchise.service";
 import { POSITION } from "../utilities/enumerations";
 
-export const useGetPlayers = (
+export const useFetch = (
   fetchFunction: () => Promise<AxiosResponse<any, any>>,
   autoFetch = true
 ) => {
-  const [data, setData] = useState<Player[]>([]);
+  const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
