@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { Alert, Container, Table } from "reactstrap";
 import { fetchSupermaxPlayers } from "../../api/api.service";
+import { useGetPlayers } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import * as SuperMaxService from "../../services/supermax.service";
 import { getCurrentSuperMaxYear } from "../../services/supermax.service";
@@ -37,38 +37,26 @@ const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
  * This page displays the details of all the players under a SuperMax Contract
  */
 const Supermax = () => {
-  const [supermaxPlayers, setSupermaxPlayers] = useState<Player[]>([]);
-  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
-  useEffect(() => {
-    const getSuperMaxPlayers = async () => {
-      await fetchSupermaxPlayers()
-        .then((response) => setSupermaxPlayers(response.data))
-        .catch(() => {
-          setDisplayErrorAlert(true);
-        });
-    };
-
-    getSuperMaxPlayers();
-  }, []);
+  const { data, loading, error } = useGetPlayers(() => fetchSupermaxPlayers());
 
   return (
     <Container>
-      {displayErrorAlert && (
-        <Alert color="danger">Error fetching supermax data</Alert>
-      )}
+      {error && <Alert color="danger">Error fetching supermax data</Alert>}
       <h2 className="text-center"> Players on SuperMax </h2>
-      <Table responsive hover>
-        <thead className="thead-light">
-          <tr>
-            <th>Player</th>
-            <th>Owner</th>
-            <th>Current Year</th>
-            <th>Plan</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>{renderSuperPlayerTable(supermaxPlayers)}</tbody>
-      </Table>
+      {!loading && data && (
+        <Table responsive hover>
+          <thead className="thead-light">
+            <tr>
+              <th>Player</th>
+              <th>Owner</th>
+              <th>Current Year</th>
+              <th>Plan</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>{renderSuperPlayerTable(data)}</tbody>
+        </Table>
+      )}
     </Container>
   );
 };
