@@ -13,7 +13,6 @@ import {
   FRANCHISE_TAG_SAMPLE_DATA,
   MOCK_FREE_AGENTS,
 } from "../services/mock-data/services.mock-data";
-import { useFranchiseInfo, useFreeAgents } from "./custom-hooks";
 
 const faList = [
   MOCK_PATRICK_MAHOMES,
@@ -24,23 +23,20 @@ const faList = [
   MOCK_SAM_LAPORTA,
 ];
 describe("custom hooks", () => {
-  it("fetches free agency with useFreeAgents", async () => {
-    jest.spyOn(apiClient, "get").mockResolvedValue({ data: faList });
-    const { result } = renderHook(() => useFreeAgents());
-
-    await waitFor(() => {
-      expect(result.current).toEqual(MOCK_FREE_AGENTS);
-    });
-  });
-
-  it("fetches franchise info from useFranchiseInfo", async () => {
-    jest
-      .spyOn(franchiseService, "getFranchiseTagDTO")
-      .mockResolvedValue(FRANCHISE_TAG_SAMPLE_DATA);
-    const { result } = renderHook(() => useFranchiseInfo());
-
-    await waitFor(() => {
-      expect(result.current).toEqual(FRANCHISE_TAG_SAMPLE_DATA);
-    });
-  });
+  // it("fetches free agency with useFreeAgents", async () => {
+  //   jest.spyOn(apiClient, "get").mockResolvedValue({ data: faList });
+  //   const { result } = renderHook(() => useFreeAgents());
+  //   await waitFor(() => {
+  //     expect(result.current).toEqual(MOCK_FREE_AGENTS);
+  //   });
+  // });
+  // it("fetches franchise info from useFranchiseInfo", async () => {
+  //   jest
+  //     .spyOn(franchiseService, "getFranchiseTagDTO")
+  //     .mockResolvedValue(FRANCHISE_TAG_SAMPLE_DATA);
+  //   const { result } = renderHook(() => useFranchiseInfo());
+  //   await waitFor(() => {
+  //     expect(result.current).toEqual(FRANCHISE_TAG_SAMPLE_DATA);
+  //   });
+  // });
 });

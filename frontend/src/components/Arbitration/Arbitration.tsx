@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { fetchArbitrationData } from "../../api/api.service";
+import { useGetPlayers } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { getUpcomingSeasonYear } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
@@ -11,21 +12,10 @@ import YearSelector from "../reusable/YearSelector";
  */
 const upcomingYear = getUpcomingSeasonYear();
 const Arbitration = () => {
-  const [arbitratedPlayers, setArbitratedPlayers] = useState<Player[]>([]);
-  const [displayErrorAlert, setDisplayErrorAlert] = useState(false);
   const [selectedYear, setSelectedYear] = useState(upcomingYear);
 
-  useEffect(() => {
-    const getArbitratedPlayers = async () => {
-      await fetchArbitrationData()
-        .then((response) => setArbitratedPlayers(response.data))
-        .catch(() => {
-          setDisplayErrorAlert(true);
-        });
-    };
-
-    getArbitratedPlayers();
-  }, []);
+  const { data: arbitratedPlayers, error } =
+    useGetPlayers(fetchArbitrationData);
 
   const handleOnChange = (year: string) => {
     setSelectedYear(year);
@@ -34,9 +24,7 @@ const Arbitration = () => {
   return (
     <Container>
       <h1 className="text-center"> Arbitration </h1>
-      {displayErrorAlert && (
-        <Alert color="danger">Error fetching arbitration data</Alert>
-      )}
+      {error && <Alert color="danger">Error fetching arbitration data</Alert>}
       <YearSelector
         onChange={handleOnChange}
         selectedYear={selectedYear}

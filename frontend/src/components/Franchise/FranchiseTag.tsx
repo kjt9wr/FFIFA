@@ -1,6 +1,10 @@
-import React from "react";
-import { Col, Row } from "reactstrap";
-import { useFranchiseInfo } from "../../custom-hooks/custom-hooks";
+import { Alert, Col, Row } from "reactstrap";
+import { fetchKeptPlayers } from "../../api/api.service";
+import { useGetPlayers } from "../../custom-hooks/custom-hooks";
+import {
+  calculateFranchisePrice,
+  get10MostExpensivePerPosition,
+} from "../../services/franchise.service";
 import { POSITION } from "../../utilities/enumerations";
 import FranchiseTagColumn from "./FranchiseTagColumn";
 
@@ -9,46 +13,48 @@ import FranchiseTagColumn from "./FranchiseTagColumn";
  */
 
 const FranchiseTag = () => {
-  const franchiseInfo = useFranchiseInfo();
+  const {
+    data: allKeptPlayers,
+    loading,
+    error,
+  } = useGetPlayers(fetchKeptPlayers);
+
+  const qbList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.QB);
+  const rbList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.RB);
+  const wrList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.WR);
+  const teList = get10MostExpensivePerPosition(allKeptPlayers, POSITION.TE);
 
   return (
     <div>
       <h2 className="text-center"> Franchise Tag Prices </h2>
-      {franchiseInfo && (
+      {error && <Alert color="danger">Error fetching players</Alert>}
+      {!loading && !error && (
         <Row>
           <Col>
-            {franchiseInfo.keptQBs && (
-              <FranchiseTagColumn
-                keptPlayers={franchiseInfo.keptQBs.slice(0, 10)}
-                position={POSITION.QB}
-                tagPrice={franchiseInfo.qbFranchisePrice}
-              />
-            )}
-          </Col>
-          <Col>
-            {franchiseInfo.keptRBs && (
-              <FranchiseTagColumn
-                keptPlayers={franchiseInfo.keptRBs.slice(0, 10)}
-                position={POSITION.RB}
-                tagPrice={franchiseInfo.rbFranchisePrice}
-              />
-            )}
-          </Col>
-          {franchiseInfo.keptWRs && (
             <FranchiseTagColumn
-              keptPlayers={franchiseInfo.keptWRs.slice(0, 10)}
-              position={POSITION.WR}
-              tagPrice={franchiseInfo.wrFranchisePrice}
+              keptPlayers={qbList}
+              position={POSITION.QB}
+              tagPrice={calculateFranchisePrice(qbList)}
             />
-          )}
+          </Col>
           <Col>
-            {franchiseInfo.keptTEs && (
-              <FranchiseTagColumn
-                keptPlayers={franchiseInfo.keptTEs.slice(0, 10)}
-                position={POSITION.TE}
-                tagPrice={franchiseInfo.teFranchisePrice}
-              />
-            )}
+            <FranchiseTagColumn
+              keptPlayers={rbList}
+              position={POSITION.RB}
+              tagPrice={calculateFranchisePrice(rbList)}
+            />
+          </Col>
+          <FranchiseTagColumn
+            keptPlayers={wrList}
+            position={POSITION.WR}
+            tagPrice={calculateFranchisePrice(wrList)}
+          />
+          <Col>
+            <FranchiseTagColumn
+              keptPlayers={teList}
+              position={POSITION.TE}
+              tagPrice={calculateFranchisePrice(teList)}
+            />
           </Col>
         </Row>
       )}

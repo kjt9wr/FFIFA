@@ -1,9 +1,9 @@
-import React from "react";
-import { Col, Row, Table } from "reactstrap";
-import { useFreeAgents } from "../../custom-hooks/custom-hooks";
+import { Alert, Col, Row, Table } from "reactstrap";
+import { fetchFreeAgents } from "../../api/api.service";
+import { useGetPlayers } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
-import { POSITION } from "../../utilities/enumerations";
 import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
+import { POSITION } from "../../utilities/enumerations";
 
 interface FreeAgentColumnProps {
   availablePlayers: Player[];
@@ -27,39 +27,70 @@ const FreeAgentColumn = (props: FreeAgentColumnProps) => {
     </div>
   );
 };
+const getAvailablePlayersPosition = (
+  position: string,
+  playerList: Player[]
+) => {
+  return playerList
+    .filter(
+      (player: Player) =>
+        player.position === position && player.rank && player.rank < 80
+    )
+    .sort((a: Player, b: Player) => {
+      return a.rank && b.rank ? a.rank - b.rank : -1;
+    });
+};
 
 /*
  * This page displays all free agent players organized by position
  */
 const FreeAgency = () => {
-  const freeAgents = useFreeAgents();
+  const {
+    data: allFreeAgents,
+    loading,
+    error,
+  } = useGetPlayers(fetchFreeAgents);
+
   return (
     <div>
       <h2 className="text-center"> Free Agents </h2>
+      {error && <Alert color="danger">Error fetching players</Alert>}
       <Row>
-        {freeAgents && (
+        {!loading && !error && (
           <>
             <Col>
               <FreeAgentColumn
-                availablePlayers={freeAgents.availableQBs}
+                availablePlayers={getAvailablePlayersPosition(
+                  POSITION.QB,
+                  allFreeAgents
+                )}
                 position={POSITION.QB}
               />
             </Col>
             <Col>
               <FreeAgentColumn
-                availablePlayers={freeAgents.availableRBs}
+                availablePlayers={getAvailablePlayersPosition(
+                  POSITION.RB,
+                  allFreeAgents
+                )}
                 position={POSITION.RB}
               />
             </Col>
             <Col>
               <FreeAgentColumn
-                availablePlayers={freeAgents.availableWRs}
+                availablePlayers={getAvailablePlayersPosition(
+                  POSITION.WR,
+                  allFreeAgents
+                )}
                 position={POSITION.WR}
               />
             </Col>
             <Col>
               <FreeAgentColumn
-                availablePlayers={freeAgents.availableTEs}
+                availablePlayers={getAvailablePlayersPosition(
+                  POSITION.TE,
+                  allFreeAgents
+                )}
                 position={POSITION.TE}
               />
             </Col>
