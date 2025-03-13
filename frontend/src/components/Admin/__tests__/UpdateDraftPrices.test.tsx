@@ -29,6 +29,7 @@ describe("update draft prices", () => {
   });
 
   it("displays error alert on failure", async () => {
+    jest.spyOn(console, "error").mockImplementation();
     jest.spyOn(apiClient, "put").mockRejectedValue(new Error("500 error"));
     render(<UpdateDraftPrices priceAlertCallback={displayAlert} />);
     expect(await screen.findByRole("button")).toBeTruthy();

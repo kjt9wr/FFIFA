@@ -5,7 +5,9 @@ import FreeAgency from "./FreeAgencyTracker";
 
 describe("free agency page", () => {
   it("renders successfully", async () => {
-    jest.spyOn(customHooks, "useFreeAgents").mockReturnValue(MOCK_FREE_AGENTS);
+    jest
+      .spyOn(customHooks, "useFetch")
+      .mockReturnValue({ data: MOCK_FREE_AGENTS });
 
     const view = render(<FreeAgency />);
 

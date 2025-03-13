@@ -31,6 +31,5 @@ export const calculateTotalKeeperPrice = (
 
 export const getOwnersCap = async (name: string) => {
   const owner = await fetchSingleOwner(name);
-  console.log(owner.data);
   return owner.data[0].cap[getUpcomingYearIndex()];
 };

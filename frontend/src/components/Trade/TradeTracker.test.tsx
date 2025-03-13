@@ -23,6 +23,7 @@ describe("trade tracker page", () => {
   });
 
   it("displays error alert when fetch fails", async () => {
+    jest.spyOn(console, "error").mockImplementation();
     jest.spyOn(apiClient, "get").mockRejectedValue(new Error("not found"));
     render(<TradeTracker />);
 

@@ -28,6 +28,7 @@ describe("arbitration page", () => {
   });
 
   it("displays error on render failure", async () => {
+    jest.spyOn(console, "error").mockImplementation();
     jest.spyOn(apiClient, "get").mockRejectedValue(new Error("500 error"));
 
     render(<Arbitration />);

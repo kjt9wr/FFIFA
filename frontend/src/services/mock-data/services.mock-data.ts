@@ -24,14 +24,17 @@ import {
 } from "./player.mock-data";
 
 export const FRANCHISE_TAG_SAMPLE_DATA = {
-  qbFranchisePrice: 25,
-  keptQBs: [],
-  rbFranchisePrice: 75,
-  keptRBs: [MOCK_DERRICK_HENRY, MAXED_PLAYER],
-  wrFranchisePrice: 50,
-  keptWRs: [],
-  teFranchisePrice: 30,
-  keptTEs: [],
+  loading: false,
+  error: null,
+  qbList: [],
+  rbList: [MOCK_DERRICK_HENRY, MAXED_PLAYER],
+  wrList: [],
+  teList: [],
+  qbPrice: 0,
+  rbPrice: 75,
+  wrPrice: 0,
+  tePrice: 0,
+  recalculatePrices: () => {},
 };
 
 export const MOCKED_PENALTY_FEES = [
@@ -72,9 +75,21 @@ export const KEPT_PLAYERS: Player[] = [
   MOCK_JALEN_COKER,
 ];
 
-export const MOCK_FREE_AGENTS: FreeAgentStorage = {
-  availableQBs: [MOCK_PATRICK_MAHOMES],
-  availableRBs: [MOCK_DERRICK_HENRY, MOCK_JOSH_JACOBS],
-  availableWRs: [MOCK_TYREEK_HILL, MOCK_JALEN_COKER],
-  availableTEs: [MOCK_SAM_LAPORTA],
-};
+export const MOCK_FREE_AGENTS = [
+  MOCK_PATRICK_MAHOMES,
+  MOCK_DERRICK_HENRY,
+  MOCK_JOSH_JACOBS,
+  MOCK_TYREEK_HILL,
+  MOCK_JALEN_COKER,
+  MOCK_SAM_LAPORTA,
+];
+
+export const MOCK_WRS_ORDERED_BY_PRICE = [
+  MOCK_DRAKE_LONDON,
+  MOCK_AJ_BROWN,
+  MOCK_CEEDEE_LAMB,
+  MOCK_TYREEK_HILL,
+  MOCK_JAMARR_CHASE,
+  MOCK_MALIK_NABERS,
+  MOCK_JALEN_COKER,
+];

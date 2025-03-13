@@ -1,16 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import Admin from "../Admin";
 
-const UPDATE_ALL_ROSTERS = "Update All Rosters";
 describe("admin page", () => {
-  it("renders update draft prices and update rosters buttons", () => {
+  it("renders update draft prices and update rosters buttons", async () => {
     render(<Admin />);
 
     expect(
-      screen.getByRole("button", { name: UPDATE_ALL_ROSTERS })
+      await screen.findByRole("button", { name: "Update All Rosters" })
     ).toBeTruthy();
     expect(
-      screen.getByRole("button", { name: "Update Draft Prices" })
+      await screen.findByRole("button", { name: "Update Draft Prices" })
     ).toBeTruthy();
   });
 });

@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { fetchAllOwners, fetchKeptPlayers } from "../api/api.service";
 import { Owner, Player } from "../interfaces/interfaces";
 import {
+  calculateLuxaryPotPayout,
+  calculateTotalInPot,
+} from "../services/ffifa.service";
+import {
   calculateFranchisePrice,
   get10MostExpensivePerPosition,
 } from "../services/franchise.service";
 import { POSITION } from "../utilities/enumerations";
-import {
-  calculateLuxaryPotPayout,
-  calculateTotalInPot,
-} from "../services/ffifa.service";
 
 export const useFetch = (
   fetchFunction: () => Promise<AxiosResponse<any, any>>,
@@ -26,7 +26,6 @@ export const useFetch = (
       setError(null);
 
       const result = await fetchFunction();
-      console.log(result);
       setData(result.data);
     } catch (err) {
       setError(
@@ -38,12 +37,6 @@ export const useFetch = (
     }
   };
 
-  const reset = () => {
-    setData([]);
-    setError(null);
-    setLoading(false);
-  };
-
   useEffect(() => {
     if (autoFetch) {
       fetchData();
@@ -51,7 +44,7 @@ export const useFetch = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { data, loading, error, refetch: fetchData, reset };
+  return { data, loading, error, refetch: fetchData };
 };
 
 export const useFranchisePrices = (autoFetch = true) => {

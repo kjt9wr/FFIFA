@@ -29,10 +29,11 @@ describe("update rosters", () => {
   });
 
   it("displays error alert on failure", async () => {
+    jest.spyOn(console, "error").mockImplementation();
     jest.spyOn(apiClient, "post").mockRejectedValue({ status: 400 });
     render(<UpdateRosters rosterAlertCallback={displayAlert} />);
 
-    userEvent.click(screen.getByText("Update All Rosters"));
+    userEvent.click(await screen.findByText("Update All Rosters"));
 
     await waitFor(() => {
       expect(displayAlert).toHaveBeenCalledWith(ALERT_STATE.ERROR);

@@ -38,6 +38,7 @@ describe("cap tracker page", () => {
   });
 
   it("displays error alert when fetch fails", async () => {
+    jest.spyOn(console, "error").mockImplementation();
     jest.spyOn(apiClient, "get").mockImplementation((path: string) => {
       switch (path) {
         case "/trade":
