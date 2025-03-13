@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container } from "reactstrap";
+import { Alert, Container } from "reactstrap";
+import { fetchRoster, updatePlayerKeeperStatus } from "../../api/api.service";
 import {
-  fetchAllOwners,
-  fetchRoster,
-  updatePlayerKeeperStatus,
-} from "../../api/api.service";
-import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
-import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
-import { getFranchiseTagDTO } from "../../services/franchise.service";
-import { getUpcomingYearIndex } from "../../utilities/constants";
+  useFetch,
+  useFranchisePrices,
+  usePenaltyFees,
+} from "../../custom-hooks/custom-hooks";
+import { Player } from "../../interfaces/interfaces";
+import { getOwnersCap } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
@@ -29,18 +28,38 @@ interface RosterProps {
 }
 
 const Roster = (props: RosterProps) => {
-  const [roster, setRoster] = useState<Player[]>([]);
-  const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState<FranchiseTagDTO>({
-    qbFranchisePrice: 0,
-    rbFranchisePrice: 0,
-    wrFranchisePrice: 0,
-    teFranchisePrice: 0,
-  });
-  const [cap, setCap] = useState<number>(0);
+  const {
+    error: penaltyError,
+    loading: penaltyLoading,
+    payoutPerOwner,
+    recalculatePenaltyFees,
+  } = usePenaltyFees();
+  const {
+    error: franchiseError,
+    loading: franchiseLoading,
+    qbPrice,
+    rbPrice,
+    wrPrice,
+    tePrice,
+    recalculatePrices,
+  } = useFranchisePrices();
 
+  const {
+    data: roster,
+    loading: rosterLoading,
+    error: rosterError,
+    refetch: refetchRoster,
+  } = useFetch(() => fetchRoster(ownerSleeperId));
+
+  const [cap, setCap] = useState<number>(0);
   const { name } = useParams();
 
+  const franchisePrices = {
+    qbFranchisePrice: qbPrice,
+    rbFranchisePrice: rbPrice,
+    wrFranchisePrice: wrPrice,
+    teFranchisePrice: tePrice,
+  };
   const ownerSleeperId = OwnerSleeperIdByName[name || ""];
 
   const toggleKeeper = async (e: any) => {
@@ -49,64 +68,55 @@ const Roster = (props: RosterProps) => {
     );
     if (playertoChange) {
       playertoChange.keep = e.target.checked;
-      const restOfRoster = roster.filter(
-        (player) => player.sleeperId !== playertoChange.sleeperId
-      );
-      setRoster([...restOfRoster, playertoChange]);
 
       await updatePlayerKeeperStatus(e.target.id, { keep: e.target.checked });
+      await recalculatePrices();
+      await recalculatePenaltyFees();
+      await refetchRoster();
     }
   };
 
   useEffect(() => {
-    Promise.all([
-      fetchRoster(ownerSleeperId),
-      fetchAllOwners(),
-      getFranchiseTagDTO(),
-    ]).then(([unsortedRoster, owners, franchiseTags]) => {
-      setRoster(unsortedRoster.data);
-
-      const currentYearCap = owners.data.filter(
-        (owner: Owner) => ownerSleeperId === owner.sleeperId
-      )[0].cap[getUpcomingYearIndex()];
+    const getCap = async () => {
+      const currentYearCap = await getOwnersCap(name || "");
       setCap(currentYearCap);
+    };
 
-      const fees = owners.data.map((owner: Owner) => {
-        return { name: owner.name, penaltyFee: owner.penaltyFee };
-      });
-      setPenaltyFees(fees);
-      setFranchisePrices(franchiseTags);
-    });
-  }, [ownerSleeperId]);
+    getCap();
+  }, [name]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
-  const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
 
   return (
     <Container>
-      <RosterOwnerCapDisplay
-        ownerName={name || ""}
-        roster={roster}
-        franchisePrices={franchisePrices}
-        penaltyReward={luxaryPotPayout}
-        cap={cap}
-        isEditable={false}
-      />
-      <h4>Roster:</h4>
-      <PlayerDisplayByPosition
-        playerList={keptPlayersList}
-        isEditable={false}
-      />
-      <RosterDataTable
-        roster={roster.sort(
-          (a: Player, b: Player) =>
-            a.position.localeCompare(b.position) ||
-            b.price - a.price ||
-            a.name.localeCompare(b.name)
-        )}
-        franchisePrices={franchisePrices}
-        toggleKeeper={toggleKeeper}
-      />
+      {(rosterError || franchiseError || penaltyError) && (
+        <Alert color="danger">There was an error loading this page</Alert>
+      )}
+      <>
+        <RosterOwnerCapDisplay
+          ownerName={name || ""}
+          roster={roster}
+          franchisePrices={franchisePrices}
+          penaltyReward={payoutPerOwner}
+          cap={cap}
+          isEditable={false}
+        />
+        <h4>Roster:</h4>
+        <PlayerDisplayByPosition
+          playerList={keptPlayersList}
+          isEditable={false}
+        />
+        <RosterDataTable
+          roster={roster.sort(
+            (a: Player, b: Player) =>
+              a.position.localeCompare(b.position) ||
+              b.price - a.price ||
+              a.name.localeCompare(b.name)
+          )}
+          franchisePrices={franchisePrices}
+          toggleKeeper={toggleKeeper}
+        />
+      </>
     </Container>
   );
 };

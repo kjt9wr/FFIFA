@@ -1,4 +1,6 @@
+import { fetchSingleOwner } from "../api/api.service";
 import { Player, FranchiseTagDTO } from "../interfaces/interfaces";
+import { getUpcomingYearIndex } from "../utilities/constants";
 import { determineFinalPriceOfPlayer } from "./ffifa.service";
 
 export const calculateLuxaryTaxLine = (cap: number) => Math.trunc(cap * 0.55);
@@ -25,4 +27,10 @@ export const calculateTotalKeeperPrice = (
         acc + determineFinalPriceOfPlayer(player, franchisePrices),
       0
     );
+};
+
+export const getOwnersCap = async (name: string) => {
+  const owner = await fetchSingleOwner(name);
+  console.log(owner.data);
+  return owner.data[0].cap[getUpcomingYearIndex()];
 };

@@ -26,6 +26,7 @@ export const useFetch = (
       setError(null);
 
       const result = await fetchFunction();
+      console.log(result);
       setData(result.data);
     } catch (err) {
       setError(
@@ -105,7 +106,7 @@ export const useFranchisePrices = (autoFetch = true) => {
   };
 };
 
-export const usePentalyFees = (autoFetch = true) => {
+export const usePenaltyFees = (autoFetch = true) => {
   const [data, setData] = useState<Owner[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);

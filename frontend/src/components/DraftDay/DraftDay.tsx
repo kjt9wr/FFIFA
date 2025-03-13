@@ -1,5 +1,5 @@
 import { Alert, Card, Col, Container, Row } from "reactstrap";
-import { usePentalyFees } from "../../custom-hooks/custom-hooks";
+import { usePenaltyFees } from "../../custom-hooks/custom-hooks";
 import { PenaltyFeeInfo } from "../../interfaces/interfaces";
 import { calculateFollowingYearBaseCap } from "../../services/ffifa.service";
 import { getUpcomingSeasonYear } from "../../utilities/constants";
@@ -28,7 +28,7 @@ const displayOwnersInTax = (ownerData: PenaltyFeeInfo[]) => {
  */
 const DraftDay = () => {
   const { loading, error, penaltyFees, totalInPot, payoutPerOwner } =
-    usePentalyFees();
+    usePenaltyFees();
 
   const followingYear = Number(getUpcomingSeasonYear()) + 1;
   const followingYearCap = calculateFollowingYearBaseCap(penaltyFees);
