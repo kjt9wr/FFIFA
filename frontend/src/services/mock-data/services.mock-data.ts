@@ -1,4 +1,4 @@
-import { FreeAgentStorage, Player } from "../../interfaces/interfaces";
+import { Player } from "../../interfaces/interfaces";
 import {
   MAXED_PLAYER,
   MOCK_AJ_BROWN,
@@ -35,6 +35,17 @@ export const FRANCHISE_TAG_SAMPLE_DATA = {
   wrPrice: 0,
   tePrice: 0,
   recalculatePrices: () => {},
+};
+
+export const MOCK_FRANCHISE_TAG_DTO = {
+  qbFranchisePrice: 25,
+  keptQBs: [],
+  rbFranchisePrice: 75,
+  keptRBs: [MOCK_DERRICK_HENRY, MAXED_PLAYER],
+  wrFranchisePrice: 50,
+  keptWRs: [],
+  teFranchisePrice: 30,
+  keptTEs: [],
 };
 
 export const MOCKED_PENALTY_FEES = [

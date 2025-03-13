@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import RosterOwnerCapDisplay from "../RosterOwnerCapDisplay";
-import { FRANCHISE_TAG_SAMPLE_DATA } from "../../../services/mock-data/services.mock-data";
+import { MOCK_FRANCHISE_TAG_DTO } from "../../../services/mock-data/services.mock-data";
 import {
   MOCKED_ROSTER,
   MOCKED_ROSTER_WITH_SUPERMAX,
@@ -14,7 +14,7 @@ describe("owner cap display", () => {
       <RosterOwnerCapDisplay
         ownerName={"Kevin"}
         roster={MOCKED_ROSTER}
-        franchisePrices={FRANCHISE_TAG_SAMPLE_DATA}
+        franchisePrices={MOCK_FRANCHISE_TAG_DTO}
         penaltyReward={20}
         cap={300}
         isEditable={false}
@@ -29,7 +29,7 @@ describe("owner cap display", () => {
       <RosterOwnerCapDisplay
         ownerName={"Kevin"}
         roster={MOCKED_ROSTER_WITH_SUPERMAX}
-        franchisePrices={FRANCHISE_TAG_SAMPLE_DATA}
+        franchisePrices={MOCK_FRANCHISE_TAG_DTO}
         penaltyReward={0}
         cap={200}
         isEditable={false}
@@ -44,7 +44,7 @@ describe("owner cap display", () => {
       <RosterOwnerCapDisplay
         ownerName={"Kevin"}
         roster={MOCKED_ROSTER_WITH_SUPERMAX}
-        franchisePrices={FRANCHISE_TAG_SAMPLE_DATA}
+        franchisePrices={MOCK_FRANCHISE_TAG_DTO}
         penaltyReward={0}
         cap={300}
         updateCapCallback={updateCap}
@@ -66,7 +66,7 @@ describe("owner cap display", () => {
       <RosterOwnerCapDisplay
         ownerName={"Kevin"}
         roster={MOCKED_ROSTER_WITH_SUPERMAX}
-        franchisePrices={FRANCHISE_TAG_SAMPLE_DATA}
+        franchisePrices={MOCK_FRANCHISE_TAG_DTO}
         penaltyReward={0}
         cap={300}
         updateCapCallback={updateCap}

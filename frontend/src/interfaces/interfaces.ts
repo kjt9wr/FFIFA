@@ -41,13 +41,6 @@ export interface SuperMaxData {
   signingYear: number;
 }
 
-export interface FreeAgentStorage {
-  availableQBs: Player[];
-  availableRBs: Player[];
-  availableWRs: Player[];
-  availableTEs: Player[];
-}
-
 export interface PenaltyFeeInfo {
   name: string;
   penaltyFee: number;

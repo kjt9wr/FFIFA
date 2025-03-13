@@ -1,5 +1,5 @@
 import { MOCKED_ROSTER } from "../mock-data/player.mock-data";
-import { FRANCHISE_TAG_SAMPLE_DATA } from "../mock-data/services.mock-data";
+import { MOCK_FRANCHISE_TAG_DTO } from "../mock-data/services.mock-data";
 import {
   calculateLuxaryTaxLine,
   calculatePenaltyFee,
@@ -15,7 +15,7 @@ describe("roster service", () => {
   it("calculates total keeper price from roster", () => {
     const price = calculateTotalKeeperPrice(
       MOCKED_ROSTER,
-      FRANCHISE_TAG_SAMPLE_DATA
+      MOCK_FRANCHISE_TAG_DTO
     );
 
     expect(price).toEqual(143);
@@ -24,7 +24,7 @@ describe("roster service", () => {
   it("calculates 0 for penalty fee of a nonoffender", () => {
     const penaltyFee = calculatePenaltyFee(
       MOCKED_ROSTER,
-      FRANCHISE_TAG_SAMPLE_DATA,
+      MOCK_FRANCHISE_TAG_DTO,
       400
     );
 
@@ -34,7 +34,7 @@ describe("roster service", () => {
   it("calculates penalty fee for offender", () => {
     const penaltyFee = calculatePenaltyFee(
       MOCKED_ROSTER,
-      FRANCHISE_TAG_SAMPLE_DATA,
+      MOCK_FRANCHISE_TAG_DTO,
       200
     );
 

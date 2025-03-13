@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MOCKED_ROSTER_WITH_SUPERMAX } from "../../../services/mock-data/player.mock-data";
-import { FRANCHISE_TAG_SAMPLE_DATA } from "../../../services/mock-data/services.mock-data";
+import { MOCK_FRANCHISE_TAG_DTO } from "../../../services/mock-data/services.mock-data";
 import RosterDataTable from "../RosterDataTable";
 
 const mockToggleKeeper = jest.fn();
@@ -10,7 +10,7 @@ describe("roster data table", () => {
     const view = render(
       <RosterDataTable
         roster={MOCKED_ROSTER_WITH_SUPERMAX}
-        franchisePrices={FRANCHISE_TAG_SAMPLE_DATA}
+        franchisePrices={MOCK_FRANCHISE_TAG_DTO}
         toggleKeeper={mockToggleKeeper}
       />
     );
@@ -22,7 +22,7 @@ describe("roster data table", () => {
     render(
       <RosterDataTable
         roster={MOCKED_ROSTER_WITH_SUPERMAX}
-        franchisePrices={FRANCHISE_TAG_SAMPLE_DATA}
+        franchisePrices={MOCK_FRANCHISE_TAG_DTO}
         toggleKeeper={mockToggleKeeper}
       />
     );
