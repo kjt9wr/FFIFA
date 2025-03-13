@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
-import { Button, Col, Container, Form, Row } from "reactstrap";
+import { Alert, Button, Col, Container, Form, Row } from "reactstrap";
+import { fetchRoster, fetchRosteredPlayers } from "../../api/api.service";
 import {
-  fetchAllOwners,
-  fetchRoster,
-  fetchRosteredPlayers,
-} from "../../api/api.service";
-import { FranchiseTagDTO, Owner, Player } from "../../interfaces/interfaces";
-import { calculateLuxaryPotPayout } from "../../services/ffifa.service";
-import { getFranchiseTagDTO } from "../../services/franchise.service";
-import { getUpcomingYearIndex } from "../../utilities/constants";
+  useFetch,
+  useFranchisePrices,
+  usePenaltyFees,
+} from "../../custom-hooks/custom-hooks";
+import { Player } from "../../interfaces/interfaces";
+import { getOwnersCap } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterOwnerCapDisplay from "../Roster/RosterOwnerCapDisplay";
@@ -17,46 +16,59 @@ import RosterOwnerCapDisplay from "../Roster/RosterOwnerCapDisplay";
 const ownerName = "Kevin";
 const ownerId = OwnerSleeperIdByName[ownerName];
 
+const selectionStyle = {
+  control: (baseStyles: any) => ({
+    ...baseStyles,
+  }),
+  option: (baseStyles: any) => ({
+    ...baseStyles,
+    color: "black",
+  }),
+};
+
 /*
  * This page allows the user to edit and view a roster without publishing changes
  */
 
 const RosterPreview = () => {
   const [roster, setRoster] = useState<Player[]>([]);
-  const [penaltyFees, setPenaltyFees] = useState([]);
-  const [franchisePrices, setFranchisePrices] = useState<FranchiseTagDTO>({
-    qbFranchisePrice: 0,
-    rbFranchisePrice: 0,
-    wrFranchisePrice: 0,
-    teFranchisePrice: 0,
-  });
   const [maxCap, setMaxCap] = useState<number>(0);
-  const [rosteredPlayerPool, setRosteredPlayerPool] = useState<Player[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState();
+  const {
+    error: franchiseError,
+    qbPrice,
+    rbPrice,
+    wrPrice,
+    tePrice,
+  } = useFranchisePrices();
+
+  const { error: penaltyError, payoutPerOwner } = usePenaltyFees();
+
+  const { data: rosteredPlayerPool } = useFetch(fetchRosteredPlayers);
+
+  const franchisePrices = {
+    qbFranchisePrice: qbPrice,
+    rbFranchisePrice: rbPrice,
+    wrFranchisePrice: wrPrice,
+    teFranchisePrice: tePrice,
+  };
 
   useEffect(() => {
-    Promise.all([
-      fetchRoster(ownerId),
-      fetchAllOwners(), // used for penalty fees
-      getFranchiseTagDTO(),
-      fetchRosteredPlayers(),
-    ]).then(([unsortedRoster, owners, franchiseTags, allRosteredPlayers]) => {
+    const getKeptRoster = async () => {
+      const unsortedRoster = await fetchRoster(ownerId);
       setRoster(unsortedRoster.data.filter((player: Player) => player.keep));
-      const initialCap = owners.data.filter(
-        (owner: Owner) => ownerName === owner.name
-      )[0].cap[getUpcomingYearIndex()];
-      setMaxCap(initialCap);
-      const fees = owners.data.map((owner: Owner) => {
-        return {
-          name: owner.name,
-          penaltyFee: owner.penaltyFee,
-          initialCap: owner.cap[getUpcomingYearIndex()],
-        };
-      });
-      setPenaltyFees(fees);
-      setFranchisePrices(franchiseTags);
-      setRosteredPlayerPool(allRosteredPlayers.data);
-    });
+    };
+
+    getKeptRoster();
+  }, []);
+
+  useEffect(() => {
+    const getCap = async () => {
+      const currentYearCap = await getOwnersCap(ownerName || "");
+      setMaxCap(currentYearCap);
+    };
+
+    getCap();
   }, []);
 
   const updateCap = useCallback((newValue: number) => {
@@ -106,25 +118,16 @@ const RosterPreview = () => {
         })
     : [];
 
-  const selectionStyle = {
-    control: (baseStyles: any) => ({
-      ...baseStyles,
-    }),
-    option: (baseStyles: any) => ({
-      ...baseStyles,
-      color: "black",
-    }),
-  };
-
-  const luxaryPotPayout = calculateLuxaryPotPayout(penaltyFees);
-
   return (
     <Container>
+      {(franchiseError || penaltyError) && (
+        <Alert color="danger">There was an error loading this page</Alert>
+      )}
       <RosterOwnerCapDisplay
         ownerName={ownerName}
         roster={roster}
         franchisePrices={franchisePrices}
-        penaltyReward={luxaryPotPayout}
+        penaltyReward={payoutPerOwner}
         cap={maxCap}
         updateCapCallback={updateCap}
         isEditable={true}
