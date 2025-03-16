@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const ownerRouter = require("./routes/owner");
 const playerRouter = require("./routes/player");
 const tradeRouter = require("./routes/trade");
+const userRoutes = require("./routes/user");
 
 // express app
 const app = express();
@@ -35,6 +36,7 @@ connection.once("open", () => {
 app.use("/owner", ownerRouter);
 app.use("/player", playerRouter);
 app.use("/trade/", tradeRouter);
+app.use("/user", userRoutes);
 
 // listen for requests
 const port = process.env.PORT || 5000;
