@@ -22,12 +22,12 @@ const NavBar = () => {
         className="navbar navbar-dark bg-dark navbar-expand-lg"
         fixed="top"
       >
-        <NavItem>
-          <NavLink href="/"> FFIFA </NavLink>
-        </NavItem>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink href="/"> FFIFA </NavLink>
+            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Rosters
@@ -79,6 +79,11 @@ const NavBar = () => {
             </NavItem>
             <NavItem>
               <NavLink href="/admin">Admin</NavLink>
+            </NavItem>
+          </Nav>
+          <Nav className="ms-auto" navbar>
+            <NavItem>
+              <NavLink href="/Login">Login</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

@@ -13,6 +13,7 @@ import Roster from "./components/Roster/Roster";
 import Supermax from "./components/Supermax/Supermax";
 import RosterPreview from "./components/Trade/RosterPreview";
 import TradeTracker from "./components/Trade/TradeTracker";
+import Login from "./components/Login/Login";
 const App = () => {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/arbitration" element={<Arbitration />} />
         <Route path="/draft" element={<DraftDay />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
