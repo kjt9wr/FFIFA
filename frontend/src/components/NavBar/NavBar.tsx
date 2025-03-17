@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Button,
   Collapse,
   DropdownItem,
   DropdownMenu,
@@ -12,8 +11,8 @@ import {
   NavbarToggler,
   UncontrolledDropdown,
 } from "reactstrap";
-import { useLogout } from "../../custom-hooks/useLogout";
 import { useAuthContext } from "../../custom-hooks/useAuthContext";
+import { useLogout } from "../../custom-hooks/useLogout";
 const NavBar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();

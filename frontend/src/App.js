@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import Admin from "./components/Admin/Admin";
 import Arbitration from "./components/Arbitration/Arbitration";
@@ -14,23 +14,59 @@ import Supermax from "./components/Supermax/Supermax";
 import RosterPreview from "./components/Trade/RosterPreview";
 import TradeTracker from "./components/Trade/TradeTracker";
 import Login from "./components/Login/Login";
+import { useAuthContext } from "./custom-hooks/useAuthContext";
+
 const App = () => {
+  const { user, loading } = useAuthContext();
+  console.log("user and loading:");
+  console.log(user);
+  console.log(loading);
   return (
     <BrowserRouter>
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/roster/:name" element={<Roster />} />
-        <Route path="/trade" element={<TradeTracker />} />
-        <Route path="/tradepreview" element={<RosterPreview />} />
-        <Route path="/cap/" element={<CapTracker />} />
-        <Route path="/franchise" element={<FranchiseTag />} />
-        <Route path="/fa" element={<FreeAgency />} />
-        <Route path="/supermax" element={<Supermax />} />
-        <Route path="/arbitration" element={<Arbitration />} />
-        <Route path="/draft" element={<DraftDay />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/roster/:name"
+          element={user ? <Roster /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/trade"
+          element={user ? <TradeTracker /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/tradepreview"
+          element={user ? <RosterPreview /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/cap/"
+          element={user ? <CapTracker /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/franchise"
+          element={user ? <FranchiseTag /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/fa"
+          element={user ? <FreeAgency /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/supermax"
+          element={user ? <Supermax /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/arbitration"
+          element={user ? <Arbitration /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/draft"
+          element={user ? <DraftDay /> : <Navigate to="/" />}
+        />
+        <Route path="/admin" element={user ? <Admin /> : <Navigate to="/" />} />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
       </Routes>
     </BrowserRouter>
   );
