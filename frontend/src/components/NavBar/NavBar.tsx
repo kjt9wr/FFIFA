@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Button,
   Collapse,
   DropdownItem,
   DropdownMenu,
@@ -11,10 +12,16 @@ import {
   NavbarToggler,
   UncontrolledDropdown,
 } from "reactstrap";
+import { useLogout } from "../../custom-hooks/useLogout";
 const NavBar = () => {
+  const { logout } = useLogout();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const handleClick = () => {
+    logout();
+  };
 
   return (
     <div>
@@ -84,6 +91,11 @@ const NavBar = () => {
           <Nav className="ms-auto" navbar>
             <NavItem>
               <NavLink href="/Login">Login</NavLink>
+            </NavItem>
+            <NavItem>
+              <div>
+                <Button onClick={handleClick}>Log out</Button>
+              </div>
             </NavItem>
           </Nav>
         </Collapse>
