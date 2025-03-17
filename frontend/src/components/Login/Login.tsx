@@ -46,7 +46,6 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </FormGroup>
-          {username}
           <FormGroup>
             <Input
               id="examplePassword"
@@ -56,7 +55,6 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormGroup>
-          {password}
           <Button
             style={{
               width: "100%",

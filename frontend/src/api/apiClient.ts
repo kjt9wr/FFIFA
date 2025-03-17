@@ -23,3 +23,16 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+apiClient.interceptors.request.use(
+  (config) => {
+    // Add authorization token to every request
+    // @ts-ignore
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      config.headers.Authorization = `Bearer ${user.token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);

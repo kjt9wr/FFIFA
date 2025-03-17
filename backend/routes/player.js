@@ -16,6 +16,10 @@ const {
   addPlayersToRoster,
 } = require("../controllers/player.controller");
 
+const requireAuth = require("../middleware/requireAuth");
+
+router.use(requireAuth);
+
 /*
  * Get Players
  */

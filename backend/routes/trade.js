@@ -1,5 +1,9 @@
 const router = require("express").Router();
 
+const requireAuth = require("../middleware/requireAuth");
+
+router.use(requireAuth);
+
 const {
   getAllTrades,
   createTrade,

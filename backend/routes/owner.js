@@ -7,6 +7,10 @@ const {
   updatePenaltyFee,
 } = require("../controllers/owner.controller");
 
+const requireAuth = require("../middleware/requireAuth");
+
+router.use(requireAuth);
+
 // Get all owners
 router.route("/").get(getOwners);
 
