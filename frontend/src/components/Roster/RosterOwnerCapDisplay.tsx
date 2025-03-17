@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
-import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
-import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
-import { updatePenaltyFee } from "../../api/api.service";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  Col,
+  Row,
+} from "reactstrap";
 import { FranchiseTagDTO, Player } from "../../interfaces/interfaces";
 import {
   calculateLuxaryTaxLine,
@@ -73,15 +78,23 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
               <CardBody>
                 <CardTitle tag="h3">Max Cap</CardTitle>
                 <CardText tag="h4">
-                  <FaMinusCircle
+                  <Button
                     onClick={() => updateCapCallback(MAX_CAP - 1)}
                     title={"Subtract Cap"}
-                  />{" "}
+                    size="sm"
+                    outline
+                  >
+                    -
+                  </Button>{" "}
                   ${MAX_CAP}{" "}
-                  <FaPlusCircle
+                  <Button
                     onClick={() => updateCapCallback(MAX_CAP + 1)}
                     title={"Add Cap"}
-                  />
+                    size="sm"
+                    outline
+                  >
+                    +
+                  </Button>
                 </CardText>
               </CardBody>
             </Card>

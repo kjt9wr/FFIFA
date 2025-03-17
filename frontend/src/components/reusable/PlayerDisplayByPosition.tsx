@@ -1,5 +1,4 @@
-import { TiDelete } from "react-icons/ti";
-import { Col, Row, Table } from "reactstrap";
+import { Button, Col, Row, Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
 import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
@@ -44,7 +43,9 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
                     removePlayerCallback(player.sleeperId);
                   }}
                 >
-                  <TiDelete />
+                  <Button size="sm" outline>
+                    X
+                  </Button>
                   {player.name} - ${player.price}
                 </td>
               ) : (
