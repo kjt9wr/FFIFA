@@ -75,3 +75,10 @@ export const fetchSleeperRosters = (sleeperLeagueId: string) => {
 export const fetchSleeperDraftResults = (draftId: string) => {
   return sleeperApiClient.get(`/draft/${draftId}/picks`);
 };
+
+export const fetchLogin = (username: string, password: string) => {
+  return apiClient.post("/user/login", {
+    username,
+    password,
+  });
+};
