@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Alert, Container } from "reactstrap";
-import { fetchRoster, updatePlayerKeeperStatus } from "../../api/api.service";
+import {
+  fetchRoster,
+  updatePenaltyFee,
+  updatePlayerKeeperStatus,
+} from "../../api/api.service";
 import {
   useFetch,
   useFranchisePrices,
   usePenaltyFees,
 } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
-import { getOwnersCap } from "../../services/roster.service";
+import {
+  calculatePenaltyFee,
+  getOwnersCap,
+} from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
@@ -71,8 +78,10 @@ const Roster = (props: RosterProps) => {
 
       await updatePlayerKeeperStatus(e.target.id, { keep: e.target.checked });
       await recalculatePrices();
-      await recalculatePenaltyFees();
       await refetchRoster();
+      const penaltyFee = calculatePenaltyFee(roster, franchisePrices, cap);
+      await updatePenaltyFee(name || "", penaltyFee);
+      await recalculatePenaltyFees();
     }
   };
 

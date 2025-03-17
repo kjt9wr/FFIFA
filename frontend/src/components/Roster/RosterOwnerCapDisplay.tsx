@@ -55,14 +55,6 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
   const isOffender = keepPrice > TAX_LINE;
   const remaining = MAX_CAP - keepPrice + luxaryGainorLoss;
 
-  useEffect(() => {
-    const updatePenalty = async () => {
-      await updatePenaltyFee(ownerName, penaltyFee);
-    };
-
-    updatePenalty();
-  }, [ownerName, penaltyFee]);
-
   const getCardColor = () => {
     if (remaining < 0) {
       return "danger";

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav Bar renders successfully 1`] = `
+exports[`Nav Bar renders successfully when logged out 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -12,16 +12,6 @@ Object {
           <div
             class="container-fluid"
           >
-            <li
-              class="nav-item"
-            >
-              <a
-                class="nav-link"
-                href="/"
-              >
-                 FFIFA 
-              </a>
-            </li>
             <button
               aria-label="Toggle navigation"
               class="navbar-toggler"
@@ -38,244 +28,27 @@ Object {
                 class="mr-auto navbar-nav"
               >
                 <li
-                  class="dropdown nav-item"
+                  class="nav-item"
                 >
                   <a
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    class="dropdown-toggle nav-link"
-                    href="#"
+                    class="nav-link"
+                    href="/"
                   >
-                    Rosters
+                     FFIFA 
                   </a>
-                  <div
-                    aria-hidden="true"
-                    class="dropdown-menu"
-                    data-bs-popper="static"
-                    left="true"
-                    role="menu"
-                    tabindex="-1"
-                  >
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Kevin"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Kevin 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Luigi"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Luigi 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Casey"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Casey 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Patrick"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Patrick 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Jeff"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Jeff 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Alex"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Alex 
-                    </a>
-                    <div
-                      class="dropdown-divider"
-                      tabindex="-1"
-                    />
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Michael"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Michael 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Nikos"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Nikos 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Brent"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Brent 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Christian"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                      Christian
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Justin"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Justin 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/roster/Matt"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Matt 
-                    </a>
-                  </div>
                 </li>
-                <li
-                  class="dropdown nav-item"
-                >
-                  <a
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    class="dropdown-toggle nav-link"
-                    href="#"
-                  >
-                    Trades
-                  </a>
-                  <div
-                    aria-hidden="true"
-                    class="dropdown-menu dropdown-menu-end"
-                    data-bs-popper="static"
-                    role="menu"
-                    tabindex="-1"
-                  >
-                    <a
-                      class="dropdown-item"
-                      href="/trade"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Trade Tracker 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/tradepreview"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                      Preview Trade
-                    </a>
-                  </div>
-                </li>
-                <li
-                  class="dropdown nav-item"
-                >
-                  <a
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    class="dropdown-toggle nav-link"
-                    href="#"
-                  >
-                    Prices
-                  </a>
-                  <div
-                    aria-hidden="true"
-                    class="dropdown-menu dropdown-menu-end"
-                    data-bs-popper="static"
-                    role="menu"
-                    tabindex="-1"
-                  >
-                    <a
-                      class="dropdown-item"
-                      href="/franchise"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                       Franchise Tag 
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/supermax"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                      Supermax
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/arbitration"
-                      role="menuitem"
-                      tabindex="0"
-                    >
-                      Arbitration
-                    </a>
-                  </div>
-                </li>
+              </ul>
+              <ul
+                class="ms-auto navbar-nav"
+              >
                 <li
                   class="nav-item"
                 >
                   <a
                     class="nav-link"
-                    href="/cap"
+                    href="/Login"
                   >
-                    Cap Tracker
-                  </a>
-                </li>
-                <li
-                  class="nav-item"
-                >
-                  <a
-                    class="nav-link"
-                    href="/fa"
-                  >
-                    Free Agency
-                  </a>
-                </li>
-                <li
-                  class="nav-item"
-                >
-                  <a
-                    class="nav-link"
-                    href="/draft"
-                  >
-                    Draft Day
-                  </a>
-                </li>
-                <li
-                  class="nav-item"
-                >
-                  <a
-                    class="nav-link"
-                    href="/admin"
-                  >
-                    Admin
+                    Login
                   </a>
                 </li>
               </ul>
@@ -298,16 +71,6 @@ Object {
         <div
           class="container-fluid"
         >
-          <li
-            class="nav-item"
-          >
-            <a
-              class="nav-link"
-              href="/"
-            >
-               FFIFA 
-            </a>
-          </li>
           <button
             aria-label="Toggle navigation"
             class="navbar-toggler"
@@ -324,244 +87,27 @@ Object {
               class="mr-auto navbar-nav"
             >
               <li
-                class="dropdown nav-item"
+                class="nav-item"
               >
                 <a
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                  class="dropdown-toggle nav-link"
-                  href="#"
+                  class="nav-link"
+                  href="/"
                 >
-                  Rosters
+                   FFIFA 
                 </a>
-                <div
-                  aria-hidden="true"
-                  class="dropdown-menu"
-                  data-bs-popper="static"
-                  left="true"
-                  role="menu"
-                  tabindex="-1"
-                >
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Kevin"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Kevin 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Luigi"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Luigi 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Casey"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Casey 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Patrick"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Patrick 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Jeff"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Jeff 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Alex"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Alex 
-                  </a>
-                  <div
-                    class="dropdown-divider"
-                    tabindex="-1"
-                  />
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Michael"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Michael 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Nikos"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Nikos 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Brent"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Brent 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Christian"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                    Christian
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Justin"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Justin 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/roster/Matt"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Matt 
-                  </a>
-                </div>
               </li>
-              <li
-                class="dropdown nav-item"
-              >
-                <a
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                  class="dropdown-toggle nav-link"
-                  href="#"
-                >
-                  Trades
-                </a>
-                <div
-                  aria-hidden="true"
-                  class="dropdown-menu dropdown-menu-end"
-                  data-bs-popper="static"
-                  role="menu"
-                  tabindex="-1"
-                >
-                  <a
-                    class="dropdown-item"
-                    href="/trade"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Trade Tracker 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/tradepreview"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                    Preview Trade
-                  </a>
-                </div>
-              </li>
-              <li
-                class="dropdown nav-item"
-              >
-                <a
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                  class="dropdown-toggle nav-link"
-                  href="#"
-                >
-                  Prices
-                </a>
-                <div
-                  aria-hidden="true"
-                  class="dropdown-menu dropdown-menu-end"
-                  data-bs-popper="static"
-                  role="menu"
-                  tabindex="-1"
-                >
-                  <a
-                    class="dropdown-item"
-                    href="/franchise"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                     Franchise Tag 
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/supermax"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                    Supermax
-                  </a>
-                  <a
-                    class="dropdown-item"
-                    href="/arbitration"
-                    role="menuitem"
-                    tabindex="0"
-                  >
-                    Arbitration
-                  </a>
-                </div>
-              </li>
+            </ul>
+            <ul
+              class="ms-auto navbar-nav"
+            >
               <li
                 class="nav-item"
               >
                 <a
                   class="nav-link"
-                  href="/cap"
+                  href="/Login"
                 >
-                  Cap Tracker
-                </a>
-              </li>
-              <li
-                class="nav-item"
-              >
-                <a
-                  class="nav-link"
-                  href="/fa"
-                >
-                  Free Agency
-                </a>
-              </li>
-              <li
-                class="nav-item"
-              >
-                <a
-                  class="nav-link"
-                  href="/draft"
-                >
-                  Draft Day
-                </a>
-              </li>
-              <li
-                class="nav-item"
-              >
-                <a
-                  class="nav-link"
-                  href="/admin"
-                >
-                  Admin
+                  Login
                 </a>
               </li>
             </ul>

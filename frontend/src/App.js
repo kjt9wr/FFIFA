@@ -17,10 +17,7 @@ import Login from "./components/Login/Login";
 import { useAuthContext } from "./custom-hooks/useAuthContext";
 
 const App = () => {
-  const { user, loading } = useAuthContext();
-  console.log("user and loading:");
-  console.log(user);
-  console.log(loading);
+  const { user } = useAuthContext();
   return (
     <BrowserRouter>
       <NavBar />
