@@ -7,7 +7,9 @@
 <h1 align="center">FFIFA Webapp</h1>
 
 </div>
-<img width="954" alt="image" src="https://github.com/user-attachments/assets/61351b4d-fb26-452d-a56a-94aca712ebe1" />
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/867e3fe0-ea1b-4edf-8c11-30e0682a7031" />
+
+
 
 <!-- ABOUT THE PROJECT -->
 
@@ -40,7 +42,8 @@ What once began as a typical fantasy football league has gradually transformed i
 
 ### Roster Page
 
-<img width="1355" alt="image" src="https://github.com/user-attachments/assets/aec23604-e849-4add-ab5c-3116c1078685" />
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/c62c854b-1c5c-4ee6-a98e-66cb3931bb7c" />
+
 
 The Roster Page allows you to view the selected owner's roster, various cap information based on potential players kept, and additional fees or bonuses. The page contains an interactive table that allows you to toggle different players as selected keepers, and subsequently update the ripple effects throughout not only the selected roster but the various prices throughout the rest of the league.
 
@@ -110,6 +113,6 @@ I opted to leverage the MERN stack for a few reasons. The flexibility and adapta
 
 This personal project will never be truly "done". As the fantasy league introduces more rules, I will update the project to ensure it aligns with them. In addition, I will continue to add features and functionality to expand on the adaptability and user experience, such as:
 
-- [ ] Authentication for Admin Page
+- [x] Authentication
 - [ ] Form for logging a trade in the UI
 - [ ] Additional trade data viewable on the Cap Tracker Page
