@@ -13,8 +13,10 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { useLogout } from "../../custom-hooks/useLogout";
+import { useAuthContext } from "../../custom-hooks/useAuthContext";
 const NavBar = () => {
   const { logout } = useLogout();
+  const { user } = useAuthContext();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -84,19 +86,23 @@ const NavBar = () => {
             <NavItem>
               <NavLink href="/draft">Draft Day</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="/admin">Admin</NavLink>
-            </NavItem>
           </Nav>
           <Nav className="ms-auto" navbar>
-            <NavItem>
-              <NavLink href="/Login">Login</NavLink>
-            </NavItem>
-            <NavItem>
-              <div>
-                <Button onClick={handleClick}>Log out</Button>
-              </div>
-            </NavItem>
+            {!user ? (
+              <NavItem>
+                <NavLink href="/Login">Login</NavLink>
+              </NavItem>
+            ) : (
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  {user.username}
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem href="/admin">Admin</DropdownItem>
+                  <DropdownItem onClick={handleClick}>Logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            )}
           </Nav>
         </Collapse>
       </Navbar>

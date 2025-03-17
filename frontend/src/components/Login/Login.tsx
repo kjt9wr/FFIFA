@@ -16,7 +16,6 @@ const Login = () => {
   return (
     <div>
       <h1 className="text-center"> Login to FFIFA </h1>
-      {error && <Alert color="danger">{error.response.data.error}</Alert>}
       <div
         style={{
           display: "flex",
@@ -37,6 +36,7 @@ const Login = () => {
           title="Login to FFIFA"
           onSubmit={handleSubmit}
         >
+          {error && <Alert color="danger">{error.response.data.error}</Alert>}
           <FormGroup>
             <Input
               id="username-input"
