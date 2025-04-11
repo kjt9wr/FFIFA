@@ -59,7 +59,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
   );
 
   return (
-    <Row>
+    <Row xs="2" md="4">
       <Col>{renderPlayersForPosition(POSITION.QB, keptQBs)} </Col>
       <Col>{renderPlayersForPosition(POSITION.RB, keptRBs)}</Col>
       <Col>{renderPlayersForPosition(POSITION.WR, keptWRs)}</Col>

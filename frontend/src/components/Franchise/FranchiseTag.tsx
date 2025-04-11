@@ -26,7 +26,7 @@ const FranchiseTag = () => {
       <h2 className="text-center"> Franchise Tag Prices </h2>
       {error && <Alert color="danger">Error fetching players</Alert>}
       {!loading && !error && (
-        <Row>
+        <Row xs="2" md="4">
           <Col>
             <FranchiseTagColumn
               keptPlayers={qbList}

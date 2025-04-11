@@ -16,9 +16,9 @@ interface FranchiseTagColumnProps {
 const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
   const { position, tagPrice, keptPlayers } = props;
   return (
-    <div style={{ flex: "1" }}>
+    <div className="d-flex-1">
       <h3>
-        {position} franchise price: ${tagPrice}
+        {position} price: ${tagPrice}
       </h3>
       <Table borderless hover size="sm" responsive striped>
         <thead>

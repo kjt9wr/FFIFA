@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, Button, Form, FormGroup, Input } from "reactstrap";
+import { Alert, Button, Form, FormGroup, Input, Spinner } from "reactstrap";
 import { useLogin } from "../../custom-hooks/useLogin";
 
 const Login = () => {
@@ -16,13 +16,13 @@ const Login = () => {
   return (
     <div>
       <h1 className="text-center"> Login to FFIFA </h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      {isLoading && (
+        <div className="text-center">
+          <Spinner />
+        </div>
+      )}
+
+      <div className="d-flex justify-content-center align-items-center">
         <Form
           style={{
             backgroundColor: "#3a3c4a",

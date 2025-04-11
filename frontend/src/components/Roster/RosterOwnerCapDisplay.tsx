@@ -19,8 +19,8 @@ const renderCard = (label: string, value: number) => {
   return (
     <Card>
       <CardBody>
-        <CardTitle tag="h3">{label}</CardTitle>
-        <CardText tag="h4">${value}</CardText>
+        <CardTitle tag="h5">{label}</CardTitle>
+        <CardText tag="h6">${value}</CardText>
       </CardBody>
     </Card>
   );
@@ -71,13 +71,13 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
     <div>
       <h1 className="text-center">{ownerName}'s Roster </h1>
       <br />
-      <Row>
+      <Row xs="2" md="4">
         <Col>
           {isEditable && updateCapCallback ? (
             <Card>
               <CardBody>
-                <CardTitle tag="h3">Max Cap</CardTitle>
-                <CardText tag="h4">
+                <CardTitle tag="h5">Max Cap</CardTitle>
+                <CardText tag="h6">
                   <Button
                     onClick={() => updateCapCallback(MAX_CAP - 1)}
                     title={"Subtract Cap"}
@@ -107,8 +107,8 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
         <Col>
           <Card color={getCardColor()}>
             <CardBody>
-              <CardTitle tag="h3">Remaining</CardTitle>
-              <CardText tag="h4">
+              <CardTitle tag="h5">Remaining</CardTitle>
+              <CardText tag="h6">
                 ${remaining}{" "}
                 {!isOffender && (
                   <span>
@@ -120,6 +120,7 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
           </Card>
         </Col>
       </Row>
+
       <br />
       <RosterProgressBar
         keepPrice={keepPrice}
