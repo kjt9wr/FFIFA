@@ -114,24 +114,21 @@ const Roster = (props: RosterProps) => {
         />
         <h4>Roster:</h4>
         <SpinnerWrapper loading={pageLoading} />
-        {!pageLoading && (
-          <>
-            <PlayerDisplayByPosition
-              playerList={keptPlayersList}
-              isEditable={false}
-            />
-            <RosterDataTable
-              roster={roster.sort(
-                (a: Player, b: Player) =>
-                  a.position.localeCompare(b.position) ||
-                  b.price - a.price ||
-                  a.name.localeCompare(b.name)
-              )}
-              franchisePrices={franchisePrices}
-              toggleKeeper={toggleKeeper}
-            />
-          </>
-        )}
+
+        <PlayerDisplayByPosition
+          playerList={keptPlayersList}
+          isEditable={false}
+        />
+        <RosterDataTable
+          roster={roster.sort(
+            (a: Player, b: Player) =>
+              a.position.localeCompare(b.position) ||
+              b.price - a.price ||
+              a.name.localeCompare(b.name)
+          )}
+          franchisePrices={franchisePrices}
+          toggleKeeper={toggleKeeper}
+        />
       </>
     </Container>
   );
