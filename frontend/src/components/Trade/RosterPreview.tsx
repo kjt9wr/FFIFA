@@ -11,6 +11,7 @@ import { Player } from "../../interfaces/interfaces";
 import { getOwnersCap } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import RosterOwnerCapDisplay from "../Roster/RosterOwnerCapDisplay";
 
 const ownerName = "Kevin";
@@ -36,15 +37,21 @@ const RosterPreview = () => {
   const [selectedPlayer, setSelectedPlayer] = useState();
   const {
     error: franchiseError,
+    loading: franchiseLoading,
     qbPrice,
     rbPrice,
     wrPrice,
     tePrice,
   } = useFranchisePrices();
 
-  const { error: penaltyError, payoutPerOwner } = usePenaltyFees();
+  const {
+    error: penaltyError,
+    loading: penaltyLoading,
+    payoutPerOwner,
+  } = usePenaltyFees();
 
-  const { data: rosteredPlayerPool } = useFetch(fetchRosteredPlayers);
+  const { data: rosteredPlayerPool, loading: rosterLoading } =
+    useFetch(fetchRosteredPlayers);
 
   const franchisePrices = {
     qbFranchisePrice: qbPrice,
@@ -118,6 +125,8 @@ const RosterPreview = () => {
         })
     : [];
 
+  const pageLoading = rosterLoading || penaltyLoading || franchiseLoading;
+
   return (
     <Container>
       {(franchiseError || penaltyError) && (
@@ -133,33 +142,37 @@ const RosterPreview = () => {
         isEditable={true}
       />
       <h4>Roster:</h4>
-      <PlayerDisplayByPosition
-        playerList={roster}
-        removePlayerCallback={removePlayer}
-        isEditable={true}
-      />
-      <br /> <br />
-      <Form onSubmit={handleSubmit}>
-        <h5> Add a Player to the roster: </h5>
-        <Row xs="2" md="4">
-          {/* <Col /> */}
-          <Col>
-            <Select
-              className="basic-single"
-              classNamePrefix="select"
-              isClearable={true}
-              isSearchable={true}
-              name="playerToAdd"
-              options={addablePlayers}
-              onChange={onChangeSelect}
-              styles={selectionStyle}
-            />
-          </Col>
-          <Col>
-            <Button type="submit">Add Player</Button>
-          </Col>
-        </Row>
-      </Form>
+      <SpinnerWrapper loading={pageLoading} />
+      {!pageLoading && (
+        <>
+          <PlayerDisplayByPosition
+            playerList={roster}
+            removePlayerCallback={removePlayer}
+            isEditable={true}
+          />
+          <br /> <br />
+          <Form onSubmit={handleSubmit}>
+            <h5> Add a Player to the roster: </h5>
+            <Row xs="2" md="4">
+              <Col>
+                <Select
+                  className="basic-single"
+                  classNamePrefix="select"
+                  isClearable={true}
+                  isSearchable={true}
+                  name="playerToAdd"
+                  options={addablePlayers}
+                  onChange={onChangeSelect}
+                  styles={selectionStyle}
+                />
+              </Col>
+              <Col>
+                <Button type="submit">Add Player</Button>
+              </Col>
+            </Row>
+          </Form>
+        </>
+      )}
     </Container>
   );
 };

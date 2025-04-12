@@ -18,6 +18,7 @@ import {
 } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import RosterDataTable from "./RosterDataTable";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
 
@@ -96,6 +97,7 @@ const Roster = (props: RosterProps) => {
 
   const keptPlayersList = roster.filter((p) => p.keep);
 
+  const pageLoading = rosterLoading || penaltyLoading || franchiseLoading;
   return (
     <Container>
       {(rosterError || franchiseError || penaltyError) && (
@@ -111,20 +113,25 @@ const Roster = (props: RosterProps) => {
           isEditable={false}
         />
         <h4>Roster:</h4>
-        <PlayerDisplayByPosition
-          playerList={keptPlayersList}
-          isEditable={false}
-        />
-        <RosterDataTable
-          roster={roster.sort(
-            (a: Player, b: Player) =>
-              a.position.localeCompare(b.position) ||
-              b.price - a.price ||
-              a.name.localeCompare(b.name)
-          )}
-          franchisePrices={franchisePrices}
-          toggleKeeper={toggleKeeper}
-        />
+        <SpinnerWrapper loading={pageLoading} />
+        {!pageLoading && (
+          <>
+            <PlayerDisplayByPosition
+              playerList={keptPlayersList}
+              isEditable={false}
+            />
+            <RosterDataTable
+              roster={roster.sort(
+                (a: Player, b: Player) =>
+                  a.position.localeCompare(b.position) ||
+                  b.price - a.price ||
+                  a.name.localeCompare(b.name)
+              )}
+              franchisePrices={franchisePrices}
+              toggleKeeper={toggleKeeper}
+            />
+          </>
+        )}
       </>
     </Container>
   );

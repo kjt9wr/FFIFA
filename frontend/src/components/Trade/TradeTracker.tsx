@@ -7,6 +7,7 @@ import {
   getUpcomingSeasonYear,
   RECORDED_YEARS,
 } from "../../utilities/constants";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import YearSelector from "../reusable/YearSelector";
 import TradeCard from "./TradeCard";
 
@@ -38,6 +39,7 @@ const TradeTracker = () => {
         selectedYear={selectedYear}
         yearOptions={RECORDED_YEARS}
       />
+      <SpinnerWrapper loading={loading} />
       {!error && !loading && displayTrades(tradeList, selectedYear)}
     </Container>
   );

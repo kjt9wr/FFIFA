@@ -8,6 +8,7 @@ import {
   RECORDED_YEARS,
   TRANSPARENT_TABLE_STYLE,
 } from "../../utilities/constants";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import YearSelector from "../reusable/YearSelector";
 
 const displayCapTable = (
@@ -128,6 +129,8 @@ const CapTracker = () => {
         !tradeError &&
         !tradeLoading &&
         displayCapTable(selectedYear, ownersinSelectedYear, filteredTrades)}
+
+      <SpinnerWrapper loading={loading} />
     </Container>
   );
 };

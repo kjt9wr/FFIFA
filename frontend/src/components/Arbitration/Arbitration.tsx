@@ -5,6 +5,7 @@ import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { getUpcomingSeasonYear } from "../../utilities/constants";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import YearSelector from "../reusable/YearSelector";
 
 /*
@@ -14,7 +15,11 @@ const upcomingYear = getUpcomingSeasonYear();
 const Arbitration = () => {
   const [selectedYear, setSelectedYear] = useState(upcomingYear);
 
-  const { data: arbitratedPlayers, error } = useFetch(fetchArbitrationData);
+  const {
+    data: arbitratedPlayers,
+    error,
+    loading,
+  } = useFetch(fetchArbitrationData);
 
   const handleOnChange = (year: string) => {
     setSelectedYear(year);
@@ -34,6 +39,7 @@ const Arbitration = () => {
         ]}
       />
       <br /> <br />
+      <SpinnerWrapper loading={loading} />
       <h4>{selectedYear}</h4>
       <PlayerDisplayByPosition
         playerList={arbitratedPlayers.filter(

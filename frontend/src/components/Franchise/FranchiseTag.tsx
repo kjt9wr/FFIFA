@@ -1,6 +1,7 @@
 import { Alert, Col, Row } from "reactstrap";
 import { useFranchisePrices } from "../../custom-hooks/custom-hooks";
 import { POSITION } from "../../utilities/enumerations";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import FranchiseTagColumn from "./FranchiseTagColumn";
 
 /*
@@ -25,6 +26,7 @@ const FranchiseTag = () => {
     <div>
       <h2 className="text-center"> Franchise Tag Prices </h2>
       {error && <Alert color="danger">Error fetching players</Alert>}
+      <SpinnerWrapper loading={loading} />
       {!loading && !error && (
         <Row xs="2" md="4">
           <Col>
