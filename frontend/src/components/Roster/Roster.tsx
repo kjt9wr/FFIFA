@@ -18,7 +18,6 @@ import {
 } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
-import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import RosterDataTable from "./RosterDataTable";
 import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
 
@@ -38,13 +37,11 @@ interface RosterProps {
 const Roster = (props: RosterProps) => {
   const {
     error: penaltyError,
-    loading: penaltyLoading,
     payoutPerOwner,
     recalculatePenaltyFees,
   } = usePenaltyFees();
   const {
     error: franchiseError,
-    loading: franchiseLoading,
     qbPrice,
     rbPrice,
     wrPrice,
@@ -54,7 +51,6 @@ const Roster = (props: RosterProps) => {
 
   const {
     data: roster,
-    loading: rosterLoading,
     error: rosterError,
     refetch: refetchRoster,
   } = useFetch(() => fetchRoster(ownerSleeperId));
@@ -96,8 +92,6 @@ const Roster = (props: RosterProps) => {
   }, [name]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
-
-  const pageLoading = rosterLoading || penaltyLoading || franchiseLoading;
   return (
     <Container>
       {(rosterError || franchiseError || penaltyError) && (
@@ -113,8 +107,6 @@ const Roster = (props: RosterProps) => {
           isEditable={false}
         />
         <h4>Roster:</h4>
-        <SpinnerWrapper loading={pageLoading} />
-
         <PlayerDisplayByPosition
           playerList={keptPlayersList}
           isEditable={false}
