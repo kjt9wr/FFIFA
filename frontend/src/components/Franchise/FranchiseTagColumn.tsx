@@ -31,19 +31,21 @@ const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
           {keptPlayers.map((player: Player) => (
             <tr key={player.sleeperId}>
               <td
-                style={
+                style={TABLE_STYLE}
+                className={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
-                    ? { ...TABLE_STYLE, fontWeight: "bold" }
-                    : TABLE_STYLE
+                    ? "fw-bold"
+                    : ""
                 }
               >
                 {player.name}
               </td>
               <td
-                style={
+                style={TABLE_STYLE}
+                className={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
-                    ? { ...TABLE_STYLE, fontWeight: "bold" }
-                    : TABLE_STYLE
+                    ? "fw-bold"
+                    : ""
                 }
               >
                 {player.price}

@@ -1,4 +1,4 @@
-import { Card, Col, Row } from "reactstrap";
+import { Card, Col, Container, Row } from "reactstrap";
 import { TradeInfo } from "../../interfaces/interfaces";
 import { playersBySleeperID } from "../../utilities/sleeper-ids";
 
@@ -26,7 +26,7 @@ const displayAdditionalNotes = (notes?: string) => {
   return (
     notes && (
       <div>
-        <h5>Additional Notes: </h5> <p>{notes}</p>
+        <h6 className="fw-bold">Additional Notes: </h6> <p>{notes}</p>
       </div>
     )
   );
@@ -46,12 +46,12 @@ const TradeCard = (props: TradeCardProps) => {
     <Card className="p-1 my-2">
       <Row>
         <Col>
-          <h5>{currentTrade.owner1} Receives: </h5>
+          <h6 className="fw-bold">{currentTrade.owner1} Receives: </h6>
           {displayPlayers(currentTrade.owner1_rec.players)}
           {displayCap(currentTrade.owner1_rec.cap)}
         </Col>
         <Col>
-          <h5>{currentTrade.owner2} Receives: </h5>
+          <h6 className="fw-bold">{currentTrade.owner2} Receives: </h6>
           {displayPlayers(currentTrade.owner2_rec.players)}
           {displayCap(currentTrade.owner2_rec.cap)}
         </Col>

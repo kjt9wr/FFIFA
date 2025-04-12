@@ -5,7 +5,6 @@ import {
   AccordionHeader,
   AccordionItem,
   Alert,
-  Row,
   Spinner,
   Table,
 } from "reactstrap";
@@ -15,25 +14,32 @@ import { Player } from "../../interfaces/interfaces";
 import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
 
-interface FreeAgentColumnProps {
+interface FreeAgentAccordionProps {
   availablePlayers: Player[];
+  index: string;
+  position: string;
 }
 
-const FreeAgentColumn = (props: FreeAgentColumnProps) => {
-  const { availablePlayers } = props;
+const FreeAgentAccordion = (props: FreeAgentAccordionProps) => {
   return (
-    <Table borderless size="sm">
-      <tbody>
-        {availablePlayers.map((player: Player) => (
-          <tr key={player.sleeperId}>
-            <td style={TRANSPARENT_TABLE_STYLE}> {player.name}</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    <AccordionItem style={TRANSPARENT_TABLE_STYLE}>
+      <AccordionHeader targetId={props.index}>{props.position}</AccordionHeader>
+      <AccordionBody accordionId={props.index}>
+        <Table borderless size="sm">
+          <tbody>
+            {props.availablePlayers.map((player: Player) => (
+              <tr key={player.sleeperId}>
+                <td style={TRANSPARENT_TABLE_STYLE}> {player.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </AccordionBody>
+    </AccordionItem>
   );
 };
-const getAvailablePlayersPosition = (
+
+const getAvailablePlayersByPosition = (
   position: string,
   playerList: Player[]
 ) => {
@@ -65,61 +71,47 @@ const FreeAgency = () => {
     <div>
       <h2 className="text-center"> Free Agents </h2>
       {error && <Alert color="danger">Error fetching players</Alert>}
-      <Row xs="1" md="1">
-        {loading && (
-          <div className="text-center">
-            <Spinner />
-          </div>
-        )}
-        {!loading && !error && (
-          <Accordion open={open} toggle={toggle}>
-            <AccordionItem style={TRANSPARENT_TABLE_STYLE}>
-              <AccordionHeader targetId="1">QB</AccordionHeader>
-              <AccordionBody accordionId="1">
-                <FreeAgentColumn
-                  availablePlayers={getAvailablePlayersPosition(
-                    POSITION.QB,
-                    allFreeAgents
-                  )}
-                />
-              </AccordionBody>
-            </AccordionItem>
-            <AccordionItem style={TRANSPARENT_TABLE_STYLE}>
-              <AccordionHeader targetId="2">RB</AccordionHeader>
-              <AccordionBody accordionId="2">
-                <FreeAgentColumn
-                  availablePlayers={getAvailablePlayersPosition(
-                    POSITION.RB,
-                    allFreeAgents
-                  )}
-                />
-              </AccordionBody>
-            </AccordionItem>
-            <AccordionItem style={TRANSPARENT_TABLE_STYLE}>
-              <AccordionHeader targetId="3">WR</AccordionHeader>
-              <AccordionBody accordionId="3">
-                <FreeAgentColumn
-                  availablePlayers={getAvailablePlayersPosition(
-                    POSITION.WR,
-                    allFreeAgents
-                  )}
-                />
-              </AccordionBody>
-            </AccordionItem>
-            <AccordionItem style={TRANSPARENT_TABLE_STYLE}>
-              <AccordionHeader targetId="4">TE</AccordionHeader>
-              <AccordionBody accordionId="4">
-                <FreeAgentColumn
-                  availablePlayers={getAvailablePlayersPosition(
-                    POSITION.TE,
-                    allFreeAgents
-                  )}
-                />
-              </AccordionBody>
-            </AccordionItem>
-          </Accordion>
-        )}
-      </Row>
+      {loading && (
+        <div className="text-center">
+          <Spinner />
+        </div>
+      )}
+      {!loading && !error && (
+        <Accordion open={open} toggle={toggle}>
+          <FreeAgentAccordion
+            availablePlayers={getAvailablePlayersByPosition(
+              POSITION.QB,
+              allFreeAgents
+            )}
+            index={"1"}
+            position={POSITION.QB}
+          />
+          <FreeAgentAccordion
+            availablePlayers={getAvailablePlayersByPosition(
+              POSITION.RB,
+              allFreeAgents
+            )}
+            index={"2"}
+            position={POSITION.RB}
+          />
+          <FreeAgentAccordion
+            availablePlayers={getAvailablePlayersByPosition(
+              POSITION.WR,
+              allFreeAgents
+            )}
+            index={"3"}
+            position={POSITION.WR}
+          />
+          <FreeAgentAccordion
+            availablePlayers={getAvailablePlayersByPosition(
+              POSITION.TE,
+              allFreeAgents
+            )}
+            index={"4"}
+            position={POSITION.TE}
+          />
+        </Accordion>
+      )}
     </div>
   );
 };
