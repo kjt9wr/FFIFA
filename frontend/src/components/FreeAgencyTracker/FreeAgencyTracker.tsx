@@ -5,7 +5,6 @@ import {
   AccordionHeader,
   AccordionItem,
   Alert,
-  Spinner,
   Table,
 } from "reactstrap";
 import { fetchFreeAgents } from "../../api/api.service";
@@ -13,6 +12,7 @@ import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 
 interface FreeAgentAccordionProps {
   availablePlayers: Player[];
@@ -71,11 +71,7 @@ const FreeAgency = () => {
     <div>
       <h2 className="text-center"> Free Agents </h2>
       {error && <Alert color="danger">Error fetching players</Alert>}
-      {loading && (
-        <div className="text-center">
-          <Spinner />
-        </div>
-      )}
+      <SpinnerWrapper loading={loading} />
       {!loading && !error && (
         <Accordion open={open} toggle={toggle}>
           <FreeAgentAccordion

@@ -1,8 +1,9 @@
-import { Alert, Card, Col, Container, Row, Spinner } from "reactstrap";
+import { Alert, Card, Col, Container, Row } from "reactstrap";
 import { usePenaltyFees } from "../../custom-hooks/custom-hooks";
 import { PenaltyFeeInfo } from "../../interfaces/interfaces";
 import { calculateFollowingYearBaseCap } from "../../services/ffifa.service";
 import { getUpcomingSeasonYear } from "../../utilities/constants";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 
 const displayOwnersUnderTax = (penaltyFeeData: PenaltyFeeInfo[]) => {
   return penaltyFeeData
@@ -36,11 +37,7 @@ const DraftDay = () => {
   return (
     <Container>
       <h1 className="text-center"> Draft Day Info </h1>
-      {loading && (
-        <div className="text-center">
-          <Spinner />
-        </div>
-      )}
+      <SpinnerWrapper loading={loading} />
       {error && <Alert color="danger">Error fetching draft data</Alert>}
       {!error && !loading && (
         <>

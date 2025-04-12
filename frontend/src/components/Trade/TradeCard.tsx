@@ -1,4 +1,4 @@
-import { Card, Col, Container, Row } from "reactstrap";
+import { Card, Col, Row } from "reactstrap";
 import { TradeInfo } from "../../interfaces/interfaces";
 import { playersBySleeperID } from "../../utilities/sleeper-ids";
 

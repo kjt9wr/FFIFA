@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Alert, Button, Form, FormGroup, Input, Spinner } from "reactstrap";
+import { Alert, Button, Form, FormGroup, Input } from "reactstrap";
 import { useLogin } from "../../custom-hooks/useLogin";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,11 +17,7 @@ const Login = () => {
   return (
     <div>
       <h1 className="text-center"> Login to FFIFA </h1>
-      {isLoading && (
-        <div className="text-center">
-          <Spinner />
-        </div>
-      )}
+      <SpinnerWrapper loading={isLoading} />
 
       <div className="d-flex justify-content-center align-items-center">
         <Form
