@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Alert, Container } from "reactstrap";
 import { ALERT_STATE } from "../../utilities/enumerations";
 import UpdateDraftPrices from "./UpdateDraftPrices";
@@ -31,8 +31,10 @@ const Admin = () => {
       {ALERT_STATE.SUCCESS === draftDataAlert && (
         <Alert color="success">Successfully updated player draft prices</Alert>
       )}
-      <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
-      <UpdateDraftPrices priceAlertCallback={draftUpdateAlertCallback} />
+      <div className=" d-flex d-grid justify-content-center gap-4">
+        <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
+        <UpdateDraftPrices priceAlertCallback={draftUpdateAlertCallback} />
+      </div>
       <br /> <br />
     </Container>
   );

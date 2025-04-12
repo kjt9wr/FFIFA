@@ -1,4 +1,4 @@
-import { Alert, Card, Col, Container, Row } from "reactstrap";
+import { Alert, Card, Col, Container, Row, Spinner } from "reactstrap";
 import { usePenaltyFees } from "../../custom-hooks/custom-hooks";
 import { PenaltyFeeInfo } from "../../interfaces/interfaces";
 import { calculateFollowingYearBaseCap } from "../../services/ffifa.service";
@@ -36,6 +36,11 @@ const DraftDay = () => {
   return (
     <Container>
       <h1 className="text-center"> Draft Day Info </h1>
+      {loading && (
+        <div className="text-center">
+          <Spinner />
+        </div>
+      )}
       {error && <Alert color="danger">Error fetching draft data</Alert>}
       {!error && !loading && (
         <>
