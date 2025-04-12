@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="row"
+        class="row row-cols-2 row-cols-md-4"
       >
         <div
           class="col"
@@ -132,7 +132,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="row"
+      class="row row-cols-2 row-cols-md-4"
     >
       <div
         class="col"

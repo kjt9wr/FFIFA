@@ -11,7 +11,7 @@ describe("franchise tag page", () => {
 
     const view = render(<FranchiseTag />);
 
-    expect(await screen.findByText("RB franchise price: $75")).toBeTruthy();
+    expect(await screen.findByText("RB price: $75")).toBeTruthy();
     expect(view).toMatchSnapshot();
   });
 

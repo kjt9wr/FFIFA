@@ -14,28 +14,28 @@ Object {
         </h1>
         <br />
         <div
-          class="row"
+          class="row-gap-4 row row-cols-2 row-cols-md-4"
         >
           <div
             class="col"
           >
             <div
-              class="card"
+              class="h-100 card"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Max Cap
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   300
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -43,22 +43,22 @@ Object {
             class="col"
           >
             <div
-              class="card"
+              class="h-100 card"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Luxary Tax Line
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   165
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -66,22 +66,22 @@ Object {
             class="col"
           >
             <div
-              class="card"
+              class="h-100 card"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Keeper Price
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   143
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -89,17 +89,17 @@ Object {
             class="col"
           >
             <div
-              class="card bg-success"
+              class="h-100 card bg-success"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Remaining
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
@@ -111,7 +111,7 @@ Object {
                      = $
                     177
                   </span>
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -166,28 +166,28 @@ Object {
       </h1>
       <br />
       <div
-        class="row"
+        class="row-gap-4 row row-cols-2 row-cols-md-4"
       >
         <div
           class="col"
         >
           <div
-            class="card"
+            class="h-100 card"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Max Cap
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 300
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -195,22 +195,22 @@ Object {
           class="col"
         >
           <div
-            class="card"
+            class="h-100 card"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Luxary Tax Line
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 165
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -218,22 +218,22 @@ Object {
           class="col"
         >
           <div
-            class="card"
+            class="h-100 card"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Keeper Price
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 143
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -241,17 +241,17 @@ Object {
           class="col"
         >
           <div
-            class="card bg-success"
+            class="h-100 card bg-success"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Remaining
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
@@ -263,7 +263,7 @@ Object {
                    = $
                   177
                 </span>
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -375,28 +375,28 @@ Object {
         </h1>
         <br />
         <div
-          class="row"
+          class="row-gap-4 row row-cols-2 row-cols-md-4"
         >
           <div
             class="col"
           >
             <div
-              class="card"
+              class="h-100 card"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Max Cap
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   200
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -404,22 +404,22 @@ Object {
             class="col"
           >
             <div
-              class="card"
+              class="h-100 card"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Luxary Tax Line
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   110
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -427,22 +427,22 @@ Object {
             class="col"
           >
             <div
-              class="card"
+              class="h-100 card"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Keeper Price
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   219
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -450,23 +450,23 @@ Object {
             class="col"
           >
             <div
-              class="card bg-danger"
+              class="h-100 card bg-danger"
             >
               <div
                 class="card-body"
               >
-                <h3
+                <h5
                   class="card-title"
                 >
                   Remaining
-                </h3>
-                <h4
+                </h5>
+                <h6
                   class="card-text"
                 >
                   $
                   -128
                    
-                </h4>
+                </h6>
               </div>
             </div>
           </div>
@@ -521,28 +521,28 @@ Object {
       </h1>
       <br />
       <div
-        class="row"
+        class="row-gap-4 row row-cols-2 row-cols-md-4"
       >
         <div
           class="col"
         >
           <div
-            class="card"
+            class="h-100 card"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Max Cap
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 200
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -550,22 +550,22 @@ Object {
           class="col"
         >
           <div
-            class="card"
+            class="h-100 card"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Luxary Tax Line
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 110
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -573,22 +573,22 @@ Object {
           class="col"
         >
           <div
-            class="card"
+            class="h-100 card"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Keeper Price
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 219
-              </h4>
+              </h6>
             </div>
           </div>
         </div>
@@ -596,23 +596,23 @@ Object {
           class="col"
         >
           <div
-            class="card bg-danger"
+            class="h-100 card bg-danger"
           >
             <div
               class="card-body"
             >
-              <h3
+              <h5
                 class="card-title"
               >
                 Remaining
-              </h3>
-              <h4
+              </h5>
+              <h6
                 class="card-text"
               >
                 $
                 -128
                  
-              </h4>
+              </h6>
             </div>
           </div>
         </div>

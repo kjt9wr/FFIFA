@@ -12,17 +12,206 @@ Object {
            Free Agents 
         </h2>
         <div
-          class="row"
+          class="accordion"
         >
           <div
-            class="col"
+            class="accordion-item"
+            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
           >
-            <div>
-              <h3>
-                 
+            <h2
+              class="accordion-header"
+            >
+              <button
+                class="accordion-button"
+                type="button"
+              >
                 QB
-                 
-              </h3>
+              </button>
+            </h2>
+            <div
+              class="accordion-collapse collapse show"
+            >
+              <div
+                class="accordion-body"
+              >
+                <table
+                  class="table table-sm table-borderless"
+                >
+                  <tbody>
+                    <tr>
+                      <td
+                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+                      >
+                         
+                        Patrick Mahomes
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div
+            class="accordion-item"
+            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          >
+            <h2
+              class="accordion-header"
+            >
+              <button
+                class="accordion-button collapsed"
+                type="button"
+              >
+                RB
+              </button>
+            </h2>
+            <div
+              class="accordion-collapse collapse"
+            >
+              <div
+                class="accordion-body"
+              >
+                <table
+                  class="table table-sm table-borderless"
+                >
+                  <tbody>
+                    <tr>
+                      <td
+                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+                      >
+                         
+                        Derrick Henry
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+                      >
+                         
+                        Josh Jacobs
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div
+            class="accordion-item"
+            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          >
+            <h2
+              class="accordion-header"
+            >
+              <button
+                class="accordion-button collapsed"
+                type="button"
+              >
+                WR
+              </button>
+            </h2>
+            <div
+              class="accordion-collapse collapse"
+            >
+              <div
+                class="accordion-body"
+              >
+                <table
+                  class="table table-sm table-borderless"
+                >
+                  <tbody>
+                    <tr>
+                      <td
+                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+                      >
+                         
+                        Tyreek Hill
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+                      >
+                         
+                        Jalen Coker
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div
+            class="accordion-item"
+            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          >
+            <h2
+              class="accordion-header"
+            >
+              <button
+                class="accordion-button collapsed"
+                type="button"
+              >
+                TE
+              </button>
+            </h2>
+            <div
+              class="accordion-collapse collapse"
+            >
+              <div
+                class="accordion-body"
+              >
+                <table
+                  class="table table-sm table-borderless"
+                >
+                  <tbody>
+                    <tr>
+                      <td
+                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+                      >
+                         
+                        Sam Laporta
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div>
+      <h2
+        class="text-center"
+      >
+         Free Agents 
+      </h2>
+      <div
+        class="accordion"
+      >
+        <div
+          class="accordion-item"
+          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+        >
+          <h2
+            class="accordion-header"
+          >
+            <button
+              class="accordion-button"
+              type="button"
+            >
+              QB
+            </button>
+          </h2>
+          <div
+            class="accordion-collapse collapse show"
+          >
+            <div
+              class="accordion-body"
+            >
               <table
                 class="table table-sm table-borderless"
               >
@@ -39,15 +228,27 @@ Object {
               </table>
             </div>
           </div>
-          <div
-            class="col"
+        </div>
+        <div
+          class="accordion-item"
+          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+        >
+          <h2
+            class="accordion-header"
           >
-            <div>
-              <h3>
-                 
-                RB
-                 
-              </h3>
+            <button
+              class="accordion-button collapsed"
+              type="button"
+            >
+              RB
+            </button>
+          </h2>
+          <div
+            class="accordion-collapse collapse"
+          >
+            <div
+              class="accordion-body"
+            >
               <table
                 class="table table-sm table-borderless"
               >
@@ -72,15 +273,27 @@ Object {
               </table>
             </div>
           </div>
-          <div
-            class="col"
+        </div>
+        <div
+          class="accordion-item"
+          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+        >
+          <h2
+            class="accordion-header"
           >
-            <div>
-              <h3>
-                 
-                WR
-                 
-              </h3>
+            <button
+              class="accordion-button collapsed"
+              type="button"
+            >
+              WR
+            </button>
+          </h2>
+          <div
+            class="accordion-collapse collapse"
+          >
+            <div
+              class="accordion-body"
+            >
               <table
                 class="table table-sm table-borderless"
               >
@@ -105,15 +318,27 @@ Object {
               </table>
             </div>
           </div>
-          <div
-            class="col"
+        </div>
+        <div
+          class="accordion-item"
+          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+        >
+          <h2
+            class="accordion-header"
           >
-            <div>
-              <h3>
-                 
-                TE
-                 
-              </h3>
+            <button
+              class="accordion-button collapsed"
+              type="button"
+            >
+              TE
+            </button>
+          </h2>
+          <div
+            class="accordion-collapse collapse"
+          >
+            <div
+              class="accordion-body"
+            >
               <table
                 class="table table-sm table-borderless"
               >
@@ -129,135 +354,6 @@ Object {
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div>
-      <h2
-        class="text-center"
-      >
-         Free Agents 
-      </h2>
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <div>
-            <h3>
-               
-              QB
-               
-            </h3>
-            <table
-              class="table table-sm table-borderless"
-            >
-              <tbody>
-                <tr>
-                  <td
-                    style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                  >
-                     
-                    Patrick Mahomes
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="col"
-        >
-          <div>
-            <h3>
-               
-              RB
-               
-            </h3>
-            <table
-              class="table table-sm table-borderless"
-            >
-              <tbody>
-                <tr>
-                  <td
-                    style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                  >
-                     
-                    Derrick Henry
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                  >
-                     
-                    Josh Jacobs
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="col"
-        >
-          <div>
-            <h3>
-               
-              WR
-               
-            </h3>
-            <table
-              class="table table-sm table-borderless"
-            >
-              <tbody>
-                <tr>
-                  <td
-                    style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                  >
-                     
-                    Tyreek Hill
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                  >
-                     
-                    Jalen Coker
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="col"
-        >
-          <div>
-            <h3>
-               
-              TE
-               
-            </h3>
-            <table
-              class="table table-sm table-borderless"
-            >
-              <tbody>
-                <tr>
-                  <td
-                    style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                  >
-                     
-                    Sam Laporta
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

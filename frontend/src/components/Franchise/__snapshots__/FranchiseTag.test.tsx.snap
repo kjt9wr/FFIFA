@@ -12,17 +12,17 @@ Object {
            Franchise Tag Prices 
         </h2>
         <div
-          class="row"
+          class="row row-cols-2 row-cols-md-4"
         >
           <div
             class="col"
           >
             <div
-              style="flex: 1;"
+              class="d-flex-1"
             >
               <h3>
                 QB
-                 franchise price: $
+                 price: $
                 75
               </h3>
               <div
@@ -44,11 +44,13 @@ Object {
                   <tbody>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Jayden Daniels
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         67
@@ -56,11 +58,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Jalen Hurts
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
@@ -68,11 +72,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Kyler Murray
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
@@ -80,11 +86,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Lamar Jackson
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
@@ -92,11 +100,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Patrick Mahomes
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
@@ -111,11 +121,11 @@ Object {
             class="col"
           >
             <div
-              style="flex: 1;"
+              class="d-flex-1"
             >
               <h3>
                 RB
-                 franchise price: $
+                 price: $
                 75
               </h3>
               <div
@@ -137,11 +147,13 @@ Object {
                   <tbody>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Bijan Robinson
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         121
@@ -149,11 +161,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Saquon Barkley
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         100
@@ -161,11 +175,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Jahmyr Gibbs
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         98
@@ -173,11 +189,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Josh Jacobs
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         81
@@ -185,11 +203,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Derrick Henry
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         79
@@ -197,12 +217,14 @@ Object {
                     </tr>
                     <tr>
                       <td
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139); font-weight: bold;"
+                        class="fw-bold"
+                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Najee Harris
                       </td>
                       <td
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139); font-weight: bold;"
+                        class="fw-bold"
+                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         76
                       </td>
@@ -213,11 +235,11 @@ Object {
             </div>
           </div>
           <div
-            style="flex: 1;"
+            class="d-flex-1"
           >
             <h3>
               WR
-               franchise price: $
+               price: $
               75
             </h3>
             <div
@@ -239,11 +261,13 @@ Object {
                 <tbody>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Drake London
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       64
@@ -251,11 +275,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       AJ Brown
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       61
@@ -263,11 +289,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       CeeDee Lamb
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       56
@@ -275,11 +303,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Tyreek Hill
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       56
@@ -287,11 +317,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jamarr Chase
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       52
@@ -299,11 +331,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Malik Nabers
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       51
@@ -311,11 +345,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jalen Coker
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       10
@@ -329,11 +365,11 @@ Object {
             class="col"
           >
             <div
-              style="flex: 1;"
+              class="d-flex-1"
             >
               <h3>
                 TE
-                 franchise price: $
+                 price: $
                 75
               </h3>
               <div
@@ -355,11 +391,13 @@ Object {
                   <tbody>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Brock Bowers
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
@@ -367,11 +405,13 @@ Object {
                     </tr>
                     <tr>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Sam Laporta
                       </td>
                       <td
+                        class=""
                         style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         12
@@ -394,17 +434,17 @@ Object {
          Franchise Tag Prices 
       </h2>
       <div
-        class="row"
+        class="row row-cols-2 row-cols-md-4"
       >
         <div
           class="col"
         >
           <div
-            style="flex: 1;"
+            class="d-flex-1"
           >
             <h3>
               QB
-               franchise price: $
+               price: $
               75
             </h3>
             <div
@@ -426,11 +466,13 @@ Object {
                 <tbody>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jayden Daniels
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       67
@@ -438,11 +480,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jalen Hurts
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
@@ -450,11 +494,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Kyler Murray
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
@@ -462,11 +508,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Lamar Jackson
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
@@ -474,11 +522,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Patrick Mahomes
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
@@ -493,11 +543,11 @@ Object {
           class="col"
         >
           <div
-            style="flex: 1;"
+            class="d-flex-1"
           >
             <h3>
               RB
-               franchise price: $
+               price: $
               75
             </h3>
             <div
@@ -519,11 +569,13 @@ Object {
                 <tbody>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Bijan Robinson
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       121
@@ -531,11 +583,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Saquon Barkley
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       100
@@ -543,11 +597,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jahmyr Gibbs
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       98
@@ -555,11 +611,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Josh Jacobs
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       81
@@ -567,11 +625,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Derrick Henry
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       79
@@ -579,12 +639,14 @@ Object {
                   </tr>
                   <tr>
                     <td
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139); font-weight: bold;"
+                      class="fw-bold"
+                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Najee Harris
                     </td>
                     <td
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139); font-weight: bold;"
+                      class="fw-bold"
+                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       76
                     </td>
@@ -595,11 +657,11 @@ Object {
           </div>
         </div>
         <div
-          style="flex: 1;"
+          class="d-flex-1"
         >
           <h3>
             WR
-             franchise price: $
+             price: $
             75
           </h3>
           <div
@@ -621,11 +683,13 @@ Object {
               <tbody>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     Drake London
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     64
@@ -633,11 +697,13 @@ Object {
                 </tr>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     AJ Brown
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     61
@@ -645,11 +711,13 @@ Object {
                 </tr>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     CeeDee Lamb
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     56
@@ -657,11 +725,13 @@ Object {
                 </tr>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     Tyreek Hill
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     56
@@ -669,11 +739,13 @@ Object {
                 </tr>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     Jamarr Chase
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     52
@@ -681,11 +753,13 @@ Object {
                 </tr>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     Malik Nabers
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     51
@@ -693,11 +767,13 @@ Object {
                 </tr>
                 <tr>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     Jalen Coker
                   </td>
                   <td
+                    class=""
                     style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                   >
                     10
@@ -711,11 +787,11 @@ Object {
           class="col"
         >
           <div
-            style="flex: 1;"
+            class="d-flex-1"
           >
             <h3>
               TE
-               franchise price: $
+               price: $
               75
             </h3>
             <div
@@ -737,11 +813,13 @@ Object {
                 <tbody>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Brock Bowers
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
@@ -749,11 +827,13 @@ Object {
                   </tr>
                   <tr>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Sam Laporta
                     </td>
                     <td
+                      class=""
                       style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       12
