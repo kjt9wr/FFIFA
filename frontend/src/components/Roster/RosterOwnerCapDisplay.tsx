@@ -17,7 +17,7 @@ import RosterProgressBar from "./RosterProgressBar";
 
 const renderCard = (label: string, value: number) => {
   return (
-    <Card>
+    <Card className="h-100">
       <CardBody>
         <CardTitle tag="h5">{label}</CardTitle>
         <CardText tag="h6">${value}</CardText>
@@ -71,10 +71,10 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
     <div>
       <h1 className="text-center">{ownerName}'s Roster </h1>
       <br />
-      <Row xs="2" md="4">
+      <Row xs="2" md="4" className="row-gap-4">
         <Col>
           {isEditable && updateCapCallback ? (
-            <Card>
+            <Card className="h-100">
               <CardBody>
                 <CardTitle tag="h5">Max Cap</CardTitle>
                 <CardText tag="h6">
@@ -105,7 +105,7 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
         <Col>{renderCard("Luxary Tax Line", TAX_LINE)}</Col>
         <Col>{renderCard("Keeper Price", keepPrice)}</Col>
         <Col>
-          <Card color={getCardColor()}>
+          <Card className="h-100" color={getCardColor()}>
             <CardBody>
               <CardTitle tag="h5">Remaining</CardTitle>
               <CardText tag="h6">

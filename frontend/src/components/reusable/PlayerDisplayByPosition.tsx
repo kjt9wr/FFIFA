@@ -43,7 +43,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
                     removePlayerCallback(player.sleeperId);
                   }}
                 >
-                  <Button size="sm" outline>
+                  <Button size="sm" outline className="mr-auto">
                     X
                   </Button>
                   {player.name} - ${player.price}

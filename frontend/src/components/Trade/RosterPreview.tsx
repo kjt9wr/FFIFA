@@ -140,10 +140,9 @@ const RosterPreview = () => {
       />
       <br /> <br />
       <Form onSubmit={handleSubmit}>
-        <Row>
-          <Col>
-            <h5> Add a Player to the roster: </h5>
-          </Col>
+        <h5> Add a Player to the roster: </h5>
+        <Row xs="2" md="4">
+          {/* <Col /> */}
           <Col>
             <Select
               className="basic-single"
