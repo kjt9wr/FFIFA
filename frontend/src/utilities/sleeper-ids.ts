@@ -389,4 +389,5 @@ export const playersBySleeperID: Record<string, string> = {
   9484: "Tucker Kraft",
   2359: "Ameer Abdullah",
   5026: "Tre'Quan Smith",
+  8111: "Cade Otton",
 };
