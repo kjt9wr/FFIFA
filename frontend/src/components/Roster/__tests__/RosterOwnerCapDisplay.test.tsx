@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import RosterOwnerCapDisplay from "../RosterOwnerCapDisplay";
+import RosterOwnerCapDisplay from "../RosterCapInfo";
 import { MOCK_FRANCHISE_TAG_DTO } from "../../../services/mock-data/services.mock-data";
 import {
   MOCKED_ROSTER,

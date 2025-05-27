@@ -12,7 +12,7 @@ import { getOwnersCap } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import SpinnerWrapper from "../reusable/SpinnerWrapper";
-import RosterOwnerCapDisplay from "../Roster/RosterOwnerCapDisplay";
+import RosterCapInfo from "../Roster/RosterCapInfo";
 
 const ownerName = "Kevin";
 const ownerId = OwnerSleeperIdByName[ownerName];
@@ -132,8 +132,7 @@ const RosterPreview = () => {
       {(franchiseError || penaltyError) && (
         <Alert color="danger">There was an error loading this page</Alert>
       )}
-      <RosterOwnerCapDisplay
-        ownerName={ownerName}
+      <RosterCapInfo
         roster={roster}
         franchisePrices={franchisePrices}
         penaltyReward={payoutPerOwner}

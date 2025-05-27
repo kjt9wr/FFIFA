@@ -26,8 +26,7 @@ const renderCard = (label: string, value: number) => {
   );
 };
 
-interface RosterOwnerCapDisplayProps {
-  ownerName: string;
+interface RosterCapInfoProps {
   roster: Player[];
   franchisePrices: FranchiseTagDTO;
   penaltyReward: number;
@@ -41,9 +40,8 @@ interface RosterOwnerCapDisplayProps {
  * keeper price, and final cap values
  */
 
-const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
+const RosterCapInfo = (props: RosterCapInfoProps) => {
   const {
-    ownerName,
     roster,
     franchisePrices,
     penaltyReward,
@@ -62,15 +60,14 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
 
   const getCardColor = () => {
     if (remaining < 0) {
-      return "penalty";
+      return "card-penalty";
     }
-    return isOffender ? "warning" : "success";
+    return isOffender ? "card-warning" : "card-success";
   };
 
   return (
     <div>
-      <h1 className="text-center">{ownerName}'s Roster </h1>
-      <br />
+      <h4 className="section-title">Cap Info:</h4>
       <Row xs="2" md="4" className="row-gap-4">
         <Col>
           {isEditable && updateCapCallback ? (
@@ -132,4 +129,4 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
   );
 };
 
-export default RosterOwnerCapDisplay;
+export default RosterCapInfo;

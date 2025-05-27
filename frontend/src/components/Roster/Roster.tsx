@@ -19,7 +19,7 @@ import {
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
 import RosterDataTable from "./RosterDataTable";
-import RosterOwnerCapDisplay from "./RosterOwnerCapDisplay";
+import RosterCapInfo from "./RosterCapInfo";
 
 /*
  * This page displays an owner's available cap information, projected keepers display,
@@ -98,19 +98,20 @@ const Roster = (props: RosterProps) => {
         <Alert color="danger">There was an error loading this page</Alert>
       )}
       <>
-        <RosterOwnerCapDisplay
-          ownerName={name || ""}
+        <h1 className="page-title">{name}'s Roster </h1>
+        <RosterCapInfo
           roster={roster}
           franchisePrices={franchisePrices}
           penaltyReward={payoutPerOwner}
           cap={cap}
           isEditable={false}
         />
-        <h4>Roster:</h4>
+        <h4 className="section-title">Kept Players:</h4>
         <PlayerDisplayByPosition
           playerList={keptPlayersList}
           isEditable={false}
         />
+        <h4 className="section-title">Full Roster:</h4>
         <RosterDataTable
           roster={roster.sort(
             (a: Player, b: Player) =>

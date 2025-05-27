@@ -72,6 +72,8 @@ body {
 
 .card {
   background-color: #b5d2ff;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  border-radius: 8px;
 }
 .card:hover {
   background-color: #44546b;
@@ -101,15 +103,44 @@ table tr:hover {
   color: #fa5f47;
 }
 
+/* Custom styled checkbox */
 input[type="checkbox"] {
-  /* Double-sized Checkboxes */
-  -ms-transform: scale(1.25); /* IE */
-  -moz-transform: scale(1.25); /* FF */
-  -webkit-transform: scale(1.25); /* Safari and Chrome */
-  -o-transform: scale(1.25); /* Opera */
-  transform: scale(1.25); /* Standard */
-  padding: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #233b67;
+  border: 2px solid #b5d2ff;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  vertical-align: middle;
   margin-left: 10px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #5bc2ad;
+  border-color: #5bc2ad;
+}
+
+input[type="checkbox"]:focus {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  pointer-events: none;
 }
 
 .navbar-custom {
@@ -152,4 +183,46 @@ input[type="checkbox"] {
 .dropdown-item:hover {
   background-color: #2f5997;
   color: #facc15;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #facc15;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  border-left: 6px solid #2f5997;
+  padding-left: 10px;
+  border-radius: 4px;
+  display: inline-block;
+  background: none; /* Remove or comment out the gradient if not needed */
+}
+
+.page-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #b5d2ff;
+  letter-spacing: 2px;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  text-shadow: 0 6px 24px rgba(44, 62, 80, 0.18);
+  display: block;
+  border: none;
+  background: none;
+}
+
+.card-success {
+  background-color: #5bc2ad;
+  color: #1a243d;
+}
+.card-warning {
+  background-color: #facc15;
+  color: #1a243d;
+}
+.card-penalty {
+  background-color: #fb7185;
+  color: #1a243d;
 }
