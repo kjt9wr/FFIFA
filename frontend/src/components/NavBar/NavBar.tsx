@@ -26,13 +26,10 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar
-        className="navbar navbar-dark bg-dark navbar-expand-lg"
-        fixed="top"
-      >
+      <Navbar className="navbar navbar-custom navbar-expand-lg" fixed="top">
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="secondaryBlue mr-auto" navbar>
             <NavItem>
               <NavLink href="/"> FFIFA </NavLink>
             </NavItem>

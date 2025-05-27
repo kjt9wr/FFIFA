@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Admin from "./components/Admin/Admin";
 import Arbitration from "./components/Arbitration/Arbitration";
@@ -8,12 +8,12 @@ import DraftDay from "./components/DraftDay/DraftDay";
 import FranchiseTag from "./components/Franchise/FranchiseTag";
 import FreeAgency from "./components/FreeAgencyTracker/FreeAgencyTracker";
 import HomePage from "./components/HomePage/HomePage";
+import Login from "./components/Login/Login";
 import NavBar from "./components/NavBar/NavBar";
 import Roster from "./components/Roster/Roster";
 import Supermax from "./components/Supermax/Supermax";
 import RosterPreview from "./components/Trade/RosterPreview";
 import TradeTracker from "./components/Trade/TradeTracker";
-import Login from "./components/Login/Login";
 import { useAuthContext } from "./custom-hooks/useAuthContext";
 
 const App = () => {

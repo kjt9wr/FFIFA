@@ -70,6 +70,13 @@ body {
   color: white;
 }
 
+.card {
+  background-color: #b5d2ff;
+}
+.card:hover {
+  background-color: #44546b;
+  color: #ffffff;
+}
 .success {
   background-color: #5bc2ad;
   color: black;
@@ -85,14 +92,6 @@ body {
   color: black;
 }
 
-.card {
-  background-color: #b5d2ff;
-}
-.card:hover {
-  background-color: #44546b;
-  color: #ffffff;
-}
-
 table tr:hover {
   background-color: #272b3f;
 }
@@ -104,10 +103,53 @@ table tr:hover {
 
 input[type="checkbox"] {
   /* Double-sized Checkboxes */
-  -ms-transform: scale(1.5); /* IE */
-  -moz-transform: scale(1.5); /* FF */
-  -webkit-transform: scale(1.5); /* Safari and Chrome */
-  -o-transform: scale(1.5); /* Opera */
+  -ms-transform: scale(1.25); /* IE */
+  -moz-transform: scale(1.25); /* FF */
+  -webkit-transform: scale(1.25); /* Safari and Chrome */
+  -o-transform: scale(1.25); /* Opera */
+  transform: scale(1.25); /* Standard */
   padding: 10px;
   margin-left: 10px;
+}
+
+.navbar-custom {
+  background-color: #2f5997;
+  color: #f8f8f2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #1c2e51;
+}
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand,
+.navbar-custom .dropdown-toggle {
+  color: #f8f8f2;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .dropdown-toggle:hover {
+  color: #facc15; /* gold/yellow accent */
+  background-color: #233b67; /* slightly darker blue */
+  border-radius: 4px;
+}
+.navbar-custom .nav-link.active {
+  color: #facc15;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  background-color: #233b67;
+  color: white;
+  border: none;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.navbar-toggler {
+  color: white;
+}
+.dropdown-item:hover {
+  background-color: #2f5997;
+  color: #facc15;
 }
