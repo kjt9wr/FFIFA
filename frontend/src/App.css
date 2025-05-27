@@ -319,11 +319,35 @@ input[type="checkbox"]:checked::after {
   align-items: center;
   justify-content: center;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
-  border-width: 2px;
+  border-width: 1px;
 }
 
 .remove-player-btn:hover,
 .remove-player-btn:focus {
+  background: #2f5997;
+  color: #fff;
+  border-color: #2f5997;
+}
+
+.add-player-form {
+  border-radius: 8px;
+  padding-top: 1.5rem 1rem;
+  padding-bottom: 1.5rem 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.add-player-btn {
+  min-width: 2.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0.4rem 1.2rem;
+  font-size: 1.1rem;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.add-player-btn:hover,
+.add-player-btn:focus {
   background: #2f5997;
   color: #fff;
   border-color: #2f5997;

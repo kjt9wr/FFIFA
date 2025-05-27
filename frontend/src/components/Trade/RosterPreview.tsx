@@ -144,13 +144,14 @@ const RosterPreview = () => {
       <SpinnerWrapper loading={pageLoading} />
       {!pageLoading && (
         <>
+          <h4 className="section-title">Kept Players:</h4>
           <KeptPlayersDisplay
             playerList={roster}
             removePlayerCallback={removePlayer}
             isEditable={true}
           />
-          <Form onSubmit={handleSubmit}>
-            <h5 className="section-title"> Add a Player to the roster: </h5>
+          <Form onSubmit={handleSubmit} className="add-player-form">
+            <h5 className="section-title"> Add Player: </h5>
             <Row xs="2" md="4">
               <Col>
                 <Select
@@ -165,7 +166,14 @@ const RosterPreview = () => {
                 />
               </Col>
               <Col>
-                <Button type="submit">Add Player</Button>
+                <Button
+                  type="submit"
+                  outline
+                  color="primary"
+                  className="add-player-btn"
+                >
+                  + Add Player
+                </Button>
               </Col>
             </Row>
           </Form>

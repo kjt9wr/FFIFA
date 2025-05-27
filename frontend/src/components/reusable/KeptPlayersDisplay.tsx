@@ -68,15 +68,12 @@ const KeptPlayersDisplay = (props: KeptPlayersDisplayProps) => {
   );
 
   return (
-    <>
-      <h4 className="section-title">Kept Players:</h4>
-      <Row xs="2" md="4">
-        <Col>{renderPlayersForPosition(POSITION.QB, keptQBs)} </Col>
-        <Col>{renderPlayersForPosition(POSITION.RB, keptRBs)}</Col>
-        <Col>{renderPlayersForPosition(POSITION.WR, keptWRs)}</Col>
-        <Col>{renderPlayersForPosition(POSITION.TE, keptTEs)}</Col>
-      </Row>
-    </>
+    <Row xs="2" md="4">
+      <Col>{renderPlayersForPosition(POSITION.QB, keptQBs)} </Col>
+      <Col>{renderPlayersForPosition(POSITION.RB, keptRBs)}</Col>
+      <Col>{renderPlayersForPosition(POSITION.WR, keptWRs)}</Col>
+      <Col>{renderPlayersForPosition(POSITION.TE, keptTEs)}</Col>
+    </Row>
   );
 };
 

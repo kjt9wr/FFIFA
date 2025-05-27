@@ -107,6 +107,7 @@ const Roster = (props: RosterProps) => {
           isEditable={false}
         />
 
+        <h4 className="section-title">Kept Players:</h4>
         <KeptPlayersDisplay playerList={keptPlayersList} isEditable={false} />
         <h4 className="section-title">Full Roster:</h4>
         <RosterDataTable
