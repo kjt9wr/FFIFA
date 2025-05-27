@@ -226,3 +226,28 @@ input[type="checkbox"]:checked::after {
   background-color: #fb7185;
   color: #1a243d;
 }
+
+.homepage-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-quote {
+  font-size: 2.5rem;
+  font-family: "Georgia", serif;
+  color: #b5d2ff;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+}
+
+.homepage-attribution {
+  font-size: 1.5rem;
+  color: #facc15;
+  font-style: italic;
+  text-align: center;
+  margin-left: 0;
+}
