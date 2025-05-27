@@ -70,10 +70,6 @@ body {
   color: white;
 }
 
-.card {
-  background-color: #b5d2ff;
-}
-
 .success {
   background-color: #5bc2ad;
   color: black;
@@ -89,8 +85,11 @@ body {
   color: black;
 }
 
+.card {
+  background-color: #b5d2ff;
+}
 .card:hover {
-  background-color: #272b3f;
+  background-color: #44546b;
   color: #ffffff;
 }
 
