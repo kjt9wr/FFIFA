@@ -62,7 +62,7 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
 
   const getCardColor = () => {
     if (remaining < 0) {
-      return "danger";
+      return "penalty";
     }
     return isOffender ? "warning" : "success";
   };
@@ -105,7 +105,7 @@ const RosterOwnerCapDisplay = (props: RosterOwnerCapDisplayProps) => {
         <Col>{renderCard("Luxary Tax Line", TAX_LINE)}</Col>
         <Col>{renderCard("Keeper Price", keepPrice)}</Col>
         <Col>
-          <Card className="h-100" color={getCardColor()}>
+          <Card className={`h-100 ${getCardColor()}`}>
             <CardBody>
               <CardTitle tag="h5">Remaining</CardTitle>
               <CardText tag="h6">

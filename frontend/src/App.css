@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #45495e;
+  background-color: #1a243d;
   color: #f8f8f2;
 }
 .App-logo {
@@ -36,17 +36,36 @@ body {
   font-family: cursive;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.primaryBlue {
+  background-color: #b5d2ff;
+}
+
+.secondaryBlue {
+  background-color: #2f5997;
+  color: white;
+}
+
+.secondaryBlue .a {
+  background-color: #2f5997;
 }
 
 .card {
-  background-color: #abb1c3;
+  background-color: #b5d2ff;
+}
+
+.success {
+  background-color: #5bc2ad;
+  color: black;
+}
+
+.warning {
+  background-color: #facc15;
+  color: black;
+}
+
+.penalty {
+  background-color: #fb7185;
+  color: black;
 }
 
 .card:hover {
@@ -57,6 +76,7 @@ body {
   background-color: #6d728b;
   color: #f8f8f2;
 }
+
 table tr {
   color: #f8f8f2;
 }

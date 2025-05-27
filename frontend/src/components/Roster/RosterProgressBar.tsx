@@ -18,24 +18,24 @@ const RosterProgressBar = (props: RosterProgressBarProps) => {
     >
       <Progress
         bar
-        color="success"
+        className="success"
         value={isOffender ? 55 : (keepPrice / maxCap) * 100}
       >
         Under the Tax
       </Progress>
       <Progress
         bar
-        color="warning"
+        className="warning"
         value={isOffender ? ((keepPrice - taxLine) / maxCap) * 100 : 0}
       >
-        $ Over
+        ${keepPrice - taxLine} Over
       </Progress>
       <Progress
         bar
-        color="danger"
+        className="penalty"
         value={isOffender ? ((keepPrice - taxLine) / maxCap) * 100 : 0}
       >
-        $ Penalty
+        ${keepPrice - taxLine} Penalty
       </Progress>
     </Progress>
   );

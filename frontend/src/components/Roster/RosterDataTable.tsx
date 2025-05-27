@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "reactstrap";
 import { FranchiseTagDTO, Player } from "../../interfaces/interfaces";
 import RosterPlayerRow from "./RosterPlayerRow";
