@@ -2,7 +2,6 @@ import React from "react";
 import { Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
 import { KEEPER_CLASS_ENUM } from "../../utilities/enumerations";
-import { TABLE_STYLE } from "../../utilities/constants";
 
 interface FranchiseTagColumnProps {
   position: string;
@@ -14,24 +13,23 @@ interface FranchiseTagColumnProps {
  * This component displays a single table with a position's franchise tag information
  */
 const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
-  const { position, tagPrice, keptPlayers } = props;
+  const { keptPlayers } = props;
   return (
     <div className="d-flex-1">
-      <h3>
-        {position} price: ${tagPrice}
-      </h3>
       <Table borderless hover size="sm" responsive striped>
-        <thead>
+        <thead className="thead-light">
           <tr>
             <th>Kept Player</th>
             <th>Original Price</th>
           </tr>
         </thead>
         <tbody>
-          {keptPlayers.map((player: Player) => (
-            <tr key={player.sleeperId}>
+          {keptPlayers.map((player: Player, index: number) => (
+            <tr
+              key={player.sleeperId}
+              className={index % 2 ? "player-table-even" : "player-table-odd"}
+            >
               <td
-                style={TABLE_STYLE}
                 className={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
                     ? "fw-bold"
@@ -41,7 +39,6 @@ const FranchiseTagColumn = (props: FranchiseTagColumnProps) => {
                 {player.name}
               </td>
               <td
-                style={TABLE_STYLE}
                 className={
                   KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass
                     ? "fw-bold"
