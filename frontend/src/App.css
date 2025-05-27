@@ -85,7 +85,7 @@ body {
 }
 
 .warning {
-  background-color: #facc15;
+  background-color: #eab308;
   color: black;
 }
 
@@ -126,7 +126,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:focus {
-  outline: 2px solid #facc15;
+  outline: 2px solid #eab308;
   outline-offset: 2px;
 }
 
@@ -158,12 +158,12 @@ input[type="checkbox"]:checked::after {
 .navbar-custom .nav-link:hover,
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .dropdown-toggle:hover {
-  color: #facc15; /* gold/yellow accent */
+  color: #eab308; /* gold/yellow accent */
   background-color: #233b67; /* slightly darker blue */
   border-radius: 4px;
 }
 .navbar-custom .nav-link.active {
-  color: #facc15;
+  color: #eab308;
   font-weight: bold;
 }
 
@@ -182,13 +182,13 @@ input[type="checkbox"]:checked::after {
 }
 .dropdown-item:hover {
   background-color: #2f5997;
-  color: #facc15;
+  color: #eab308;
 }
 
 .section-title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #facc15;
+  color: #eab308;
   letter-spacing: 1px;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -219,7 +219,7 @@ input[type="checkbox"]:checked::after {
   color: #1a243d;
 }
 .card-warning {
-  background-color: #facc15;
+  background-color: #eab308;
   color: #1a243d;
 }
 .card-penalty {
