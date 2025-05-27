@@ -1,4 +1,3 @@
-import React from "react";
 import { Input } from "reactstrap";
 import {
   FranchiseTagDTO,
@@ -11,7 +10,6 @@ import {
   getKeeperClassText,
   KEEPER_CLASS_ENUM,
 } from "../../utilities/enumerations";
-import { TABLE_STYLE } from "../../utilities/constants";
 
 const showUnadjustedPrice = (keeperClass: number) => {
   return [
@@ -32,6 +30,7 @@ const getSuperMaxText = (superMax: SuperMaxData) => {
 };
 
 interface RosterPlayerRowProps {
+  index: number;
   player: Player;
   franchisePrices: FranchiseTagDTO;
   id: string;
@@ -44,18 +43,18 @@ interface RosterPlayerRowProps {
  */
 
 const RosterPlayerRow = (props: RosterPlayerRowProps) => {
-  const { player } = props;
+  const { player, index } = props;
   return (
-    <tr className="customRow">
-      <td style={TABLE_STYLE}>{player.position}</td>
-      <td style={TABLE_STYLE}> {player.name} </td>
-      <td style={TABLE_STYLE}>
+    <tr className={index % 2 ? "player-table-even" : "player-table-odd"}>
+      <td>{player.position}</td>
+      <td> {player.name} </td>
+      <td>
         {showUnadjustedPrice(player.keeperClass) && (
           <span className="previousValue"> {player.price}</span>
         )}{" "}
         {determineFinalPriceOfPlayer(player, props.franchisePrices)}
       </td>
-      <td style={TABLE_STYLE}>
+      <td>
         <Input
           type="checkbox"
           id={props.id}
@@ -66,10 +65,10 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
           disabled={KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass}
         />
       </td>
-      <td style={TABLE_STYLE}>
+      <td>
         {player.keeperClass > 1 && getKeeperClassText(player.keeperClass)}
       </td>
-      <td style={TABLE_STYLE}>
+      <td>
         {KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass &&
           player.superMax &&
           getSuperMaxText(player.superMax)}

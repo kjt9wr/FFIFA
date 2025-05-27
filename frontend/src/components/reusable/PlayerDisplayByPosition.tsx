@@ -1,6 +1,5 @@
 import { Button, Col, Row, Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
-import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
 
 interface PlayerDisplayByPositionProps {
@@ -35,10 +34,9 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
       <tbody>
         {players.map((player: Player) => {
           return (
-            <tr key={player.name}>
+            <tr className="roster-display-table" key={player.name}>
               {isEditable && removePlayerCallback ? (
                 <td
-                  style={TRANSPARENT_TABLE_STYLE}
                   onClick={() => {
                     removePlayerCallback(player.sleeperId);
                   }}
@@ -49,7 +47,7 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
                   {player.name} - ${player.price}
                 </td>
               ) : (
-                <td style={TRANSPARENT_TABLE_STYLE}>{player.name}</td>
+                <td>{player.name}</td>
               )}
             </tr>
           );

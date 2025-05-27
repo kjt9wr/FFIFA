@@ -20,7 +20,7 @@ const renderSuperPlayerTable = (superMaxPlayers: Player[]) => {
       currentPlayer.superMax &&
       getCurrentSuperMaxYear(currentPlayer.superMax.signingYear);
     return (
-      <tr key={currentPlayer.sleeperId} className="customRow">
+      <tr key={currentPlayer.sleeperId}>
         <td style={TABLE_STYLE}>{currentPlayer.name}</td>
         <td style={TABLE_STYLE}>{ownerName}</td>
         <td style={TABLE_STYLE}>{currentYear}</td>

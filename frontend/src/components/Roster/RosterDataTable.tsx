@@ -13,7 +13,7 @@ interface RosterDataTableProps {
  */
 const RosterDataTable = (props: RosterDataTableProps) => {
   return (
-    <Table responsive size="md" hover striped>
+    <Table responsive size="md" hover borderless>
       <thead className="thead-light">
         <tr>
           <th>Position</th>
@@ -25,9 +25,10 @@ const RosterDataTable = (props: RosterDataTableProps) => {
         </tr>
       </thead>
       <tbody>
-        {props.roster.map((currentPlayer) => {
+        {props.roster.map((currentPlayer, index) => {
           return (
             <RosterPlayerRow
+              index={index}
               player={currentPlayer}
               key={currentPlayer.sleeperId}
               id={currentPlayer.sleeperId}
