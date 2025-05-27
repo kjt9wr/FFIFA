@@ -251,3 +251,43 @@ input[type="checkbox"]:checked::after {
   text-align: center;
   margin-left: 0;
 }
+
+.trade-tracker-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.year-selector {
+  min-width: 120px;
+  max-width: 180px;
+  height: 2.4rem;
+  font-size: 1.1rem;
+}
+
+.no-trades-message {
+  color: #b5d2ff;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.trade-card {
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  border-radius: 8px;
+  background: #b5d2ff;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .trade-tracker-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .year-selector {
+    width: 100%;
+  }
+}

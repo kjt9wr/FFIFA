@@ -43,7 +43,7 @@ const TradeCard = (props: TradeCardProps) => {
   const { currentTrade } = props;
 
   return (
-    <Card className="p-1 my-2">
+    <Card className="trade-card">
       <Row>
         <Col>
           <h6 className="fw-bold">{currentTrade.owner1} Receives: </h6>

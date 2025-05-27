@@ -17,7 +17,7 @@ const YearSelector = (props: yearSelectorProps) => {
   };
 
   return (
-    <ButtonGroup>
+    <ButtonGroup className="year-selector" id="year-selector">
       {props.yearOptions.map((year: string) => {
         return (
           <Button
