@@ -21,7 +21,6 @@ const RosterDataTable = (props: RosterDataTableProps) => {
           <th>Price</th>
           <th>Keep</th>
           <th>Keep Class</th>
-          <th>SuperMax</th>
         </tr>
       </thead>
       <tbody>

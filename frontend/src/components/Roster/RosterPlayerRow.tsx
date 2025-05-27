@@ -1,9 +1,5 @@
 import { Input } from "reactstrap";
-import {
-  FranchiseTagDTO,
-  Player,
-  SuperMaxData,
-} from "../../interfaces/interfaces";
+import { FranchiseTagDTO, Player } from "../../interfaces/interfaces";
 import { determineFinalPriceOfPlayer } from "../../services/ffifa.service";
 import { getCurrentSuperMaxYear } from "../../services/supermax.service";
 import {
@@ -16,17 +12,6 @@ const showUnadjustedPrice = (keeperClass: number) => {
     KEEPER_CLASS_ENUM.FRANCHISE_TAG,
     KEEPER_CLASS_ENUM.ARBITRATION,
   ].includes(keeperClass);
-};
-
-const getSuperMaxText = (superMax: SuperMaxData) => {
-  return (
-    superMax && (
-      <b>
-        Year {getCurrentSuperMaxYear(superMax.signingYear)} in {superMax.plan}{" "}
-        Year Deal
-      </b>
-    )
-  );
 };
 
 interface RosterPlayerRowProps {
@@ -67,11 +52,14 @@ const RosterPlayerRow = (props: RosterPlayerRowProps) => {
       </td>
       <td>
         {player.keeperClass > 1 && getKeeperClassText(player.keeperClass)}
-      </td>
-      <td>
         {KEEPER_CLASS_ENUM.SUPERMAX === player.keeperClass &&
-          player.superMax &&
-          getSuperMaxText(player.superMax)}
+          player.superMax && (
+            <span>
+              {" "}
+              Y{getCurrentSuperMaxYear(player.superMax.signingYear)}/
+              {player.superMax.plan}
+            </span>
+          )}
       </td>
     </tr>
   );
