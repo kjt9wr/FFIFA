@@ -17,7 +17,7 @@ import {
   getOwnersCap,
 } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
+import KeptPlayersDisplay from "../reusable/KeptPlayersDisplay";
 import RosterDataTable from "./RosterDataTable";
 import RosterCapInfo from "./RosterCapInfo";
 
@@ -106,11 +106,8 @@ const Roster = (props: RosterProps) => {
           cap={cap}
           isEditable={false}
         />
-        <h4 className="section-title">Kept Players:</h4>
-        <PlayerDisplayByPosition
-          playerList={keptPlayersList}
-          isEditable={false}
-        />
+
+        <KeptPlayersDisplay playerList={keptPlayersList} isEditable={false} />
         <h4 className="section-title">Full Roster:</h4>
         <RosterDataTable
           roster={roster.sort(

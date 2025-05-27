@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PlayerDisplayByPosition from "./PlayerDisplayByPosition";
+import PlayerDisplayByPosition from "./KeptPlayersDisplay";
 import { MOCKED_ROSTER } from "../../services/mock-data/player.mock-data";
 import userEvent from "@testing-library/user-event";
 

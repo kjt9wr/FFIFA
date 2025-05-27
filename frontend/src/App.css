@@ -307,6 +307,28 @@ input[type="checkbox"]:checked::after {
   margin: 0.5rem 0;
 }
 
+.remove-player-btn {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  border-width: 2px;
+}
+
+.remove-player-btn:hover,
+.remove-player-btn:focus {
+  background: #2f5997;
+  color: #fff;
+  border-color: #2f5997;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;

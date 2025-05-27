@@ -4,7 +4,7 @@ import { fetchArbitrationData } from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
 import { getUpcomingSeasonYear } from "../../utilities/constants";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
+import PlayerDisplayByPosition from "../reusable/KeptPlayersDisplay";
 import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import YearSelector from "../reusable/YearSelector";
 

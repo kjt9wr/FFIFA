@@ -10,7 +10,7 @@ import {
 import { Player } from "../../interfaces/interfaces";
 import { getOwnersCap } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
-import PlayerDisplayByPosition from "../reusable/PlayerDisplayByPosition";
+import KeptPlayersDisplay from "../reusable/KeptPlayersDisplay";
 import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import RosterCapInfo from "../Roster/RosterCapInfo";
 
@@ -141,11 +141,10 @@ const RosterPreview = () => {
         updateCapCallback={updateCap}
         isEditable={true}
       />
-      <h4 className="section-title">Roster:</h4>
       <SpinnerWrapper loading={pageLoading} />
       {!pageLoading && (
         <>
-          <PlayerDisplayByPosition
+          <KeptPlayersDisplay
             playerList={roster}
             removePlayerCallback={removePlayer}
             isEditable={true}

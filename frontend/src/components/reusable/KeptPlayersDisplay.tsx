@@ -2,7 +2,7 @@ import { Button, Col, Row, Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
 import { POSITION } from "../../utilities/enumerations";
 
-interface PlayerDisplayByPositionProps {
+interface KeptPlayersDisplayProps {
   isEditable: Boolean;
   playerList: Player[];
   removePlayerCallback?: (playerId: string) => void;
@@ -16,7 +16,7 @@ const filterKeepersByPosition = (keptPlayers: Player[], position: string) => {
 /*
  * This component displays a table of players grouped by position
  */
-const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
+const KeptPlayersDisplay = (props: KeptPlayersDisplayProps) => {
   const { removePlayerCallback, isEditable, playerList } = props;
 
   const keptQBs = filterKeepersByPosition(playerList, POSITION.QB);
@@ -41,8 +41,19 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
                     removePlayerCallback(player.sleeperId);
                   }}
                 >
-                  <Button size="sm" outline>
-                    X
+                  <Button
+                    size="sm"
+                    outline
+                    color="primary"
+                    className="remove-player-btn"
+                    title="Remove player"
+                    aria-label={`Remove ${player.name}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removePlayerCallback(player.sleeperId);
+                    }}
+                  >
+                    &times;
                   </Button>
                   {player.name} - ${player.price}
                 </td>
@@ -57,13 +68,16 @@ const PlayerDisplayByPosition = (props: PlayerDisplayByPositionProps) => {
   );
 
   return (
-    <Row xs="2" md="4">
-      <Col>{renderPlayersForPosition(POSITION.QB, keptQBs)} </Col>
-      <Col>{renderPlayersForPosition(POSITION.RB, keptRBs)}</Col>
-      <Col>{renderPlayersForPosition(POSITION.WR, keptWRs)}</Col>
-      <Col>{renderPlayersForPosition(POSITION.TE, keptTEs)}</Col>
-    </Row>
+    <>
+      <h4 className="section-title">Kept Players:</h4>
+      <Row xs="2" md="4">
+        <Col>{renderPlayersForPosition(POSITION.QB, keptQBs)} </Col>
+        <Col>{renderPlayersForPosition(POSITION.RB, keptRBs)}</Col>
+        <Col>{renderPlayersForPosition(POSITION.WR, keptWRs)}</Col>
+        <Col>{renderPlayersForPosition(POSITION.TE, keptTEs)}</Col>
+      </Row>
+    </>
   );
 };
 
-export default PlayerDisplayByPosition;
+export default KeptPlayersDisplay;
