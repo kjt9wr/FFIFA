@@ -132,6 +132,7 @@ const RosterPreview = () => {
       {(franchiseError || penaltyError) && (
         <Alert color="danger">There was an error loading this page</Alert>
       )}
+      <h2 className="page-title"> Roster Preview</h2>
       <RosterCapInfo
         roster={roster}
         franchisePrices={franchisePrices}
@@ -140,7 +141,7 @@ const RosterPreview = () => {
         updateCapCallback={updateCap}
         isEditable={true}
       />
-      <h4>Roster:</h4>
+      <h4 className="section-title">Roster:</h4>
       <SpinnerWrapper loading={pageLoading} />
       {!pageLoading && (
         <>
@@ -149,9 +150,8 @@ const RosterPreview = () => {
             removePlayerCallback={removePlayer}
             isEditable={true}
           />
-          <br /> <br />
           <Form onSubmit={handleSubmit}>
-            <h5> Add a Player to the roster: </h5>
+            <h5 className="section-title"> Add a Player to the roster: </h5>
             <Row xs="2" md="4">
               <Col>
                 <Select

@@ -281,6 +281,32 @@ input[type="checkbox"]:checked::after {
   padding: 1rem;
 }
 
+.max-cap-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.max-cap-btn {
+  min-width: 2.2rem;
+  font-weight: bold;
+}
+
+.max-cap-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+  min-width: 70px;
+  text-align: center;
+}
+
+.cap-card-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;

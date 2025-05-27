@@ -19,8 +19,12 @@ const renderCard = (label: string, value: number) => {
   return (
     <Card className="h-100">
       <CardBody>
-        <CardTitle tag="h5">{label}</CardTitle>
-        <CardText tag="h6">${value}</CardText>
+        <CardTitle tag="h5" className="text-center">
+          {label}
+        </CardTitle>
+        <CardText tag="h6" className="cap-card-value">
+          ${value}
+        </CardText>
       </CardBody>
     </Card>
   );
@@ -73,25 +77,35 @@ const RosterCapInfo = (props: RosterCapInfoProps) => {
           {isEditable && updateCapCallback ? (
             <Card className="h-100">
               <CardBody>
-                <CardTitle tag="h5">Max Cap</CardTitle>
-                <CardText tag="h6">
-                  <Button
-                    onClick={() => updateCapCallback(MAX_CAP - 1)}
-                    title={"Subtract Cap"}
-                    size="sm"
-                    outline
-                  >
-                    -
-                  </Button>{" "}
-                  ${MAX_CAP}{" "}
-                  <Button
-                    onClick={() => updateCapCallback(MAX_CAP + 1)}
-                    title={"Add Cap"}
-                    size="sm"
-                    outline
-                  >
-                    +
-                  </Button>
+                <CardTitle tag="h5" className="text-center">
+                  Max Cap
+                </CardTitle>
+                <CardText tag="h6" className="cap-card-value">
+                  <div className="max-cap-controls">
+                    <Button
+                      onClick={() => updateCapCallback(MAX_CAP - 1)}
+                      title="Subtract Cap"
+                      size="sm"
+                      outline
+                      color="primary"
+                      className="max-cap-btn"
+                      aria-label="Decrease cap"
+                    >
+                      –
+                    </Button>
+                    <span className="max-cap-value">${MAX_CAP}</span>
+                    <Button
+                      onClick={() => updateCapCallback(MAX_CAP + 1)}
+                      title="Add Cap"
+                      size="sm"
+                      outline
+                      color="primary"
+                      className="max-cap-btn"
+                      aria-label="Increase cap"
+                    >
+                      +
+                    </Button>
+                  </div>
                 </CardText>
               </CardBody>
             </Card>
@@ -104,8 +118,10 @@ const RosterCapInfo = (props: RosterCapInfoProps) => {
         <Col>
           <Card className={`h-100 ${getCardColor()}`}>
             <CardBody>
-              <CardTitle tag="h5">Remaining</CardTitle>
-              <CardText tag="h6">
+              <CardTitle tag="h5" className="text-center">
+                Remaining
+              </CardTitle>
+              <CardText tag="h6" className="cap-card-value">
                 ${remaining}{" "}
                 {!isOffender && (
                   <span>
