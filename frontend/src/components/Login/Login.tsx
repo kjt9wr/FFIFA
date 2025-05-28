@@ -10,26 +10,16 @@ const Login = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
     await login(username, password);
   };
 
   return (
     <div>
-      <h1 className="page-title"> Login to FFIFA </h1>
+      <h1 className="page-title">Login to FFIFA</h1>
       <SpinnerWrapper loading={isLoading} />
-
       <div className="d-flex justify-content-center align-items-center">
         <Form
-          style={{
-            backgroundColor: "#3a3c4a",
-            padding: "40px",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            width: "100%",
-            maxWidth: "400px",
-            textAlign: "center",
-          }}
+          className="login-form"
           title="Login to FFIFA"
           onSubmit={handleSubmit}
         >
@@ -41,6 +31,8 @@ const Login = () => {
               placeholder="Username"
               type="text"
               onChange={(e) => setUsername(e.target.value)}
+              autoFocus
+              className="login-input"
             />
           </FormGroup>
           <FormGroup>
@@ -50,21 +42,13 @@ const Login = () => {
               placeholder="Password"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
             />
           </FormGroup>
           <Button
-            style={{
-              width: "100%",
-              padding: "14px",
-              backgroundColor: "#007bff",
-              color: "white",
-              fontSize: "16px",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              transition: "background-color 0.3s ease",
-            }}
+            className="login-btn"
             disabled={!username || !password || isLoading}
+            type="submit"
           >
             Login
           </Button>
