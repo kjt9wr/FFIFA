@@ -18,7 +18,7 @@ const Admin = () => {
 
   return (
     <Container>
-      <h1 className="text-center"> Admin Page </h1>
+      <h1 className="page-title"> Admin Page </h1>
       {ALERT_STATE.ERROR === rosterUpdateAlert && (
         <Alert color="danger">Error updating rosters</Alert>
       )}

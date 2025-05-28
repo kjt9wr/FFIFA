@@ -517,6 +517,28 @@ input[type="checkbox"]:checked::after {
   justify-content: space-between;
 }
 
+.admin-card {
+  background: #232e47;
+  border: 1px solid #2f5997;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+}
+
+.admin-btn {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.admin-btn:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;
