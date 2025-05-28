@@ -6,7 +6,6 @@ import { Owner, TradeInfo } from "../../interfaces/interfaces";
 import {
   getUpcomingSeasonYear,
   RECORDED_YEARS,
-  TRANSPARENT_TABLE_STYLE,
 } from "../../utilities/constants";
 import SpinnerWrapper from "../reusable/SpinnerWrapper";
 import YearSelector from "../reusable/YearSelector";
@@ -17,7 +16,7 @@ const displayCapTable = (
   filteredTrades: TradeInfo[]
 ) => {
   return (
-    <Table responsive hover striped>
+    <Table responsive hover striped borderless>
       <thead className="thead-light">
         <tr>
           <th></th>
@@ -27,31 +26,26 @@ const displayCapTable = (
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td style={TRANSPARENT_TABLE_STYLE}>{year}</td>
+        <tr className={"player-table-even"}>
+          <td>{year}</td>
           {owners.map((owner: Owner) => (
-            <td style={TRANSPARENT_TABLE_STYLE} key={owner.name}>
-              {owner.cap[parseInt(year.slice(-1))]}
-            </td>
+            <td key={owner.name}>{owner.cap[parseInt(year.slice(-1))]}</td>
           ))}
         </tr>
-        {filteredTrades.map((trade) => {
+        {filteredTrades.map((trade, index: number) => {
           return (
-            <tr key={trade._id}>
-              <td style={TRANSPARENT_TABLE_STYLE}>Trade</td>
+            <tr
+              key={trade._id}
+              className={index % 2 ? "player-table-even" : "player-table-odd"}
+            >
+              <td>Trade</td>
               {owners.map((owner: Owner) =>
                 [trade.owner1, trade.owner2].includes(owner.name) ? (
-                  <td
-                    style={TRANSPARENT_TABLE_STYLE}
-                    key={`${trade._id}-${owner.sleeperId}`}
-                  >
+                  <td key={`${trade._id}-${owner.sleeperId}`}>
                     {displayCapAmount(owner.name, trade, year)}
                   </td>
                 ) : (
-                  <td
-                    style={TRANSPARENT_TABLE_STYLE}
-                    key={`${trade._id}-${owner.sleeperId}`}
-                  />
+                  <td key={`${trade._id}-${owner.sleeperId}`} />
                 )
               )}
             </tr>
@@ -113,17 +107,20 @@ const CapTracker = () => {
 
   return (
     <Container>
-      <h2 className="text-center">Cap Tracker </h2>
+      <h2 className="page-title">Cap Tracker </h2>
       {(error || tradeError) && (
         <Alert color="danger">Error fetching cap data</Alert>
       )}
-      <YearSelector
-        onChange={handleOnChange}
-        selectedYear={selectedYear}
-        yearOptions={RECORDED_YEARS}
-      />
-      <br />
-      <br />
+      <div className="trade-tracker-controls">
+        <label htmlFor="year-selector" className="section-title">
+          Select Year:
+        </label>
+        <YearSelector
+          onChange={handleOnChange}
+          selectedYear={selectedYear}
+          yearOptions={RECORDED_YEARS}
+        />
+      </div>
       {!error &&
         !loading &&
         !tradeError &&
