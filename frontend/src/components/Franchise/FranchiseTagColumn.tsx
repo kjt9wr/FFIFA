@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "reactstrap";
 import { Player } from "../../interfaces/interfaces";
 import { KEEPER_CLASS_ENUM } from "../../utilities/enumerations";

@@ -353,6 +353,14 @@ input[type="checkbox"]:checked::after {
   border-color: #2f5997;
 }
 
+.loading-message {
+  color: #b5d2ff;
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;

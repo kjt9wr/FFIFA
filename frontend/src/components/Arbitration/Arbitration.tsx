@@ -27,20 +27,39 @@ const Arbitration = () => {
 
   return (
     <Container>
-      <h1 className="text-center"> Arbitration </h1>
+      <h1 className="page-title"> Arbitration </h1>
       {error && <Alert color="danger">Error fetching arbitration data</Alert>}
-      <YearSelector
-        onChange={handleOnChange}
-        selectedYear={selectedYear}
-        yearOptions={[
-          upcomingYear,
-          String(Number(upcomingYear) + 1),
-          String(Number(upcomingYear) + 2),
-        ]}
-      />
-      <br /> <br />
+      <div className="trade-tracker-controls">
+        <label htmlFor="year-selector" className="section-title">
+          Select Year:
+        </label>
+        <YearSelector
+          onChange={handleOnChange}
+          selectedYear={selectedYear}
+          yearOptions={[
+            upcomingYear,
+            String(Number(upcomingYear) + 1),
+            String(Number(upcomingYear) + 2),
+          ]}
+        />
+      </div>
       <SpinnerWrapper loading={loading} />
-      <h4>{selectedYear}</h4>
+      <h4 className="section-title mb-3">
+        Players Entering Arbitration in {selectedYear}
+      </h4>
+      {loading && (
+        <div className="loading-message">Loading arbitration players...</div>
+      )}
+      {!loading &&
+        arbitratedPlayers.filter(
+          (player: Player) =>
+            player.firstKeepYear &&
+            Number(selectedYear) - player.firstKeepYear === 3
+        ).length === 0 && (
+          <div className="no-trades-message">
+            No players entering arbitration for {selectedYear}.
+          </div>
+        )}
       <PlayerDisplayByPosition
         playerList={arbitratedPlayers.filter(
           (player: Player) =>
