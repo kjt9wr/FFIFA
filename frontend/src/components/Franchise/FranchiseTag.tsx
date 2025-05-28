@@ -23,7 +23,7 @@ const FranchiseTag = () => {
   } = useFranchisePrices();
 
   return (
-    <Container className="py-4">
+    <Container>
       <h2 className="page-title">Franchise Tag Prices</h2>
       {error && <Alert color="danger">Error fetching players</Alert>}
       <SpinnerWrapper loading={loading} />

@@ -361,6 +361,57 @@ input[type="checkbox"]:checked::after {
   letter-spacing: 1px;
 }
 
+/* Accordion header and body styling for Free Agency */
+.free-agent-accordion .accordion-header {
+  background: linear-gradient(90deg, #233b67 70%, #2f5997 100%);
+  color: #b5d2ff;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 1.1rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s, color 0.2s;
+}
+
+.free-agent-accordion .accordion-header:hover,
+.free-agent-accordion .accordion-header:focus {
+  background: #2f5997;
+  color: #facc15;
+}
+
+.free-agent-accordion .accordion-item {
+  background: #232e47;
+  border: 1px solid #2f5997;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.free-agent-accordion .accordion-item:focus-within,
+.free-agent-accordion .accordion-item:hover {
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18);
+  border-color: #b5d2ff;
+}
+
+.free-agent-accordion .accordion-body {
+  background: #1a243d;
+  color: #f8f8f2;
+  border-top: 1px solid #2f5997;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+}
+
+/* Table row hover for free agent tables */
+.free-agent-table tr:hover {
+  background: #2f5997;
+  color: #fff;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;

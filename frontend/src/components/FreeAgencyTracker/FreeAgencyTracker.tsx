@@ -5,12 +5,12 @@ import {
   AccordionHeader,
   AccordionItem,
   Alert,
+  Container,
   Table,
 } from "reactstrap";
 import { fetchFreeAgents } from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
-import { TRANSPARENT_TABLE_STYLE } from "../../utilities/constants";
 import { POSITION } from "../../utilities/enumerations";
 import SpinnerWrapper from "../reusable/SpinnerWrapper";
 
@@ -22,14 +22,23 @@ interface FreeAgentAccordionProps {
 
 const FreeAgentAccordion = (props: FreeAgentAccordionProps) => {
   return (
-    <AccordionItem style={TRANSPARENT_TABLE_STYLE}>
+    <AccordionItem>
       <AccordionHeader targetId={props.index}>{props.position}</AccordionHeader>
       <AccordionBody accordionId={props.index}>
-        <Table borderless size="sm">
+        <Table
+          className="free-agent-table"
+          borderless
+          size="sm"
+          hover
+          responsive
+        >
           <tbody>
-            {props.availablePlayers.map((player: Player) => (
-              <tr key={player.sleeperId}>
-                <td style={TRANSPARENT_TABLE_STYLE}> {player.name}</td>
+            {props.availablePlayers.map((player: Player, index: number) => (
+              <tr
+                key={player.sleeperId}
+                className={index % 2 ? "player-table-even" : "player-table-odd"}
+              >
+                <td>{player.name}</td>
               </tr>
             ))}
           </tbody>
@@ -68,12 +77,12 @@ const FreeAgency = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-center"> Free Agents </h2>
+    <Container className="py-4">
+      <h2 className="page-title">Free Agents</h2>
       {error && <Alert color="danger">Error fetching players</Alert>}
       <SpinnerWrapper loading={loading} />
       {!loading && !error && (
-        <Accordion open={open} toggle={toggle}>
+        <Accordion open={open} toggle={toggle} className="free-agent-accordion">
           <FreeAgentAccordion
             availablePlayers={getAvailablePlayersByPosition(
               POSITION.QB,
@@ -108,7 +117,7 @@ const FreeAgency = () => {
           />
         </Accordion>
       )}
-    </div>
+    </Container>
   );
 };
 

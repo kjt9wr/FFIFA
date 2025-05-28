@@ -21,13 +21,3 @@ export const getUpcomingSeasonYear = () => UPCOMING_SEASON_YEAR;
 export const getUpcomingYearIndex = () => {
   return Number(UPCOMING_SEASON_YEAR) - 2020;
 };
-
-export const TABLE_STYLE = {
-  color: "#f8f8f2",
-  backgroundColor: "#6d728b",
-};
-
-export const TRANSPARENT_TABLE_STYLE = {
-  backgroundColor: "#45495e",
-  color: "#f8f8f2",
-};

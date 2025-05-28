@@ -119,7 +119,7 @@ const NavBar = () => {
           </Nav>
         </Collapse>
       </Navbar>
-      <br /> <br /> <br />
+      <br />
     </div>
   );
 };
