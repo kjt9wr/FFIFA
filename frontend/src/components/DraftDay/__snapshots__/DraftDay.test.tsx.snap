@@ -6,101 +6,238 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="container"
+        class="py-4 container"
       >
         <h1
-          class="text-center"
+          class="page-title"
         >
-           Draft Day Info 
+          Draft Day Info
         </h1>
-        <h4>
-          Total Money in the Pot: $
-          100
-        </h4>
-        <h4>
-          Payout Per Owner: $
-          11
-        </h4>
-        <h4>
-          2026
-           Base Cap: $
-          416
-        </h4>
         <div
-          class="p-1 my-2 card"
+          class="mb-4 row"
         >
           <div
-            class="row"
+            class="col-md-4"
           >
             <div
-              class="col"
+              class="draftday-info-card card"
             >
-              <h3>
-                Under Tax: 
-              </h3>
-              <h5>
-                <div>
-                  Christian
-                </div>
-                <div>
-                  Brent
-                </div>
-                <div>
-                  Matt
-                </div>
-                <div>
-                  Casey
-                </div>
-              </h5>
+              <div
+                class="card-body"
+              >
+                <h5
+                  class="section-title"
+                >
+                  Total Pot
+                </h5>
+                <span
+                  class="draftday-info-value"
+                >
+                  $
+                  100
+                </span>
+              </div>
             </div>
+          </div>
+          <div
+            class="col-md-4"
+          >
             <div
-              class="col"
+              class="draftday-info-card card"
             >
-              <h3>
-                Over Tax: 
-              </h3>
-              <h5>
-                <div>
-                  Jeff
-                   $
-                  5
-                </div>
-                <div>
-                  Kevin
-                   $
-                  34
-                </div>
-                <div>
-                  Nikos
-                   $
-                  22
-                </div>
-                <div>
-                  Justin
-                   $
-                  21
-                </div>
-                <div>
-                  Luigi
-                   $
-                  64
-                </div>
-                <div>
-                  Alex
-                   $
-                  47
-                </div>
-                <div>
-                  Patrick
-                   $
-                  67
-                </div>
-                <div>
-                  Michael
-                   $
-                  25
-                </div>
-              </h5>
+              <div
+                class="card-body"
+              >
+                <h5
+                  class="section-title"
+                >
+                  Payout Per Owner
+                </h5>
+                <span
+                  class="draftday-info-value"
+                >
+                  $
+                  11
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-4"
+          >
+            <div
+              class="draftday-info-card card"
+            >
+              <div
+                class="card-body"
+              >
+                <h5
+                  class="section-title"
+                >
+                  2026
+                   Base Cap
+                </h5>
+                <span
+                  class="draftday-info-value"
+                >
+                  $
+                  416
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-md-6"
+          >
+            <div
+              class="draftday-tax-card card"
+            >
+              <div
+                class="card-body"
+              >
+                <h5
+                  class="section-title"
+                >
+                  Under Tax
+                </h5>
+                <ul
+                  class="draftday-owner-list"
+                >
+                  <li
+                    class="draftday-owner"
+                  >
+                    Christian
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Brent
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Matt
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Casey
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-6"
+          >
+            <div
+              class="draftday-tax-card card"
+            >
+              <div
+                class="card-body"
+              >
+                <h5
+                  class="section-title"
+                >
+                  Over Tax
+                </h5>
+                <ul
+                  class="draftday-owner-list"
+                >
+                  <li
+                    class="draftday-owner"
+                  >
+                    Jeff
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      5
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Kevin
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      34
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Nikos
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      22
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Justin
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      21
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Luigi
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      64
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Alex
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      47
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Patrick
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      67
+                    </span>
+                  </li>
+                  <li
+                    class="draftday-owner"
+                  >
+                    Michael
+                    <span
+                      class="ms-2 badge bg-danger"
+                    >
+                      $
+                      25
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -109,101 +246,238 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="container"
+      class="py-4 container"
     >
       <h1
-        class="text-center"
+        class="page-title"
       >
-         Draft Day Info 
+        Draft Day Info
       </h1>
-      <h4>
-        Total Money in the Pot: $
-        100
-      </h4>
-      <h4>
-        Payout Per Owner: $
-        11
-      </h4>
-      <h4>
-        2026
-         Base Cap: $
-        416
-      </h4>
       <div
-        class="p-1 my-2 card"
+        class="mb-4 row"
       >
         <div
-          class="row"
+          class="col-md-4"
         >
           <div
-            class="col"
+            class="draftday-info-card card"
           >
-            <h3>
-              Under Tax: 
-            </h3>
-            <h5>
-              <div>
-                Christian
-              </div>
-              <div>
-                Brent
-              </div>
-              <div>
-                Matt
-              </div>
-              <div>
-                Casey
-              </div>
-            </h5>
+            <div
+              class="card-body"
+            >
+              <h5
+                class="section-title"
+              >
+                Total Pot
+              </h5>
+              <span
+                class="draftday-info-value"
+              >
+                $
+                100
+              </span>
+            </div>
           </div>
+        </div>
+        <div
+          class="col-md-4"
+        >
           <div
-            class="col"
+            class="draftday-info-card card"
           >
-            <h3>
-              Over Tax: 
-            </h3>
-            <h5>
-              <div>
-                Jeff
-                 $
-                5
-              </div>
-              <div>
-                Kevin
-                 $
-                34
-              </div>
-              <div>
-                Nikos
-                 $
-                22
-              </div>
-              <div>
-                Justin
-                 $
-                21
-              </div>
-              <div>
-                Luigi
-                 $
-                64
-              </div>
-              <div>
-                Alex
-                 $
-                47
-              </div>
-              <div>
-                Patrick
-                 $
-                67
-              </div>
-              <div>
-                Michael
-                 $
-                25
-              </div>
-            </h5>
+            <div
+              class="card-body"
+            >
+              <h5
+                class="section-title"
+              >
+                Payout Per Owner
+              </h5>
+              <span
+                class="draftday-info-value"
+              >
+                $
+                11
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4"
+        >
+          <div
+            class="draftday-info-card card"
+          >
+            <div
+              class="card-body"
+            >
+              <h5
+                class="section-title"
+              >
+                2026
+                 Base Cap
+              </h5>
+              <span
+                class="draftday-info-value"
+              >
+                $
+                416
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-md-6"
+        >
+          <div
+            class="draftday-tax-card card"
+          >
+            <div
+              class="card-body"
+            >
+              <h5
+                class="section-title"
+              >
+                Under Tax
+              </h5>
+              <ul
+                class="draftday-owner-list"
+              >
+                <li
+                  class="draftday-owner"
+                >
+                  Christian
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Brent
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Matt
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Casey
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-6"
+        >
+          <div
+            class="draftday-tax-card card"
+          >
+            <div
+              class="card-body"
+            >
+              <h5
+                class="section-title"
+              >
+                Over Tax
+              </h5>
+              <ul
+                class="draftday-owner-list"
+              >
+                <li
+                  class="draftday-owner"
+                >
+                  Jeff
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    5
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Kevin
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    34
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Nikos
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    22
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Justin
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    21
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Luigi
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    64
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Alex
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    47
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Patrick
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    67
+                  </span>
+                </li>
+                <li
+                  class="draftday-owner"
+                >
+                  Michael
+                  <span
+                    class="ms-2 badge bg-danger"
+                  >
+                    $
+                    25
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ Object {
         class="table-responsive"
       >
         <table
-          class="table table-md table-striped table-hover"
+          class="table table-md table-borderless table-hover"
         >
           <thead
             class="thead-light"
@@ -30,30 +30,21 @@ Object {
               <th>
                 Keep Class
               </th>
-              <th>
-                SuperMax
-              </th>
             </tr>
           </thead>
           <tbody>
             <tr
-              class="customRow"
+              class="player-table-odd"
             >
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 WR
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 AJ Brown
                  
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 <span
                   class="previousValue"
                 >
@@ -63,9 +54,7 @@ Object {
                  
                 50
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 <input
                   checked=""
                   class="form-check-input"
@@ -74,39 +63,26 @@ Object {
                   type="checkbox"
                 />
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 Franchise Tag
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
             </tr>
             <tr
-              class="customRow"
+              class="player-table-even"
             >
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 WR
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 CeeDee Lamb
                  
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 56
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 <input
                   checked=""
                   class="form-check-input"
@@ -115,37 +91,24 @@ Object {
                   type="checkbox"
                 />
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
+              <td />
             </tr>
             <tr
-              class="customRow"
+              class="player-table-odd"
             >
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 QB
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 Jalen Hurts
                  
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 37
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 <input
                   checked=""
                   class="form-check-input"
@@ -154,37 +117,24 @@ Object {
                   type="checkbox"
                 />
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
+              <td />
             </tr>
             <tr
-              class="customRow"
+              class="player-table-even"
             >
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 WR
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 Chris Olave
                  
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 62
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 <input
                   class="form-check-input"
                   id="chris_olave"
@@ -192,37 +142,24 @@ Object {
                   type="checkbox"
                 />
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
+              <td />
             </tr>
             <tr
-              class="customRow"
+              class="player-table-odd"
             >
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 RB
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 Najee Harris
                  
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                  
                 76
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 <input
                   checked=""
                   class="form-check-input"
@@ -232,22 +169,15 @@ Object {
                   type="checkbox"
                 />
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 Supermax
-              </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
-                <b>
-                  Year 
-                  3
-                   in 
-                  5
+                <span>
                    
-                  Year Deal
-                </b>
+                  Y
+                  3
+                  /
+                  5
+                </span>
               </td>
             </tr>
           </tbody>
@@ -260,7 +190,7 @@ Object {
       class="table-responsive"
     >
       <table
-        class="table table-md table-striped table-hover"
+        class="table table-md table-borderless table-hover"
       >
         <thead
           class="thead-light"
@@ -281,30 +211,21 @@ Object {
             <th>
               Keep Class
             </th>
-            <th>
-              SuperMax
-            </th>
           </tr>
         </thead>
         <tbody>
           <tr
-            class="customRow"
+            class="player-table-odd"
           >
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               WR
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               AJ Brown
                
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               <span
                 class="previousValue"
               >
@@ -314,9 +235,7 @@ Object {
                
               50
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               <input
                 checked=""
                 class="form-check-input"
@@ -325,39 +244,26 @@ Object {
                 type="checkbox"
               />
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               Franchise Tag
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
           </tr>
           <tr
-            class="customRow"
+            class="player-table-even"
           >
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               WR
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               CeeDee Lamb
                
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               56
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               <input
                 checked=""
                 class="form-check-input"
@@ -366,37 +272,24 @@ Object {
                 type="checkbox"
               />
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
+            <td />
           </tr>
           <tr
-            class="customRow"
+            class="player-table-odd"
           >
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               QB
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               Jalen Hurts
                
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               37
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               <input
                 checked=""
                 class="form-check-input"
@@ -405,37 +298,24 @@ Object {
                 type="checkbox"
               />
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
+            <td />
           </tr>
           <tr
-            class="customRow"
+            class="player-table-even"
           >
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               WR
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               Chris Olave
                
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               62
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               <input
                 class="form-check-input"
                 id="chris_olave"
@@ -443,37 +323,24 @@ Object {
                 type="checkbox"
               />
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            />
+            <td />
           </tr>
           <tr
-            class="customRow"
+            class="player-table-odd"
           >
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               RB
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               Najee Harris
                
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
                
               76
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               <input
                 checked=""
                 class="form-check-input"
@@ -483,22 +350,15 @@ Object {
                 type="checkbox"
               />
             </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
+            <td>
               Supermax
-            </td>
-            <td
-              style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-            >
-              <b>
-                Year 
-                3
-                 in 
-                5
+              <span>
                  
-                Year Deal
-              </b>
+                Y
+                3
+                /
+                5
+              </span>
             </td>
           </tr>
         </tbody>

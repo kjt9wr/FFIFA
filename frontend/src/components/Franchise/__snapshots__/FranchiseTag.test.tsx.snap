@@ -5,33 +5,38 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
+      <div
+        class="container"
+      >
         <h2
-          class="text-center"
+          class="page-title"
         >
-           Franchise Tag Prices 
+          Franchise Tag Prices
         </h2>
         <div
-          class="row row-cols-2 row-cols-md-4"
+          class="g-4 row row-cols-1 row-cols-md-2 row-cols-lg-4"
         >
           <div
             class="col"
           >
+            <h4
+              class="section-title"
+            >
+              QB price: $
+              75
+            </h4>
             <div
               class="d-flex-1"
             >
-              <h3>
-                QB
-                 price: $
-                75
-              </h3>
               <div
                 class="table-responsive"
               >
                 <table
                   class="table table-sm table-borderless table-striped table-hover"
                 >
-                  <thead>
+                  <thead
+                    class="thead-light"
+                  >
                     <tr>
                       <th>
                         Kept Player
@@ -42,72 +47,72 @@ Object {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Jayden Daniels
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         67
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-even"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Jalen Hurts
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Kyler Murray
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-even"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Lamar Jackson
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Patrick Mahomes
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
                       </td>
@@ -120,21 +125,24 @@ Object {
           <div
             class="col"
           >
+            <h4
+              class="section-title"
+            >
+              RB price: $
+              75
+            </h4>
             <div
               class="d-flex-1"
             >
-              <h3>
-                RB
-                 price: $
-                75
-              </h3>
               <div
                 class="table-responsive"
               >
                 <table
                   class="table table-sm table-borderless table-striped table-hover"
                 >
-                  <thead>
+                  <thead
+                    class="thead-light"
+                  >
                     <tr>
                       <th>
                         Kept Player
@@ -145,86 +153,86 @@ Object {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Bijan Robinson
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         121
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-even"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Saquon Barkley
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         100
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Jahmyr Gibbs
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         98
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-even"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Josh Jacobs
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         81
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Derrick Henry
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         79
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-even"
+                    >
                       <td
                         class="fw-bold"
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Najee Harris
                       </td>
                       <td
                         class="fw-bold"
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         76
                       </td>
@@ -235,150 +243,26 @@ Object {
             </div>
           </div>
           <div
-            class="d-flex-1"
-          >
-            <h3>
-              WR
-               price: $
-              75
-            </h3>
-            <div
-              class="table-responsive"
-            >
-              <table
-                class="table table-sm table-borderless table-striped table-hover"
-              >
-                <thead>
-                  <tr>
-                    <th>
-                      Kept Player
-                    </th>
-                    <th>
-                      Original Price
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      Drake London
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      64
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      AJ Brown
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      61
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      CeeDee Lamb
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      56
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      Tyreek Hill
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      56
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      Jamarr Chase
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      52
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      Malik Nabers
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      51
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      Jalen Coker
-                    </td>
-                    <td
-                      class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                    >
-                      10
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div
             class="col"
           >
+            <h4
+              class="section-title"
+            >
+              WR price: $
+              75
+            </h4>
             <div
               class="d-flex-1"
             >
-              <h3>
-                TE
-                 price: $
-                75
-              </h3>
               <div
                 class="table-responsive"
               >
                 <table
                   class="table table-sm table-borderless table-striped table-hover"
                 >
-                  <thead>
+                  <thead
+                    class="thead-light"
+                  >
                     <tr>
                       <th>
                         Kept Player
@@ -389,30 +273,164 @@ Object {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr
+                      class="player-table-odd"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+                      >
+                        Drake London
+                      </td>
+                      <td
+                        class=""
+                      >
+                        64
+                      </td>
+                    </tr>
+                    <tr
+                      class="player-table-even"
+                    >
+                      <td
+                        class=""
+                      >
+                        AJ Brown
+                      </td>
+                      <td
+                        class=""
+                      >
+                        61
+                      </td>
+                    </tr>
+                    <tr
+                      class="player-table-odd"
+                    >
+                      <td
+                        class=""
+                      >
+                        CeeDee Lamb
+                      </td>
+                      <td
+                        class=""
+                      >
+                        56
+                      </td>
+                    </tr>
+                    <tr
+                      class="player-table-even"
+                    >
+                      <td
+                        class=""
+                      >
+                        Tyreek Hill
+                      </td>
+                      <td
+                        class=""
+                      >
+                        56
+                      </td>
+                    </tr>
+                    <tr
+                      class="player-table-odd"
+                    >
+                      <td
+                        class=""
+                      >
+                        Jamarr Chase
+                      </td>
+                      <td
+                        class=""
+                      >
+                        52
+                      </td>
+                    </tr>
+                    <tr
+                      class="player-table-even"
+                    >
+                      <td
+                        class=""
+                      >
+                        Malik Nabers
+                      </td>
+                      <td
+                        class=""
+                      >
+                        51
+                      </td>
+                    </tr>
+                    <tr
+                      class="player-table-odd"
+                    >
+                      <td
+                        class=""
+                      >
+                        Jalen Coker
+                      </td>
+                      <td
+                        class=""
+                      >
+                        10
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col"
+          >
+            <h4
+              class="section-title"
+            >
+              TE price: $
+              75
+            </h4>
+            <div
+              class="d-flex-1"
+            >
+              <div
+                class="table-responsive"
+              >
+                <table
+                  class="table table-sm table-borderless table-striped table-hover"
+                >
+                  <thead
+                    class="thead-light"
+                  >
+                    <tr>
+                      <th>
+                        Kept Player
+                      </th>
+                      <th>
+                        Original Price
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="player-table-odd"
+                    >
+                      <td
+                        class=""
                       >
                         Brock Bowers
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         37
                       </td>
                     </tr>
-                    <tr>
+                    <tr
+                      class="player-table-even"
+                    >
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         Sam Laporta
                       </td>
                       <td
                         class=""
-                        style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                       >
                         12
                       </td>
@@ -427,33 +445,38 @@ Object {
     </div>
   </body>,
   "container": <div>
-    <div>
+    <div
+      class="container"
+    >
       <h2
-        class="text-center"
+        class="page-title"
       >
-         Franchise Tag Prices 
+        Franchise Tag Prices
       </h2>
       <div
-        class="row row-cols-2 row-cols-md-4"
+        class="g-4 row row-cols-1 row-cols-md-2 row-cols-lg-4"
       >
         <div
           class="col"
         >
+          <h4
+            class="section-title"
+          >
+            QB price: $
+            75
+          </h4>
           <div
             class="d-flex-1"
           >
-            <h3>
-              QB
-               price: $
-              75
-            </h3>
             <div
               class="table-responsive"
             >
               <table
                 class="table table-sm table-borderless table-striped table-hover"
               >
-                <thead>
+                <thead
+                  class="thead-light"
+                >
                   <tr>
                     <th>
                       Kept Player
@@ -464,72 +487,72 @@ Object {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jayden Daniels
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       67
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-even"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jalen Hurts
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Kyler Murray
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-even"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Lamar Jackson
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Patrick Mahomes
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
                     </td>
@@ -542,21 +565,24 @@ Object {
         <div
           class="col"
         >
+          <h4
+            class="section-title"
+          >
+            RB price: $
+            75
+          </h4>
           <div
             class="d-flex-1"
           >
-            <h3>
-              RB
-               price: $
-              75
-            </h3>
             <div
               class="table-responsive"
             >
               <table
                 class="table table-sm table-borderless table-striped table-hover"
               >
-                <thead>
+                <thead
+                  class="thead-light"
+                >
                   <tr>
                     <th>
                       Kept Player
@@ -567,86 +593,86 @@ Object {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Bijan Robinson
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       121
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-even"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Saquon Barkley
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       100
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Jahmyr Gibbs
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       98
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-even"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Josh Jacobs
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       81
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Derrick Henry
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       79
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-even"
+                  >
                     <td
                       class="fw-bold"
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Najee Harris
                     </td>
                     <td
                       class="fw-bold"
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       76
                     </td>
@@ -657,150 +683,26 @@ Object {
           </div>
         </div>
         <div
-          class="d-flex-1"
-        >
-          <h3>
-            WR
-             price: $
-            75
-          </h3>
-          <div
-            class="table-responsive"
-          >
-            <table
-              class="table table-sm table-borderless table-striped table-hover"
-            >
-              <thead>
-                <tr>
-                  <th>
-                    Kept Player
-                  </th>
-                  <th>
-                    Original Price
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    Drake London
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    64
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    AJ Brown
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    61
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    CeeDee Lamb
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    56
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    Tyreek Hill
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    56
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    Jamarr Chase
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    52
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    Malik Nabers
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    51
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    Jalen Coker
-                  </td>
-                  <td
-                    class=""
-                    style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                  >
-                    10
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
           class="col"
         >
+          <h4
+            class="section-title"
+          >
+            WR price: $
+            75
+          </h4>
           <div
             class="d-flex-1"
           >
-            <h3>
-              TE
-               price: $
-              75
-            </h3>
             <div
               class="table-responsive"
             >
               <table
                 class="table table-sm table-borderless table-striped table-hover"
               >
-                <thead>
+                <thead
+                  class="thead-light"
+                >
                   <tr>
                     <th>
                       Kept Player
@@ -811,30 +713,164 @@ Object {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr
+                    class="player-table-odd"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
+                    >
+                      Drake London
+                    </td>
+                    <td
+                      class=""
+                    >
+                      64
+                    </td>
+                  </tr>
+                  <tr
+                    class="player-table-even"
+                  >
+                    <td
+                      class=""
+                    >
+                      AJ Brown
+                    </td>
+                    <td
+                      class=""
+                    >
+                      61
+                    </td>
+                  </tr>
+                  <tr
+                    class="player-table-odd"
+                  >
+                    <td
+                      class=""
+                    >
+                      CeeDee Lamb
+                    </td>
+                    <td
+                      class=""
+                    >
+                      56
+                    </td>
+                  </tr>
+                  <tr
+                    class="player-table-even"
+                  >
+                    <td
+                      class=""
+                    >
+                      Tyreek Hill
+                    </td>
+                    <td
+                      class=""
+                    >
+                      56
+                    </td>
+                  </tr>
+                  <tr
+                    class="player-table-odd"
+                  >
+                    <td
+                      class=""
+                    >
+                      Jamarr Chase
+                    </td>
+                    <td
+                      class=""
+                    >
+                      52
+                    </td>
+                  </tr>
+                  <tr
+                    class="player-table-even"
+                  >
+                    <td
+                      class=""
+                    >
+                      Malik Nabers
+                    </td>
+                    <td
+                      class=""
+                    >
+                      51
+                    </td>
+                  </tr>
+                  <tr
+                    class="player-table-odd"
+                  >
+                    <td
+                      class=""
+                    >
+                      Jalen Coker
+                    </td>
+                    <td
+                      class=""
+                    >
+                      10
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <h4
+            class="section-title"
+          >
+            TE price: $
+            75
+          </h4>
+          <div
+            class="d-flex-1"
+          >
+            <div
+              class="table-responsive"
+            >
+              <table
+                class="table table-sm table-borderless table-striped table-hover"
+              >
+                <thead
+                  class="thead-light"
+                >
+                  <tr>
+                    <th>
+                      Kept Player
+                    </th>
+                    <th>
+                      Original Price
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="player-table-odd"
+                  >
+                    <td
+                      class=""
                     >
                       Brock Bowers
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       37
                     </td>
                   </tr>
-                  <tr>
+                  <tr
+                    class="player-table-even"
+                  >
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       Sam Laporta
                     </td>
                     <td
                       class=""
-                      style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
                     >
                       12
                     </td>

@@ -5,176 +5,102 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
+      <div
+        class="py-4 container"
+      >
         <h2
-          class="text-center"
+          class="page-title"
         >
-           Free Agents 
+          Free Agents
         </h2>
         <div
-          class="accordion"
+          class="g-4 row row-cols-1 row-cols-md-2 row-cols-lg-4"
         >
           <div
-            class="accordion-item"
-            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+            class="col"
           >
-            <h2
-              class="accordion-header"
-            >
-              <button
-                class="accordion-button"
-                type="button"
-              >
-                QB
-              </button>
-            </h2>
             <div
-              class="accordion-collapse collapse show"
+              class="h-100 free-agent-card card"
             >
               <div
-                class="accordion-body"
+                class="free-agent-card-header card-header"
               >
-                <table
-                  class="table table-sm table-borderless"
+                <span
+                  class="free-agent-card-title"
                 >
-                  <tbody>
-                    <tr>
-                      <td
-                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                      >
-                         
-                        Patrick Mahomes
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                  QB
+                </span>
+                <button
+                  aria-label="Expand QB"
+                  class="free-agent-card-toggle btn btn-link"
+                  tabindex="-1"
+                />
               </div>
             </div>
           </div>
           <div
-            class="accordion-item"
-            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+            class="col"
           >
-            <h2
-              class="accordion-header"
-            >
-              <button
-                class="accordion-button collapsed"
-                type="button"
-              >
-                RB
-              </button>
-            </h2>
             <div
-              class="accordion-collapse collapse"
+              class="h-100 free-agent-card card"
             >
               <div
-                class="accordion-body"
+                class="free-agent-card-header card-header"
               >
-                <table
-                  class="table table-sm table-borderless"
+                <span
+                  class="free-agent-card-title"
                 >
-                  <tbody>
-                    <tr>
-                      <td
-                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                      >
-                         
-                        Derrick Henry
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                      >
-                         
-                        Josh Jacobs
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                  RB
+                </span>
+                <button
+                  aria-label="Expand RB"
+                  class="free-agent-card-toggle btn btn-link"
+                  tabindex="-1"
+                />
               </div>
             </div>
           </div>
           <div
-            class="accordion-item"
-            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+            class="col"
           >
-            <h2
-              class="accordion-header"
-            >
-              <button
-                class="accordion-button collapsed"
-                type="button"
-              >
-                WR
-              </button>
-            </h2>
             <div
-              class="accordion-collapse collapse"
+              class="h-100 free-agent-card card"
             >
               <div
-                class="accordion-body"
+                class="free-agent-card-header card-header"
               >
-                <table
-                  class="table table-sm table-borderless"
+                <span
+                  class="free-agent-card-title"
                 >
-                  <tbody>
-                    <tr>
-                      <td
-                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                      >
-                         
-                        Tyreek Hill
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                      >
-                         
-                        Jalen Coker
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                  WR
+                </span>
+                <button
+                  aria-label="Expand WR"
+                  class="free-agent-card-toggle btn btn-link"
+                  tabindex="-1"
+                />
               </div>
             </div>
           </div>
           <div
-            class="accordion-item"
-            style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+            class="col"
           >
-            <h2
-              class="accordion-header"
-            >
-              <button
-                class="accordion-button collapsed"
-                type="button"
-              >
-                TE
-              </button>
-            </h2>
             <div
-              class="accordion-collapse collapse"
+              class="h-100 free-agent-card card"
             >
               <div
-                class="accordion-body"
+                class="free-agent-card-header card-header"
               >
-                <table
-                  class="table table-sm table-borderless"
+                <span
+                  class="free-agent-card-title"
                 >
-                  <tbody>
-                    <tr>
-                      <td
-                        style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                      >
-                         
-                        Sam Laporta
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                  TE
+                </span>
+                <button
+                  aria-label="Expand TE"
+                  class="free-agent-card-toggle btn btn-link"
+                  tabindex="-1"
+                />
               </div>
             </div>
           </div>
@@ -183,176 +109,102 @@ Object {
     </div>
   </body>,
   "container": <div>
-    <div>
+    <div
+      class="py-4 container"
+    >
       <h2
-        class="text-center"
+        class="page-title"
       >
-         Free Agents 
+        Free Agents
       </h2>
       <div
-        class="accordion"
+        class="g-4 row row-cols-1 row-cols-md-2 row-cols-lg-4"
       >
         <div
-          class="accordion-item"
-          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          class="col"
         >
-          <h2
-            class="accordion-header"
-          >
-            <button
-              class="accordion-button"
-              type="button"
-            >
-              QB
-            </button>
-          </h2>
           <div
-            class="accordion-collapse collapse show"
+            class="h-100 free-agent-card card"
           >
             <div
-              class="accordion-body"
+              class="free-agent-card-header card-header"
             >
-              <table
-                class="table table-sm table-borderless"
+              <span
+                class="free-agent-card-title"
               >
-                <tbody>
-                  <tr>
-                    <td
-                      style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                    >
-                       
-                      Patrick Mahomes
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                QB
+              </span>
+              <button
+                aria-label="Expand QB"
+                class="free-agent-card-toggle btn btn-link"
+                tabindex="-1"
+              />
             </div>
           </div>
         </div>
         <div
-          class="accordion-item"
-          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          class="col"
         >
-          <h2
-            class="accordion-header"
-          >
-            <button
-              class="accordion-button collapsed"
-              type="button"
-            >
-              RB
-            </button>
-          </h2>
           <div
-            class="accordion-collapse collapse"
+            class="h-100 free-agent-card card"
           >
             <div
-              class="accordion-body"
+              class="free-agent-card-header card-header"
             >
-              <table
-                class="table table-sm table-borderless"
+              <span
+                class="free-agent-card-title"
               >
-                <tbody>
-                  <tr>
-                    <td
-                      style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                    >
-                       
-                      Derrick Henry
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                    >
-                       
-                      Josh Jacobs
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                RB
+              </span>
+              <button
+                aria-label="Expand RB"
+                class="free-agent-card-toggle btn btn-link"
+                tabindex="-1"
+              />
             </div>
           </div>
         </div>
         <div
-          class="accordion-item"
-          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          class="col"
         >
-          <h2
-            class="accordion-header"
-          >
-            <button
-              class="accordion-button collapsed"
-              type="button"
-            >
-              WR
-            </button>
-          </h2>
           <div
-            class="accordion-collapse collapse"
+            class="h-100 free-agent-card card"
           >
             <div
-              class="accordion-body"
+              class="free-agent-card-header card-header"
             >
-              <table
-                class="table table-sm table-borderless"
+              <span
+                class="free-agent-card-title"
               >
-                <tbody>
-                  <tr>
-                    <td
-                      style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                    >
-                       
-                      Tyreek Hill
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                    >
-                       
-                      Jalen Coker
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                WR
+              </span>
+              <button
+                aria-label="Expand WR"
+                class="free-agent-card-toggle btn btn-link"
+                tabindex="-1"
+              />
             </div>
           </div>
         </div>
         <div
-          class="accordion-item"
-          style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
+          class="col"
         >
-          <h2
-            class="accordion-header"
-          >
-            <button
-              class="accordion-button collapsed"
-              type="button"
-            >
-              TE
-            </button>
-          </h2>
           <div
-            class="accordion-collapse collapse"
+            class="h-100 free-agent-card card"
           >
             <div
-              class="accordion-body"
+              class="free-agent-card-header card-header"
             >
-              <table
-                class="table table-sm table-borderless"
+              <span
+                class="free-agent-card-title"
               >
-                <tbody>
-                  <tr>
-                    <td
-                      style="background-color: rgb(69, 73, 94); color: rgb(248, 248, 242);"
-                    >
-                       
-                      Sam Laporta
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                TE
+              </span>
+              <button
+                aria-label="Expand TE"
+                class="free-agent-card-toggle btn btn-link"
+                tabindex="-1"
+              />
             </div>
           </div>
         </div>

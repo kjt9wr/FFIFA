@@ -9,7 +9,7 @@ Object {
         class="container"
       >
         <h2
-          class="text-center"
+          class="page-title"
         >
            Players on SuperMax 
         </h2>
@@ -17,7 +17,7 @@ Object {
           class="table-responsive"
         >
           <table
-            class="table table-hover"
+            class="table table-borderless table-hover"
           >
             <thead
               class="thead-light"
@@ -42,29 +42,19 @@ Object {
             </thead>
             <tbody>
               <tr
-                class="customRow"
+                class="player-table-odd"
               >
-                <td
-                  style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                >
+                <td>
                   Najee Harris
                 </td>
-                <td
-                  style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                />
-                <td
-                  style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                >
+                <td />
+                <td>
                   4
                 </td>
-                <td
-                  style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                >
+                <td>
                   5
                 </td>
-                <td
-                  style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-                >
+                <td>
                   $
                   80
                 </td>
@@ -80,7 +70,7 @@ Object {
       class="container"
     >
       <h2
-        class="text-center"
+        class="page-title"
       >
          Players on SuperMax 
       </h2>
@@ -88,7 +78,7 @@ Object {
         class="table-responsive"
       >
         <table
-          class="table table-hover"
+          class="table table-borderless table-hover"
         >
           <thead
             class="thead-light"
@@ -113,29 +103,19 @@ Object {
           </thead>
           <tbody>
             <tr
-              class="customRow"
+              class="player-table-odd"
             >
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 Najee Harris
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              />
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td />
+              <td>
                 4
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 5
               </td>
-              <td
-                style="color: rgb(248, 248, 242); background-color: rgb(109, 114, 139);"
-              >
+              <td>
                 $
                 80
               </td>
