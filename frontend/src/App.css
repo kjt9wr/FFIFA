@@ -423,6 +423,9 @@ input[type="checkbox"]:checked::after {
 }
 
 .free-agent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: linear-gradient(90deg, #233b67 70%, #2f5997 100%);
   color: #b5d2ff;
   font-size: 1.2rem;
@@ -430,13 +433,38 @@ input[type="checkbox"]:checked::after {
   letter-spacing: 1px;
   padding: 1.1rem 1.5rem;
   border-bottom: 1px solid #2f5997;
+  cursor: pointer;
   user-select: none;
+  transition: background 0.2s, color 0.2s;
 }
 
 .free-agent-card-header:hover,
 .free-agent-card-header:focus {
   background: #2f5997;
   color: #facc15;
+}
+
+.free-agent-card-title {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.free-agent-card-toggle {
+  color: #b5d2ff;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.3rem;
+  transition: color 0.2s;
+}
+
+.free-agent-card-toggle:focus,
+.free-agent-card-toggle:hover {
+  color: #facc15;
+  outline: none;
 }
 
 .free-agent-table th,

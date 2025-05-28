@@ -36,7 +36,7 @@ const DraftDay = () => {
 
   return (
     <Container>
-      <h1 className="text-center"> Draft Day Info </h1>
+      <h1 className="page-title"> Draft Day Info </h1>
       <SpinnerWrapper loading={loading} />
       {error && <Alert color="danger">Error fetching draft data</Alert>}
       {!error && !loading && (

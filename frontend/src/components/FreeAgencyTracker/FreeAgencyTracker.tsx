@@ -40,21 +40,18 @@ const FreeAgency = () => {
             <Col key={pos}>
               <Card className="h-100 free-agent-card">
                 <CardHeader
-                  className="d-flex justify-content-between align-items-center free-agent-card-header"
+                  className="free-agent-card-header"
                   onClick={() => toggle(pos)}
-                  style={{ cursor: "pointer" }}
                 >
-                  <span
-                    className="section-title mb-0"
-                    style={{ fontSize: "1.2rem", margin: 0 }}
-                  >
-                    {pos}
-                  </span>
+                  <span className="free-agent-card-title">{pos}</span>
                   <Button
                     color="link"
-                    className="p-0 m-0"
-                    style={{ color: "#b5d2ff" }}
-                  ></Button>
+                    className="free-agent-card-toggle"
+                    tabIndex={-1}
+                    aria-label={
+                      open === pos ? `Collapse ${pos}` : `Expand ${pos}`
+                    }
+                  />
                 </CardHeader>
                 {open === pos && (
                   <CardBody className="p-0">
