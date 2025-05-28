@@ -477,6 +477,46 @@ input[type="checkbox"]:checked::after {
   color: #fff;
 }
 
+.draftday-info-card {
+  background: #232e47;
+  border: 1px solid #2f5997;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+  text-align: center;
+}
+
+.draftday-info-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #b5d2ff;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.draftday-tax-card {
+  background: #1a243d;
+  border: 1px solid #2f5997;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+}
+
+.draftday-owner-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.draftday-owner {
+  font-size: 1.1rem;
+  padding: 0.4rem 0;
+  color: #f8f8f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;
