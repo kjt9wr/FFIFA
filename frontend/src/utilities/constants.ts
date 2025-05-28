@@ -1,3 +1,5 @@
+import { POSITION } from "./enumerations";
+
 //configurable variable for the upcoming season
 const UPCOMING_SEASON_YEAR = "2025";
 
@@ -21,3 +23,5 @@ export const getUpcomingSeasonYear = () => UPCOMING_SEASON_YEAR;
 export const getUpcomingYearIndex = () => {
   return Number(UPCOMING_SEASON_YEAR) - 2020;
 };
+
+export const POSITIONS = [POSITION.QB, POSITION.RB, POSITION.WR, POSITION.TE];

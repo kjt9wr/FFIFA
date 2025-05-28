@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="text-center"> Login to FFIFA </h1>
+      <h1 className="page-title"> Login to FFIFA </h1>
       <SpinnerWrapper loading={isLoading} />
 
       <div className="d-flex justify-content-center align-items-center">

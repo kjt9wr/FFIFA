@@ -1,80 +1,33 @@
 import { useState } from "react";
 import {
-  Accordion,
-  AccordionBody,
-  AccordionHeader,
-  AccordionItem,
   Alert,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
   Container,
+  Row,
   Table,
 } from "reactstrap";
 import { fetchFreeAgents } from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
 import { Player } from "../../interfaces/interfaces";
-import { POSITION } from "../../utilities/enumerations";
+import { POSITIONS } from "../../utilities/constants";
 import SpinnerWrapper from "../reusable/SpinnerWrapper";
 
-interface FreeAgentAccordionProps {
-  availablePlayers: Player[];
-  index: string;
-  position: string;
-}
-
-const FreeAgentAccordion = (props: FreeAgentAccordionProps) => {
-  return (
-    <AccordionItem>
-      <AccordionHeader targetId={props.index}>{props.position}</AccordionHeader>
-      <AccordionBody accordionId={props.index}>
-        <Table
-          className="free-agent-table"
-          borderless
-          size="sm"
-          hover
-          responsive
-        >
-          <tbody>
-            {props.availablePlayers.map((player: Player, index: number) => (
-              <tr
-                key={player.sleeperId}
-                className={index % 2 ? "player-table-even" : "player-table-odd"}
-              >
-                <td>{player.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </AccordionBody>
-    </AccordionItem>
-  );
-};
-
-const getAvailablePlayersByPosition = (
-  position: string,
-  playerList: Player[]
-) => {
-  return playerList
-    .filter(
-      (player: Player) =>
-        player.position === position && player.rank && player.rank < 80
-    )
-    .sort((a: Player, b: Player) => {
-      return a.rank && b.rank ? a.rank - b.rank : -1;
-    });
-};
-
-/*
- * This page displays all free agent players organized by position
- */
 const FreeAgency = () => {
   const { data: allFreeAgents, loading, error } = useFetch(fetchFreeAgents);
-  const [open, setOpen] = useState("1");
-  const toggle = (id: string) => {
-    if (open === id) {
-      setOpen("0");
-    } else {
-      setOpen(id);
-    }
-  };
+  const [open, setOpen] = useState<string | null>(null);
+
+  const toggle = (pos: string) => setOpen(open === pos ? null : pos);
+
+  const getPlayers = (pos: string) =>
+    allFreeAgents
+      ? allFreeAgents
+          .filter((p: Player) => p.position === pos && p.rank && p.rank < 80)
+          .sort((a: Player, b: Player) => (a.rank ?? 0) - (b.rank ?? 0))
+      : [];
 
   return (
     <Container className="py-4">
@@ -82,40 +35,64 @@ const FreeAgency = () => {
       {error && <Alert color="danger">Error fetching players</Alert>}
       <SpinnerWrapper loading={loading} />
       {!loading && !error && (
-        <Accordion open={open} toggle={toggle} className="free-agent-accordion">
-          <FreeAgentAccordion
-            availablePlayers={getAvailablePlayersByPosition(
-              POSITION.QB,
-              allFreeAgents
-            )}
-            index={"1"}
-            position={POSITION.QB}
-          />
-          <FreeAgentAccordion
-            availablePlayers={getAvailablePlayersByPosition(
-              POSITION.RB,
-              allFreeAgents
-            )}
-            index={"2"}
-            position={POSITION.RB}
-          />
-          <FreeAgentAccordion
-            availablePlayers={getAvailablePlayersByPosition(
-              POSITION.WR,
-              allFreeAgents
-            )}
-            index={"3"}
-            position={POSITION.WR}
-          />
-          <FreeAgentAccordion
-            availablePlayers={getAvailablePlayersByPosition(
-              POSITION.TE,
-              allFreeAgents
-            )}
-            index={"4"}
-            position={POSITION.TE}
-          />
-        </Accordion>
+        <Row xs="1" md="2" lg="4" className="g-4">
+          {POSITIONS.map((pos) => (
+            <Col key={pos}>
+              <Card className="h-100 free-agent-card">
+                <CardHeader
+                  className="d-flex justify-content-between align-items-center free-agent-card-header"
+                  onClick={() => toggle(pos)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <span
+                    className="section-title mb-0"
+                    style={{ fontSize: "1.2rem", margin: 0 }}
+                  >
+                    {pos}
+                  </span>
+                  <Button
+                    color="link"
+                    className="p-0 m-0"
+                    style={{ color: "#b5d2ff" }}
+                  ></Button>
+                </CardHeader>
+                {open === pos && (
+                  <CardBody className="p-0">
+                    <Table
+                      borderless
+                      size="sm"
+                      hover
+                      responsive
+                      className="free-agent-table mb-0"
+                    >
+                      <thead className="thead-light">
+                        <tr>
+                          <th>Name</th>
+                          <th>Rank</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {getPlayers(pos).map((player: Player, index) => (
+                          <tr
+                            key={player.sleeperId}
+                            className={
+                              index % 2
+                                ? "player-table-even"
+                                : "player-table-odd"
+                            }
+                          >
+                            <td>{player.name}</td>
+                            <td>{player.rank}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </CardBody>
+                )}
+              </Card>
+            </Col>
+          ))}
+        </Row>
       )}
     </Container>
   );

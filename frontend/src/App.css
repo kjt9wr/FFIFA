@@ -412,6 +412,43 @@ input[type="checkbox"]:checked::after {
   color: #fff;
 }
 
+.free-agent-card {
+  background: #232e47;
+  border: 1px solid #2f5997;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.free-agent-card-header {
+  background: linear-gradient(90deg, #233b67 70%, #2f5997 100%);
+  color: #b5d2ff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid #2f5997;
+  user-select: none;
+}
+
+.free-agent-card-header:hover,
+.free-agent-card-header:focus {
+  background: #2f5997;
+  color: #facc15;
+}
+
+.free-agent-table th,
+.free-agent-table td {
+  vertical-align: middle;
+}
+
+.free-agent-table tr:hover {
+  background: #2f5997;
+  color: #fff;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;
