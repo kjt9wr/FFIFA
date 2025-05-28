@@ -7,7 +7,7 @@
 <h1 align="center">FFIFA Webapp</h1>
 
 </div>
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/867e3fe0-ea1b-4edf-8c11-30e0682a7031" />
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/1e2144c7-23a0-4eb4-b270-9659c78222bd" />
 
 
 
@@ -41,8 +41,11 @@ What once began as a typical fantasy football league has gradually transformed i
 ## Features
 
 ### Roster Page
+#### Desktop View
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/eaf354b1-1b3d-43e3-8617-c8f624308fd4" />
 
-<img width="1440" alt="image" src="https://github.com/user-attachments/assets/c62c854b-1c5c-4ee6-a98e-66cb3931bb7c" />
+#### Mobile View
+![image](https://github.com/user-attachments/assets/23e46f37-0bea-4034-9e1f-44e30897c292)
 
 
 The Roster Page allows you to view the selected owner's roster, various cap information based on potential players kept, and additional fees or bonuses. The page contains an interactive table that allows you to toggle different players as selected keepers, and subsequently update the ripple effects throughout not only the selected roster but the various prices throughout the rest of the league.
