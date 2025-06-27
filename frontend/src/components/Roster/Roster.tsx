@@ -56,6 +56,7 @@ const Roster = (props: RosterProps) => {
   } = useFetch(() => fetchRoster(ownerSleeperId));
 
   const [cap, setCap] = useState<number>(0);
+  const [editFranchiseMode, setEditFranchiseMode] = useState<boolean>(false);
   const { name } = useParams();
 
   const franchisePrices = {
@@ -109,29 +110,36 @@ const Roster = (props: RosterProps) => {
 
         <h4 className="section-title">Kept Players:</h4>
         <KeptPlayersDisplay playerList={keptPlayersList} isEditable={false} />
-        <div className="d-flex justify-content-between align-items-center my-3">
+        <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
           <h4
             className="section-title mb-0"
             style={{ marginTop: 0, marginBottom: 0 }}
           >
             Full Roster:
           </h4>
-          <Button
-            color="primary"
-            outline
-            className="roster-action-btn"
-            style={{
-              marginTop: 0,
-              marginBottom: 0,
-              paddingTop: "0.375rem",
-              paddingBottom: "0.375rem",
-            }}
-            onClick={() => {
-              /* Toggle Franchise Tag Editor */
-            }}
-          >
-            Apply Franchise Tag
-          </Button>
+          {editFranchiseMode ? (
+            <Button
+              color="secondary"
+              outline
+              size="sm"
+              className="roster-cancel-btn"
+              onClick={() => setEditFranchiseMode(false)}
+            >
+              Cancel
+            </Button>
+          ) : (
+            <Button
+              color="primary"
+              outline
+              size="sm"
+              className="apply-franchise-btn"
+              onClick={() => {
+                setEditFranchiseMode(true);
+              }}
+            >
+              Apply Franchise Tag
+            </Button>
+          )}
         </div>
         <RosterDataTable
           roster={roster.sort(

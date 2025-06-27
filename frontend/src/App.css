@@ -198,6 +198,8 @@ input[type="checkbox"]:checked::after {
   border-radius: 4px;
   display: inline-block;
   background: none; /* Remove or comment out the gradient if not needed */
+  margin: 0;
+  line-height: 1.8; /* Adjust as needed for vertical centering */
 }
 
 .page-title {
@@ -598,20 +600,46 @@ input[type="checkbox"]:checked::after {
   border-color: #b5d2ff;
 }
 
-.roster-action-btn {
+.apply-franchise-btn {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   border-radius: 6px;
-  letter-spacing: 1px;
-  margin-bottom: 1.25rem;
+  letter-spacing: 0.5px;
+  /* margin-bottom: 1.25rem; */
   transition: background 0.15s, color 0.15s, border-color 0.15s;
+  padding: 0.25rem 1rem;
+  height: 2.2rem; /* Set a fixed height to match the heading */
+  display: flex;
+  align-items: center;
 }
 
-.roster-action-btn:hover,
-.roster-action-btn:focus {
+.apply-franchise-btn:hover,
+.apply-franchise-btn:focus {
   background: #2f5997;
   color: #fff;
   border-color: #2f5997;
+}
+
+.roster-cancel-btn {
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.9rem;
+  margin-left: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  color: #b5d2ff;
+  border-color: #b5d2ff;
+  background: none;
+}
+
+.roster-cancel-btn:hover,
+.roster-cancel-btn:focus {
+  background: #b5d2ff;
+  color: #233b67;
+  border-color: #b5d2ff;
 }
 
 @media (max-width: 600px) {
