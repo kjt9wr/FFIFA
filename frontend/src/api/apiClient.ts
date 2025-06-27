@@ -1,7 +1,13 @@
 import axios from "axios";
+import { BASE_URL_LOCALHOST } from "../utilities/constants";
+
+const backend_url =
+  process.env.PRODUCTION_ENVIRONMENT === "Production"
+    ? process.env.SERVER_BASE_URL
+    : BASE_URL_LOCALHOST;
 
 const apiClient = axios.create({
-  baseURL: "https://ffifa-backend.onrender.com/",
+  baseURL: backend_url,
   headers: {
     "Content-Type": "application/json",
   },

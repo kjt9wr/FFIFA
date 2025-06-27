@@ -25,3 +25,5 @@ export const getUpcomingYearIndex = () => {
 };
 
 export const POSITIONS = [POSITION.QB, POSITION.RB, POSITION.WR, POSITION.TE];
+
+export const BASE_URL_LOCALHOST = "http://localhost:5000/";
