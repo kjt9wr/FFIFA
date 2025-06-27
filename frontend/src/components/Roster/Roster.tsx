@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Alert, Container } from "reactstrap";
+import { Alert, Button, Container } from "reactstrap";
 import {
   fetchRoster,
   updatePenaltyFee,
@@ -109,7 +109,30 @@ const Roster = (props: RosterProps) => {
 
         <h4 className="section-title">Kept Players:</h4>
         <KeptPlayersDisplay playerList={keptPlayersList} isEditable={false} />
-        <h4 className="section-title">Full Roster:</h4>
+        <div className="d-flex justify-content-between align-items-center my-3">
+          <h4
+            className="section-title mb-0"
+            style={{ marginTop: 0, marginBottom: 0 }}
+          >
+            Full Roster:
+          </h4>
+          <Button
+            color="primary"
+            outline
+            className="roster-action-btn"
+            style={{
+              marginTop: 0,
+              marginBottom: 0,
+              paddingTop: "0.375rem",
+              paddingBottom: "0.375rem",
+            }}
+            onClick={() => {
+              /* Toggle Franchise Tag Editor */
+            }}
+          >
+            Apply Franchise Tag
+          </Button>
+        </div>
         <RosterDataTable
           roster={roster.sort(
             (a: Player, b: Player) =>

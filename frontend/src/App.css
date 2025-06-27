@@ -598,6 +598,22 @@ input[type="checkbox"]:checked::after {
   border-color: #b5d2ff;
 }
 
+.roster-action-btn {
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.roster-action-btn:hover,
+.roster-action-btn:focus {
+  background: #2f5997;
+  color: #fff;
+  border-color: #2f5997;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;
