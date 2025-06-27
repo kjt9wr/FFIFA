@@ -6,6 +6,8 @@ interface RosterDataTableProps {
   roster: Player[];
   franchisePrices: FranchiseTagDTO;
   toggleKeeper: (e: Event) => void;
+  editFranchiseMode?: boolean;
+  onSubmitFranchise?: (e: Event) => void;
 }
 
 /*

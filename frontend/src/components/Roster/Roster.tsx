@@ -20,6 +20,7 @@ import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import KeptPlayersDisplay from "../reusable/KeptPlayersDisplay";
 import RosterDataTable from "./RosterDataTable";
 import RosterCapInfo from "./RosterCapInfo";
+import RosterFranchiseTable from "./RosterFranchiseTable";
 
 /*
  * This page displays an owner's available cap information, projected keepers display,
@@ -108,8 +109,9 @@ const Roster = (props: RosterProps) => {
           isEditable={false}
         />
 
-        <h4 className="section-title">Kept Players:</h4>
+        <h4 className="section-title mb-2">Kept Players:</h4>
         <KeptPlayersDisplay playerList={keptPlayersList} isEditable={false} />
+
         <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
           <h4
             className="section-title mb-0"
@@ -141,16 +143,30 @@ const Roster = (props: RosterProps) => {
             </Button>
           )}
         </div>
-        <RosterDataTable
-          roster={roster.sort(
-            (a: Player, b: Player) =>
-              a.position.localeCompare(b.position) ||
-              b.price - a.price ||
-              a.name.localeCompare(b.name)
-          )}
-          franchisePrices={franchisePrices}
-          toggleKeeper={toggleKeeper}
-        />
+        {editFranchiseMode ? (
+          <RosterFranchiseTable
+            roster={roster
+              .filter((player: Player) => ![3, 4].includes(player.keeperClass))
+              .sort(
+                (a: Player, b: Player) =>
+                  a.position.localeCompare(b.position) ||
+                  b.price - a.price ||
+                  a.name.localeCompare(b.name)
+              )}
+            franchisePrices={franchisePrices}
+          />
+        ) : (
+          <RosterDataTable
+            roster={roster.sort(
+              (a: Player, b: Player) =>
+                a.position.localeCompare(b.position) ||
+                b.price - a.price ||
+                a.name.localeCompare(b.name)
+            )}
+            franchisePrices={franchisePrices}
+            toggleKeeper={toggleKeeper}
+          />
+        )}
       </>
     </Container>
   );

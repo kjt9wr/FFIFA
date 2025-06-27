@@ -71,7 +71,7 @@ const RosterCapInfo = (props: RosterCapInfoProps) => {
 
   return (
     <div>
-      <h4 className="section-title">Cap Info:</h4>
+      <h4 className="section-title mb-2">Cap Info:</h4>
       <Row xs="2" md="4" className="row-gap-4">
         <Col>
           {isEditable && updateCapCallback ? (
