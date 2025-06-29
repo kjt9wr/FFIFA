@@ -601,38 +601,32 @@ input[type="checkbox"]:checked::after {
 }
 
 .apply-franchise-btn {
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 1rem;
   border-radius: 6px;
-  letter-spacing: 0.5px;
-  /* margin-bottom: 1.25rem; */
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-  padding: 0.25rem 1rem;
-  height: 2.2rem; /* Set a fixed height to match the heading */
-  display: flex;
-  align-items: center;
-}
-
-.apply-franchise-btn:hover,
-.apply-franchise-btn:focus {
+  padding: 0.35rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
   background: #2f5997;
   color: #fff;
-  border-color: #2f5997;
+  border: 2px solid #2f5997;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.apply-franchise-btn:hover,
+.apply-franchise-btn:focus {
+  background: #233b67;
+  color: #facc15;
+  border-color: #facc15;
 }
 
 .roster-cancel-btn {
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 6px;
-  letter-spacing: 0.5px;
-  padding: 0.25rem 0.9rem;
-  margin-left: 0.5rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  padding: 0.25rem 1rem;
   color: #b5d2ff;
   border-color: #b5d2ff;
   background: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .roster-cancel-btn:hover,
@@ -640,6 +634,37 @@ input[type="checkbox"]:checked::after {
   background: #b5d2ff;
   color: #233b67;
   border-color: #b5d2ff;
+}
+
+.roster-clear-btn {
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  padding: 0.25rem 1rem;
+  color: #eab308; /* gold/yellow accent */
+  border: 2px solid #eab308;
+  background: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.roster-clear-btn:hover,
+.roster-clear-btn:focus {
+  background: #eab308;
+  color: #233b67;
+  border-color: #eab308;
+}
+
+.roster-btn-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.roster-btn-group .btn {
+  margin-left: 0.5rem;
+}
+
+.roster-btn-group .btn:first-child {
+  margin-left: 0;
 }
 
 @media (max-width: 600px) {

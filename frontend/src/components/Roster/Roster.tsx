@@ -94,6 +94,20 @@ const Roster = (props: RosterProps) => {
   }, [name]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
+
+  const franchiseEligiblePlayers = roster
+    .filter((player: Player) => ![3, 4].includes(player.keeperClass))
+    .sort(
+      (a: Player, b: Player) =>
+        a.position.localeCompare(b.position) ||
+        b.price - a.price ||
+        a.name.localeCompare(b.name)
+    );
+
+  const onSubmitFranchise = async (selectedPlayerId: string | null) => {
+    console.log(selectedPlayerId);
+    setEditFranchiseMode(false);
+  };
   return (
     <Container>
       {(rosterError || franchiseError || penaltyError) && (
@@ -119,17 +133,7 @@ const Roster = (props: RosterProps) => {
           >
             Full Roster:
           </h4>
-          {editFranchiseMode ? (
-            <Button
-              color="secondary"
-              outline
-              size="sm"
-              className="roster-cancel-btn"
-              onClick={() => setEditFranchiseMode(false)}
-            >
-              Cancel
-            </Button>
-          ) : (
+          {!editFranchiseMode && (
             <Button
               color="primary"
               outline
@@ -145,15 +149,12 @@ const Roster = (props: RosterProps) => {
         </div>
         {editFranchiseMode ? (
           <RosterFranchiseTable
-            roster={roster
-              .filter((player: Player) => ![3, 4].includes(player.keeperClass))
-              .sort(
-                (a: Player, b: Player) =>
-                  a.position.localeCompare(b.position) ||
-                  b.price - a.price ||
-                  a.name.localeCompare(b.name)
-              )}
+            roster={franchiseEligiblePlayers}
             franchisePrices={franchisePrices}
+            onSubmitFranchise={onSubmitFranchise}
+            onCancel={() => {
+              setEditFranchiseMode(false);
+            }}
           />
         ) : (
           <RosterDataTable
