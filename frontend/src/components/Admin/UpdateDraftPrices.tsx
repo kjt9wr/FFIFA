@@ -60,7 +60,12 @@ const UpdateDraftPrices = (props: UpdateDraftPricesProps) => {
   };
 
   return (
-    <Button title="Add Draft Prices" onClick={addDraftPrices}>
+    <Button
+      title="Add Draft Prices"
+      color="warning"
+      className="admin-btn mb-2"
+      onClick={addDraftPrices}
+    >
       Update Draft Prices
     </Button>
   );

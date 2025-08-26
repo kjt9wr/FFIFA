@@ -39,7 +39,12 @@ const UpdateRosters = (props: UpdateRosterProps) => {
   return (
     <>
       {!loading && !error && (
-        <Button title="Update All Rosters" onClick={updateAllRosters}>
+        <Button
+          color="primary"
+          className="admin-btn mb-2"
+          title="Update All Rosters"
+          onClick={updateAllRosters}
+        >
           Update All Rosters
         </Button>
       )}
