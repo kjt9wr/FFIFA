@@ -6,7 +6,8 @@ import {
 } from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
 import { RosterDTO } from "../../interfaces/interfaces";
-import { SLEEPER_LEAGUE_ID_2024 } from "../../utilities/constants";
+import { getCurrentSleeperLeagueId } from "../../utilities/constants";
+
 import { ALERT_STATE } from "../../utilities/enumerations";
 
 interface UpdateRosterProps {
@@ -18,7 +19,7 @@ const UpdateRosters = (props: UpdateRosterProps) => {
     data: allRosters,
     loading,
     error,
-  } = useFetch(() => fetchSleeperRosters(SLEEPER_LEAGUE_ID_2024));
+  } = useFetch(() => fetchSleeperRosters(getCurrentSleeperLeagueId()));
 
   const updateAllRosters = async () => {
     await clearAllPlayersOwner()
