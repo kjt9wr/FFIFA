@@ -7,7 +7,8 @@ import {
 import { DraftDTO } from "../../interfaces/interfaces";
 import { SleeperDraftPick } from "../../interfaces/sleeper-interfaces";
 import { increaseKeeperPrice } from "../../services/ffifa.service";
-import { DRAFT_ID_2024 } from "../../utilities/constants";
+import { getMostRecentDraftId } from "../../utilities/constants";
+
 import { ALERT_STATE } from "../../utilities/enumerations";
 import { playersBySleeperID } from "../../utilities/sleeper-ids";
 
@@ -21,7 +22,9 @@ const UpdateDraftPrices = (props: UpdateDraftPricesProps) => {
   // get draft prices for all players
   useEffect(() => {
     const getDraftInfo = async () => {
-      const draftResults = await fetchSleeperDraftResults(DRAFT_ID_2024);
+      const draftResults = await fetchSleeperDraftResults(
+        getMostRecentDraftId()
+      );
       const playersToUpdate = draftResults.data
         .filter(
           (player: SleeperDraftPick) =>
@@ -38,6 +41,11 @@ const UpdateDraftPrices = (props: UpdateDraftPricesProps) => {
 
   const addDraftPrices = async () => {
     for (const player of draftData) {
+      console.log(
+        `Updating ${player.sleeperId} to price ${increaseKeeperPrice(
+          player.price
+        )}`
+      );
       await updatePlayerPrice(
         player.sleeperId,
         increaseKeeperPrice(player.price)
