@@ -526,18 +526,30 @@ input[type="checkbox"]:checked::after {
   box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
 }
 
+.admin-action-card {
+  background: #232e47;
+  border: 1px solid #2f5997;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+  margin-bottom: 2rem;
+}
+
 .admin-btn {
   width: 100%;
   margin-bottom: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   letter-spacing: 1px;
+  padding: 0.7rem 0;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.admin-btn:last-child {
-  margin-bottom: 0;
+.admin-btn:focus,
+.admin-btn:hover {
+  background: #2f5997;
+  color: #fff;
+  border-color: #b5d2ff;
 }
 
 .login-form {
@@ -661,6 +673,17 @@ input[type="checkbox"]:checked::after {
 /* Remove margin-left from .roster-btn-group .btn for cleaner gap-based spacing */
 .roster-btn-group .btn {
   margin-left: 0;
+}
+
+.admin-section-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #b5d2ff;
+  letter-spacing: 1px;
+  border-left: 4px solid #2f5997;
+  padding-left: 12px;
+  margin-bottom: 1rem;
+  align-self: flex-start;
 }
 
 @media (max-width: 600px) {

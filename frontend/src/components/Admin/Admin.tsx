@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Alert, Container } from "reactstrap";
+import { Alert, Card, CardBody, Col, Container, Row } from "reactstrap";
 import { ALERT_STATE } from "../../utilities/enumerations";
 import UpdateDraftPrices from "./UpdateDraftPrices";
 import UpdateRosters from "./UpdateRosters";
-
 const Admin = () => {
   const [rosterUpdateAlert, setRosterUpdateAlert] = useState(ALERT_STATE.NONE);
   const [draftDataAlert, setDraftDataAlert] = useState(ALERT_STATE.NONE);
@@ -31,10 +30,26 @@ const Admin = () => {
       {ALERT_STATE.SUCCESS === draftDataAlert && (
         <Alert color="success">Successfully updated player draft prices</Alert>
       )}
-      <div className=" d-flex d-grid justify-content-center gap-4">
-        <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
-        <UpdateDraftPrices priceAlertCallback={draftUpdateAlertCallback} />
-      </div>
+      <Row className="g-4 justify-content-center">
+        <Col xs={12} md={6} lg={4}>
+          <Card className="admin-action-card">
+            <CardBody className="d-flex flex-column align-items-center">
+              <div className="admin-section-header mb-3">Rosters</div>
+              <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
+            </CardBody>
+          </Card>
+        </Col>
+        <Col xs={12} md={6} lg={4}>
+          <Card className="admin-action-card">
+            <CardBody className="d-flex flex-column align-items-center">
+              <div className="admin-section-header mb-3">Draft</div>
+              <UpdateDraftPrices
+                priceAlertCallback={draftUpdateAlertCallback}
+              />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
       <br /> <br />
     </Container>
   );

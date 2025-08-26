@@ -375,7 +375,7 @@ export const playersBySleeperID: Record<string, string> = {
   11604: "Brock Bowers",
   11624: "Xavier Worthy",
   11635: "Ladd McConkey",
-  1163: "Ricky Pearsall",
+  11638: "Ricky Pearsall",
   11640: "Jermaine Burton",
   9486: "Dontayvion Wicks",
   11645: "Javon Baker",
