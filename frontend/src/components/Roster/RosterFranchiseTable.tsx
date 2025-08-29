@@ -9,6 +9,7 @@ interface RosterFranchiseTableProps {
   franchisePrices: FranchiseTagDTO;
   editFranchiseMode?: boolean;
   onSubmitFranchise: (playerId: string | null) => void;
+  onClear: () => void;
   onCancel: () => void;
 }
 const renderFranchisePrice = (
@@ -101,7 +102,7 @@ const RosterFranchiseTable = (props: RosterFranchiseTableProps) => {
             size="sm"
             className="roster-clear-btn"
             onClick={() => {
-              props.onSubmitFranchise(null);
+              props.onClear();
             }}
             type="button"
           >

@@ -5,13 +5,14 @@ import {
   fetchRoster,
   updatePenaltyFee,
   updatePlayerKeeperStatus,
+  updatePlayerStatus,
 } from "../../api/api.service";
 import {
   useFetch,
   useFranchisePrices,
   usePenaltyFees,
 } from "../../custom-hooks/custom-hooks";
-import { Player } from "../../interfaces/interfaces";
+import { Player, UpdatePlayerDTO } from "../../interfaces/interfaces";
 import {
   calculatePenaltyFee,
   getOwnersCap,
@@ -108,6 +109,28 @@ const Roster = (props: RosterProps) => {
     console.log(selectedPlayerId);
     setEditFranchiseMode(false);
   };
+
+  const removeAllFranchiseTags = async () => {
+    roster
+      .filter((player) => player.keeperClass === 2)
+      .forEach((player) => {
+        const updateDTO: UpdatePlayerDTO = {
+          keeperClass: 1,
+        };
+        updatePlayerStatus(player.sleeperId, updateDTO);
+      });
+  };
+
+  const clearFranchise = async () => {
+    await removeAllFranchiseTags();
+    setEditFranchiseMode(false);
+    await recalculatePrices();
+    await refetchRoster();
+    const penaltyFee = calculatePenaltyFee(roster, franchisePrices, cap);
+    await updatePenaltyFee(name || "", penaltyFee);
+    await recalculatePenaltyFees();
+  };
+
   return (
     <Container>
       {(rosterError || franchiseError || penaltyError) && (
@@ -152,6 +175,9 @@ const Roster = (props: RosterProps) => {
             roster={franchiseEligiblePlayers}
             franchisePrices={franchisePrices}
             onSubmitFranchise={onSubmitFranchise}
+            onClear={() => {
+              clearFranchise();
+            }}
             onCancel={() => {
               setEditFranchiseMode(false);
             }}

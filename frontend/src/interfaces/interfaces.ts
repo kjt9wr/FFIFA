@@ -70,3 +70,11 @@ export interface DraftDTO {
 export interface UpdateKeeperDTO {
   keep: boolean;
 }
+
+export interface UpdatePlayerDTO {
+  price?: number;
+  keep?: boolean;
+  keeperClass?: number;
+  firstKeepYear?: number;
+  ownerSleeperId?: string | null;
+}
