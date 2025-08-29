@@ -14,13 +14,17 @@ import {
 } from "../../custom-hooks/custom-hooks";
 import { Player, UpdatePlayerDTO } from "../../interfaces/interfaces";
 import {
+  getFranchiseEligiblePlayers,
+  removeAllFranchiseTags,
+} from "../../services/franchise.service";
+import {
   calculatePenaltyFee,
   getOwnersCap,
 } from "../../services/roster.service";
 import { OwnerSleeperIdByName } from "../../utilities/sleeper-ids";
 import KeptPlayersDisplay from "../reusable/KeptPlayersDisplay";
-import RosterDataTable from "./RosterDataTable";
 import RosterCapInfo from "./RosterCapInfo";
+import RosterDataTable from "./RosterDataTable";
 import RosterFranchiseTable from "./RosterFranchiseTable";
 
 /*
@@ -77,11 +81,7 @@ const Roster = (props: RosterProps) => {
       playertoChange.keep = e.target.checked;
 
       await updatePlayerKeeperStatus(e.target.id, { keep: e.target.checked });
-      await recalculatePrices();
-      await refetchRoster();
-      const penaltyFee = calculatePenaltyFee(roster, franchisePrices, cap);
-      await updatePenaltyFee(name || "", penaltyFee);
-      await recalculatePenaltyFees();
+      await refreshCalculations();
     }
   };
 
@@ -95,35 +95,29 @@ const Roster = (props: RosterProps) => {
   }, [name]);
 
   const keptPlayersList = roster.filter((p) => p.keep);
-
-  const franchiseEligiblePlayers = roster
-    .filter((player: Player) => ![3, 4].includes(player.keeperClass))
-    .sort(
-      (a: Player, b: Player) =>
-        a.position.localeCompare(b.position) ||
-        b.price - a.price ||
-        a.name.localeCompare(b.name)
-    );
+  const franchiseEligiblePlayers = getFranchiseEligiblePlayers(roster);
 
   const onSubmitFranchise = async (selectedPlayerId: string | null) => {
-    console.log(selectedPlayerId);
+    if (selectedPlayerId) {
+      await removeAllFranchiseTags(roster);
+      const updateDTO: UpdatePlayerDTO = {
+        keeperClass: 2,
+        keep: true,
+      };
+      await updatePlayerStatus(selectedPlayerId, updateDTO);
+      await refreshCalculations();
+    }
     setEditFranchiseMode(false);
   };
 
-  const removeAllFranchiseTags = async () => {
-    roster
-      .filter((player) => player.keeperClass === 2)
-      .forEach((player) => {
-        const updateDTO: UpdatePlayerDTO = {
-          keeperClass: 1,
-        };
-        updatePlayerStatus(player.sleeperId, updateDTO);
-      });
+  const onClearFranchise = async () => {
+    await removeAllFranchiseTags(roster);
+    setEditFranchiseMode(false);
+
+    await refreshCalculations();
   };
 
-  const clearFranchise = async () => {
-    await removeAllFranchiseTags();
-    setEditFranchiseMode(false);
+  const refreshCalculations = async () => {
     await recalculatePrices();
     await refetchRoster();
     const penaltyFee = calculatePenaltyFee(roster, franchisePrices, cap);
@@ -176,7 +170,7 @@ const Roster = (props: RosterProps) => {
             franchisePrices={franchisePrices}
             onSubmitFranchise={onSubmitFranchise}
             onClear={() => {
-              clearFranchise();
+              onClearFranchise();
             }}
             onCancel={() => {
               setEditFranchiseMode(false);
