@@ -686,6 +686,38 @@ input[type="checkbox"]:checked::after {
   align-self: flex-start;
 }
 
+.download-csv-btn {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, #2f5997 70%, #233b67 100%);
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none !important;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.13);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+
+.download-csv-btn:hover,
+.download-csv-btn:focus {
+  background: linear-gradient(90deg, #233b67 70%, #2f5997 100%);
+  color: #facc15 !important;
+  box-shadow: 0 6px 24px rgba(44, 62, 80, 0.18);
+  text-decoration: none;
+}
+
+.download-csv-btn svg {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
 @media (max-width: 600px) {
   .trade-tracker-controls {
     flex-direction: column;
