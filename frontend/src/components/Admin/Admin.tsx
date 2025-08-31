@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, Card, CardBody, Col, Container, Row } from "reactstrap";
 import { ALERT_STATE } from "../../utilities/enumerations";
+import GeneratePriceSheet from "./GeneratePriceSheet";
 import UpdateDraftPrices from "./UpdateDraftPrices";
 import UpdateRosters from "./UpdateRosters";
 const Admin = () => {
@@ -45,6 +46,9 @@ const Admin = () => {
               <div className="admin-section-header mb-3">Draft</div>
               <UpdateDraftPrices
                 priceAlertCallback={draftUpdateAlertCallback}
+              />
+              <GeneratePriceSheet
+                rosterAlertCallback={rosterUpdateAlertCallback}
               />
             </CardBody>
           </Card>

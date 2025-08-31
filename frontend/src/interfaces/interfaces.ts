@@ -78,3 +78,10 @@ export interface UpdatePlayerDTO {
   firstKeepYear?: number;
   ownerSleeperId?: string | null;
 }
+export interface CsvDto {
+  owner: string;
+  player: string;
+  price: number;
+  position: string;
+  notes: string;
+}
