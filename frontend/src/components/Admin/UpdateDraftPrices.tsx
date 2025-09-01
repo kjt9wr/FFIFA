@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import {
+  clearAllPlayerPrices,
   fetchSleeperDraftResults,
   updatePlayerPrice,
 } from "../../api/api.service";
@@ -11,6 +12,7 @@ import { getMostRecentDraftId } from "../../utilities/constants";
 
 import { ALERT_STATE } from "../../utilities/enumerations";
 import { playersBySleeperID } from "../../utilities/sleeper-ids";
+import SpinnerWrapper from "../reusable/SpinnerWrapper";
 
 interface UpdateDraftPricesProps {
   priceAlertCallback: (alertType: string) => void;
@@ -18,6 +20,7 @@ interface UpdateDraftPricesProps {
 
 const UpdateDraftPrices = (props: UpdateDraftPricesProps) => {
   const [draftData, setDraftData] = useState<DraftDTO[]>([]);
+  const [loading, setLoading] = useState(false);
 
   // get draft prices for all players
   useEffect(() => {
@@ -40,34 +43,50 @@ const UpdateDraftPrices = (props: UpdateDraftPricesProps) => {
   }, []);
 
   const addDraftPrices = async () => {
-    for (const player of draftData) {
-      console.log(
-        `Updating ${player.sleeperId} to price ${increaseKeeperPrice(
-          player.price
-        )}`
-      );
-      await updatePlayerPrice(
-        player.sleeperId,
-        increaseKeeperPrice(player.price)
-      )
-        .then(() => {
-          props.priceAlertCallback(ALERT_STATE.SUCCESS);
-        })
-        .catch(() => {
-          props.priceAlertCallback(ALERT_STATE.ERROR);
-        });
-    }
+    setLoading(true);
+    await clearAllPlayerPrices()
+      .then(async () => {
+        console.log("Cleared all player prices");
+
+        for (const player of draftData) {
+          console.log(
+            `Updating ${player.sleeperId} to price ${increaseKeeperPrice(
+              player.price
+            )}`
+          );
+          await updatePlayerPrice(
+            player.sleeperId,
+            increaseKeeperPrice(player.price)
+          )
+            .then(() => {})
+            .catch(() => {
+              setLoading(false);
+              props.priceAlertCallback(ALERT_STATE.ERROR);
+            });
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+        props.priceAlertCallback(ALERT_STATE.ERROR);
+      });
+    props.priceAlertCallback(ALERT_STATE.SUCCESS);
+    setLoading(false);
   };
 
   return (
-    <Button
-      title="Add Draft Prices"
-      color="warning"
-      className="admin-btn mb-2"
-      onClick={addDraftPrices}
-    >
-      Update Draft Prices
-    </Button>
+    <>
+      <SpinnerWrapper loading={loading} />
+      {!loading && (
+        <Button
+          title="Add Draft Prices"
+          color="warning"
+          className="admin-btn mb-2"
+          onClick={addDraftPrices}
+        >
+          Update Draft Prices
+        </Button>
+      )}
+    </>
   );
 };
 

@@ -14,6 +14,7 @@ const {
   updatePrice,
   removeAllOwners,
   addPlayersToRoster,
+  resetAllPrices,
 } = require("../controllers/player.controller");
 
 const requireAuth = require("../middleware/requireAuth");
@@ -62,6 +63,9 @@ router.route("/updatePlayer/:playerId").put(updatePlayer);
 
 // Update player price
 router.route("/updatePlayer/price/:sleeperId").put(updatePrice);
+
+// Reset all player prices to default (10)
+router.route("/resetAllPrices").post(resetAllPrices);
 
 /*
  * Roster Routes

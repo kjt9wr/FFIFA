@@ -138,6 +138,12 @@ const removeAllOwners = async (req, res) => {
   );
 };
 
+const resetAllPrices = async (req, res) => {
+  Player.updateMany({}, { $set: { price: 10 } }).then(() =>
+    res.json("Updated!")
+  );
+};
+
 // Update roster with correct players
 const addPlayersToRoster = async (req, res) => {
   const { players } = req.body;
@@ -179,4 +185,5 @@ module.exports = {
   updatePrice,
   removeAllOwners,
   addPlayersToRoster,
+  resetAllPrices,
 };

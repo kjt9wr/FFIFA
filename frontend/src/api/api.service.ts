@@ -45,6 +45,10 @@ export const clearAllPlayersOwner = () => {
   return apiClient.post("/player/removeAllOwners");
 };
 
+export const clearAllPlayerPrices = () => {
+  return apiClient.post("/player/resetAllPrices");
+};
+
 export const fetchRoster = (ownerId: string) => {
   return apiClient.get(`/player/roster/${ownerId}`);
 };
