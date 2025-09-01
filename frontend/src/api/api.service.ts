@@ -75,6 +75,10 @@ export const updatePenaltyFee = (ownerName: string, updatedFee: number) => {
   });
 };
 
+export const fetchAllPlayers = () => {
+  return apiClient.get(`/player/`);
+};
+
 export const fetchSleeperRosters = (sleeperLeagueId: string) => {
   return sleeperApiClient.get(`/league/${sleeperLeagueId}/rosters`);
 };
