@@ -89,8 +89,10 @@ const CapTracker = () => {
 
   const ownersinSelectedYear = owners
     ? owners.filter(
-        (owner: Owner) => owner.cap[parseInt(selectedYear.slice(-1))] !== 0
-      )
+    ? owners.filter((owner: Owner) => {
+        const index = parseInt(selectedYear.slice(-1));
+        return owner.cap[index] && owner.cap[index] !== 0;
+      })
     : [];
 
   const handleOnChange = (year: string) => {

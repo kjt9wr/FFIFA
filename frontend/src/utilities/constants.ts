@@ -3,7 +3,15 @@ import { POSITION } from "./enumerations";
 //configurable variable for the upcoming season
 const UPCOMING_SEASON_YEAR = "2026";
 
-export const RECORDED_YEARS = ["2020", "2021", "2022", "2023", "2024", "2025"];
+export const RECORDED_YEARS = [
+  "2020",
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025",
+  "2026",
+];
 
 export const BASE_CAP: Record<string, number> = {
   "2022": 281,
