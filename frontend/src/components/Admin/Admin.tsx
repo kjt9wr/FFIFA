@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, Card, CardBody, Col, Container, Row } from "reactstrap";
 import { ALERT_STATE } from "../../utilities/enumerations";
+import AddMissingPlayers from "./AddMissingPlayers";
 import GeneratePriceSheet from "./GeneratePriceSheet";
 import UpdateArbitrationClock from "./UpdateArbitrationClock";
 import UpdateDraftPrices from "./UpdateDraftPrices";
@@ -51,6 +52,9 @@ const Admin = () => {
               <UpdateRosters rosterAlertCallback={rosterUpdateAlertCallback} />
               <UpdateArbitrationClock
                 arbAlertCallback={arbUpdateAlertCallback}
+              />
+              <AddMissingPlayers
+                rosterAlertCallback={rosterUpdateAlertCallback}
               />
             </CardBody>
           </Card>
