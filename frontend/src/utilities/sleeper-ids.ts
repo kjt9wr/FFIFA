@@ -444,4 +444,5 @@ export const playersBySleeperID: Record<string, string> = {
   7049: "Jauan Jennings",
   8148: "Jameson Williams",
   12493: "Oronde Gadsden",
+  3257: "Jacoby Brissett",
 };

@@ -8,6 +8,7 @@ const ownerRouter = require("./routes/owner");
 const playerRouter = require("./routes/player");
 const tradeRouter = require("./routes/trade");
 const userRoutes = require("./routes/user");
+const nflPlayerRouter = require("./routes/nflplayer");
 
 // express app
 const app = express();
@@ -33,6 +34,7 @@ app.use("/owner", ownerRouter);
 app.use("/player", playerRouter);
 app.use("/trade/", tradeRouter);
 app.use("/user", userRoutes);
+app.use("/nflplayer", nflPlayerRouter);
 
 // listen for requests
 const port = process.env.PORT || 5000;
