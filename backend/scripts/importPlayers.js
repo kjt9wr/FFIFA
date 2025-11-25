@@ -15,7 +15,7 @@ async function importPlayersData() {
     // Read the JSON file
     const filePath = path.join(
       __dirname,
-      "../../frontend/src/utilities/All_Players-1745377597264.json"
+      "../../frontend/src/utilities/All_Players_Current.json"
     );
     const jsonData = fs.readFileSync(filePath, "utf8");
     const playersObject = JSON.parse(jsonData);

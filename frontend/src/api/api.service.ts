@@ -97,3 +97,7 @@ export const fetchLogin = (username: string, password: string) => {
     password,
   });
 };
+
+export const fetchNflPlayer = (playerId: string) => {
+  return apiClient.get(`/nflplayer/${playerId}`);
+};

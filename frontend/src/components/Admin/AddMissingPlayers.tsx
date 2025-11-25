@@ -1,8 +1,11 @@
 import { Button } from "reactstrap";
-import { fetchSleeperRosters } from "../../api/api.service";
+import { fetchSleeperRosters, fetchNflPlayer } from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
 import { RosterDTO } from "../../interfaces/interfaces";
-import { getCurrentSleeperLeagueId } from "../../utilities/constants";
+import {
+  getCurrentSleeperLeagueId,
+  POSITIONS,
+} from "../../utilities/constants";
 
 import { ALERT_STATE } from "../../utilities/enumerations";
 import { playersBySleeperID } from "../../utilities/sleeper-ids";
@@ -31,6 +34,30 @@ const AddMissingPlayers = (props: AddMissingPlayersProps) => {
     });
 
     console.log(allNeedToAdd);
+
+    // Fetch NFL player data for each ID
+    const nflPlayerDataArray: any[] = [];
+    for (const playerId of allNeedToAdd) {
+      try {
+        const playerData = await fetchNflPlayer(playerId);
+        nflPlayerDataArray.push(playerData.data);
+      } catch (error) {
+        console.error(`Error fetching player ${playerId}:`, error);
+      }
+    }
+    const playersToAdd = nflPlayerDataArray.filter((player) =>
+      POSITIONS.includes(player.position)
+    );
+
+    for (const player of playersToAdd) {
+      console.log(
+        `Need to add: ${player.player_id}: ${player.full_name} (${player.position})`
+      );
+      // Here you would typically call an API to add the player to your database
+      // For example: await addPlayerToDatabase(player);
+    }
+    console.log("Final List:", playersToAdd);
+
     props.rosterAlertCallback(ALERT_STATE.SUCCESS);
   };
 
