@@ -54,5 +54,11 @@ export const getMostRecentDraftId = () => {
 };
 
 export const POSITIONS = [POSITION.QB, POSITION.RB, POSITION.WR, POSITION.TE];
+export const ALL_POSITIONS = [
+  POSITION.QB as String,
+  POSITION.RB as String,
+  POSITION.WR as String,
+  POSITION.TE as String,
+];
 
 export const BASE_URL_LOCALHOST = "http://localhost:5000/";

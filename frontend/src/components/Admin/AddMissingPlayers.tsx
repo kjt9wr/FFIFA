@@ -1,14 +1,18 @@
 import { Button } from "reactstrap";
 import {
-  fetchSleeperRosters,
-  fetchNflPlayer,
   addPlayerToDatabase,
+  fetchNflPlayer,
+  fetchSleeperRosters,
 } from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
-import { RosterDTO } from "../../interfaces/interfaces";
 import {
+  addPlayerDTO,
+  NflPlayerDTO,
+  RosterDTO,
+} from "../../interfaces/interfaces";
+import {
+  ALL_POSITIONS,
   getCurrentSleeperLeagueId,
-  POSITIONS,
 } from "../../utilities/constants";
 
 import { ALERT_STATE } from "../../utilities/enumerations";
@@ -36,7 +40,7 @@ const AddMissingPlayers = (props: AddMissingPlayersProps) => {
     });
 
     // Fetch NFL player data for each ID
-    const nflPlayerDataArray: any[] = [];
+    const nflPlayerDataArray: NflPlayerDTO[] = [];
     for (const playerId of allNeedToAdd) {
       try {
         const playerData = await fetchNflPlayer(playerId);
@@ -46,11 +50,11 @@ const AddMissingPlayers = (props: AddMissingPlayersProps) => {
       }
     }
     const playersToAdd = nflPlayerDataArray.filter((player) =>
-      POSITIONS.includes(player.position)
+      ALL_POSITIONS.includes(player.position)
     );
 
     for (const player of playersToAdd) {
-      const payload = {
+      const payload: addPlayerDTO = {
         name: player.full_name,
         price: 10,
         keep: false,

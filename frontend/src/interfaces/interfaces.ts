@@ -85,3 +85,20 @@ export interface CsvDto {
   position: string;
   notes: string;
 }
+
+export interface addPlayerDTO {
+  name: string;
+  price: number;
+  keep: boolean;
+  position: string;
+  rank: number;
+  keepClass: number;
+  ownerName: string;
+  sleeperId: string;
+}
+
+export interface NflPlayerDTO {
+  player_id: string;
+  full_name: string;
+  position: string;
+}
