@@ -1,5 +1,9 @@
 import { Button } from "reactstrap";
-import { fetchSleeperRosters, fetchNflPlayer } from "../../api/api.service";
+import {
+  fetchSleeperRosters,
+  fetchNflPlayer,
+  addPlayerToDatabase,
+} from "../../api/api.service";
 import { useFetch } from "../../custom-hooks/custom-hooks";
 import { RosterDTO } from "../../interfaces/interfaces";
 import {
@@ -22,8 +26,6 @@ const AddMissingPlayers = (props: AddMissingPlayersProps) => {
   } = useFetch(() => fetchSleeperRosters(getCurrentSleeperLeagueId()));
 
   const addMissingPlayers = async () => {
-    console.log("Add Missing Players Clicked");
-
     // Combine all filtered players into one array
     const allNeedToAdd: string[] = [];
     allRosters.forEach((roster: RosterDTO) => {
@@ -32,8 +34,6 @@ const AddMissingPlayers = (props: AddMissingPlayersProps) => {
       );
       allNeedToAdd.push(...needToAdd);
     });
-
-    console.log(allNeedToAdd);
 
     // Fetch NFL player data for each ID
     const nflPlayerDataArray: any[] = [];
@@ -50,13 +50,29 @@ const AddMissingPlayers = (props: AddMissingPlayersProps) => {
     );
 
     for (const player of playersToAdd) {
-      console.log(
-        `Need to add: ${player.player_id}: ${player.full_name} (${player.position})`
-      );
-      // Here you would typically call an API to add the player to your database
-      // For example: await addPlayerToDatabase(player);
+      const payload = {
+        name: player.full_name,
+        price: 10,
+        keep: false,
+        position: player.position,
+        rank: 40,
+        keepClass: 1,
+        ownerName: "",
+        sleeperId: player.player_id,
+      };
+
+      try {
+        console.log("Adding player with payload:", payload);
+        await addPlayerToDatabase(payload);
+        console.log(
+          `Successfully added player: ${player.player_id}: "${player.full_name}"`
+        );
+      } catch (error) {
+        console.log(
+          `Need to add player: ${player.player_id}: "${player.full_name}"`
+        );
+      }
     }
-    console.log("Final List:", playersToAdd);
 
     props.rosterAlertCallback(ALERT_STATE.SUCCESS);
   };

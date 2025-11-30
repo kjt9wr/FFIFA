@@ -101,3 +101,7 @@ export const fetchLogin = (username: string, password: string) => {
 export const fetchNflPlayer = (playerId: string) => {
   return apiClient.get(`/nflplayer/${playerId}`);
 };
+
+export const addPlayerToDatabase = (playerData: any) => {
+  return apiClient.post("/player/add", playerData);
+};

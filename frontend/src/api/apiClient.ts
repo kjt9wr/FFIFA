@@ -19,13 +19,16 @@ export default apiClient;
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.error("API call failed:", error);
     // Handle specific error cases
-    // if (error.response.status === 401) {
-    //   // Unauthorized
-    // } else if (error.response.status === 404) {
-    //   // Not found
-    // }
+    if (error.response.status === 409) {
+      console.log(
+        "Conflict Error: Player already exists. ",
+        error.response.data
+      );
+      // Unauthorized
+    } else {
+      console.error("API call failed:", error);
+    }
     return Promise.reject(error);
   }
 );

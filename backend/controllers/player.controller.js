@@ -65,34 +65,40 @@ const getArbitratedPlayers = async (req, res) => {
 
 // add player to db
 const createNewPlayer = async (req, res) => {
-  const { name, price, keep, position, rank, ownerName, sleeperId } = req.body;
+  try {
+    const { name, price, keep, position, rank, ownerName, sleeperId } =
+      req.body;
 
-  const newPlayer = new Player({});
+    // 1. Check if player already exists by sleeperId
+    const existingPlayer = await Player.findOne({ sleeperId });
+    if (existingPlayer) {
+      return res.status(409).json({
+        message: `Player with sleeperId ${sleeperId} already exists.`,
+        player: existingPlayer,
+      });
+    }
 
-  Player.create({
-    name,
-    price: Number(price),
-    keep: Boolean(keep),
-    position: position,
-    rank: Number(rank),
-    owner: idMap.OwnerSleeperIdByName[ownerName],
-    sleeperId: sleeperId,
-  })
-    .then(() =>
-      res.status(201).json({
-        message: `${name} added!`,
-        player: {
-          name,
-          price: Number(price),
-          keep: Boolean(keep),
-          position: position,
-          rank: Number(rank),
-          owner: idMap.OwnerSleeperIdByName[ownerName],
-          sleeperId: sleeperId,
-        },
-      })
-    )
-    .catch((err) => res.status(400).json("Unable to add player: " + err));
+    // 2. Create the new player
+    const createdPlayer = await Player.create({
+      name,
+      price: Number(price),
+      keep: Boolean(keep),
+      position,
+      rank: Number(rank),
+      owner: idMap.OwnerSleeperIdByName[ownerName],
+      sleeperId,
+    });
+
+    return res.status(201).json({
+      message: `${name} added!`,
+      player: createdPlayer,
+    });
+  } catch (err) {
+    return res.status(400).json({
+      message: "Unable to add player",
+      error: err.toString(),
+    });
+  }
 };
 
 const addSleeperId = async (req, res) => {
