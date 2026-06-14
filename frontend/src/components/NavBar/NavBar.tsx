@@ -97,7 +97,7 @@ const NavBar = () => {
           <Nav className="ms-auto" navbar>
             {!user ? (
               <NavItem>
-                <NavLink href="/Login">Login</NavLink>
+                <NavLink href="/login">Login</NavLink>
               </NavItem>
             ) : (
               <UncontrolledDropdown nav inNavbar>
