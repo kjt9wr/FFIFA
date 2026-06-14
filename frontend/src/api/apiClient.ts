@@ -25,7 +25,9 @@ apiClient.interceptors.response.use(
         "Conflict Error: Player already exists. ",
         error.response.data
       );
-      // Unauthorized
+    } else if (error.response.status === 401) {
+      localStorage.removeItem("user");
+      window.location.href = "/";
     } else {
       console.error("API call failed:", error);
     }
